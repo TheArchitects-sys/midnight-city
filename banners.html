@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BANNERS MÍTICOS — MIDNIGHT CITY | Égide de Avalon</title>
+  <meta name="description" content="Consulte os prêmios dos banners míticos de Midnight City, compare refinamentos de R1 a R5 e prepare suas orações oficiais no Discord com acompanhamento da moderação.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png"><circle cx='50' cy='50' r='45' fill='%23050608' stroke='%23d4af37' stroke-width='4'/><text x='50' y='65' font-size='46' font-family='serif' fill='%23f1d27a' text-anchor='middle' font-weight='bold'>N</text></svg>">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#f1d27a',
+              400: '#e5c058',
+              500: '#d4af37',
+              600: '#c49929',
+              700: '#8c7126',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Canonical Data Source & Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/neotheon-premium/integration/premium-media.css">
+  <link rel="stylesheet" href="banners.css">
+  <script src="content/operacoes/operacoes_data.js"></script>
+  <script src="assets/atmosphere.js" defer></script>
+  <script src="assets/neotheon-premium/integration/premium-media.js" defer></script>
+  <script src="banners.js" defer></script>
+</head>
+<body class="bg-[#050608] text-[#f0ece1] min-h-screen flex flex-col font-sans relative antialiased selection:bg-[#d4af37]/30 selection:text-[#f1d27a]">
+
+  <!-- Dynamic WebGL Volumetric Mist Canvas (Atmosfera da Égide) -->
+  <canvas id="fog-canvas"></canvas>
+
+    <!-- ── GLOBAL HEADER ── -->
+  <header class="santioni-header">
+    <a href="index.html" class="brand-badge">
+      <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+      <div class="brand-text">
+        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-sub">Égide de Avalon</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <nav class="santioni-nav-pill" aria-label="Navegação Principal">
+        <a href="index.html" >INÍCIO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="universo.html" >UNIVERSO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="poderes.html" >PODERES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="operacoes.html" >OPERAÇÕES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="banners.html" class="active text-[#f1d27a]">BANNERS</a>
+        <span class="pill-ornament">❖</span>
+        <a href="sistema.html" >SISTEMA</a>
+        <span class="pill-ornament">❖</span>
+        <a href="agente.html" >AGENTE</a>
+        <span class="pill-ornament">❖</span>
+        <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
+      </nav>
+
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+        DISCORD ↗
+      </a>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-[#cfc7b4] hover:text-white p-1 text-2xl font-mono-code focus:outline-none" aria-label="Abrir menu mobile">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-20 left-0 w-full z-50 bg-[#050608]/98 border-b border-[#d4af37]/20 px-6 py-6 space-y-3 text-xs font-cinzel uppercase tracking-widest backdrop-blur-xl">
+    <a href="index.html" class="block py-2 text-[#cfc7b4] hover:text-white">Início</a>
+    <a href="universo.html" class="block py-2 text-[#cfc7b4] hover:text-white">Universo & Cosmologia</a>
+    <a href="poderes.html" class="block py-2 text-[#cfc7b4] hover:text-white">Poderes & Individualidades</a>
+    <a href="operacoes.html" class="block py-2 text-[#cfc7b4] hover:text-white">❖ Operações (Missões)</a>
+    <a href="banners.html" class="block py-2 text-[#f1d27a] font-bold">✦ Banners Míticos</a>
+    <a href="operacoes.html?view=novato" class="block py-2 text-[#cfc7b4] hover:text-[#f1d27a]">◈ Novato Premium</a>
+    <a href="sistema.html" class="block py-2 text-[#cfc7b4] hover:text-white">Sistema & Guias</a>
+    <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
+    <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
+    <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 space-y-16 relative z-10">
+
+    <!-- ── 1. B1. ABERTURA ── -->
+    <section id="banner-hero-section" class="space-y-6">
+      <div class="space-y-3 max-w-4xl">
+        <span class="banner-eyebrow">MIDNIGHT CITY • BANNERS MÍTICOS</span>
+        <h1 class="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+          Escolha o poder que você deseja conquistar.
+        </h1>
+        <p class="text-base sm:text-lg text-[#b8b2a5] leading-relaxed">
+          Consulte os prêmios de cada banner, compare seus refinamentos e prepare suas orações. As rolagens oficiais acontecem no Discord, com acompanhamento da moderação.
+        </p>
+
+        <!-- Deadline Notice Bar -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-lg text-xs sm:text-sm text-[#f1d27a]">
+          <svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span><strong>Validade:</strong> Banners temporários ativos (incluindo <em>O Novo Mundo Bruxo</em> até 31/10/2026). <em>Vestígios da Divergência</em> permanece contínuo.</span>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#prizes-catalog-section" class="btn-gold-primary">
+          <span>Explorar Prêmios</span>
+          <span>↓</span>
+        </a>
+        <a href="#how-to-participate-section" class="btn-gold-secondary">
+          <span>Como Realizar Orações</span>
+          <span>➔</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── 2. B2. SELETOR DE BANNERS (5 COLEÇÕES ATIVAS) ── -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="banner-eyebrow mb-0">SELEÇÃO DE COLEÇÃO</span>
+        <span class="text-xs font-mono text-[#7e786b]">5 Ciclos Disponíveis</span>
+      </div>
+
+      <div id="banner-tabs-container" class="collection-tabs-bar" role="tablist" aria-label="Seletor de Banners">
+        <!-- Rendered dynamically by banners.js -->
+      </div>
+    </section>
+
+    <!-- ── 3. B3. APRESENTAÇÃO DO BANNER SELECIONADO (SHOWCASE) ── -->
+    <section id="banner-showcase-section" class="space-y-4">
+      <div id="banner-showcase-mount">
+        <!-- Rendered dynamically by banners.js -->
+      </div>
+    </section>
+
+    <!-- ── 4. B4. CATÁLOGO DE PRÊMIOS DA COLEÇÃO ── -->
+    <section id="prizes-catalog-section" class="space-y-6 pt-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-4">
+        <div>
+          <span class="banner-eyebrow">CATÁLOGO EXCLUSIVO</span>
+          <h2 class="font-cinzel text-2xl font-bold text-white flex items-center gap-3">
+            <span>Prêmios Desta Coleção</span>
+            <span id="prizes-count-badge" class="text-xs font-mono font-normal bg-white/10 px-2.5 py-1 rounded text-[#f1d27a]">
+              <!-- Populated by JS -->
+            </span>
+          </h2>
+          <p class="text-sm text-[#b8b2a5] mt-1">
+            Selecione qualquer prêmio para ler seus efeitos canônicos, atributos e comparar os refinamentos de R1 a R5.
+          </p>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap items-center gap-2" id="prize-filter-chips">
+          <button class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#d4af37] text-black shadow-sm" data-filter-nature="all">
+            Todos
+          </button>
+          <button class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-[#b8b2a5] border border-white/10 hover:bg-white/10 hover:text-white transition-all" data-filter-nature="bencao">
+            Bênçãos
+          </button>
+          <button class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-[#b8b2a5] border border-white/10 hover:bg-white/10 hover:text-white transition-all" data-filter-nature="pet">
+            Pets
+          </button>
+          <button class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-[#b8b2a5] border border-white/10 hover:bg-white/10 hover:text-white transition-all" data-filter-nature="arma">
+            Armas
+          </button>
+          <button class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-[#b8b2a5] border border-white/10 hover:bg-white/10 hover:text-white transition-all" data-filter-nature="artefato">
+            Artefatos
+          </button>
+        </div>
+      </div>
+
+      <!-- Prizes Grid Container -->
+      <div id="prizes-grid-container" class="prizes-grid">
+        <!-- Populated dynamically by banners.js -->
+      </div>
+    </section>
+
+    <!-- ── 5. B4 DETALHE: VITRINE MÍTICA & REFINAMENTOS ── -->
+    <section id="prize-inspector-section" class="space-y-4 pt-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-white/10 pb-4">
+        <div>
+          <span class="banner-eyebrow mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#f1d27a] to-[#d4af37]">DESTAQUE & ANÁLISE CANÔNICA</span>
+          <h2 class="font-cinzel text-2xl font-bold text-white flex items-center gap-3">
+            <span>VITRINE MÍTICA</span>
+            <span class="text-xs font-mono font-normal bg-[#d4af37]/15 text-[#f1d27a] border border-[#d4af37]/30 px-2.5 py-0.5 rounded">
+              Refinamentos R1–R5 & Lore Integral
+            </span>
+          </h2>
+        </div>
+        <button id="btn-quick-compare-all" class="text-xs font-mono text-[#f1d27a] hover:underline flex items-center gap-1.5 self-start sm:self-auto py-1 px-3 rounded bg-white/5 border border-white/10 hover:border-[#d4af37]/40">
+          <span>Comparar Níveis R1–R5</span>
+          <span>↗</span>
+        </button>
+      </div>
+
+      <div id="prize-inspector-mount">
+        <!-- Populated dynamically by banners.js -->
+      </div>
+    </section>
+
+    <!-- ── 6. B5. COMO REALIZAR SUAS ORAÇÕES ── -->
+    <section id="how-to-participate-section" class="space-y-6 pt-8 border-t border-white/10">
+      <div class="space-y-2">
+        <span class="banner-eyebrow">DIRETRIZES OFICIAIS DE ORAÇÃO</span>
+        <h2 class="font-cinzel text-2xl font-bold text-white">Como Realizar suas Orações</h2>
+        <p class="text-sm text-[#b8b2a5] leading-relaxed max-w-3xl">
+          Orações Celestiais são um recurso OFF-GAME usado nos banners míticos. Os resultados podem conceder Golds, materiais e prêmios exclusivos, conforme a tabela de cada banner.
+        </p>
+      </div>
+
+      <!-- 5 Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-2">
+          <div class="font-cinzel text-xs font-bold text-[#d4af37]">PASSO 01</div>
+          <h4 class="font-cinzel text-sm font-bold text-white">Acesse o Discord</h4>
+          <p class="text-xs text-[#b8b2a5] leading-relaxed">
+            Entre no servidor oficial e acesse o canal identificado pelo código da sua ficha (exemplo: <code class="text-[#f1d27a]">#001</code>).
+          </p>
+        </div>
+
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-2">
+          <div class="font-cinzel text-xs font-bold text-[#d4af37]">PASSO 02</div>
+          <h4 class="font-cinzel text-sm font-bold text-white">Chame a Moderação</h4>
+          <p class="text-xs text-[#b8b2a5] leading-relaxed">
+            Verifique se há um ADM ou moderador disponível no canal e solicite acompanhamento formal para a rolagem.
+          </p>
+        </div>
+
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-2">
+          <div class="font-cinzel text-xs font-bold text-[#d4af37]">PASSO 03</div>
+          <h4 class="font-cinzel text-sm font-bold text-white">Indique o Pretendido</h4>
+          <p class="text-xs text-[#b8b2a5] leading-relaxed">
+            Informe o banner escolhido e declare formalmente o prêmio exclusivo que deseja obter antes de rolar os dados.
+          </p>
+        </div>
+
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-2">
+          <div class="font-cinzel text-xs font-bold text-[#d4af37]">PASSO 04</div>
+          <h4 class="font-cinzel text-sm font-bold text-white">Role as Orações</h4>
+          <p class="text-xs text-[#b8b2a5] leading-relaxed">
+            Utilize de 1 a 10 orações por vez com o bot oficial, seguindo a tabela canônica de probabilidades do banner.
+          </p>
+        </div>
+
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-2">
+          <div class="font-cinzel text-xs font-bold text-[#d4af37]">PASSO 05</div>
+          <h4 class="font-cinzel text-sm font-bold text-white">Validação & Ficha</h4>
+          <p class="text-xs text-[#b8b2a5] leading-relaxed">
+            Aguarde a confirmação do prêmio pela moderação e solicite sua inclusão oficial na ficha do seu personagem.
+          </p>
+        </div>
+      </div>
+
+      <!-- Action Button & Important Disclaimer -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-[#090b10] border border-white/10 rounded-xl">
+        <div class="text-xs text-[#b8b2a5] leading-relaxed max-w-2xl">
+          ℹ <strong>Aviso Importante:</strong> Consultar prêmios ou refinamentos neste site não realiza orações e não altera sua ficha. Toda a apuração oficial é feita no Discord.
+        </div>
+        <button id="btn-open-prepare-discord" class="btn-gold-primary shrink-0 text-xs">
+          <span>Preparar Mensagem de Oração</span>
+          <span>↗</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── 7. B6 & B7 & B8. REGRAS, GARANTIAS & TABELAS DE ROLAGEM ── -->
+    <section class="space-y-8 pt-8 border-t border-white/10">
+      <div class="space-y-2">
+        <span class="banner-eyebrow">MECÂNICAS & NORMAS</span>
+        <h2 class="font-cinzel text-2xl font-bold text-white">Regras, Garantias e Tabelas</h2>
+      </div>
+
+      <!-- B6. Garantias Comparadas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-cinzel text-xs font-bold text-[#d4af37]">BANNERS TEMPORÁRIOS</span>
+            <span class="text-xs font-mono text-green-400">Contador Compartilhado</span>
+          </div>
+          <h3 class="font-cinzel text-lg font-bold text-white">Garantias dos Temporários</h3>
+          <p class="text-xs sm:text-sm text-[#b8b2a5] leading-relaxed">
+            Os banners temporários compartilham seus contadores. Se você realizar <strong>40 orações sem obter um prêmio exclusivo</strong>, a <strong>41ª concede garantidamente um dos exclusivos</strong> disponíveis no banner escolhido.
+          </p>
+          <div class="p-3 bg-white/5 border border-white/10 rounded text-xs text-[#f1d27a]">
+            <strong>Garantia do Pretendido:</strong> Antes da rolagem, indique o exclusivo desejado. Se receber <strong>3 exclusivos que não correspondam ao pretendido</strong>, o <strong>4º exclusivo é garantido como o escolhido</strong>.
+          </div>
+        </div>
+
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-6 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-cinzel text-xs font-bold text-[#d4af37]">BANNER PERMANENTE</span>
+            <span class="text-xs font-mono text-blue-400">Contador Separado</span>
+          </div>
+          <h3 class="font-cinzel text-lg font-bold text-white">Vestígios da Divergência</h3>
+          <p class="text-xs sm:text-sm text-[#b8b2a5] leading-relaxed">
+            Vestígios da Divergência possui <strong>contador separado dos temporários</strong>. Se você realizar <strong>90 orações sem obter um exclusivo</strong>, a <strong>91ª concede um dos exclusivos disponíveis</strong>.
+          </p>
+          <div class="p-3 bg-white/5 border border-white/10 rounded text-xs text-[#cfc7b4]">
+            <strong>Sem Garantia do Pretendido:</strong> O permanente não possui a regra de 4º pretendido. Contudo, sua segunda tabela de 1d46 inclui um resultado especial (46) que concede livre escolha do prêmio desejado da lista.
+          </div>
+        </div>
+      </div>
+
+      <!-- Preservação entre Ciclos Callout -->
+      <div class="p-4 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-xl text-xs sm:text-sm text-[#f1d27a] flex items-center gap-3">
+        <span class="text-lg">❖</span>
+        <span><strong>Preservação entre ciclos:</strong> O encerramento ou a troca dos banners temporários não apaga os contadores acumulados. A contagem dos temporários continua para o próximo ciclo; a do permanente segue separada e contínua.</span>
+      </div>
+
+      <!-- B7. Tabelas de Rolagem Accordions -->
+      <div class="space-y-4">
+        <h3 class="font-cinzel text-lg font-bold text-white">Tabelas Canônicas Individuais de Rolagem</h3>
+        <p class="text-xs text-[#b8b2a5]">Cada banner ativo possui sua própria estrutura de rolagens canônicas (mínimo de 3 rolagens em cascata para os temporários e 2 rolagens para o permanente).</p>
+        
+        <div class="banner-accordion space-y-3">
+          <!-- 1. O NOVO MUNDO BRUXO -->
+          <details open class="border border-[#d4af37]/50 bg-[#0c0a10]">
+            <summary class="flex items-center justify-between p-4 cursor-pointer">
+              <span class="font-cinzel text-sm font-bold text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>Banner Temporário: O Novo Mundo Bruxo (1d20 · 3 Rolagens)</span>
+              </span>
+              <span class="text-xs font-mono text-[#f1d27a]">Destaque Ativo ▾</span>
+            </summary>
+            <div class="accordion-body space-y-4 p-4 border-t border-white/5">
+              <!-- 1ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">1ª Rolagem: 1d20 (Dificuldade 5)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 12</td><td class="py-2 px-3">10 Golds</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-cyan-300 font-semibold">13 – 19</td><td class="py-2 px-3 text-cyan-300 font-semibold">1 kg de Prata Estelar</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-amber-300 font-bold">20</td><td class="py-2 px-3 font-bold text-white">1x Prêmio Exclusivo (Avança para a 2ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 2ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">2ª Rolagem: 1d20 (Caso tire 20 na primeira)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa Obtida</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 2</td><td class="py-2 px-3 font-semibold text-white">Firebolt S30 [Artefato Exclusivo]</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">3 – 12</td><td class="py-2 px-3 font-semibold text-white">VARINHA (Madeira), (Núcleo Mágico), (Tamanho), (Flexibilidade) [Arma Exclusiva]</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">13 – 18</td><td class="py-2 px-3 font-semibold text-white">A Mala de Quadribol [Arma Exclusiva]</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-[#f1d27a] font-bold">19 – 20</td><td class="py-2 px-3 font-bold text-[#f1d27a]">Bênção ou Pet Exclusivo (Avança para a 3ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 3ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">3ª Rolagem: 1d20 (Caso tire 19 ou 20 na segunda)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Prêmio Mítico Concedido</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr class="bg-[#d4af37]/10"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-[#f1d27a] font-bold">1 – 10</td><td class="py-2 px-3 font-bold text-white">A Marca de Merlin, Aspecto do Espírito [Benção Exclusiva]</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">11 – 15</td><td class="py-2 px-3 font-bold text-white">Fênix [Pet Exclusivo (Suporte)]</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">16 – 20</td><td class="py-2 px-3 font-bold text-white">Basilisco [Pet Exclusivo (Combate)]</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- 2. O GRITO DA GUERRA -->
+          <details class="border border-[#c82924]/40 bg-[#0c0a10]">
+            <summary class="flex items-center justify-between p-4 cursor-pointer">
+              <span class="font-cinzel text-sm font-bold text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#c82924] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6 2 2-6-4.5-4.5"/></svg>
+                <span>Banner Temporário: O Grito da Guerra (1d20 · 3 Rolagens)</span>
+              </span>
+              <span class="text-xs font-mono text-[#7e786b]">Detalhes ▾</span>
+            </summary>
+            <div class="accordion-body space-y-4 p-4 border-t border-white/5">
+              <!-- 1ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">1ª Rolagem: 1d20 (Dificuldade 5)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 12</td><td class="py-2 px-3">10 Golds</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">13 – 19</td><td class="py-2 px-3">1 kg de Matéria do Vazio</td></tr>
+                      <tr class="bg-[#c82924]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-red-400 font-bold">20</td><td class="py-2 px-3 font-bold text-white">1x Prêmio Exclusivo (Avança para a 2ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 2ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">2ª Rolagem: 1d20 (Caso tire 20 na primeira)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa Obtida</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 5</td><td class="py-2 px-3 font-semibold text-white">Baluarte de Pallas & Lança Promachos</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">6 – 10</td><td class="py-2 px-3 font-semibold text-white">Fear’s Sword</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">11 – 14</td><td class="py-2 px-3 font-semibold text-white">Panic’s Guns</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">15 – 18</td><td class="py-2 px-3 font-semibold text-white">Presas Noturnas</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-[#f1d27a] font-bold">19 – 20</td><td class="py-2 px-3 font-bold text-[#f1d27a]">Bênção Exclusiva (Avança para a 3ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 3ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">3ª Rolagem: 1d20 (Caso tire 19 ou 20 na segunda)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Bênção Ancestral Concedida</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 10</td><td class="py-2 px-3 font-bold text-white">Compasso do Sangue e Ferro</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">11 – 15</td><td class="py-2 px-3 font-bold text-white">Vanguarda de Pallas</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">16 – 20</td><td class="py-2 px-3 font-bold text-white">Treze Meses no Bronze, O Grito da Guerra</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- 2. O AMOR ESTÁ NO AR -->
+          <details class="border border-[#d946ef]/40 bg-[#0c0a10]">
+            <summary class="flex items-center justify-between p-4 cursor-pointer">
+              <span class="font-cinzel text-sm font-bold text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#d946ef] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span>Banner Temporário: O Amor Está no Ar (1d20 · 3 Rolagens)</span>
+              </span>
+              <span class="text-xs font-mono text-[#7e786b]">Detalhes ▾</span>
+            </summary>
+            <div class="accordion-body space-y-4 p-4 border-t border-white/5">
+              <!-- 1ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">1ª Rolagem: 1d20 (Dificuldade 5)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 12</td><td class="py-2 px-3">10 Golds</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">13 – 19</td><td class="py-2 px-3">1 kg de Matéria do Vazio</td></tr>
+                      <tr class="bg-[#d946ef]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-pink-400 font-bold">20</td><td class="py-2 px-3 font-bold text-white">1x Prêmio Exclusivo (Avança para a 2ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 2ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">2ª Rolagem: 1d20 (Caso tire 20 na primeira)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa Obtida</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 5</td><td class="py-2 px-3 font-semibold text-white">Corrente do Êxtase Carmesim</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">6 – 10</td><td class="py-2 px-3 font-semibold text-white">Réquiem de Putto</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">11 – 14</td><td class="py-2 px-3 font-semibold text-white">Jóia da Alma</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">15 – 18</td><td class="py-2 px-3 font-semibold text-white">Desejo da Alma</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-[#f1d27a] font-bold">19 – 20</td><td class="py-2 px-3 font-bold text-[#f1d27a]">Bênção Exclusiva (Avança para a 3ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 3ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">3ª Rolagem: 1d20 (Caso tire 19 ou 20 na segunda)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Bênção Ancestral Concedida</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1</td><td class="py-2 px-3 font-bold text-white">Amor Infernal (Death Scythe)</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">2 – 5</td><td class="py-2 px-3 font-bold text-white">Ídolo Perpétuo</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">6 – 10</td><td class="py-2 px-3 font-bold text-white">Sombra Divina Não Nomeada</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">11 – 15</td><td class="py-2 px-3 font-bold text-white">O Despertar de uma Nova Era</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">16 – 20</td><td class="py-2 px-3 font-bold text-white">Por Favor, Me Liberte do Sono Estígio...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- 3. A SOMBRA DO ABANDONADO -->
+          <details class="border border-[#6366f1]/40 bg-[#0c0a10]">
+            <summary class="flex items-center justify-between p-4 cursor-pointer">
+              <span class="font-cinzel text-sm font-bold text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#6366f1] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 0 20 10 10 0 0 0 0-20z"/></svg>
+                <span>Banner Temporário: A Sombra do Abandonado (1d20 · 3 Rolagens)</span>
+              </span>
+              <span class="text-xs font-mono text-[#7e786b]">Detalhes ▾</span>
+            </summary>
+            <div class="accordion-body space-y-4 p-4 border-t border-white/5">
+              <!-- 1ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">1ª Rolagem: 1d20 (Dificuldade 5)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 12</td><td class="py-2 px-3">10 Golds</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">13 – 19</td><td class="py-2 px-3">1 kg de Matéria do Vazio</td></tr>
+                      <tr class="bg-[#6366f1]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-indigo-400 font-bold">20</td><td class="py-2 px-3 font-bold text-white">1x Prêmio Exclusivo (Avança para a 2ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 2ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">2ª Rolagem: 1d20 (Caso tire 20 na primeira)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa Obtida</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 9</td><td class="py-2 px-3 font-semibold text-white">Diário Abandonado</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">10 – 19</td><td class="py-2 px-3 font-semibold text-white">Lanterna de Mashadar e a Lâmina de Shadar Logoth</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-[#f1d27a] font-bold">20</td><td class="py-2 px-3 font-bold text-[#f1d27a]">Bênção Exclusiva ou Vestígio (Avança para a 3ª Rolagem)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 3ª Rolagem -->
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">3ª Rolagem: 1d20 (Caso tire 20 na segunda)</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Bênção ou Vestígio Concedido</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">1 – 12</td><td class="py-2 px-3 font-bold text-white">A Coroa da Noite Absoluta</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d20</td><td class="py-2 px-3 text-[#f1d27a] font-bold">13</td><td class="py-2 px-3 font-bold text-[#f1d27a]">✦ Mythcarver (Vestígio da Divergência)</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">14 – 17</td><td class="py-2 px-3 font-bold text-white">A Coroa da Noite Absoluta</td></tr>
+                      <tr><td class="py-2 px-3">1d20</td><td class="py-2 px-3 text-[#f1d27a]">18 – 20</td><td class="py-2 px-3 font-bold text-white">Son of Forsaken</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- 4. PERMANENTE: VESTÍGIOS DA DIVERGÊNCIA (1d50 & 1d46) -->
+          <details class="border border-[#d4af37]/40 bg-[#0c0a10]">
+            <summary class="flex items-center justify-between p-4 cursor-pointer">
+              <span class="font-cinzel text-sm font-bold text-white flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M3 10h18M12 3l9 7H3l9-7z"/></svg>
+                <span>Banner Permanente: Vestígios da Divergência (1d50 & 1d46)</span>
+              </span>
+              <span class="text-xs font-mono text-[#7e786b]">Detalhes ▾</span>
+            </summary>
+            <div class="accordion-body space-y-5 p-4 border-t border-white/5">
+              <div class="p-3 bg-white/5 border border-white/10 rounded text-xs text-[#b8b2a5]">
+                <strong>Contador Geral:</strong> Se acumular 90 orações sem obter um exclusivo, a <strong>91ª concede garantidamente um exclusivo</strong>. Não possui regra de pretendido.
+              </div>
+
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">Primeira Rolagem (1d50):</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Resultado</th>
+                        <th class="py-2 px-3">Recompensa</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d50</td><td class="py-2 px-3 text-[#f1d27a]">1 – 30</td><td class="py-2 px-3">10 Golds</td></tr>
+                      <tr><td class="py-2 px-3">1d50</td><td class="py-2 px-3 text-[#f1d27a]">31 – 40</td><td class="py-2 px-3">1x artefato roletável</td></tr>
+                      <tr><td class="py-2 px-3">1d50</td><td class="py-2 px-3 text-[#f1d27a]">41 – 44</td><td class="py-2 px-3">1x artefato roletável com +1 sub status</td></tr>
+                      <tr><td class="py-2 px-3">1d50</td><td class="py-2 px-3 text-[#f1d27a]">45 – 46</td><td class="py-2 px-3">1x artefato roletável com +2 sub status</td></tr>
+                      <tr><td class="py-2 px-3">1d50</td><td class="py-2 px-3 text-[#f1d27a]">47 – 49</td><td class="py-2 px-3">1x Joias do Destino (aprimora criação de artefatos)</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d50</td><td class="py-2 px-3 text-green-400 font-bold">50</td><td class="py-2 px-3 font-bold text-white">Prêmio exclusivo (realizar segunda rolagem de 1d46)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <h5 class="font-cinzel text-xs font-bold text-[#f1d27a] mb-2 uppercase">Segunda Rolagem no Exclusivo (1d46):</h5>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs font-mono border-collapse">
+                    <thead>
+                      <tr class="border-b border-white/10 text-[#7e786b]">
+                        <th class="py-2 px-3">Dado</th>
+                        <th class="py-2 px-3">Números da Sorte</th>
+                        <th class="py-2 px-3">Relíquia Mítica / Arma</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">3, 13, 23, 42, 45</td><td class="py-2 px-3 font-semibold text-white">Deathwalker’s Ward</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">17, 19, 32, 33, 43</td><td class="py-2 px-3 font-semibold text-white">Mythcarver</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">2, 5, 11, 18, 37</td><td class="py-2 px-3 font-semibold text-white">Titanstone Knuckles</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">12, 16, 29, 31, 41</td><td class="py-2 px-3 font-semibold text-white">Whisper</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">9, 20, 30, 38, 44</td><td class="py-2 px-3 font-semibold text-white">Cabal’s Ruin</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">8, 10, 21, 26, 40</td><td class="py-2 px-3 font-semibold text-white">The Plate of the Dawnmartyr</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">14, 22, 25, 28, 34</td><td class="py-2 px-3 font-semibold text-white">The List</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">1, 4, 24, 27, 39</td><td class="py-2 px-3 font-semibold text-white">Fenthras, o Arco da Traição Selvagem</td></tr>
+                      <tr><td class="py-2 px-3">1d46</td><td class="py-2 px-3 text-[#f1d27a]">6, 7, 15, 35, 36</td><td class="py-2 px-3 font-semibold text-white">Spire of Conflux</td></tr>
+                      <tr class="bg-[#d4af37]/15"><td class="py-2 px-3 font-bold text-[#f1d27a]">1d46</td><td class="py-2 px-3 text-[#f1d27a] font-bold">46</td><td class="py-2 px-3 font-bold text-[#f1d27a]">✦ ESCOLHA LIVRE (Qualquer prêmio da lista à sua escolha)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- SIMULADOR INTERATIVO DE ORAÇÕES & PITY (FIDELIDADE CANÔNICA) -->
+      <div id="prayer-simulator-section" class="bg-[#090b10] border border-[#d4af37]/35 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Fictitious Simulator Notice Banner -->
+        <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3 text-xs sm:text-sm text-amber-200">
+          <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="leading-relaxed">
+            <strong class="font-bold text-amber-300 block mb-0.5">AVISO: SIMULADOR ESTRITAMENTE FICTÍCIO E EXPERIMENTAL</strong>
+            Este simulador reproduz as cascatas reais de dados e regras de pity apenas para testes, entretenimento e planejamento estatístico. <strong>Nenhuma oração realizada nesta página altera sua ficha ou consome orações reais.</strong> Todas as orações oficiais do RPG são conduzidas ao vivo no servidor oficial do Discord com o acompanhamento da moderação.
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono-code px-2.5 py-0.5 rounded bg-[#d4af37]/20 text-[#f1d27a] font-bold">
+                MECÂNICA CANÔNICA AO VIVO
+              </span>
+              <span class="text-xs font-mono-code text-gray-400">MIDNIGHT CITY RNG ENGINE</span>
+            </div>
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white mt-1">
+              Simulador de Orações & Contadores de Pity
+            </h3>
+            <p class="text-xs sm:text-sm text-[#b8b2a5] mt-1">
+              Teste as probabilidades reais de 1d20 (com 3 rolagens), 1d50 e 1d46 com acúmulo de pity e garantia oficial do 4º pretendido.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button id="sim-reset-btn" class="px-3 py-2 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono-code text-gray-300 hover:text-white transition-all flex items-center gap-1.5" title="Resetar contadores de oração">
+              <span>↺</span>
+              <span>Resetar Pity</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Controles do Simulador -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <!-- Seletor do Banner Ativo -->
+          <div class="md:col-span-6 space-y-1.5">
+            <label for="sim-banner-select" class="block text-xs font-mono-code text-[#f1d27a] font-bold uppercase">
+              1. Selecionar Banner Ativo:
+            </label>
+            <select id="sim-banner-select" class="w-full bg-black/70 border border-white/15 rounded-lg px-3.5 py-2.5 text-xs text-white font-mono-code focus:outline-none focus:border-[#d4af37]">
+              <option value="novo-mundo-bruxo" selected>O Novo Mundo Bruxo (Temporário · 1d20 · Pity 40)</option>
+              <option value="grito-da-guerra">Grito da Guerra (Temporário · 1d20 · Pity 40)</option>
+              <option value="amor-esta-no-ar">O Amor Está no Ar (Temporário · 1d20 · Pity 40)</option>
+              <option value="sombra-do-abandonado">A Sombra do Abandonado (Temporário · 1d20 · Pity 40)</option>
+              <option value="vestigios-da-divergencia">Vestígios da Divergência (Permanente · 1d50/1d46 · Pity 90)</option>
+            </select>
+          </div>
+
+          <!-- Declarar Pretendido (para Temporários) -->
+          <div class="md:col-span-6 space-y-1.5" id="sim-intended-wrap">
+            <label for="sim-intended-select" class="block text-xs font-mono-code text-[#f1d27a] font-bold uppercase">
+              2. Indicar Exclusivo Pretendido (Garantia no 4º):
+            </label>
+            <select id="sim-intended-select" class="w-full bg-black/70 border border-white/15 rounded-lg px-3.5 py-2.5 text-xs text-white font-mono-code focus:outline-none focus:border-[#d4af37]">
+              <!-- Populated by JS based on banner -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Painel de Pity & Contadores -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+          <div class="p-3.5 rounded-xl bg-black/60 border border-white/10 space-y-1">
+            <span class="text-[10px] font-mono-code text-gray-400 uppercase block">ORAÇÕES ATUAIS (PITY GERAL)</span>
+            <div class="flex items-baseline gap-2">
+              <span id="sim-pity-current" class="text-2xl font-cinzel font-bold text-[#f1d27a]">0</span>
+              <span id="sim-pity-max" class="text-xs font-mono-code text-gray-500">/ 40</span>
+            </div>
+            <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden mt-2">
+              <div id="sim-pity-bar" class="bg-gradient-to-r from-[#8c6a2b] to-[#f1d27a] h-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-black/60 border border-white/10 space-y-1">
+            <span class="text-[10px] font-mono-code text-gray-400 uppercase block">GARANTIA DO PRETENDIDO</span>
+            <div class="flex items-baseline gap-2">
+              <span id="sim-off-banner-count" class="text-2xl font-cinzel font-bold text-cyan-300">0</span>
+              <span class="text-xs font-mono-code text-gray-500">/ 3 falhas</span>
+            </div>
+            <span id="sim-intended-status" class="text-[10px] font-mono-code text-gray-400 block mt-2">
+              4º exclusivo é garantido
+            </span>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-black/60 border border-white/10 space-y-1">
+            <span class="text-[10px] font-mono-code text-gray-400 uppercase block">TOTAL DE ORAÇÕES NESTA SESSÃO</span>
+            <div class="flex items-baseline gap-2">
+              <span id="sim-total-pulls" class="text-2xl font-cinzel font-bold text-emerald-400">0</span>
+              <span class="text-xs font-mono-code text-gray-500">orações</span>
+            </div>
+            <span id="sim-exclusive-wins" class="text-[10px] font-mono-code text-emerald-300 block mt-2">
+              0 prêmios exclusivos obtidos
+            </span>
+          </div>
+        </div>
+
+        <!-- Botões de Ação de Rolagem -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <button id="sim-pull-1-btn" class="btn-gold px-6 py-3 rounded-lg text-xs font-cinzel font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4" ry="4"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+            <span>REALIZAR 1 ORAÇÃO</span>
+          </button>
+          <button id="sim-pull-10-btn" class="btn-secondary-gold px-6 py-3 rounded-lg text-xs font-cinzel font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>REALIZAR 10 ORAÇÕES (MULTI)</span>
+          </button>
+        </div>
+
+        <!-- Bandeja de Resultados (Feed em Tempo Real) -->
+        <div class="space-y-2 pt-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono-code text-gray-400 uppercase font-bold tracking-wider">
+              ✦ HISTÓRICO DE ROLAGENS (DICE TRAY):
+            </span>
+            <span id="sim-last-summary" class="text-[10px] font-mono-code text-[#f1d27a]">
+              Aguardando oração...
+            </span>
+          </div>
+
+          <div id="sim-results-feed" class="p-4 rounded-xl bg-black/80 border border-white/10 max-h-64 overflow-y-auto space-y-2 custom-scroll font-mono-code text-xs">
+            <div class="text-gray-500 italic text-center py-6">
+              Clique em "Realizar 1 Oração" ou "Realizar 10 Orações" para testar o sistema.
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- B8 & B9. Refinamentos & Loja do Evento -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- B8 Refinamentos -->
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-6 space-y-3">
+          <span class="font-cinzel text-xs font-bold text-[#d4af37]">DO R1 AO R5</span>
+          <h3 class="font-cinzel text-lg font-bold text-white">Regras de Refinamento</h3>
+          <p class="text-xs sm:text-sm text-[#b8b2a5] leading-relaxed">
+            Prêmios exclusivos podem ser refinados até R5. Cada refinamento exige <strong>abrir mão de um prêmio exclusivo idêntico</strong> ao que será refinado e solicitar a atualização da ficha.
+          </p>
+          <div class="p-3 bg-white/5 border border-white/10 rounded text-xs text-[#cfc7b4] space-y-1">
+            <div>• <strong>Local no RPG:</strong> Forjador (para itens) ou Manipulador Genético (para pets).</div>
+            <div>• <strong>Custo fixo:</strong> 50 Golds por refinamento.</div>
+            <div>• <strong>Sinalização:</strong> Prêmios refinados recebem 6 estrelas e não podem ser alterados por outras vias.</div>
+          </div>
+        </div>
+
+        <!-- B9 Loja do Evento -->
+        <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-6 space-y-3">
+          <span class="font-cinzel text-xs font-bold text-[#d4af37]">CÂMBIO OFICIAL</span>
+          <h3 class="font-cinzel text-lg font-bold text-white">Trocas da Loja do Evento</h3>
+          <p class="text-xs sm:text-sm text-[#b8b2a5] leading-relaxed">
+            Consulte os custos e solicite a troca à moderação no Discord. Esta consulta não debita recursos automaticamente.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono border-collapse">
+              <thead>
+                <tr class="border-b border-white/10 text-[#7e786b]">
+                  <th class="py-2 px-3">Você Recebe</th>
+                  <th class="py-2 px-3">Custo Canônico</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/5 text-[#cfc7b4]">
+                <tr><td class="py-2 px-3 text-white font-bold">1 Oração Divina</td><td class="py-2 px-3 text-[#f1d27a]">100 Contas Celestiais</td></tr>
+                <tr><td class="py-2 px-3 text-white font-bold">100 Contas Celestiais</td><td class="py-2 px-3 text-[#f1d27a]">100 kg de metal mágico de banner</td></tr>
+                <tr><td class="py-2 px-3 text-white font-bold">100 Golds</td><td class="py-2 px-3 text-[#f1d27a]">100 Contas Celestiais</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- B11. Perguntas Frequentes (FAQ) -->
+      <div class="space-y-4">
+        <h3 class="font-cinzel text-lg font-bold text-white">Perguntas Frequentes</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-1.5">
+            <h4 class="font-cinzel text-sm font-bold text-[#f1d27a]">Minhas Contas e orações perdem a validade?</h4>
+            <p class="text-xs text-[#b8b2a5] leading-relaxed">Não. Você poderá utilizá-las quando o próximo banner for lançado. Seus recursos permanecem salvos na sua ficha.</p>
+          </div>
+          <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-1.5">
+            <h4 class="font-cinzel text-sm font-bold text-[#f1d27a]">Posso trocar um resultado por outro?</h4>
+            <p class="text-xs text-[#b8b2a5] leading-relaxed">A loja não devolve orações utilizadas. Negociações e trocas com outros jogadores podem acontecer dentro do RPG conforme as regras aplicáveis.</p>
+          </div>
+          <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-1.5">
+            <h4 class="font-cinzel text-sm font-bold text-[#f1d27a]">Como incluo o prêmio na minha história?</h4>
+            <p class="text-xs text-[#b8b2a5] leading-relaxed">Você pode interpretar que encontrou o prêmio entre os restos de um monstro ou o recebeu após uma oração, conforme o contexto e a validação da moderação.</p>
+          </div>
+          <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-1.5">
+            <h4 class="font-cinzel text-sm font-bold text-[#f1d27a]">Posso realizar orações por ficha geral?</h4>
+            <p class="text-xs text-[#b8b2a5] leading-relaxed">Sim, por ficha geral, conforme a orientação do sistema do servidor.</p>
+          </div>
+          <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-1.5">
+            <h4 class="font-cinzel text-sm font-bold text-[#f1d27a]">Posso rolar dados pelo site?</h4>
+            <p class="text-xs text-[#b8b2a5] leading-relaxed">Nesta versão, todas as rolagens oficiais acontecem exclusivamente no Discord com ADM ou moderador acompanhando.</p>
+          </div>
+          <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-4 space-y-1.5">
+            <h4 class="font-cinzel text-sm font-bold text-[#f1d27a]">O que acontece com os contadores ao mudar de ciclo?</h4>
+            <p class="text-xs text-[#b8b2a5] leading-relaxed">Eles são preservados. Os temporários compartilham sua contagem; o permanente tem contagem separada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 8. B10. ARQUIVO HISTÓRICO DE BANNERS ── -->
+    <section id="historical-archive-section" class="space-y-6 pt-8 border-t border-white/10">
+      <div class="space-y-2">
+        <span class="banner-eyebrow">CONSULTA DE ÉPOCAS PASSADAS</span>
+        <h2 class="font-cinzel text-2xl font-bold text-white">Arquivo Histórico de Banners</h2>
+        <p class="text-sm text-[#b8b2a5] leading-relaxed max-w-3xl">
+          Revisite os prêmios, bênçãos e refinamentos de ciclos anteriores. Banners arquivados permanecem disponíveis para consulta de lore e mecânicas, mas não aceitam novas orações.
+        </p>
+      </div>
+
+      <div id="historical-archive-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered dynamically by banners.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── ACCESSIBLE MODALS ── -->
+
+  <!-- Modal 1: Discord Preparation Modal -->
+  <div id="modal-discord-prepare" class="op-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-discord-title">
+    <div class="op-modal-dialog">
+      <div class="op-modal-header">
+        <div class="flex items-center gap-2">
+          <span class="text-[#d4af37]">❖</span>
+          <h3 id="modal-discord-title" class="font-cinzel text-base font-bold text-white">Preparar Oração no Discord</h3>
+        </div>
+        <button class="text-gray-400 hover:text-white text-xl p-1" onclick="window.closeBannersModal()">✕</button>
+      </div>
+      <div class="op-modal-body space-y-4">
+        <p class="text-xs text-[#b8b2a5] leading-relaxed">
+          As orações oficiais acontecem no canal individual da sua ficha (ex: <code class="text-[#f1d27a]">#001</code>) no Discord. Preencha o código da sua ficha abaixo para gerar o texto de convocação:
+        </p>
+
+        <div class="space-y-1.5">
+          <label for="input-character-sheet" class="block font-mono text-xs text-[#f1d27a] font-bold">CÓDIGO DA SUA FICHA:</label>
+          <input type="text" id="input-character-sheet" class="w-full bg-black/60 border border-white/20 rounded p-2.5 text-sm text-white font-mono focus:border-[#d4af37] focus:outline-none" placeholder="Exemplo: #042 ou #128">
+        </div>
+
+        <div class="space-y-1.5">
+          <span class="block font-mono text-xs text-[#7e786b] uppercase">MENSAGEM FORMATADA PARA O ADM:</span>
+          <div id="discord-formatted-preview" class="p-4 bg-black/80 border border-white/10 rounded text-xs sm:text-sm font-mono text-[#f0ece1] leading-relaxed select-all">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div id="discord-copy-toast" class="hidden p-2.5 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-mono rounded text-center">
+          ✓ Mensagem copiada para a área de transferência!
+        </div>
+      </div>
+      <div class="op-modal-footer">
+        <button class="btn-gold-secondary text-xs" onclick="window.closeBannersModal()">Cancelar</button>
+        <button id="btn-copy-discord-msg" class="btn-gold-primary text-xs">Copiar Mensagem</button>
+        <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold-secondary text-xs">
+          <span>Abrir Discord ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Refinement Comparison Modal -->
+  <div id="modal-refine-comparison" class="op-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-refine-title">
+    <div class="op-modal-dialog !max-w-4xl">
+      <div class="op-modal-header">
+        <div class="flex items-center gap-2">
+          <span class="text-[#d4af37]">❖</span>
+          <h3 id="modal-refine-title" class="font-cinzel text-base font-bold text-white">Comparativo de Refinos: R1 a R5</h3>
+        </div>
+        <button class="text-gray-400 hover:text-white text-xl p-1" onclick="window.closeBannersModal()">✕</button>
+      </div>
+      <div id="modal-refine-body" class="op-modal-body space-y-4">
+        <!-- Rendered dynamically by banners.js -->
+      </div>
+      <div class="op-modal-footer">
+        <button class="btn-gold-secondary text-xs" onclick="window.closeBannersModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GLOBAL FOOTER ── -->
+  <footer class="mt-20 border-t border-white/10 bg-[#040507] py-12 text-center text-xs text-[#7e786b] font-mono">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="font-cinzel text-sm text-[#b8b2a5] tracking-widest uppercase">ÉGIDE DE AVALON • MIDNIGHT CITY RPG</div>
+      <p>Banners Míticos & Relíquias da Divergência. Todos os direitos reservados à moderação e aos narradores de Avalon.</p>
+      <div class="pt-2 flex justify-center gap-4 text-[#d4af37]">
+        <a href="operacoes.html" class="hover:underline">Operações</a>
+        <span>•</span>
+        <a href="banners.html" class="hover:underline">Banners</a>
+        <span>•</span>
+        <a href="sistema.html" class="hover:underline">Sistema</a>
+        <span>•</span>
+        <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hover:underline">Discord Oficial ↗</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

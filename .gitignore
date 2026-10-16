@@ -1,0 +1,32 @@
+# ==============================================================================
+# MIDNIGHT CITY RPG — .gitignore para Deploy (Vercel, Netlify, GitHub Pages)
+# Impede o upload da pasta scratch/ (623MB de cache/testes) e binários locais
+# ==============================================================================
+
+# Pasta de testes, benchmarks e profiles do Chrome (623 MB)
+scratch/
+.backup_before_decode/
+.impeccable/
+
+# Metadados internos de IDE e ferramentas
+*.metadata.json
+
+# Backups de desenvolvimento e arquivos transitórios
+*.bak
+*.bak_*
+*.tmp
+*.log
+
+# Binários compilados locais (bloqueados pelos provedores de deploy)
+*.exe
+*.dll
+*.pdb
+*.tflite
+
+# Documentos brutos de texto de apoio
+*.docx
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini

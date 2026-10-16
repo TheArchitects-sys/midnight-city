@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>OPERAÇÕES, BANNERS & NOVATO PREMIUM — MIDNIGHT CITY | Égide de Avalon</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  
+  <!-- Meta & OpenGraph -->
+  <meta name="description" content="Central de Operações da Égide de Avalon: Campanhas de Valíria e Cairo, catálogo de 21 missões fixas e temporárias, Banners Míticos com refinamentos R1 a R5 e jornada Novato Premium.">
+  <meta property="og:title" content="OPERAÇÕES, BANNERS & NOVATO PREMIUM — MIDNIGHT CITY">
+  <meta property="og:description" content="Campanhas da Temporada 2, Catálogo de Missões em Londres, Banners Míticos e Jornada Novato Premium.">
+  <meta property="og:image" content="assets/valiria_mission.jpg">
+  <meta name="theme-color" content="#050608">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'gold-primary': '#d4af37',
+            'gold-light': '#f1d27a',
+            'gold-dim': '#8c6a2b',
+            'dark-bg': '#050608',
+            'dark-surface': '#100e08',
+            'dark-veil': '#15120b',
+            'crimson-pure': '#c82924',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP Animation Library CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Preload Essential Assets -->
+  <link rel="preload" as="image" href="assets/valiria_mission.jpg">
+  <link rel="preload" as="image" href="assets/cairo_mission.jpg">
+
+  <!-- Core & Custom Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="operacoes.css">
+
+  <!-- Operations Database & Controller -->
+  <script src="content/operacoes/operacoes_data.js"></script>
+  <script src="assets/atmosphere.js" defer></script>
+  <script src="operacoes.js" defer></script>
+</head>
+<body class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased selection:bg-[#d4af37]/30 selection:text-white">
+
+  <!-- Dynamic WebGL Volumetric Mist Canvas -->
+  <canvas id="fog-canvas"></canvas>
+
+    <!-- ── GLOBAL HEADER ── -->
+  <header class="santioni-header">
+    <a href="index.html" class="brand-badge">
+      <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+      <div class="brand-text">
+        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-sub">Égide de Avalon</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <nav class="santioni-nav-pill" aria-label="Navegação Principal">
+        <a href="index.html" >INÍCIO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="universo.html" >UNIVERSO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="poderes.html" >PODERES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="operacoes.html" class="active text-[#f1d27a]">OPERAÇÕES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="banners.html" class="hover:text-[#f1d27a]">BANNERS</a>
+        <span class="pill-ornament">❖</span>
+        <a href="sistema.html" >SISTEMA</a>
+        <span class="pill-ornament">❖</span>
+        <a href="agente.html" >AGENTE</a>
+        <span class="pill-ornament">❖</span>
+        <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
+      </nav>
+
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+        DISCORD ↗
+      </a>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-[#cfc7b4] hover:text-white p-1 text-2xl font-mono-code focus:outline-none" aria-label="Abrir menu mobile">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Audio Equalizer Floating Button -->
+  <button id="audio-toggle-btn" class="audio-toggle-btn" title="Toggle Áudio Atmosférico da Égide">
+    <div class="audio-bars">
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+    </div>
+  </button>
+
+    <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-20 left-0 w-full z-50 bg-[#050608]/98 border-b border-[#d4af37]/20 px-6 py-6 space-y-3 text-xs font-cinzel uppercase tracking-widest backdrop-blur-xl">
+    <a href="index.html" class="block py-2 text-[#cfc7b4] hover:text-white">Início</a>
+    <a href="universo.html" class="block py-2 text-[#cfc7b4] hover:text-white">Universo & Cosmologia</a>
+    <a href="poderes.html" class="block py-2 text-[#cfc7b4] hover:text-white">Poderes & Individualidades</a>
+    <a href="operacoes.html" class="block py-2 text-[#f1d27a] font-bold">❖ Operações (Missões)</a>
+    <a href="banners.html" class="block py-2 text-[#cfc7b4] hover:text-white">✦ Banners Míticos</a>
+    <a href="operacoes.html?view=novato" class="block py-2 text-[#cfc7b4] hover:text-[#f1d27a]">◈ Novato Premium</a>
+    <a href="sistema.html" class="block py-2 text-[#cfc7b4] hover:text-white">Sistema & Guias</a>
+    <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
+    <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
+    <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
+    </div>
+  </div>
+
+  <!-- ── HERO SECTION: MATRIX RÚNICA DOURADA & ATMOSFERA DOURADA ── -->
+  <section id="operacoes-hero" class="relative w-full min-h-[440px] sm:min-h-[500px] bg-[#06070a]/60 border-b border-[#d4af37]/25 flex items-center justify-center overflow-hidden pt-24 pb-14">
+    <!-- Matrix Golden Runic Rain Canvas (Letras subindo e descendo na cor dourada) -->
+    <canvas id="matrix-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    
+    <!-- Ambient Radial Golden Vignette Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#06070a]/80 via-transparent to-[#06070a]/90 pointer-events-none z-[1]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06)_0%,transparent_50%,#06070a_90%)] pointer-events-none z-[2]"></div>
+
+    <!-- Hero Content Frame -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/35 text-[11px] font-mono tracking-widest text-[#f1d27a] uppercase shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+        <span class="text-[#f1d27a] animate-pulse">❖</span>
+        <span>CENTRAL DE OPERAÇÕES • ÉGIDE DE AVALON</span>
+        <span class="text-[#f1d27a] animate-pulse">❖</span>
+      </div>
+
+      <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-[#f1d27a] to-[#d4af37] tracking-wider uppercase drop-shadow-[0_4px_30px_rgba(212,175,55,0.45)]">
+        Operações
+      </h1>
+
+      <p class="font-serif text-base sm:text-xl lg:text-2xl text-[#cfc7b4] max-w-2xl mx-auto leading-relaxed tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+        Escolha uma atividade e consulte requisitos, procedimento, frequência e recompensas.
+      </p>
+
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-[#8c7126]">
+        <span class="px-2.5 py-1 rounded bg-black/60 border border-white/5">⟨ PROTOCOLO ATIVO ⟩</span>
+        <span class="text-white/20">•</span>
+        <span class="px-2.5 py-1 rounded bg-black/60 border border-white/5 text-[#cfc7b4]">21 MISSÕES IDENTIFICADAS</span>
+        <span class="text-white/20">•</span>
+        <span class="px-2.5 py-1 rounded bg-black/60 border border-white/5 text-[#f1d27a]">ATO I DISPONÍVEL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STICKY HUB NAVIGATION TRACK ── -->
+  <nav class="operacoes-hub-header" aria-label="Navegação da Central de Operações">
+    <div class="hub-nav-track" role="tablist">
+      <button class="hub-tab-btn active" data-view="operacoes" role="tab" aria-selected="true" id="tab-operacoes">
+        <span>❖</span>
+        <span>OPERAÇÕES</span>
+        <span class="hub-tab-badge">21 Missões</span>
+      </button>
+      <button class="hub-tab-btn" data-view="novato" role="tab" aria-selected="false" id="tab-novato">
+        <span>◈</span>
+        <span>NOVATO PREMIUM</span>
+        <span class="hub-tab-badge">Ato I</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="relative z-10 pt-6 pb-24">
+
+    <!-- ====================================================================
+         VIEW 1: OPERAÇÕES (CAMPANHAS & MISSÕES)
+         ==================================================================== -->
+    <div id="view-operacoes" class="hub-view active" role="tabpanel" aria-labelledby="tab-operacoes">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- ── O1. Abertura ── -->
+        <section class="py-8 border-b border-white/10">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="max-w-3xl">
+              <span class="op-eyebrow">ÉGIDE DE AVALON • OPERAÇÕES</span>
+              <h2 class="op-title">Escolha sua próxima missão</h2>
+              <p class="op-desc">
+                Consulte as campanhas da temporada, encontre atividades em Londres e confira os procedimentos e recompensas antes de jogar.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button class="btn-gold-primary" data-scroll-anchor="campaigns-section">
+                Ver campanhas ↓
+              </button>
+              <button class="btn-gold-secondary" data-scroll-anchor="missions-section">
+                Explorar missões ↓
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── O2. Campanhas da Temporada ── -->
+        <section id="campaigns-section" class="space-y-6">
+          <div class="op-section-head">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="op-eyebrow">ALTA PRIORIDADE</span>
+                <h2 class="op-title">Convocações da temporada</h2>
+                <p class="op-desc">
+                  Duas operações de alta prioridade estão ativas simultaneamente. Consulte os dossiês e faça sua inscrição no Discord.
+                </p>
+              </div>
+              <div class="p-3 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-lg text-xs font-mono text-[#f1d27a] sm:text-right shrink-0">
+                <div class="flex items-center sm:justify-end gap-1.5">
+                  <svg class="w-3.5 h-3.5 inline text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Inscrições até <strong>15/10/2026</strong></span>
+                </div>
+                <div class="text-[#8e8778]">Fuso de Brasília (sem relógio operacional)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Campaigns Grid (Valíria & Cairo) -->
+          <div id="campaigns-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Populated dynamically by operacoes.js -->
+          </div>
+        </section>
+
+        <!-- ── O3. Chamada dos Banners Míticos ── -->
+        <section class="py-4">
+          <div class="banner-teaser-card">
+            <div class="max-w-2xl space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="op-eyebrow mb-0">ORÁCULO CELESTIAL</span>
+                <span class="text-xs font-mono text-[#f1d27a]">3 Temporários até 15/10/2026 • 1 Permanente</span>
+              </div>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">
+                Prêmios dos banners míticos
+              </h3>
+              <p class="text-sm text-[#cfc7b4] leading-relaxed">
+                Explore armas e bênçãos, compare seus refinamentos de R1 a R5 e confira as regras oficiais para usar suas Orações Celestiais.
+              </p>
+            </div>
+            <a href="banners.html" id="btn-go-to-banners" class="btn-gold-primary shrink-0">
+              Explorar banners ➔
+            </a>
+          </div>
+        </section>
+
+        <!-- ── O4. Catálogo de Missões (Fixas & Temporárias) ── -->
+        <section id="missions-section" class="space-y-6">
+          <div class="op-section-head">
+            <span class="op-eyebrow">DIRETÓRIO TÁTICO</span>
+            <h2 class="op-title">Atividades disponíveis</h2>
+            <p class="op-desc mb-3">
+              Escolha uma missão e leia o procedimento completo. Os ofícios indicados nas atividades fixas são recomendações para a interpretação.
+            </p>
+            <div class="p-3.5 bg-black/50 border border-white/10 rounded-lg text-xs font-mono text-[#cfc7b4] leading-relaxed flex items-start gap-2">
+              <svg class="w-4 h-4 text-[#f1d27a] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span><strong>Regra Canônica de Fixas:</strong> As atividades fixas podem ser realizadas até três vezes por semana cada. Uma entrega de três turnos de oito linhas também pode ser cumprida em um turno de 24 linhas, conforme a regra de equivalência.</span>
+            </div>
+          </div>
+
+          <!-- Ambientação Samhain Expansível -->
+          <div class="op-accordion">
+            <details>
+              <summary>
+                <div class="flex items-center gap-2">
+                  <span class="text-[#f1d27a]">✦</span>
+                  <span>Missões temporárias — Samhain (O que está acontecendo em Londres?)</span>
+                </div>
+                <span class="text-xs font-mono text-[#8e8778]">Expandir ▾</span>
+              </summary>
+              <div class="op-accordion-content font-serif italic text-sm leading-relaxed bg-[#050608]/80 text-[#cfc7b4]">
+                O ar de Londres está mais frio. A névoa sobre o Tâmisa parece mais densa, carregando sussurros que não pertencem a este tempo. As abóboras esculpidas nas janelas não são apenas decoração; seus olhos vazios parecem seguir quem passa. É Samhain. A fronteira entre o nosso mundo e o Além se esvai, e os espíritos caminham entre nós, alguns em busca de paz, outros de travessura, e alguns... de vingança. A Égide está em alerta máximo, mas não pode estar em todo lugar. Para aqueles que sabem ouvir, a noite está cheia de oportunidades, perigos e segredos.
+              </div>
+            </details>
+          </div>
+
+          <!-- Mission Filters Toolbar -->
+          <div class="mission-filter-toolbar">
+            <div class="filter-search-box">
+              <span class="filter-search-icon">
+                <svg class="w-3.5 h-3.5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              </span>
+              <input type="text" id="mission-search-input" class="filter-search-input" placeholder="Buscar missão por nome, local ou palavra-chave..." aria-label="Buscar missão">
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <!-- Filter by Type -->
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-mono text-[#8e8778] font-bold uppercase">Tipo:</span>
+                <div class="filter-btn-group">
+                  <button class="filter-pill active" data-filter-type="todas">Todas</button>
+                  <button class="filter-pill" data-filter-type="permanentes">Permanentes</button>
+                  <button class="filter-pill" data-filter-type="temporarias">Temporárias</button>
+                </div>
+              </div>
+
+              <!-- Filter by Variant (Temporárias) -->
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-mono text-[#8e8778] font-bold uppercase">Variante:</span>
+                <div class="filter-btn-group">
+                  <button class="filter-pill active" data-filter-variant="todas">Todas as variantes</button>
+                  <button class="filter-pill" data-filter-variant="verde"><span class="var-pip verde"></span>Verde</button>
+                  <button class="filter-pill" data-filter-variant="amarela"><span class="var-pip amarela"></span>Amarela</button>
+                  <button class="filter-pill" data-filter-variant="vermelha"><span class="var-pip vermelha"></span>Vermelha</button>
+                </div>
+              </div>
+
+              <!-- Sort & Clear -->
+              <div class="flex items-center gap-3 ml-auto">
+                <select id="mission-sort-select" class="bg-[#050608] border border-white/15 text-xs text-[#cfc7b4] rounded px-3 py-1.5 outline-none font-mono" aria-label="Ordenar missões">
+                  <option value="original">Ordem Original</option>
+                  <option value="nome">Nome (A–Z)</option>
+                </select>
+                <button id="btn-clear-filters" class="text-xs font-mono text-[#f1d27a] hover:underline cursor-pointer">
+                  Limpar filtros
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-mono text-[#8e8778] pt-2 border-t border-white/5">
+              <span id="mission-count-display">Carregando missões...</span>
+              <span>Total no catálogo: 11 Fixas + 10 Temporárias</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Missions Grid -->
+          <div id="missions-grid" class="missions-grid">
+            <!-- Populated dynamically by operacoes.js -->
+          </div>
+        </section>
+
+        <!-- ── O5. Chamada Novato Premium ── -->
+        <section class="py-4">
+          <div class="p-6 sm:p-8 bg-gradient-to-r from-[#15120b] via-[#1c180e] to-[#100e08] border border-[#d4af37]/30 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-2xl">
+            <div class="max-w-2xl space-y-2">
+              <span class="op-eyebrow mb-1">PROGRAMA DE INTEGRAÇÃO</span>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">
+                Novato Premium — Do Zero ao Herói
+              </h3>
+              <p class="text-sm text-[#cfc7b4] leading-relaxed">
+                Uma jornada opcional em três atos para conhecer a Égide, desenvolver seu personagem e conquistar recompensas próprias. A progressão é gradual e segue regras específicas de XP, missões e Fragmentos de Aura.
+              </p>
+              <div class="text-xs font-mono text-[#f1d27a] pt-1">
+                Jornada narrativa • Ato I disponível para consulta • Atos II e III em breve
+              </div>
+            </div>
+            <button id="btn-go-to-novato" class="btn-gold-primary shrink-0">
+              Conhecer a jornada ➔
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 2: NOVATO PREMIUM (DO ZERO AO HERÓI)
+         ==================================================================== -->
+    <div id="view-novato" class="hub-view" role="tabpanel" aria-labelledby="tab-novato">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- ── N1. Abertura ── -->
+        <section class="py-8 border-b border-white/10">
+          <div class="max-w-3xl space-y-3">
+            <span class="op-eyebrow">ÉGIDE DE AVALON • INTEGRAÇÃO</span>
+            <h1 class="op-title">Novato Premium — Do Zero ao Herói</h1>
+            <p class="op-desc">
+              Conheça a Égide por dentro. Uma jornada opcional em três atos, com desenvolvimento gradual, missões de ambientação e recompensas próprias para seu personagem.
+            </p>
+            <div class="p-3 bg-red-950/20 border border-red-500/30 rounded text-xs text-red-200 flex items-start gap-2">
+              <svg class="w-4 h-4 text-red-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span><strong>Aviso Essencial:</strong> Este programa não acelera o ganho de XP. Ao participar, você segue regras específicas de progressão e recompensas.</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#act1-catalogue-anchor" class="btn-gold-primary">
+                Explorar o Ato I ↓
+              </a>
+              <a href="#novato-rules-anchor" class="btn-gold-secondary">
+                Ler regras do programa ↓
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── N2. Proposta e Participação ── -->
+        <section class="p-6 sm:p-8 bg-[#100e08] border border-[#d4af37]/20 rounded-xl space-y-5">
+          <span class="op-eyebrow mb-0">NOVATO PREMIUM® • (DO ZERO AO HERÓI, LITERALMENTE)</span>
+          <h2 class="op-title text-xl sm:text-2xl">Intenção</h2>
+          
+          <div class="text-sm text-[#cfc7b4] leading-relaxed space-y-3 font-serif">
+            <p>
+              Aqui encontraremos missões que não necessariamente darão muito XP, com foco maior especificamente em ganhar outras premiações que serão úteis para que o personagem, como armas exclusivas, bênçãos(Sempre R1), armas e etc. Mas o foco maior nessa experiência de missões está em fazer com que esse personagem viva a experiência de se ambientar a Égide de Avalon.
+            </p>
+            <p>
+              Aqui o personagem abrirá mão de uma evolução facilitada, já estando pré alinhado que esse terá um desenvolvimento mais slow-burn. Porém, em contrapartida ao abrir mão do up level acelerado e realizando todos os requisitos dos três atos o personagem terá vantagens em nível de poder se comparado aos personagens que não o farão.
+            </p>
+            <p>
+              O caminho do Novato Premium será dividido em três atos. Cada um com uma intenção e uma ideia muito bem definida para o que narrativamente os personagens irão passar. Ao fim do Ato 3, a intenção é que os personagens cheguem ao nível 10 e possam ser considerados agentes novatos destaques na Égide, vistos como com grande potencial. Porém é importante deixar claro que isso não resume o fim do arco do seu personagem. Chegar ao nível 10 no Midnight City nada mais é do que o início da sua história. Ao fim do caminho Novato Premium, é hora de você ir correr atrás do resto do arco de poder.
+            </p>
+            <p>
+              Por se tratar de um sistema novo, personagens que já estão no LVL 10, poderão o realizar, mas terão que ser considerados o nível correspondente a cada ato e esses turnos terão de ser feitos de forma atemporal no passado.
+            </p>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-white/10 space-y-2">
+            <h3 class="font-cinzel text-base font-bold text-[#f1d27a] uppercase tracking-wider">Os Três Atos:</h3>
+            <p class="text-sm text-[#cfc7b4] leading-relaxed font-serif">
+              No novato Premium®, o personagem passará por uma série de desafios, que provavelmente serão únicos para cada personagem, dado ao grande número de possíveis missões disponíveis para sua escolha. Cada um dos três atos tem uma intenção para que cada personagem se integra ao universo do Midnight City esteja pronto para ser um agente valoroso. Ao finalizar o Ato 3, o personagem não necessariamente será uma máquina de destruição e Caos, mas será um agente que entende as principais dinâmicas da Égide de Avalon e sabe onde está se metendo regularmente e o que esse mundo significa.
+            </p>
+            <p class="text-xs text-[#8e8778] italic">
+              Uma breve introdução de cada um dos Atos, as missões estão nas respectivas guias de cada ato.
+            </p>
+          </div>
+
+          <div class="p-3 bg-black/40 border border-white/10 rounded text-xs font-mono text-[#f1d27a] flex items-start gap-2">
+            <svg class="w-4 h-4 text-[#f1d27a] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>Disponibilidade de Etnias:</strong> Esse novato Premium embarca as seguintes Etnias: Greco-Romanos, Magos da Torre do Relógio, Vampiros e Lobisomens. Caso seu personagem tenha duas Etnias ele poderá fazer o Novato Premium apenas de uma delas.</span>
+          </div>
+        </section>
+
+        <!-- ── N3. Os Três Atos ── -->
+        <section class="space-y-6">
+          <div class="op-section-head">
+            <span class="op-eyebrow">ROADMAP NARRATIVO</span>
+            <h2 class="op-title">Os Três Atos</h2>
+          </div>
+
+          <div class="novato-acts-container">
+            <!-- Ato I Card -->
+            <div class="novato-act-card active">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-[#f1d27a] font-bold">ATO I</span>
+                  <span class="text-[11px] font-mono bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded">Disponível</span>
+                </div>
+                <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ato I, o Chamado do Herói</h3>
+                <p class="text-xs text-[#cfc7b4] leading-relaxed mb-4">
+                  Ele se passa durante o primeiro mês do personagem desde sua entrada na Égide de Avalon! Aqui vamos desde a sua entrada, que pode ou não ser um resgate ou uma convocação pacífica pela Égide de Avalon. Neste Ato, você precisa escolher dentre um dos possíveis começos e depois precisará realizar suas primeiras missões, que vão até a escolha do seu Ofício e receber seu distintivo de agente e ter o seu chefe. O que marca o fim do seu ato é uma provação específica feita pela Égide. [Ao acabar você vai virar LVL 3!!!]
+                </p>
+              </div>
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                <span class="text-[#f1d27a]">Marco: LVL 3</span>
+                <span class="text-white font-bold">Consultar missões ↓</span>
+              </div>
+            </div>
+
+            <!-- Ato II Card -->
+            <div class="novato-act-card coming-soon">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-[#8e8778] font-bold">ATO II</span>
+                  <span class="text-[11px] font-mono bg-white/5 text-[#8e8778] border border-white/10 px-2 py-0.5 rounded">Em breve</span>
+                </div>
+                <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ato II, Descobrindo o novo mundo</h3>
+                <p class="text-xs text-[#cfc7b4] leading-relaxed mb-4">
+                  Aqui você é um recruta como Agente da Égide. Você já sabe qual ofício você deve entrar, mas você ainda não conhece tão a fundo o mundo. Neste ato, você irá realizar pequenas tarefas para a organização, mas ainda sem de fato ter um ofício, trate como um período de experiência. Porém, não é apenas no trabalho de campo que o mundo é feito. Neste ato você irá pesquisar sobre os poderes, sobre os monstros, sobre quem são os cultistas e mais do que isso. Aqui o seu personagem irá interagir de forma mais regular com os veteranos da Égide, para que em ON o seu personagem saiba o que aconteceu nas temporadas passadas. Então você ouvirá muitas histórias sobre como esse mundo foi construído. Além de ter alguns treinamentos individualizados de combate, mas não necessariamente com instrutores. [Ao acabar vai virar nível 5!!!]
+                </p>
+              </div>
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                <span class="text-[#8e8778]">Marco: Nível 5</span>
+                <span class="text-[#8e8778] italic">Em breve</span>
+              </div>
+            </div>
+
+            <!-- Ato III Card -->
+            <div class="novato-act-card coming-soon">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-mono text-[#8e8778] font-bold">ATO III</span>
+                  <span class="text-[11px] font-mono bg-white/5 text-[#8e8778] border border-white/10 px-2 py-0.5 rounded">Em breve</span>
+                </div>
+                <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ato III, início da aventura</h3>
+                <p class="text-xs text-[#cfc7b4] leading-relaxed mb-4">
+                  Você já sabe onde se meteu agora! E se já sabe… Agora é hora de botar a mão na massa! Esse ato você vai começar a lutar e se meter em roubadas, uma atrás da outra. Aqui finalmente você vai voltar a receber XP. Porém, o desafio vai aumentar a cada pequena missão, teremos missões pensadas para cada grupos de Ofícios, então espere o momento que você terá de se infiltrar em lugares perigosos, matar monstros até não aguentar mais e tudo isso usando seus poderes. Em alguns casos você terá de interagir com os Veteranos, indo em missões com eles que serão liderados por eles. E ao fim do Ato III junte um time de novatos, porque vocês serão testados pela Égide, para descobrir se vocês realmente são dignos. [Ao acabar você estará no nível 8. Mas se fizer a narração final vai chegar ao LVL 10.]
+                </p>
+              </div>
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                <span class="text-[#8e8778]">Marco: Nível 8 / LVL 10</span>
+                <span class="text-[#8e8778] italic">Em breve</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── N4. Ato I — Mapa e Catálogo ── -->
+        <section id="act1-catalogue-anchor" class="space-y-12">
+          <div class="op-section-head">
+            <span class="op-eyebrow">ATO I • PRIMEIRO MÊS NA ÉGIDE</span>
+            <h2 class="op-title">Ato I — O Chamado do Herói</h2>
+            <p class="op-desc mb-3">
+              Este ato acompanha seu primeiro mês na Égide. Escolha uma forma de ingresso, desenvolva as primeiras missões e prepare-se para a entrevista e a prova final.
+            </p>
+            <div class="p-3 bg-black/40 border border-white/10 rounded text-xs font-mono text-[#cfc7b4]">
+              ℹ️ <strong>Orientação:</strong> Você não precisa realizar todas as atividades. Estudos e treinamentos contam como missões para o requisito de três missões diferentes.
+            </div>
+          </div>
+
+          <!-- GRUPO 1: INGRESSO -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-cinzel text-base font-bold text-[#f1d27a] uppercase tracking-wider">
+                1. Ingresso: O Chamado do Herói (Escolha 1 de 4 Caminhos)
+              </h3>
+              <span class="text-xs font-mono text-[#8e8778]">Selecione um caminho</span>
+            </div>
+
+            <!-- Path choice buttons -->
+            <div id="chamado-paths-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+
+            <!-- Active path details -->
+            <div id="chamado-details-container">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+          </div>
+
+          <!-- GRUPO 2: ESTUDOS TEÓRICOS (6 MÓDULOS NO HEPHAESTUS TECH) -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-cinzel text-base font-bold text-[#f1d27a] uppercase tracking-wider">
+                2. Estudos Teóricos (6 Módulos no Hephaestus Tech)
+              </h3>
+              <span class="text-xs font-mono text-[#8e8778]">+1 Bônus na Prova Escrita por estudo</span>
+            </div>
+
+            <!-- Estudos choice cards -->
+            <div id="estudos-paths-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+
+            <!-- Active estudo details -->
+            <div id="estudos-details-container">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+          </div>
+
+          <!-- GRUPO 3: TREINAMENTOS PRÁTICOS (COMBATE HEPHAESTUS TECH) -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-cinzel text-base font-bold text-[#f1d27a] uppercase tracking-wider">
+                3. Treinamentos Práticos (Hephaestus Tech)
+              </h3>
+              <span class="text-xs font-mono text-[#8e8778]">Selecione uma simulação</span>
+            </div>
+
+            <!-- Treinos choice cards -->
+            <div id="treinos-paths-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+
+            <!-- Active treino details -->
+            <div id="treinos-details-container">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+          </div>
+
+          <!-- GRUPO 4: CONCLUSÃO DO ATO I (ENTREVISTA E PROVA ESCRITA) -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-cinzel text-base font-bold text-[#f1d27a] uppercase tracking-wider">
+                4. Conclusão do Ato I
+              </h3>
+              <span class="text-xs font-mono text-[#8e8778]">Etapa Final de Ingresso</span>
+            </div>
+
+            <!-- Conclusao choice cards -->
+            <div id="conclusao-paths-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+
+            <!-- Active conclusao details -->
+            <div id="conclusao-details-container">
+              <!-- Populated dynamically by operacoes.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ── N5. Requisitos para Concluir o Ato I ── -->
+        <section class="p-6 bg-[#15120b] border border-white/10 rounded-xl space-y-4">
+          <span class="op-eyebrow mb-0">CHECKLIST DE CONCLUSÃO</span>
+          <h3 class="font-cinzel text-xl font-bold text-white">Antes de avançar para o Ato II</h3>
+          <ul class="space-y-2 text-xs sm:text-sm text-[#cfc7b4] font-mono">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ter acumulado pelo menos 500 Fragmentos de Aura.</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ter realizado pelo menos três missões diferentes (estudos e treinamentos contam).</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ter realizado "O Chamado do Herói" e a "Entrevista Final".</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ter sido aprovado na "Prova Escrita".</li>
+          </ul>
+          <div class="text-[11px] text-[#8e8778] italic pt-2 border-t border-white/5">
+            Nota: Esta lista é uma referência oficial. A conclusão e a passagem de ato dependem exclusivamente da validação da moderação no Discord.
+          </div>
+        </section>
+
+        <!-- ── N6. Regras do Programa ── -->
+        <section id="novato-rules-anchor" class="space-y-4">
+          <div class="op-section-head">
+            <span class="op-eyebrow">REGULAMENTO CANÔNICO INTEGRAL</span>
+            <h2 class="op-title">Regras do Novato Premium®</h2>
+            <p class="op-desc">
+              Dado que esse sistema trará vantagens consideráveis aos jogadores que optarem por o seguir, infelizmente ele terá de ser limitado. Dessa forma, algumas regras se fazem necessárias para que não seja algo explorado em excesso pelos jogadores:
+            </p>
+          </div>
+
+          <div class="space-y-2.5">
+            <!-- Regra 1 -->
+            <div class="op-accordion">
+              <details>
+                <summary>1. Participação Opcional e Intransferibilidade da Loja</summary>
+                <div class="op-accordion-content space-y-2">
+                  <p>1. Nenhum personagem é obrigado a realizar o Novato Premium®, caso opte pelo up-level tradicional, em contrapartida o OFF não pode transferir as compras da Loja do Novato Premium para quem não fez.</p>
+                  <p class="text-[#f1d27a]">a. Prêmios obtidos pela premiação de narrador podem ser transferidos para qualquer personagem.</p>
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 2 -->
+            <div class="op-accordion">
+              <details>
+                <summary>2. Impossibilidade de XP Externo e Conversão em Gold</summary>
+                <div class="op-accordion-content">
+                  2. Ao iniciar o Novato Premium®, novos personagens ficam impossibilitados de receber XP de qualquer forma, exceto nas missões dos atos. Toda XP que ele ganharia de outras formas é dividida por 10 e vira Gold. (Exemplo, caso ganhe 1.200 na Scylla, passa a ganhar 120 Gold.)
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 3 -->
+            <div class="op-accordion">
+              <details>
+                <summary>3. Divisão por Etnia do Panteão</summary>
+                <div class="op-accordion-content">
+                  3. O Novato Premium® é dividido por Etnia do seu panteão. Caso seu personagem tenha duas Etnias ele poderá fazer o Novato Premium apenas de uma delas.
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 4 -->
+            <div class="op-accordion">
+              <details>
+                <summary>4. Etnias Abarcadas</summary>
+                <div class="op-accordion-content">
+                  4. Esse novato Premium embarca as seguintes Etnias: Greco-Romanos, Magos da Torre do Relógio, Vampiros e Lobisomens.
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 5 -->
+            <div class="op-accordion">
+              <details>
+                <summary>5. Liberdade de Escolha nas Missões e Exigências de Time</summary>
+                <div class="op-accordion-content space-y-2">
+                  <p>5. Cada ato conta com inúmeras missões, o personagem não precisa realizar todas.</p>
+                  <ul class="list-disc list-inside space-y-1 text-[#cfc7b4]">
+                    <li>a. Existirão missões as quais serão necessários alguma filiação ou Afiliação no time para que possam ser realizadas.</li>
+                    <li>b. Existirão missões as quais serão necessários pelo menos um personagem de determinado ofício para que o time possa realizar.</li>
+                    <li>c. Algumas missões contarão com prêmios extras se feitas em time.</li>
+                    <li>d. Algumas missões apenas podem ser realizadas em time.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 6 -->
+            <div class="op-accordion">
+              <details>
+                <summary>6. Bloqueio Irreversível de Missões Anteriores</summary>
+                <div class="op-accordion-content">
+                  6. Ao realizar a missão que faz a passagem de um ato para o próximo, o personagem não poderá realizar as missões do ato anterior.
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 7 -->
+            <div class="op-accordion">
+              <details>
+                <summary>7. Relatórios de Fim de Ato e Penalidade por Extrapolação</summary>
+                <div class="op-accordion-content space-y-2">
+                  <p>7. Ao fim de cada ato, o OFF deverá escrever um relatório, por personagem, de até 300 palavras para os narradores responsáveis.</p>
+                  <p>a. O relatório pode ser feito do grupo caso tenha feito em mais de um personagem. Mas o limite passa a no máximo 500 palavras.</p>
+                  <div class="p-3 bg-red-950/30 border border-red-500/40 rounded text-red-300">
+                    <strong>b. Relatórios com número de palavras acima do limite irão acarretar em perda de fragmentos de aura:</strong>
+                    <div class="mt-1 font-bold text-red-200">i. -2 fragmentos de aura por cada palavra que passar. Relatório em grupo, desconta do grupo todo!</div>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 8 -->
+            <div class="op-accordion">
+              <details>
+                <summary>8. Premiações, Limite de Fragmentos de Aura e Condições da Loja</summary>
+                <div class="op-accordion-content space-y-2">
+                  <p><strong>8. Quanto a premiação:</strong></p>
+                  <ul class="space-y-1.5 text-[#cfc7b4]">
+                    <li>a. Cada missão de ato dará Golds e Contas Celestiais, ocasionalmente orações. Além de fragmentos de Aura.</li>
+                    <li>b. A cada missão de passagem de Ato, o personagem ganhará XP, orações e algum prêmio exclusivo, além de fragmento de Aura.</li>
+                    <li>c. A cada ato os prêmios em todos os sentido aumentam. Então não fique tentando acumular pra passar de ato.</li>
+                    <li>d. O máximo de fragmentos de aura que um personagem pode acumular são 10 mil Fragmentos (Vai farmar aura infinito não n).</li>
+                    <li>e. Ao finalizar o ato 3, os personagens podem gastar seus fragmentos de Aura em premiações. Onde estarão as melhores premiações.
+                      <div class="ml-4 text-[#f1d27a]">i. Fragmentos são intransferíveis entre offs e personagens.</div>
+                    </li>
+                    <li class="font-bold text-[#f1d27a]">f. A LOJA NÃO É DIVULGADA ATÉ PELO MENOS 3 OFFS CHEGAREM NO FIM DO ATO 3!!!
+                      <div class="ml-4 font-normal text-[#cfc7b4]">i. Ela tá pronta, ocasionalmente a moderação pode soltar Spoilers dos prêmios, mas sem os custos!</div>
+                    </li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 9 -->
+            <div class="op-accordion">
+              <details>
+                <summary>9. Narrações Oficiais e Exclusividade de Condução</summary>
+                <div class="op-accordion-content space-y-2">
+                  <p>9. Narrações: Ocasionalmente podem existir, darão prêmios mais altos e darão fragmentos e Aura que podem passar os 10 mil. Mas não darão prêmios adicionais como no sistema de regras prevê, porque já é um evento que traz muitos prêmios.</p>
+                  <p class="text-[#f1d27a]">a. Elas só poderão ser narradas por narradores oficiais do RPG. Pergunte ao Patrão os requisitos para se tornar narrador.</p>
+                </div>
+              </details>
+            </div>
+
+            <!-- Regra 10 -->
+            <div class="op-accordion">
+              <details>
+                <summary>10. Desistência e Perda Irreversível de XP</summary>
+                <div class="op-accordion-content">
+                  10. Caso o personagem opte por desistir do Novato Premium®, ele poderá gastar os fragmentos de Aura que acumulou. Desde que a loja esteja aberta. Porém não pode recuperar o XP que deixou de ganhar.
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── N7. Loja de Fragmentos de Aura (Em Breve) ── -->
+        <section class="p-8 bg-[#100e08] border border-white/10 rounded-xl text-center space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#8e8778]">
+            <svg class="w-3.5 h-3.5 text-[#8e8778]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>EM BREVE</span>
+          </div>
+          <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">Loja do Novato Premium</h3>
+          <p class="text-sm text-[#cfc7b4] max-w-xl mx-auto leading-relaxed">
+            O catálogo de recompensas e seus custos em Fragmentos de Aura será disponibilizado aqui. A abertura da loja segue as condições do programa (mínimo de três OFFs no fim do Ato III).
+          </p>
+          <div class="text-xs font-mono text-[#8e8778]">
+            Aguarde a divulgação oficial. Nenhum recurso é consumido nesta página.
+          </div>
+        </section>
+
+        <!-- ── N8. FAQ Novato Premium ── -->
+        <section class="space-y-4">
+          <div class="op-section-head">
+            <span class="op-eyebrow">DÚVIDAS SOBRE O PROGRAMA</span>
+            <h2 class="op-title">Perguntas Frequentes</h2>
+          </div>
+
+          <div class="space-y-2">
+            <div class="op-accordion">
+              <details>
+                <summary>Preciso participar obrigatoriamente?</summary>
+                <div class="op-accordion-content">
+                  Não. O Novato Premium é opcional, e a evolução tradicional continua disponível.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Vou subir de nível mais rápido?</summary>
+                <div class="op-accordion-content">
+                  Não. A proposta é desenvolver a história gradualmente, com regras próprias de progressão e recompensas.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Preciso fazer todas as missões?</summary>
+                <div class="op-accordion-content">
+                  Não. Observe os requisitos de passagem e as missões obrigatórias. Estudos e treinamentos contam para as três missões diferentes do Ato I.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Já estou no nível 10. Posso participar?</summary>
+                <div class="op-accordion-content">
+                  Sim, com cenas atemporais no passado e considerando o nível correspondente a cada ato.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Posso repetir as missões anteriores após avançar?</summary>
+                <div class="op-accordion-content">
+                  Não. Depois da passagem, o personagem deixa de realizar as missões do ato anterior.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Onde estão os Atos II e III?</summary>
+                <div class="op-accordion-content">
+                  Seus detalhes serão disponibilizados em breve. A apresentação da jornada já pode ser consultada nesta página.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Onde gasto minha Aura acumulada?</summary>
+                <div class="op-accordion-content">
+                  O catálogo da loja será publicado nesta página quando estiver disponível pela moderação.
+                </div>
+              </details>
+            </div>
+            <div class="op-accordion">
+              <details>
+                <summary>Posso recuperar o XP se desistir do programa?</summary>
+                <div class="op-accordion-content">
+                  Não. A saída não restitui XP deixado de ganhar. A Aura acumulada pode ser usada se a loja estiver aberta.
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#15120b] border border-white/10 rounded-xl text-center space-y-3 mt-6">
+            <p class="text-xs text-[#cfc7b4]">Precisa esclarecer uma regra específica ou validar um relatório?</p>
+            <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold-primary">
+              Acessar o Discord da Égide ↗
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── UNIVERSAL ACCESSIBLE MODAL / DRAWER ── -->
+  <div id="op-modal-backdrop" class="op-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="op-modal-title">
+    <div id="op-modal-box" class="op-modal-box">
+      <div class="op-modal-header">
+        <h3 id="op-modal-title" class="op-modal-title">Detalhe da Operação</h3>
+        <button id="op-modal-close-btn" class="op-modal-close" aria-label="Fechar janela">×</button>
+      </div>
+      <div id="op-modal-body" class="op-modal-body">
+        <!-- Dynamic modal body -->
+      </div>
+      <div id="op-modal-footer" class="op-modal-footer">
+        <!-- Dynamic modal footer -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GLOBAL FOOTER ── -->
+  <footer class="santioni-footer">
+    <div class="santioni-footer-inner">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand-header">
+            <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+            <div>
+              <div class="footer-brand-title">MIDNIGHT CITY</div>
+              <div class="footer-brand-sub">Égide de Avalon</div>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            RPG de mesa contemporâneo e dark fantasy. O mundo mortal sobrevive na ignorância sob a proteção do Véu, enquanto agentes da Égide enfrentam as fendas do Vazio.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ NAVEGAÇÃO</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-nav-link">Início</a></li>
+            <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Classes</a></li>
+            <li><a href="operacoes.html?view=operacoes" class="footer-nav-link text-[#f1d27a]">Operações & Missões</a></li>
+            <li><a href="banners.html" class="footer-nav-link text-[#f1d27a]">Banners Míticos</a></li>
+            <li><a href="operacoes.html?view=novato" class="footer-nav-link text-[#f1d27a]">Novato Premium</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ SISTEMA</h4>
+          <ul class="footer-links-list">
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
+                <span>Servidor Discord Oficial</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Comunidade Yoble (309183)</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+        </div>
+        <div class="footer-disclaimer">
+          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,1904 @@
+/**
+ * MIDNIGHT CITY — UNIVERSO & SEASON 1 (FOLHA DE ESTILOS DE LUXO)
+ * Padrão Awwwards / Refero / Honkai: Star Rail
+ * Tipografia: Cinzel, Cormorant Garamond, Courier New & Geist
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+
+:root {
+  --uni-gold-primary: #d4af37;
+  --uni-gold-pure: #f8e48b;
+  --uni-gold-deep: #8c6a2b;
+  --uni-gold-glow: rgba(212, 175, 55, 0.4);
+  --uni-gold-subtle: rgba(212, 175, 55, 0.12);
+  --uni-crimson-blood: #c82924;
+  --uni-crimson-glow: rgba(200, 41, 36, 0.4);
+  --uni-cyan-astral: #38bdf8;
+  --uni-cyan-glow: rgba(56, 189, 248, 0.35);
+  --uni-purple-abyss: #a855f7;
+  --uni-purple-glow: rgba(168, 85, 247, 0.35);
+  --uni-bg-void: #020203;
+  --uni-bg-deep: #06050b;
+  --uni-bg-panel: rgba(9, 8, 16, 0.88);
+  --uni-text-muted: #cfc7b4;
+  --uni-text-light: #ded8cb;
+  --uni-font-title: 'Cinzel', serif;
+  --uni-font-body: 'Cormorant Garamond', serif;
+  --uni-font-mono: 'Courier New', Courier, monospace;
+}
+
+/* ── Reset & Suporte Básico ── */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--uni-bg-void);
+  color: var(--uni-text-light);
+  overflow-x: visible !important;
+}
+
+body.universo-page {
+  overflow-x: visible !important;
+  font-family: var(--uni-font-body);
+  background-color: var(--uni-bg-void);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Tipografia Especializada ── */
+
+/* ==========================================================================
+   SUPERFICIES DE NAVEGADOR TEMATIZADAS (IMPECCABLE CRAFT FLOOR)
+   ========================================================================== */
+::selection {
+  background: var(--uni-gold-primary);
+  color: #020203;
+}
+::-moz-selection {
+  background: var(--uni-gold-primary);
+  color: #020203;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.4) #020203;
+  caret-color: var(--uni-gold-pure);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020203;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.35);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.65);
+}
+
+.font-cinzel-title {
+  font-family: var(--uni-font-title);
+  letter-spacing: 0.06em;
+}
+
+.font-editorial-body {
+  font-family: var(--uni-font-body);
+  font-size: 1.18rem;
+  line-height: 1.8;
+  color: var(--uni-text-light);
+}
+
+.font-mono-tech {
+  font-family: var(--uni-font-mono);
+  letter-spacing: 0.15em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Ouro Líquido e Gradientes ── */
+.text-liquid-gold {
+  color: var(--uni-gold-pure);
+  font-weight: 800;
+}
+
+.text-liquid-crimson {
+  color: var(--uni-crimson-blood);
+  font-weight: 800;
+}
+
+.text-liquid-astral {
+  color: #e0f2fe;
+  font-weight: 800;
+}
+
+/* ── Glows & Efeitos de Luz ── */
+.uni-keyword-glow {
+  color: var(--uni-gold-pure);
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(212, 175, 55, 0.25);
+  transition: all 0.25s ease;
+}
+
+.uni-keyword-glow:hover {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.45);
+}
+
+/* ── Barra de Progresso Mobile ── */
+.uni-mobile-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #d4af37, #f8e48b, #d4af37);
+  z-index: 60;
+  box-shadow: 0 0 12px var(--uni-gold-glow);
+  transition: width 0.1s linear;
+}
+
+@media (min-width: 1025px) {
+  .uni-mobile-progress {
+    display: none;
+  }
+}
+
+/* ── Tracker Lateral de Seções ── */
+.uni-section-tracker {
+  position: fixed;
+  right: 2.2vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  .uni-section-tracker {
+    display: none;
+  }
+}
+
+.uni-tracker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  min-height: 44px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.uni-tracker-pip {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uni-tracker-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--uni-font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.uni-tracker-item:hover .uni-tracker-label,
+.uni-tracker-item.active .uni-tracker-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--uni-font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.uni-tracker-item.active .uni-tracker-pip {
+  background: var(--uni-gold-pure);
+  border-color: #ffffff;
+  transform: scale(1.65);
+  box-shadow: 0 0 16px var(--uni-gold-primary);
+}
+
+.uni-tracker-item.active .uni-tracker-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--uni-font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   ATO I — ABERTURA: HERO COM CANVAS PROCEDURAL ATMOSFÉRICO
+   ========================================================================== */
+.uni-hero-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 5rem 6vw 3.5rem 6vw;
+  background: #020204;
+}
+
+.uni-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.uni-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 40%, transparent 20%, rgba(2, 2, 4, 0.45) 65%, #020204 100%),
+              linear-gradient(180deg, rgba(2, 2, 4, 0.3) 0%, transparent 45%, rgba(2, 2, 4, 0.85) 85%, #020204 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.uni-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 720px;
+  margin-bottom: 2rem;
+  padding-top: 3vh;
+}
+
+.uni-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--uni-gold-pure);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  padding-bottom: 0.4rem;
+}
+
+.uni-hero-title {
+  font-size: clamp(1.85rem, 4.2vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+.uni-hero-lead {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  color: #ded8cb;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   ATO II — PROPOSTA DO JOGO ("EU POSSO JOGAR AQUI")
+   ========================================================================== */
+.uni-section-proposta {
+  position: relative;
+  padding: 6.5rem 6vw 7.5rem 6vw;
+  background: #020203;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.uni-proposta-card {
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(9, 8, 16, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 1.5rem;
+  padding: 3rem 3.5rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .uni-proposta-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   ATO III — LONDRES SOB O VÉU (EXPLORAÇÃO URBANA INTERATIVA)
+   ========================================================================== */
+.uni-section-urban {
+  position: relative;
+  padding: 7rem 6vw;
+  background: #020203;
+  overflow: hidden;
+}
+
+.uni-urban-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 3.5rem auto 0 auto;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95);
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 768px) {
+  .uni-urban-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.uni-urban-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.82) contrast(1.1);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uni-urban-wrapper:hover .uni-urban-img {
+  transform: scale(1.03);
+}
+
+.uni-urban-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(2, 2, 3, 0.8) 100%);
+  pointer-events: none;
+}
+
+/* Pinos Interativos (Hotspots) */
+.uni-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uni-hotspot-beacon {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uni-hotspot-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--uni-gold-pure);
+  box-shadow: 0 0 14px var(--uni-gold-primary);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.uni-hotspot-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--uni-gold-pure);
+  animation: uni-pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes uni-pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.uni-hotspot:hover .uni-hotspot-dot,
+.uni-hotspot:focus-visible .uni-hotspot-dot {
+  transform: scale(1.5);
+  background: #ffffff;
+  box-shadow: 0 0 20px #ffffff, 0 0 30px var(--uni-gold-pure);
+}
+
+.uni-hotspot-tag {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: rgba(6, 5, 11, 0.94);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--uni-gold-pure);
+  font-family: var(--uni-font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  opacity: 0.92;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+.uni-hotspot:hover .uni-hotspot-tag,
+.uni-hotspot:focus-visible .uni-hotspot-tag {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-3px);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+/* ==========================================================================
+   ATO IV — A DESCIDA PARA A ÉGIDE (PINNED SCROLL 250vh SEM DUPLICAÇÃO)
+   ========================================================================== */
+.uni-descent-container {
+  position: relative;
+  height: 250vh;
+  background: #020203;
+  overflow: visible !important;
+}
+
+.uni-descent-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020203;
+  z-index: 10;
+}
+
+/* Camada Subterrânea Strata */
+.uni-descent-strata {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(15, 12, 24, 0.9) 0%, #020203 100%);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  z-index: 2;
+  /* dynamic opacity */
+}
+
+/* Camada do Hall de Avalon (Surge gradualmente das profundezas com iluminação monumental) */
+.uni-descent-layer-hall {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.12);
+  /* dynamic filter */
+  z-index: 3;
+  filter: brightness(0.2) contrast(1.1);
+}
+
+.uni-descent-darkness {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(2, 2, 3, 0.3) 0%, #020203 95%);
+  opacity: 0.8;
+  /* dynamic opacity */
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ── Depth Meter Lateral Chanfrado ── */
+.uni-depth-meter {
+  position: absolute;
+  left: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  pointer-events: none;
+}
+
+.uni-depth-line-wrap {
+  position: relative;
+  width: 2px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.uni-depth-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #ffffff, var(--uni-gold-pure), var(--uni-gold-primary));
+  box-shadow: 0 0 12px var(--uni-gold-glow);
+}
+
+.uni-depth-pip {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--uni-gold-primary);
+  box-shadow: 0 0 15px var(--uni-gold-pure);
+  transition: top 0.1s linear;
+}
+
+.uni-depth-readout {
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-depth-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--uni-gold-primary);
+  font-family: var(--uni-font-title);
+}
+
+.uni-depth-val {
+  font-family: var(--uni-font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 4px rgba(212, 175, 55, 0.25);
+}
+
+/* ==========================================================================
+   ATO V — ÉGIDE DE AVALON: DIAGRAMAÇÃO EDITORIAL & 9 OFÍCIOS RESPONSIVOS
+   ========================================================================== */
+.uni-section-egide {
+  position: relative;
+  padding: 8rem 6vw 7rem 6vw;
+  background: #020203;
+  min-height: 100vh;
+}
+
+.uni-egide-backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6) contrast(1.25);
+  pointer-events: none;
+}
+
+.uni-egide-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* ── Diagramação Editorial da Égide (Luxury Codex Spread) ── */
+.uni-egide-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.25rem;
+  margin: 3.5rem 0 4.5rem 0;
+}
+
+@media (max-width: 860px) {
+  .uni-egide-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.uni-egide-card {
+  position: relative;
+  background: rgba(8, 7, 14, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2.25rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.uni-egide-card:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  transform: translateY(-4px);
+}
+
+.uni-egide-card-num {
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  font-family: var(--uni-font-mono);
+  color: var(--uni-gold-primary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.uni-egide-card-title {
+  font-family: var(--uni-font-title);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+.uni-egide-card-body {
+  font-family: var(--uni-font-body);
+  font-size: 1.14rem;
+  line-height: 1.85;
+  color: var(--uni-text-light);
+}
+
+.uni-egide-quote-box {
+  grid-column: 1 / -1;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.08) 0%, rgba(8, 7, 14, 0.95) 50%, rgba(212, 175, 55, 0.08) 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 2.25rem 2rem;
+  text-align: center;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.uni-egide-quote-text {
+  font-family: var(--uni-font-body);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  color: var(--uni-gold-pure);
+  line-height: 1.7;
+}
+
+/* ── Grid Responsivo dos 9 Ofícios (9 colunas desktop, 3x3 no tablet/mobile) ── */
+.uni-oficios-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.85rem;
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: rgba(9, 8, 16, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 1100px) {
+  .uni-oficios-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .uni-oficios-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    padding: 1rem 0.65rem;
+  }
+}
+
+.uni-oficio-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  padding: 1.1rem 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.uni-oficio-btn:hover,
+.uni-oficio-btn:focus-visible {
+  border-color: var(--uni-gold-primary);
+  background: rgba(212, 175, 55, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7), 0 0 18px rgba(212, 175, 55, 0.2);
+}
+
+.uni-oficio-icon-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--uni-gold-pure);
+  transition: all 0.35s ease;
+}
+
+@media (max-width: 640px) {
+  .uni-oficio-icon-wrap {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.uni-oficio-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.6;
+  transition: transform 0.35s ease, stroke 0.35s ease;
+}
+
+.uni-oficio-btn:hover .uni-oficio-icon-wrap {
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 16px var(--uni-gold-glow);
+  transform: scale(1.12);
+}
+
+.uni-oficio-name {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ded8cb;
+  font-family: var(--uni-font-title);
+  font-weight: 700;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .uni-oficio-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+.uni-oficio-btn:hover .uni-oficio-name {
+  color: var(--uni-gold-pure);
+}
+
+/* ==========================================================================
+   ATO V.1 — O CONSELHO DE MÁRMORE (TRONOS INTERATIVOS)
+   ========================================================================== */
+.uni-section-council {
+  position: relative;
+  padding: 8rem 6vw 9rem 6vw;
+  background: #020203;
+  overflow: hidden;
+}
+
+.uni-council-interface {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 3.5rem auto 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98);
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+
+@media (max-width: 768px) {
+  .uni-council-interface {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.uni-council-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.72) contrast(1.18);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s ease;
+}
+
+.uni-council-interface.is-dimmed .uni-council-bg {
+  filter: brightness(0.38) contrast(1.3) blur(1.5px);
+}
+
+.uni-seat-spot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uni-seat-marker {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(9, 8, 16, 0.9);
+  border: 2px solid var(--uni-gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--uni-gold-pure);
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.9);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uni-seat-marker svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--uni-gold-pure);
+  transition: transform 0.3s ease;
+}
+
+.uni-seat-spot:hover .uni-seat-marker,
+.uni-seat-spot:focus-visible .uni-seat-marker {
+  transform: scale(1.35);
+  border-color: #ffffff;
+  background: var(--uni-gold-primary);
+  color: #020203;
+  box-shadow: 0 0 28px var(--uni-gold-pure), 0 0 45px var(--uni-gold-glow);
+}
+
+.uni-seat-spot:hover .uni-seat-marker svg {
+  stroke: #020203;
+  transform: scale(1.12);
+}
+
+.uni-seat-label {
+  margin-top: 8px;
+  padding: 0.35rem 0.85rem;
+  background: rgba(3, 3, 5, 0.96);
+  border: 1px solid var(--uni-gold-primary);
+  border-radius: 0.45rem;
+  color: #ffffff;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--uni-font-title);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
+}
+
+.uni-seat-spot:hover .uni-seat-label,
+.uni-seat-spot:focus-visible .uni-seat-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   ATO VI — MAPA DO COSMOS (HONKAI: STAR RAIL TIER)
+   ========================================================================== */
+.uni-section-cosmology {
+  position: relative;
+  padding: 7.5rem 4vw 9rem 4vw;
+  background: #03030c;
+  min-height: 120vh;
+  overflow: hidden;
+}
+
+.uni-cosmic-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.uni-cosmic-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(3, 3, 12, 0.5) 65%, #03030c 95%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.uni-cosmic-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 4rem auto;
+}
+
+/* ── HUD de Navegação Honkai (Top-Left Breadcrumb) ── */
+.uni-astrolabe-hud {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--uni-font-title);
+  font-size: 0.82rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--uni-gold-pure);
+  background: rgba(9, 8, 20, 0.7);
+  padding: 0.45rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 768px) {
+  .uni-astrolabe-hud {
+    position: static;
+    margin: 0 auto 2rem auto;
+    width: fit-content;
+  }
+}
+
+/* ── Palco Estelar Interativo (Honkai Star Rail) ── */
+.uni-honkai-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1240px;
+  min-height: 760px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .uni-honkai-stage {
+    min-height: 980px;
+  }
+}
+
+/* SVG de Órbitas e Linhas de Astrolábio Douradas */
+.uni-honkai-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Linhas Orbitais e Compassos */
+.uni-orbit-line {
+  stroke: rgba(212, 175, 55, 0.32);
+  stroke-width: 1.2;
+  fill: none;
+}
+
+.uni-orbit-dashed {
+  stroke: rgba(212, 175, 55, 0.25);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 7;
+  fill: none;
+}
+
+.uni-orbit-bead {
+  fill: var(--uni-gold-pure);
+  filter: drop-shadow(0 0 6px var(--uni-gold-primary));
+}
+
+/* ── Entidades Cósmicas Honkai (Esferas Celestes & Rótulos Flutuantes) ── */
+.uni-honkai-entity {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.uni-honkai-entity:hover,
+.uni-honkai-entity:focus-visible {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* Anéis de Astrolábio Giratórios Concêntricos */
+.uni-entity-reticle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .uni-entity-reticle {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+.uni-reticle-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  animation: uni-spin-clockwise 36s linear infinite;
+}
+
+.uni-reticle-ring-inner {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 175, 55, 0.45);
+  animation: uni-spin-counter 24s linear infinite;
+}
+
+.uni-honkai-entity:hover .uni-reticle-ring-outer {
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px var(--uni-gold-glow);
+  animation-duration: 12s;
+}
+
+.uni-honkai-entity:hover .uni-reticle-ring-inner {
+  border-color: var(--uni-gold-pure);
+  animation-duration: 8s;
+}
+
+/* Marcadores de Mira Cardinais (+) */
+.uni-reticle-crosshairs {
+  position: absolute;
+  inset: -6px;
+  pointer-events: none;
+}
+
+.uni-reticle-crosshairs::before,
+.uni-reticle-crosshairs::after {
+  content: '';
+  position: absolute;
+  background: var(--uni-gold-primary);
+}
+
+.uni-reticle-crosshairs::before {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+.uni-reticle-crosshairs::after {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
+  opacity: 0.45;
+}
+
+/* Esfera Cósmica Central 3D */
+.uni-entity-orb {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.95);
+  transition: all 0.4s ease;
+  z-index: 5;
+}
+
+@media (max-width: 640px) {
+  .uni-entity-orb {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.uni-entity-orb svg {
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
+  transition: transform 0.4s ease;
+}
+
+.uni-honkai-entity:hover .uni-entity-orb svg {
+  transform: scale(1.15);
+}
+
+/* Variantes das Esferas */
+.orb-creator {
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f8e48b 35%, #d4af37 70%, #583f0c 100%);
+  box-shadow: 0 0 35px rgba(248, 228, 139, 0.6), 0 0 60px rgba(212, 175, 55, 0.3);
+  color: #020204;
+}
+
+.orb-architects {
+  background: radial-gradient(circle at 35% 35%, #e0f2fe 0%, #38bdf8 40%, #0369a1 80%, #082f49 100%);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+  color: #ffffff;
+}
+
+.orb-celestials {
+  background: radial-gradient(circle at 35% 35%, #fef08a 0%, #eab308 45%, #854d0e 85%, #422006 100%);
+  box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
+  color: #020204;
+}
+
+.orb-perpetuals {
+  background: radial-gradient(circle at 35% 35%, #f3e8ff 0%, #a855f7 40%, #6b21a8 80%, #3b0764 100%);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+  color: #ffffff;
+}
+
+.orb-mortals {
+  background: radial-gradient(circle at 35% 35%, #bae6fd 0%, #0284c7 45%, #0f172a 90%, #020617 100%);
+  box-shadow: 0 0 25px rgba(2, 132, 199, 0.4);
+  color: #f8e48b;
+}
+
+/* ── Rótulo Flutuante com Linha Guia (Honkai Style Callout) ── */
+.uni-honkai-callout {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  margin-left: 0.85rem;
+}
+
+.uni-callout-line {
+  position: relative;
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.8), rgba(212, 175, 55, 0.3));
+  margin-right: 0.65rem;
+}
+
+.uni-callout-pip {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 5px;
+  height: 5px;
+  background: var(--uni-gold-pure);
+  box-shadow: 0 0 6px var(--uni-gold-primary);
+}
+
+.uni-callout-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-callout-title {
+  font-family: var(--uni-font-title);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.uni-callout-sub {
+  font-family: var(--uni-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--uni-gold-primary);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.uni-honkai-entity:hover .uni-callout-title {
+  color: var(--uni-gold-pure);
+  text-shadow: 0 0 14px var(--uni-gold-glow);
+}
+
+/* ── Entidades Ocultas no Vazio Fora do Tear (Anti-Vida & Forsaken) ── */
+.uni-secret-entity {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate(-50%, -50%) scale(0.85);
+  pointer-events: auto;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uni-secret-entity.is-revealed {
+  opacity: 1;
+  filter: none;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.uni-secret-entity.is-revealed:hover,
+.uni-secret-entity.is-revealed:focus-visible {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* Orbe da Anti-Vida */
+.orb-antivida {
+  background: radial-gradient(circle at 35% 35%, #7f1d1d 0%, #450a0a 45%, #050001 80%, #000000 100%);
+  box-shadow: 0 0 35px rgba(200, 41, 36, 0.7), 0 0 60px rgba(0, 0, 0, 0.95);
+  color: #fca5a5;
+  border: 1px solid rgba(220, 38, 38, 0.6);
+}
+
+.entity-antivida .uni-reticle-ring-outer {
+  border-color: rgba(220, 38, 38, 0.45);
+}
+
+.entity-antivida .uni-reticle-ring-inner {
+  border-color: rgba(248, 113, 113, 0.6);
+}
+
+.entity-antivida .uni-callout-line {
+  background: linear-gradient(90deg, rgba(220, 38, 38, 0.8), rgba(220, 38, 38, 0.3));
+}
+
+.entity-antivida .uni-callout-pip {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+}
+
+.entity-antivida .uni-callout-title {
+  color: #fca5a5;
+}
+
+.entity-antivida .uni-callout-sub {
+  color: #f87171;
+}
+
+/* Orbe dos Forsaken */
+.orb-forsaken {
+  background: radial-gradient(circle at 35% 35%, #a7f3d0 0%, #059669 45%, #064e3b 80%, #022c22 100%);
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.55), 0 0 50px rgba(6, 78, 59, 0.8);
+  color: #ecfdf5;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.entity-forsaken .uni-reticle-ring-outer {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.entity-forsaken .uni-reticle-ring-inner {
+  border-color: rgba(52, 211, 153, 0.6);
+}
+
+.entity-forsaken .uni-callout-line {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.8), rgba(16, 185, 129, 0.3));
+}
+
+.entity-forsaken .uni-callout-pip {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}
+
+.entity-forsaken .uni-callout-title {
+  color: #a7f3d0;
+}
+
+.entity-forsaken .uni-callout-sub {
+  color: #34d399;
+}
+
+/* ==========================================================================
+   ATO VII — SEASON 1: AS CRÔNICAS (WIDESCREEN 21:9 COM CENÁRIOS DINÂMICOS)
+   ========================================================================== */
+.uni-season-section {
+  position: relative;
+  background: #020203;
+  padding-bottom: 6rem;
+}
+
+/* ── Cabeçalho do Dossiê Season 1 ── */
+.uni-season-header {
+  padding: 7rem 6vw 4.5rem 6vw;
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.uni-stamp-classified {
+  display: inline-block;
+  padding: 0.35rem 1.25rem;
+  border: 1px solid var(--uni-crimson-blood);
+  color: var(--uni-crimson-blood);
+  font-family: var(--uni-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  font-weight: 900;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 0 15px rgba(200, 41, 36, 0.2);
+}
+
+/* ── Moldura de Cinema Widescreen (Letterbox Anamórfico 2.39:1) ── */
+.uni-cinema-scene {
+  position: relative;
+  height: 400vh;
+  overflow: visible !important;
+}
+
+.uni-cinema-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  z-index: 10;
+}
+
+/* Barras de Cinema Anamórficas Topo & Base */
+.uni-cinema-stage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5.5vh;
+  background: #000000;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.uni-cinema-stage::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5.5vh;
+  background: #000000;
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* ── Stack de Backgrounds Cinematográficos Dinâmicos em Cross-Fade ── */
+.uni-cinema-bg-stack {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.uni-cinema-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* dynamic transform */
+}
+
+.uni-cinema-bg-img.is-active {
+  opacity: 1;
+  transform: scale(1.0);
+}
+
+.uni-cinema-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.15) 0%, rgba(2, 2, 3, 0.85) 75%, #020203 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.uni-cinema-overlay-tint {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 6;
+  transition: background-color 1s ease;
+}
+
+/* ── Cards de Beats Cinematográficos (Widescreen Editorial) ── */
+.uni-cinema-beat {
+  position: absolute;
+  left: 6vw;
+  bottom: 10vh;
+  max-width: 680px;
+  background: rgba(5, 5, 8, 0.94);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 2.25rem 2.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.95), 0 4px 16px rgba(212, 175, 55, 0.08);
+  opacity: 0;
+  transform: translateY(25px);
+  pointer-events: none;
+  z-index: 20;
+}
+
+@media (max-width: 640px) {
+  .uni-cinema-beat {
+  position: absolute;
+  left: 6vw;
+  bottom: 10vh;
+  max-width: 680px;
+  background: rgba(5, 5, 8, 0.94);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 2.25rem 2.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.95), 0 4px 16px rgba(212, 175, 55, 0.08);
+  opacity: 0;
+  transform: translateY(25px);
+  pointer-events: none;
+  z-index: 20;
+}
+}
+
+.uni-cinema-beat.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.uni-beat-tagline {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  color: var(--uni-gold-pure);
+  font-family: var(--uni-font-mono);
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.uni-beat-title {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  color: #ffffff;
+  font-family: var(--uni-font-title);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.15rem;
+}
+
+.uni-beat-prose {
+  font-size: clamp(1.08rem, 1.6vw, 1.25rem);
+  color: #d6d0c4;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Transição Monumental entre Capítulos (Interlúdio) ── */
+.uni-chapter-interlude {
+  position: relative;
+  z-index: 30;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 10, 15, 0.95) 0%, #020203 90%);
+  border-top: 2px solid rgba(200, 41, 36, 0.4);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+  padding: 8rem 6vw 8rem 6vw;
+  text-align: center;
+  overflow: hidden;
+}
+
+.uni-interlude-badge {
+  display: inline-block;
+  padding: 0.4rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(200, 41, 36, 0.15);
+  border: 1px solid rgba(200, 41, 36, 0.4);
+  color: #fca5a5;
+  font-family: var(--uni-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.uni-interlude-title {
+  font-family: var(--uni-font-title);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.uni-interlude-quote {
+  font-family: var(--uni-font-body);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  color: var(--uni-text-muted);
+  max-width: 760px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.8;
+}
+
+.uni-interlude-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 420px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.uni-interlude-divider::before,
+.uni-interlude-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--uni-gold-primary), transparent);
+}
+
+.uni-interlude-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   ATO VIII — ENCERRAMENTO (CONVOCAÇÃO SEASON 2)
+   ========================================================================== */
+.uni-section-outro {
+  position: relative;
+  padding: 11rem 6vw 13rem 6vw;
+  background: #020203;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.uni-outro-call {
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+  text-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
+}
+
+.uni-outro-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+/* ==========================================================================
+   GAVETAS & MODAIS UNIFICADOS (HIGH-END EDITORIAL & RETRATOS VERTICAIS)
+   ========================================================================== */
+.uni-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.uni-drawer-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.uni-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(560px, 94vw);
+  height: 100vh;
+  background: #06050b;
+  border-left: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.98);
+  z-index: 101;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .uni-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(560px, 94vw);
+  height: 100vh;
+  background: #06050b;
+  border-left: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.98);
+  z-index: 101;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+}
+
+.uni-drawer.is-open {
+  visibility: visible;
+  transform: translate(0, 0);
+}
+
+.uni-drawer-header {
+  position: sticky;
+  top: 0;
+  background: rgba(6, 5, 11, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(14px);
+  z-index: 10;
+}
+
+.uni-drawer-close {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #d1cbc0;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.25s ease;
+}
+
+.uni-drawer-close:hover,
+.uni-drawer-close:focus-visible {
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.uni-drawer-body {
+  padding: 2.25rem 2rem 3.5rem 2rem;
+  flex: 1;
+}
+
+/* ── Container de Retrato Vertical Elegante (Aspect 3:4) ── */
+.uni-drawer-portrait-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 1.85rem auto;
+  aspect-ratio: 3 / 4;
+  max-height: 460px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.15);
+  background: #000000;
+}
+
+.uni-drawer-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uni-drawer-portrait-wrap:hover .uni-drawer-portrait-img {
+  transform: scale(1.04);
+}
+
+.uni-drawer-portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 65%, rgba(6, 5, 11, 0.8) 95%, rgba(6, 5, 11, 1) 100%);
+  pointer-events: none;
+}
+
+/* ── Blocos de Ficha Expandida de Dossiê ── */
+.uni-dossier-section {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: 0.85rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.uni-dossier-section-title {
+  font-family: var(--uni-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--uni-gold-pure);
+  margin-bottom: 0.65rem;
+  font-weight: 700;
+}
+
+.uni-dossier-text {
+  font-family: var(--uni-font-body);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--uni-text-light);
+}
+
+/* ── Modal de Texto Integral ── */
+.uni-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.uni-modal.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.uni-modal-card {
+  background: #06050c;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 1.5rem;
+  max-width: 880px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 40px rgba(212, 175, 55, 0.15);
+  transform: scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.uni-modal.is-open .uni-modal-card {
+  transform: scale(1);
+}
+
+.uni-modal-header {
+  position: sticky;
+  top: 0;
+  background: rgba(6, 5, 12, 0.98);
+  padding: 1.6rem 2.25rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(14px);
+  z-index: 10;
+}
+
+.uni-modal-body {
+  padding: 2.5rem 2.25rem 3.5rem 2.25rem;
+  font-size: 1.22rem;
+  line-height: 1.9;
+  color: #ded8cb;
+}
+
+.uni-modal-body p {
+  margin-bottom: 1.75rem;
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--uni-gold-pure);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  button, a, input, select, textarea, [role="button"] {
+    transition-duration: 0.15s !important;
+  }
+
+  .uni-descent-container,
+  .uni-cinema-scene {
+    height: auto !important;
+  }
+
+  .uni-descent-stage,
+  .uni-cinema-stage {
+    position: relative !important;
+    height: auto !important;
+  }
+
+  .uni-cinema-beat {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin: 2rem 0 !important;
+    pointer-events: auto !important;
+  }
+}

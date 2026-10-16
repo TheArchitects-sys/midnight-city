@@ -1,0 +1,45 @@
+{
+  "home": {
+    "prefix": "home-londres",
+    "target": "index.html: hero principal"
+  },
+  "banners": {
+    "grito-da-guerra": {
+      "prefix": "banner-grito",
+      "type": "temporario"
+    },
+    "amor-esta-no-ar": {
+      "prefix": "banner-amor",
+      "type": "temporario"
+    },
+    "sombra-do-abandonado": {
+      "prefix": "banner-sombra",
+      "type": "temporario"
+    },
+    "vestigios-da-divergencia": {
+      "prefix": "banner-vestigios",
+      "type": "permanente"
+    }
+  },
+  "endgame": {
+    "abismo": {
+      "prefix": "endgame-abismo"
+    },
+    "bercario": {
+      "prefix": "endgame-bercario"
+    },
+    "caos": {
+      "prefix": "endgame-caos"
+    }
+  },
+  "sistema": {
+    "background": "terminal-egide",
+    "presence": [
+      "presenca-orbe",
+      "presenca-vassoura"
+    ],
+    "fallback": "presenca-completa"
+  },
+  "mediaBase": "assets/neotheon-premium/",
+  "note": "IDs dos banners conferidos no OPERATIONS_DATABASE atual. End-game indica modalidades, nao impõe novos IDs ao controlador."
+}

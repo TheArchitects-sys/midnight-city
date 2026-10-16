@@ -1,0 +1,469 @@
+/* ==========================================================================
+   MIDNIGHT CITY — ZONAS DE END GAME
+   Estilo sombrio, nobre e tático para as 4 modalidades de risco extremo
+   ========================================================================== */
+
+:root {
+  --eg-dark-bg: #050608;
+  --eg-dark-surface: #0a0912;
+  --eg-dark-card: #0e0d1a;
+  --eg-border-gold: rgba(212, 175, 55, 0.25);
+  --eg-border-red: rgba(239, 68, 68, 0.35);
+  --eg-border-purple: rgba(168, 85, 247, 0.35);
+  --eg-border-cyan: rgba(56, 189, 248, 0.35);
+  --eg-gold-primary: #d4af37;
+  --eg-gold-light: #f1d27a;
+  --eg-crimson-pure: #ef4444;
+  --eg-abyss-purple: #a855f7;
+  --eg-sim-cyan: #38bdf8;
+  --eg-font-code: 'Courier New', Courier, monospace, 'IBM Plex Mono';
+}
+
+/* Seletor Visual das 4 Modalidades (Grid 2x2 no Desktop) */
+.eg-mode-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(14, 13, 26, 0.9) 0%, rgba(8, 7, 14, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 240px;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.eg-mode-card:focus-visible {
+  outline: 2px solid var(--eg-gold-light);
+  outline-offset: 2px;
+}
+
+/* Cenários de Mídia Higgsfield em End-game */
+.eg-stage-media {
+  max-height: 380px;
+}
+.eg-stage-media img,
+.eg-stage-media video {
+  object-fit: cover !important;
+}
+
+.eg-mode-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.eg-mode-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px -4px rgba(212, 175, 55, 0.2);
+}
+
+.eg-mode-card:hover::before {
+  opacity: 1;
+}
+
+.eg-mode-card.active {
+  border-color: var(--eg-gold-primary);
+  box-shadow: 0 0 30px -5px rgba(212, 175, 55, 0.3);
+}
+
+.eg-mode-card.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--eg-gold-light), transparent);
+}
+
+/* Variações de Borda por Modalidade */
+.eg-mode-card[data-mode="abismo-espiral"].active {
+  border-color: #ef4444;
+  box-shadow: 0 0 30px -5px rgba(239, 68, 68, 0.35);
+}
+.eg-mode-card[data-mode="abismo-espiral"].active::after {
+  background: linear-gradient(90deg, transparent, #ef4444, transparent);
+}
+
+.eg-mode-card[data-mode="bercario-abissal"].active {
+  border-color: #a855f7;
+  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.35);
+}
+.eg-mode-card[data-mode="bercario-abissal"].active::after {
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+}
+
+.eg-mode-card[data-mode="reino-do-caos"].active {
+  border-color: #f59e0b;
+  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.35);
+}
+.eg-mode-card[data-mode="reino-do-caos"].active::after {
+  background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+}
+
+.eg-mode-card[data-mode="universo-simulado"].active {
+  border-color: #38bdf8;
+  box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.35);
+}
+.eg-mode-card[data-mode="universo-simulado"].active::after {
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+}
+
+/* Ilustrações de Fundo das Modalidades (Cards AAA) */
+.eg-card-bg-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 55%;
+  background-size: cover;
+  background-position: top center;
+  opacity: 0.14;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 45%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 45%, black 100%);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eg-card-bg-art.cosmic-bg {
+  background: radial-gradient(circle at 70% 50%, rgba(56, 189, 248, 0.3) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 80%);
+}
+
+.eg-mode-card:hover .eg-card-bg-art {
+  opacity: 0.28;
+  transform: scale(1.05) translateX(-4px);
+}
+
+.eg-mode-card.active .eg-card-bg-art {
+  opacity: 0.34;
+}
+
+/* Área de Visualização da Modalidade Selecionada */
+.eg-mode-view {
+  display: none;
+  animation: eg-view-fade 0.35s ease-out;
+}
+
+.eg-mode-view.active {
+  display: block;
+}
+
+@keyframes eg-view-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sticky Sidebar Index */
+.eg-sticky-index {
+  position: sticky;
+  top: 6.5rem;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+}
+
+.eg-index-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-family: var(--eg-font-code);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.eg-index-link:hover, .eg-index-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: var(--eg-gold-primary);
+  padding-left: 1rem;
+}
+
+/* Tabela Comparativa de Recompensas e Riscos */
+.eg-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 9, 18, 0.7);
+}
+
+.eg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.eg-table th, .eg-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.eg-table th {
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--eg-font-code);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #cfc7b4;
+}
+
+.eg-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Badge de Estado */
+.eg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-family: var(--eg-font-code);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.eg-badge.vigente {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.eg-badge.disponivel {
+  background: rgba(168, 85, 247, 0.15);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.eg-badge.periodica {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.eg-badge.desenvolvimento {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+/* Seletor de Risco do Berçário */
+.eg-risk-tab-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-family: var(--eg-font-code);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.eg-risk-tab-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.eg-risk-tab-btn.active {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #a855f7;
+  color: #ffffff;
+}
+
+/* Modal de Imagem Ampliada */
+.eg-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.eg-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eg-modal-content {
+  background: #0a0912;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 16px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.eg-modal-img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   CARDS DE MONSTROS & CHEFES (DOSSIÊ TÁTICO COMPACTO AAA)
+   Padrão Catriona otimizado para densidade, menor footprint e legibilidade total
+   ========================================================================== */
+.eg-monster-card {
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(16, 14, 28, 0.94) 0%, rgba(7, 6, 12, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+}
+
+.eg-monster-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.85), 0 0 20px -3px rgba(212, 175, 55, 0.18);
+}
+
+.eg-monster-card.border-red {
+  border-color: rgba(239, 68, 68, 0.45);
+}
+.eg-monster-card.border-red:hover {
+  border-color: rgba(239, 68, 68, 0.8);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.85), 0 0 25px -2px rgba(239, 68, 68, 0.3);
+}
+
+.eg-monster-card.border-purple {
+  border-color: rgba(168, 85, 247, 0.45);
+}
+.eg-monster-card.border-purple:hover {
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.85), 0 0 25px -2px rgba(168, 85, 247, 0.3);
+}
+
+.eg-monster-card.border-amber {
+  border-color: rgba(245, 158, 11, 0.45);
+}
+.eg-monster-card.border-amber:hover {
+  border-color: rgba(245, 158, 11, 0.8);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.85), 0 0 25px -2px rgba(245, 158, 11, 0.3);
+}
+
+.eg-monster-card.border-emerald {
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.eg-monster-portrait,
+.eg-monster-art-frame {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #030305;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
+}
+@media (min-width: 640px) {
+  .eg-monster-portrait,
+  .eg-monster-art-frame {
+    min-height: 440px;
+  }
+}
+@media (min-width: 1024px) {
+  .eg-monster-portrait,
+  .eg-monster-art-frame {
+    min-height: 480px;
+  }
+}
+
+.eg-scenario-hero-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85);
+  margin-bottom: 2.5rem;
+}
+.eg-scenario-hero-stage .premium-stage {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+.eg-scenario-hero-stage img,
+.eg-scenario-hero-stage video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.eg-stat-badge {
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.25rem 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.03);
+}
+.eg-stat-badge .stat-label {
+  font-size: 0.58rem;
+  color: #94a3b8;
+  font-family: var(--eg-font-code);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.eg-stat-badge .stat-val {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--eg-font-code);
+  color: #ffffff;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.eg-ability-card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.eg-ability-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.65);
+}
+

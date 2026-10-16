@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MIDNIGHT CITY — O Filho Que Foi Prometido | RPG Narrativo</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  
+  <!-- OpenGraph & Meta Tags -->
+  <meta name="description" content="No coração de Londres, ergue-se Avalon. Junte-se à Égide na Temporada 2 do RPG.">
+  <meta property="og:title" content="MIDNIGHT CITY — O Filho Que Foi Prometido">
+  <meta property="og:description" content="Intriga política, semideuses e magia em Londres. Inscrições abertas para a Temporada 2.">
+  <meta property="og:image" content="assets/valiria_mission.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#050608">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'gold-primary': '#d4af37',
+            'gold-light': '#f1d27a',
+            'gold-dim': '#8c6a2b',
+            'dark-bg': '#050608',
+            'dark-surface': '#0a0912',
+            'dark-veil': '#0f0e1a',
+            'crimson-pure': '#c82924',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP Animation Library CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Preload Local Assets for Instant Loading -->
+  <link rel="preload" as="image" href="assets/custodio.png">
+  <link rel="preload" as="image" href="assets/vigilante.png">
+  <link rel="preload" as="image" href="assets/arcanista.png">
+  <link rel="preload" as="image" href="assets/inquisidores.png">
+  <link rel="preload" as="image" href="assets/mediadores.png">
+  <link rel="preload" as="image" href="assets/tecelao.png">
+  <link rel="preload" as="image" href="assets/arquivistas.png">
+  <link rel="preload" as="image" href="assets/artifices.png">
+  <link rel="preload" as="image" href="assets/sanctificadores.png">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/neotheon-premium/integration/premium-media.css">
+</head>
+<body class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased">
+
+  <!-- ── 1. INITIATION PORTAL (DARK RED LIQUID VEIL & OCCULT HAND) ── -->
+  <div id="initiation-gate" class="portal-interactive">
+    <!-- WebGL Liquid Fluid Shader Canvas -->
+    <canvas id="portal-liquid-canvas"></canvas>
+
+    <!-- Floating Horror Whispers Container -->
+    <div id="portal-whispers-container"></div>
+
+    <!-- Tactical Glove Hand Cursor (Exact replica of attached reference in pure black fill + white line art) -->
+    <div id="portal-hand-cursor" class="portal-hand">
+      <svg class="glove-svg-model" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glove-crisp-shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.95"/>
+          </filter>
+        </defs>
+
+        <!-- STATE 1: OPEN GLOVE (Exact replica of user's uploaded reference) -->
+        <g class="glove-state-open" filter="url(#glove-crisp-shadow)" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sleeve Cuff (Bottom Base) -->
+          <path d="M208 424 H304 C350 424, 388 436, 388 472 C388 496, 360 502, 304 502 H208 C152 502, 124 496, 124 472 C124 436, 162 424, 208 424 Z" fill="#000000"/>
+
+          <!-- Wrist Strap Band -->
+          <rect x="180" y="348" width="220" height="64" rx="32" fill="#000000"/>
+          <path d="M320 348 C332 368, 332 392, 320 412" stroke="#ffffff" stroke-width="12"/>
+
+          <!-- Thumb -->
+          <path d="M192 224 C132 204, 94 212, 92 248 C90 284, 136 328, 196 352" fill="#000000"/>
+
+          <!-- Palm & Main Hand Body -->
+          <path d="M188 224 H396 C408 260, 412 304, 404 352 H192 C184 304, 184 260, 188 224 Z" fill="#000000"/>
+
+          <!-- Dorsal Reinforcement Pad -->
+          <path d="M236 224 C260 268, 300 296, 396 296" fill="none" stroke="#ffffff" stroke-width="14"/>
+          <!-- Pad Capsule / Emblem -->
+          <rect x="308" y="238" width="72" height="32" rx="16" fill="#000000" stroke="#ffffff" stroke-width="10"/>
+
+          <!-- Pinky Finger -->
+          <path d="M352 224 V108 C352 80, 388 80, 388 108 V224" fill="#000000"/>
+
+          <!-- Ring Finger -->
+          <path d="M304 224 V72 C304 42, 344 42, 344 72 V224" fill="#000000"/>
+
+          <!-- Middle Finger -->
+          <path d="M248 224 V54 C248 22, 296 22, 296 54 V224" fill="#000000"/>
+          <path d="M248 136 V168" stroke="#ffffff" stroke-width="14"/>
+
+          <!-- Index Finger -->
+          <path d="M192 224 V88 C192 56, 240 56, 240 88 V224" fill="#000000"/>
+        </g>
+
+        <!-- STATE 2: CLOSED GLOVE / FIST (Curled fingers grabbing) -->
+        <g class="glove-state-closed" filter="url(#glove-crisp-shadow)" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0;">
+          <!-- Sleeve Cuff -->
+          <path d="M208 424 H304 C350 424, 388 436, 388 472 C388 496, 360 502, 304 502 H208 C152 502, 124 496, 124 472 C124 436, 162 424, 208 424 Z" fill="#000000"/>
+
+          <!-- Wrist Strap Band -->
+          <rect x="180" y="348" width="220" height="64" rx="32" fill="#000000"/>
+          <path d="M320 348 C332 368, 332 392, 320 412" stroke="#ffffff" stroke-width="12"/>
+
+          <!-- Palm Base -->
+          <path d="M188 230 H396 C408 266, 412 304, 404 352 H192 C184 304, 184 266, 188 230 Z" fill="#000000"/>
+
+          <!-- 4 Curled Fingers Folded Down on Knuckles -->
+          <path d="M192 230 C192 165, 240 165, 240 230 Z" fill="#000000"/>
+          <path d="M244 230 C244 155, 296 155, 296 230 Z" fill="#000000"/>
+          <path d="M300 230 C300 160, 348 160, 348 230 Z" fill="#000000"/>
+          <path d="M352 230 C352 175, 396 175, 396 230 Z" fill="#000000"/>
+
+          <!-- Thumb Folded Across Fingers -->
+          <path d="M168 280 C150 250, 175 220, 230 220 C270 220, 300 250, 290 280 C270 300, 200 310, 168 280 Z" fill="#000000"/>
+          <!-- Thumb Capsule Indicator -->
+          <rect x="205" y="240" width="56" height="24" rx="12" fill="#000000" stroke="#ffffff" stroke-width="10"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="portal-box">
+      <!-- Sacred Vector Seal -->
+      <svg class="portal-seal" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <circle cx="50" cy="50" r="38" stroke="#f1d27a" stroke-width="0.8"/>
+        <polygon points="50,15 80,72 20,72" stroke="#d4af37" stroke-width="0.8" fill="none"/>
+        <polygon points="50,85 20,28 80,28" stroke="#d4af37" stroke-width="0.8" fill="none"/>
+        <circle cx="50" cy="50" r="8" fill="#c82924"/>
+      </svg>
+
+      <div class="portal-eyebrow">ÉGIDE DE AVALON · PROTOCOLO OFICIAL</div>
+      
+      <h1 class="portal-heading">
+        DESEJA ADENTRAR O VÉU?
+      </h1>
+
+      <!-- Dynamic Prompt Area -->
+      <div id="portal-prompt-wrap" class="portal-prompt-wrap">
+        <p class="portal-instruction" id="portal-drag-instruction">
+          <span class="instruction-icon">✦</span>
+          <span>CLIQUE E ARRASTE PARA REMOVER</span>
+          <span class="instruction-icon">✦</span>
+        </p>
+        <div class="portal-drag-meter" id="portal-drag-meter">
+          <div class="portal-drag-fill" id="portal-drag-fill"></div>
+        </div>
+        <button id="gate-skip-btn" class="portal-btn-skip" type="button" aria-label="Adentrar diretamente">
+          <span>TOCAR PARA ADENTRAR</span>
+          <span class="text-xs">✦</span>
+        </button>
+      </div>
+
+      <!-- Action Buttons (Emerge dynamically after dragging) -->
+      <div id="portal-revealed-actions" class="portal-actions hidden opacity-0">
+        <button id="gate-enter-btn" class="portal-btn-primary" type="button">
+          ADENTRAR A ORDEM
+        </button>
+        <button id="gate-deny-btn" class="portal-btn-secondary" type="button">
+          ESPECTADOR
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dynamic WebGL Volumetric Mist Canvas -->
+  <canvas id="fog-canvas"></canvas>
+
+  <!-- ── 2. HEADER & PILL NAVIGATION ── -->
+    <!-- ── GLOBAL HEADER ── -->
+  <header class="santioni-header">
+    <a href="index.html" class="brand-badge">
+      <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+      <div class="brand-text">
+        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-sub">Égide de Avalon</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <nav class="santioni-nav-pill" aria-label="Navegação Principal">
+        <a href="index.html" class="active text-[#f1d27a]">INÍCIO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="universo.html" >UNIVERSO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="poderes.html" >PODERES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="operacoes.html" >OPERAÇÕES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="banners.html" class="hover:text-[#f1d27a]">BANNERS</a>
+        <span class="pill-ornament">❖</span>
+        <a href="sistema.html" >SISTEMA</a>
+        <span class="pill-ornament">❖</span>
+        <a href="agente.html" >AGENTE</a>
+        <span class="pill-ornament">❖</span>
+        <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
+      </nav>
+
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+        DISCORD ↗
+      </a>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-[#cfc7b4] hover:text-white p-1 text-2xl font-mono-code focus:outline-none" aria-label="Abrir menu mobile">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Audio Equalizer Floating Button (Bottom Right) -->
+  <button id="audio-toggle-btn" class="audio-toggle-btn" title="Toggle Áudio Atmosférico da Égide">
+    <div class="audio-bars">
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+    </div>
+  </button>
+
+    <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-20 left-0 w-full z-50 bg-[#050608]/98 border-b border-[#d4af37]/20 px-6 py-6 space-y-3 text-xs font-cinzel uppercase tracking-widest backdrop-blur-xl">
+    <a href="index.html" class="block py-2 text-[#f1d27a] font-bold">Início</a>
+    <a href="universo.html" class="block py-2 text-[#cfc7b4] hover:text-white">Universo & Cosmologia</a>
+    <a href="poderes.html" class="block py-2 text-[#cfc7b4] hover:text-white">Poderes & Individualidades</a>
+    <a href="operacoes.html" class="block py-2 text-[#cfc7b4] hover:text-white">❖ Operações (Missões)</a>
+    <a href="banners.html" class="block py-2 text-[#cfc7b4] hover:text-white">✦ Banners Míticos</a>
+    <a href="operacoes.html?view=novato" class="block py-2 text-[#cfc7b4] hover:text-[#f1d27a]">◈ Novato Premium</a>
+    <a href="sistema.html" class="block py-2 text-[#cfc7b4] hover:text-white">Sistema & Guias</a>
+    <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
+    <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
+    <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
+    </div>
+  </div>
+
+  <main class="relative z-10">
+
+    <!-- ==========================================================================
+         1. HERO SECTION: "O FILHO QUE FOI PROMETIDO"
+         ========================================================================== -->
+    <section class="hero-stage">
+      
+      <!-- Stardust & Rune Particle Canvas -->
+      <canvas id="hero-particles"></canvas>
+      
+      <!-- Ambient Golden Occult Aura -->
+      <div class="hero-sacred-aura"></div>
+
+      <!-- 3D Mouse Perspective Typography Container -->
+      <div class="hero-3d-wrap">
+        <div class="hero-prefix" id="hero-eyebrow">TEMPORADA 2 · ÉGIDE DE AVALON</div>
+        <h1 class="hero-main-title" id="hero-title">
+          O FILHO QUE FOI PROMETIDO
+        </h1>
+      </div>
+
+      <!-- Dynamic GSAP Scroll Cue -->
+      <a href="#temporada" class="hero-scroll-cue" id="hero-scroll-indicator">
+        <span class="scroll-cue-text">DESVENDE AS CRÔNICAS</span>
+        <div class="scroll-cue-arrow">
+          <svg class="w-3.5 h-3.5 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M7 10l5 5 5-5"/>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <!-- ==========================================================================
+         2. SEASON 2 SPOTLIGHT: CONVOCAÇÕES DA ÉGIDE (COM ELECTRIC BORDER)
+         ========================================================================== -->
+    <section id="temporada" class="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-[#d4af37]/20 bg-[#0a0912]/90">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-[10px] font-cinzel uppercase tracking-[0.35em] text-[#d4af37] font-bold">
+            ✦ RELATÓRIO DO CONSELHO DE MÁRMORE ✦
+          </span>
+          <h2 class="font-cinzel-dec text-3xl sm:text-4xl md:text-5xl font-bold text-[#f1d27a] mt-2 mb-4 uppercase">
+            CONVOCAÇÕES DA TEMPORADA 2
+          </h2>
+          <p class="font-garamond italic text-xl sm:text-2xl text-[#ded8cb] leading-relaxed">
+            Duas operações de alta prioridade estão ativas simultaneamente. Inscrições abertas para todos os agentes (<strong class="text-[#f1d27a] font-normal">a partir do Nível 1</strong>, de novatos a veteranos nos Níveis 9 e 10) diretamente no canal de missões do Discord.
+          </p>
+        </div>
+
+        <!-- 2 Illustrated Mission Dossier Cards with Decrypt Reveal Canvas -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          
+          <!-- MISSION 1: VALÍRIA with Decrypt Reveal Canvas -->
+          <div class="decrypt-card-wrapper relative rounded-2xl overflow-hidden group" data-theme="valiria">
+            
+            <div class="glass-panel rounded-2xl overflow-hidden relative flex flex-col justify-between h-full group">
+              <div class="relative h-72 w-full overflow-hidden">
+                <img src="assets/valiria_mission.jpg" alt="Operação Valíria" class="w-full h-full object-cover object-center filter brightness-95 group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0912] via-transparent to-transparent"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-mono-code px-3 py-1 rounded bg-black/80 border border-red-500/50 text-red-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <svg class="w-3 h-3 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+                  <span>ALTO RISCO • VANAHEIM</span>
+                </span>
+                <span class="absolute top-4 right-4 text-[11px] font-cinzel text-[#f1d27a] bg-black/80 border border-[#d4af37]/30 px-2.5 py-0.5 rounded font-bold">
+                  A partir do Nível 1 (1 a 10)
+                </span>
+              </div>
+
+              <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="font-cinzel text-2xl font-bold text-white mb-2 group-hover:text-red-300 transition-colors">
+                    VALÍRIA, A CIDADE IMPERIAL DE VANAHEIM
+                  </h3>
+
+                  <p class="font-garamond text-lg sm:text-xl italic text-[#ded8cb] leading-relaxed mb-6">
+                    Após os acontecimentos no Jardim de Avalon, a movimentação de <strong class="text-white font-normal">Rhaenys Targaryen</strong> tornou-se uma força imperial. Valíria ergue-se como fortaleza, prisão e declaração de guerra. Há prisioneiros da Égide e rastros dos <strong class="text-red-400 font-normal">Fragmentos do Caos</strong> rumo às Ilhas de Sempre Inverno.
+                  </p>
+
+                  <div class="space-y-2 text-xs sm:text-sm font-mono-code text-[#ded8cb] mb-6">
+                    <div><span class="text-red-400">›</span> <strong>Foco:</strong> Infiltração, Resgate e Combate contra Forças Dracônicas.</div>
+                    <div><span class="text-red-400">›</span> <strong>Local:</strong> Cidade Imperial de Valíria / Vanaheim.</div>
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 relative z-10">
+                  <button onclick="openDossierModal('valiria')" class="btn-secondary-gold w-full sm:w-auto px-5 py-2.5 rounded text-[11px] text-center justify-center flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <span>LER DOSSIÊ COMPLETO</span>
+                  </button>
+                  <a href="https://discord.gg/5xJp9PEZwC" target="_blank" class="btn-gold w-full sm:w-auto px-6 py-2.5 rounded text-[11px] flex items-center justify-center gap-2">
+                    <span>INSCREVER-SE NO DISCORD</span>
+                    <span>→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas Decrypt Reveal Overlay -->
+            <canvas class="decrypt-reveal-canvas" aria-hidden="true"></canvas>
+
+            <!-- Decrypt Instruction Badge -->
+            <div class="decrypt-badge">
+              <span class="decrypt-badge-title">
+                <span class="decrypt-badge-dot"></span>
+                ARQUIVO RESTRITO // CIFRA CLASSIFICADA
+              </span>
+              <span class="decrypt-badge-subtitle">Passe o cursor para decifrar a transmissão</span>
+            </div>
+          </div>
+
+          <!-- MISSION 2: CAIRO with Decrypt Reveal Canvas -->
+          <div class="decrypt-card-wrapper relative rounded-2xl overflow-hidden group" data-theme="cairo">
+            
+            <div class="glass-panel rounded-2xl overflow-hidden relative flex flex-col justify-between h-full group">
+              <div class="relative h-72 w-full overflow-hidden">
+                <img src="assets/cairo_mission.jpg" alt="Operação Cairo" class="w-full h-full object-cover object-center filter brightness-95 group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0912] via-transparent to-transparent"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-mono-code px-3 py-1 rounded bg-black/80 border border-cyan-500/50 text-cyan-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <svg class="w-3 h-3 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
+                  <span>OPERAÇÃO SENSÍVEL • CAIRO</span>
+                </span>
+                <span class="absolute top-4 right-4 text-[11px] font-cinzel text-[#f1d27a] bg-black/80 border border-[#d4af37]/30 px-2.5 py-0.5 rounded font-bold">
+                  A partir do Nível 1 (1 a 10)
+                </span>
+              </div>
+
+              <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="font-cinzel text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                    O FILHO PROIBIDO NAS AREIAS DO OÁSIS FALSO
+                  </h3>
+
+                  <p class="font-garamond text-lg sm:text-xl italic text-[#ded8cb] leading-relaxed mb-6">
+                    Visões proféticas de <strong class="text-white font-normal">Cleópatra</strong> no Cairo alertam que o filho adotivo da rainha e de <strong class="text-white font-normal">Iskandar</strong> corre risco iminente de ser raptado ou reivindicado por <strong class="text-cyan-300 font-normal">Ísis</strong>. Ecos da tragédia do Submundo de Lin Faust e do Duat ameaçam se repetir.
+                  </p>
+
+                  <div class="space-y-2 text-xs sm:text-sm font-mono-code text-[#ded8cb] mb-6">
+                    <div><span class="text-cyan-400">›</span> <strong>Foco:</strong> Investigação, Proteção, Diplomacia Religiosa e Ecos do Duat.</div>
+                    <div><span class="text-cyan-400">›</span> <strong>Local:</strong> Areias do Oásis Falso / Cairo.</div>
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 relative z-10">
+                  <button onclick="openDossierModal('cairo')" class="btn-secondary-gold w-full sm:w-auto px-5 py-2.5 rounded text-[11px] text-center justify-center flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <span>LER DOSSIÊ COMPLETO</span>
+                  </button>
+                  <a href="https://discord.gg/5xJp9PEZwC" target="_blank" class="btn-gold w-full sm:w-auto px-6 py-2.5 rounded text-[11px] flex items-center justify-center gap-2">
+                    <span>INSCREVER-SE NO DISCORD</span>
+                    <span>→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas Decrypt Reveal Overlay -->
+            <canvas class="decrypt-reveal-canvas" aria-hidden="true"></canvas>
+
+            <!-- Decrypt Instruction Badge -->
+            <div class="decrypt-badge">
+              <span class="decrypt-badge-title">
+                <span class="decrypt-badge-dot"></span>
+                ARQUIVO RESTRITO // CIFRA CLASSIFICADA
+              </span>
+              <span class="decrypt-badge-subtitle">Passe o cursor para decifrar a transmissão</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. COMO ENTRAR EM 3 PASSOS: O FUNIL DIRETO
+         ========================================================================== -->
+    <section id="como-entrar" class="py-20 px-4 sm:px-6 lg:px-8 relative border-t border-[#d4af37]/20 bg-transparent">
+      <div class="max-w-6xl mx-auto text-center">
+        
+        <span class="text-[10px] font-cinzel uppercase tracking-[0.35em] text-[#d4af37] font-bold">
+          ✦ SUA PRIMEIRA MISSÃO COMEÇA AQUI ✦
+        </span>
+        <h2 class="font-cinzel-dec text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 mb-4 uppercase">
+          ENTRE NO VÉU EM 3 PASSOS
+        </h2>
+        <p class="font-garamond italic text-xl sm:text-2xl text-[#ded8cb] leading-relaxed max-w-2xl mx-auto mb-12">
+          O caminho direto para forjar seu legado e ingressar nas mesas ativas da Ordem.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          
+          <!-- Passo 01 -->
+          <div class="glass-panel p-8 rounded-xl border border-white/10 flex flex-col items-center text-center relative overflow-hidden group hover:border-[#d4af37]/50 transition-all">
+            <div class="w-14 h-14 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 flex items-center justify-center font-cinzel-dec text-2xl font-bold text-[#f1d27a] mb-5 shadow-lg group-hover:scale-110 transition-transform">
+              01
+            </div>
+            <h3 class="font-cinzel text-lg font-bold text-white mb-3 tracking-wider">ENTRE NO DISCORD</h3>
+            <p class="font-garamond italic text-base sm:text-lg text-[#ded8cb] leading-relaxed">
+              Conheça a comunidade, tire dúvidas e acompanhe as convocações oficiais do Conselho.
+            </p>
+          </div>
+
+          <!-- Passo 02 -->
+          <div class="glass-panel p-8 rounded-xl border border-white/10 flex flex-col items-center text-center relative overflow-hidden group hover:border-[#d4af37]/50 transition-all">
+            <div class="w-14 h-14 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 flex items-center justify-center font-cinzel-dec text-2xl font-bold text-[#f1d27a] mb-5 shadow-lg group-hover:scale-110 transition-transform">
+              02
+            </div>
+            <h3 class="font-cinzel text-lg font-bold text-white mb-3 tracking-wider">FAÇA SUA INSCRIÇÃO</h3>
+            <p class="font-garamond italic text-base sm:text-lg text-[#ded8cb] leading-relaxed">
+              Escolha uma operação ativa da Temporada 2 e reserve sua vaga no esquadrão de campo.
+            </p>
+          </div>
+
+          <!-- Passo 03 -->
+          <div class="glass-panel p-8 rounded-xl border border-white/10 flex flex-col items-center text-center relative overflow-hidden group hover:border-[#d4af37]/50 transition-all">
+            <div class="w-14 h-14 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/40 flex items-center justify-center font-cinzel-dec text-2xl font-bold text-[#f1d27a] mb-5 shadow-lg group-hover:scale-110 transition-transform">
+              03
+            </div>
+            <h3 class="font-cinzel text-lg font-bold text-white mb-3 tracking-wider">CRIE SEU AGENTE</h3>
+            <p class="font-garamond italic text-base sm:text-lg text-[#ded8cb] leading-relaxed">
+              Monte sua ficha no criador interativo e envie no canal para aprovação imediata.
+            </p>
+          </div>
+
+        </div>
+
+        <a href="https://discord.gg/5xJp9PEZwC" target="_blank" class="inline-flex items-center gap-3 btn-gold px-10 py-4 rounded text-xs tracking-widest font-bold">
+          <span>ENTRAR NO DISCORD OFICIAL</span>
+          <span>→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. HOW WE PLAY: ONDE A HISTÓRIA ACONTECE (YOBLE, DISCORD & ROLL20)
+         ========================================================================== -->
+    <section id="como-jogamos" class="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-[#d4af37]/20 bg-[#0a0912]/90">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-[10px] font-cinzel uppercase tracking-[0.35em] text-[#d4af37] font-bold">
+            ✦ DINÂMICA DO RPG ✦
+          </span>
+          <h2 class="font-cinzel-dec text-3xl sm:text-4xl md:text-5xl font-bold text-[#f1d27a] mt-2 mb-4 uppercase">
+            ONDE A HISTÓRIA ACONTECE
+          </h2>
+          <p class="font-garamond italic text-xl sm:text-2xl text-[#ded8cb] leading-relaxed">
+            Unimos o melhor do Roleplay textual com a emoção das campanhas de mesa ao vivo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- YOBLE -->
+          <div class="glass-panel p-8 rounded-xl border border-white/10 flex flex-col justify-between glass-card-hover">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="p-2.5 rounded-lg bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#f1d27a]">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 12.5V21h8.5zM16 8L2 22M17.5 15H9"/></svg>
+                </span>
+                <span class="text-[10px] font-mono-code text-[#f1d27a] uppercase">Principal • Escrito</span>
+              </div>
+              <h3 class="font-cinzel text-xl font-bold text-white mb-2">Comunidade Yoble</h3>
+              <p class="text-xs text-gray-400 font-mono-code mb-4">Comunidade 309183 (+250 Membros)</p>
+              <p class="font-garamond text-base sm:text-lg italic text-[#ded8cb] leading-relaxed mb-6">
+                O coração das crônicas escritas. Tópicos de missões fixas, missões sazonais, interações livres entre personagens em Londres e investigações secretas no seu próprio ritmo.
+              </p>
+            </div>
+            <a href="https://yoble.us/Community/309183" target="_blank" class="btn-secondary-gold w-full py-3 rounded text-[11px] text-center font-bold">
+              ACESSAR COMUNIDADE YOBLE →
+            </a>
+          </div>
+
+          <!-- DISCORD -->
+          <div class="glass-panel p-8 rounded-xl border border-white/10 flex flex-col justify-between glass-card-hover">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <span class="text-[10px] font-mono-code text-emerald-400 uppercase">QG Social • Inscrições</span>
+              </div>
+              <h3 class="font-cinzel text-xl font-bold text-white mb-2">Servidor Discord</h3>
+              <p class="text-xs text-gray-400 font-mono-code mb-4">QG Central & Inscrições de Missões</p>
+              <p class="font-garamond text-base sm:text-lg italic text-[#ded8cb] leading-relaxed mb-6">
+                O ponto de encontro diário. Bate-papo, avisos da Égide, aprovação de fichas, inscrições nas missões ativas e organização de esquadrões.
+              </p>
+            </div>
+            <a href="https://discord.gg/5xJp9PEZwC" target="_blank" class="btn-gold w-full py-3 rounded text-[11px] text-center font-bold">
+              ENTRAR NO DISCORD OFICIAL →
+            </a>
+          </div>
+
+          <!-- ROLL20 -->
+          <div class="glass-panel p-8 rounded-xl border border-white/10 flex flex-col justify-between glass-card-hover">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="p-2.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4" ry="4"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+                </span>
+                <span class="text-[10px] font-mono-code text-red-400 uppercase">Campanhas de Sexta</span>
+              </div>
+              <h3 class="font-cinzel text-xl font-bold text-white mb-2">Mesa no Roll20</h3>
+              <p class="text-xs text-gray-400 font-mono-code mb-4">Sessões de Voz & Mapas</p>
+              <p class="font-garamond text-base sm:text-lg italic text-[#ded8cb] leading-relaxed mb-6">
+                A arena das grandes batalhas da trama principal. Audioconferência, mapas rúnicos e rolagens de dados ao vivo com mestre de mesa toda sexta-feira à noite.
+              </p>
+            </div>
+            <a href="https://discord.gg/5xJp9PEZwC" target="_blank" class="btn-secondary-gold w-full py-3 rounded text-[11px] text-center font-bold">
+              HORÁRIOS NO DISCORD →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. QUE TIPO DE AGENTE VOCÊ DESEJA SER? (SELETOR INTERATIVO DE CLASSES)
+         ========================================================================== -->
+    <section id="oficios" class="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-[#d4af37]/20 bg-transparent">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-[10px] font-cinzel uppercase tracking-[0.35em] text-[#d4af37] font-bold">
+            ✦ OS 9 OFÍCIOS DA ÉGIDE ✦
+          </span>
+          <h2 class="font-cinzel-dec text-3xl sm:text-4xl md:text-5xl font-bold text-[#f1d27a] mt-2 mb-4 uppercase">
+            QUE TIPO DE AGENTE VOCÊ DESEJA SER?
+          </h2>
+          <p class="font-garamond italic text-xl sm:text-2xl text-[#ded8cb] leading-relaxed">
+            Selecione uma especialidade abaixo e descubra sua função tática na Ordem de Avalon.
+          </p>
+        </div>
+
+        <!-- Interactive Character Selection Stage (RPG Style) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Left: 9 Ofícios Selection List (4 Cols) -->
+          <div class="lg:col-span-4 flex flex-col gap-2 overflow-y-auto max-h-[580px] pr-2 custom-scroll" id="oficios-nav-list">
+            <!-- Populated dynamically by app.js -->
+          </div>
+
+          <!-- Right: Main Showcase Stage (8 Cols) -->
+          <div class="lg:col-span-8 glass-panel p-6 sm:p-8 rounded-2xl border border-[#d4af37]/30 flex flex-col justify-between relative overflow-hidden min-h-[540px]" id="oficio-showcase">
+            <!-- Populated dynamically with GSAP animations by app.js -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. PANORAMIC VISUAL BANNER: A LONDRES DAS SOMBRAS (VÍDEO HIGGSFIELD)
+         ========================================================================== -->
+    <div class="visual-banner relative overflow-hidden"
+         data-premium-media
+         data-video-720="assets/neotheon-premium/home-londres-720.mp4"
+         data-video-1080="assets/neotheon-premium/home-londres-1080.mp4">
+      <picture class="w-full h-full">
+        <source type="image/webp" media="(min-width: 1280px)" srcset="assets/neotheon-premium/home-londres-1920.webp">
+        <source type="image/webp" media="(min-width: 640px)" srcset="assets/neotheon-premium/home-londres-1280.webp">
+        <source type="image/webp" srcset="assets/neotheon-premium/home-londres-640.webp">
+        <img src="assets/banner_londres_night.png" alt="A Londres das Sombras · Égide de Avalon" class="w-full h-full object-cover object-center" loading="lazy">
+      </picture>
+      <video class="absolute inset-0 w-full h-full object-cover object-center" muted playsinline loop autoplay aria-hidden="true"></video>
+      <div class="visual-banner-overlay pointer-events-none"></div>
+    </div>
+
+    <!-- ==========================================================================
+         7. PREVIEW DO SISTEMA: NARRATIVA PRIMEIRO. SISTEMA QUANDO IMPORTA.
+         ========================================================================== -->
+    <section id="sistema-preview" class="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-[#d4af37]/20 bg-[#0a0912]/90">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-[10px] font-cinzel uppercase tracking-[0.35em] text-[#d4af37] font-bold">
+            ✦ COMO SE JOGA MIDNIGHT CITY ✦
+          </span>
+          <h2 class="font-cinzel-dec text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 mb-4 uppercase">
+            NARRATIVA PRIMEIRO.<br>
+            <span class="text-[#f1d27a]">O SISTEMA SERVE À HISTÓRIA.</span>
+          </h2>
+          <p class="font-garamond italic text-xl sm:text-2xl text-[#ded8cb] leading-relaxed">
+            MIDNIGHT CITY combina roleplay narrativo com um sistema próprio de progressão e combate. Você interpreta as ações do seu personagem, monta sua build e, quando o resultado tem risco ou oposição, os dados decidem.
+          </p>
+        </div>
+
+        <!-- 3 Pillars of Play -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          
+          <!-- Pillar 1 -->
+          <div class="glass-panel p-6 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono-code text-[#f1d27a] uppercase mb-2 font-bold">01 · INTERPRETE</div>
+              <h3 class="font-cinzel text-lg font-bold text-white mb-2">Você não faz, você tenta.</h3>
+              <p class="font-garamond italic text-base text-[#ded8cb] leading-relaxed mb-4">
+                No MIDNIGHT CITY você não declara que derrotou o inimigo. Você descreve sua intenção e tática:
+              </p>
+              <div class="p-3 rounded bg-black/60 border border-white/5 font-garamond italic text-base text-gray-300">
+                “Avanço contra a criatura sob a névoa e tento quebrar sua postura com a lâmina.”
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="glass-panel p-6 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono-code text-[#f1d27a] uppercase mb-2 font-bold">02 · ESCOLHA SEU PAPEL</div>
+              <h3 class="font-cinzel text-lg font-bold text-white mb-2">Trabalho em Equipe</h3>
+              <div class="space-y-2.5 text-xs font-mono-code text-gray-300">
+                <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-red-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6 2 2-6-4.5-4.5"/></svg><span><strong class="text-red-400 font-bold">DPS:</strong> Causa grande quantidade de dano.</span></div>
+                <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><strong class="text-blue-400 font-bold">TANKER:</strong> Resiste a ataques e protege o grupo.</span></div>
+                <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/></svg><span><strong class="text-emerald-400 font-bold">SUPORTE:</strong> Cura, fortalece e purifica aliados.</span></div>
+              </div>
+              <p class="font-garamond italic text-sm text-[#ded8cb] mt-3">
+                Recomendação para novatos: seja excelente em uma função antes de tentar fazer tudo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="glass-panel p-6 rounded-xl border border-white/10 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono-code text-[#f1d27a] uppercase mb-2 font-bold">03 · ROLE OS DADOS</div>
+              <h3 class="font-cinzel text-lg font-bold text-white mb-2">Pools de D10 no Discord</h3>
+              <div class="p-3 rounded bg-black/60 border border-white/5 text-xs font-mono-code space-y-1.5 mb-2">
+                <div class="text-gray-400">ATAQUE: 10D10 · DIF. 5</div>
+                <div class="text-emerald-400 font-bold">◆ ◆ ◆ ◆ ◆ ◆ (6 SUCESSOS)</div>
+                <div class="text-gray-500">VS DEFESA (4 SUCESSOS)</div>
+                <div class="text-[#f1d27a] font-bold pt-1 border-t border-white/10">✦ ATAQUE BEM-SUCEDIDO!</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Character & Resolution Mock Stage -->
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-[#d4af37]/30 mb-12">
+          
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/10">
+            <div>
+              <span class="text-[10px] font-mono-code px-2.5 py-1 rounded bg-[#d4af37]/20 text-[#f1d27a] uppercase font-bold">
+                EXPERIMENTE A DINÂMICA
+              </span>
+              <h3 class="font-cinzel text-2xl font-bold text-white mt-2" id="mock-char-name">
+                Lyra Vale · Arcanista de Avalon
+              </h3>
+              <span class="text-xs font-mono-code text-gray-400" id="mock-char-role">Nível 5 · Suporte & Controle Elemental</span>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="flex flex-wrap gap-4 text-center">
+              <div class="px-3 py-1.5 rounded bg-black/50 border border-white/10">
+                <span class="text-[9px] font-mono-code text-gray-400 block">HP</span>
+                <span class="text-sm font-mono-code font-bold text-white" id="mock-hp-val">200</span>
+              </div>
+              <div class="px-3 py-1.5 rounded bg-black/50 border border-white/10">
+                <span class="text-[9px] font-mono-code text-gray-400 block">ATK</span>
+                <span class="text-sm font-mono-code font-bold text-white" id="mock-atk-val">70</span>
+              </div>
+              <div class="px-3 py-1.5 rounded bg-black/50 border border-white/10">
+                <span class="text-[9px] font-mono-code text-gray-400 block">DEF</span>
+                <span class="text-sm font-mono-code font-bold text-white" id="mock-def-val">90</span>
+              </div>
+              <div class="px-3 py-1.5 rounded bg-black/50 border border-white/10">
+                <span class="text-[9px] font-mono-code text-gray-400 block">SPD</span>
+                <span class="text-sm font-mono-code font-bold text-white" id="mock-spd-val">130</span>
+              </div>
+              <div class="px-3 py-1.5 rounded bg-black/50 border border-cyan-500/30">
+                <span class="text-[9px] font-mono-code text-cyan-400 block">MANA</span>
+                <span class="text-sm font-mono-code font-bold text-cyan-300" id="mock-mana-val">340 / 340</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Action Simulator -->
+          <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex-1">
+              <div class="text-xs font-mono-code text-gray-300 mb-2">HABILIDADE ATIVA DA BUILD:</div>
+              <div class="text-base font-cinzel text-[#f1d27a] font-bold flex items-center gap-2" id="mock-skill-title">
+                <svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M2 12a14.5 14.5 0 0 0 20 0"/></svg>
+                <span>Criomancia Ancestral (Custo: 60 Mana)</span>
+              </div>
+              <p class="font-garamond italic text-base text-[#ded8cb]" id="mock-skill-desc">Conjura estacas de gelo místico para paralisar a linha defensiva inimiga.</p>
+            </div>
+
+            <div class="flex items-center gap-4 relative" id="sim-btn-wrapper">
+              <button id="btn-cast-spell" onclick="simulateSpellCast()" class="btn-gold px-6 py-3 rounded text-xs flex items-center gap-2 relative">
+                <svg class="w-3.5 h-3.5 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span>EXECUTAR PODER</span>
+              </button>
+              <button id="btn-reset-spell" onclick="resetSpellCast()" class="btn-secondary-gold px-4 py-3 rounded text-xs hidden">
+                ↺ REINICIAR
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Resolution Output Box -->
+          <div id="mock-spell-output" class="mt-4 p-4 rounded bg-black/70 border border-white/10 text-xs font-mono-code text-gray-400 transition-all hidden">
+            <!-- Output injected by app.js -->
+          </div>
+
+        </div>
+
+        <!-- Progression Banner -->
+        <div class="p-6 sm:p-8 rounded-xl bg-black/50 border border-[#d4af37]/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+          <div>
+            <h4 class="font-cinzel text-lg font-bold text-[#f1d27a] mb-1">DO NOVATO AO AGENTE DE ELITE</h4>
+            <p class="font-garamond italic text-base sm:text-lg text-[#ded8cb]">
+              Avance do Nível 1 ao 10 com XP de missões. O nível máximo não encerra sua jornada: desbloqueia armas rúnicas, relíquias e bênçãos divinas ancestrais.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center md:justify-end gap-2 text-xs font-mono-code text-[#f1d27a]">
+            <span>NÍVEL 1</span>
+            <span>➔</span>
+            <span>NÍVEL 5</span>
+            <span>➔</span>
+            <span>NÍVEL 10</span>
+            <span>➔</span>
+            <span class="px-2 py-1 bg-[#d4af37]/20 rounded font-bold">BÊNÇÃOS & FORJA</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. INTERACTIVE CHARACTER BUILDER (FORJADOR DE AGENTES)
+         ========================================================================== -->
+    <section id="fichario" class="py-24 px-4 sm:px-6 lg:px-8 relative border-t border-[#d4af37]/20 bg-transparent">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-[10px] font-cinzel uppercase tracking-[0.35em] text-[#d4af37] font-bold">
+            ✦ FORJADOR DE AGENTES ✦
+          </span>
+          <h2 class="font-cinzel-dec text-3xl sm:text-4xl md:text-5xl font-bold text-[#f1d27a] mt-2 mb-4 uppercase">
+            RASCUNHO DO PEDIDO DE FICHA
+          </h2>
+          <p class="font-garamond italic text-xl sm:text-2xl text-[#ded8cb] leading-relaxed">
+            Prepare seu pedido de ficha. A equipe confere as informações e orienta sua entrada no servidor.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Builder Form (7 Cols) -->
+          <div class="lg:col-span-7 glass-panel p-6 md:p-8 rounded-xl border border-white/10">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+              <h3 class="font-cinzel text-lg font-bold text-white flex items-center gap-2">
+                <span class="text-[#f1d27a]">✦</span> Pedido Oficial de Ficha (Central da Égide)
+              </h3>
+              <span class="text-[9px] font-mono-code px-2.5 py-1 rounded bg-[#d4af37]/20 text-[#f1d27a] font-bold uppercase tracking-wider">
+                PADRÃO CANÔNICO
+              </span>
+            </div>
+
+            <form id="char-builder-form" class="space-y-5" onsubmit="event.preventDefault();">
+              
+              <!-- 1. IDENTIFICAÇÃO OFICIAL & DRIVE -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label for="char-num-ficha" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">Nº da Ficha Geral</label>
+                  <input type="text" id="char-num-ficha" value="#142" placeholder="Ex: #142 (número livre)" class="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white font-mono-code text-xs focus:outline-none focus:border-[#d4af37]">
+                </div>
+                <div>
+                  <label for="char-email" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">E-mail (Google Drive)</label>
+                  <input type="email" id="char-email" value="" placeholder="seu-email@gmail.com" class="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                </div>
+                <div>
+                  <label for="char-nome-off" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">Nome do Jogador em Off</label>
+                  <input type="text" id="char-nome-off" value="Julian Vance" placeholder="Seu nome / nick em off" class="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                </div>
+              </div>
+
+              <!-- 2. DADOS DO PERSONAGEM & FACECLAIM -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label for="char-nome" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">Nome do Personagem</label>
+                  <input type="text" id="char-nome" value="Cassian Vance" class="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                </div>
+                <div>
+                  <label for="char-idade" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">Idade</label>
+                  <input type="number" id="char-idade" value="23" class="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                </div>
+                <div>
+                  <label for="char-shape" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">Shape (Faceclaim / Fotos)</label>
+                  <input type="text" id="char-shape" value="Timothée Chalamet" placeholder="Ator / Modelo / Link" class="w-full px-3.5 py-2.5 rounded bg-white/5 border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                </div>
+              </div>
+
+              <!-- 3. FILTRO DE MACRO-CLASSE PERPÉTUA (Pills interativas) -->
+              <div class="p-3.5 rounded-lg bg-black/40 border border-white/10 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono-code text-gray-400 uppercase">Filtrar por Macro-Classe Perpétua</span>
+                  <span class="text-[9px] font-mono-code text-[#f1d27a]">Filtro Dinâmico</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5" id="macro-class-pills">
+                  <button type="button" class="macro-pill active px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-[#d4af37] text-black font-bold border border-[#d4af37]" data-macro="all">
+                    TODAS (35)
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-red-500 flex items-center gap-1" data-macro="destruicao">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6 2 2-6-4.5-4.5"/></svg>
+                    <span>Destruição</span>
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-amber-500 flex items-center gap-1" data-macro="destino">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>Destino</span>
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-red-900 flex items-center gap-1" data-macro="morte">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a9 9 0 0 0-9 9c0 3.6 2.1 6.7 5.1 8.1V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1.9c3-1.4 5.1-4.5 5.1-8.1a9 9 0 0 0-9-9zM9 13a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+                    <span>Morte</span>
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-blue-500 flex items-center gap-1" data-macro="sonho">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/></svg>
+                    <span>Sonho</span>
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-purple-500 flex items-center gap-1" data-macro="desespero">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                    <span>Desespero</span>
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-pink-500 flex items-center gap-1" data-macro="desejo">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span>Desejo</span>
+                  </button>
+                  <button type="button" class="macro-pill px-2.5 py-1 rounded text-[10px] font-mono-code transition-all bg-white/5 text-gray-300 hover:text-white border border-white/10 hover:border-teal-400 flex items-center gap-1" data-macro="delirio">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 8h.01M8 8h.01M8 16h.01M16 16h.01M12 12h.01"/></svg>
+                    <span>Delírio</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4. FILIAÇÃO & AFILIAÇÃO (SINCRONIZADAS COM PODERES) & OFÍCIO -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <label for="char-filiacao" class="block text-[10px] font-mono-code text-gray-400 uppercase">Filiações (Raça/Parentesco)</label>
+                    <span id="filiacao-count" class="text-[9px] font-mono-code text-[#f1d27a]">30 opções</span>
+                  </div>
+                  <select id="char-filiacao" class="w-full px-3 py-2.5 rounded bg-[#0a0912] border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                    <!-- Populated dynamically by app.js based on powers_data.js and filtered by macro-class -->
+                    <option value="nenhum">Nenhum / Independente (Mortal)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <label for="char-afiliacao" class="block text-[10px] font-mono-code text-gray-400 uppercase">Afiliação (Ordem / Linhagem)</label>
+                    <span id="afiliacao-count" class="text-[9px] font-mono-code text-[#f1d27a]">6 opções</span>
+                  </div>
+                  <select id="char-afiliacao" class="w-full px-3 py-2.5 rounded bg-[#0a0912] border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                    <!-- Populated dynamically by app.js based on powers_data.js and filtered by macro-class -->
+                    <option value="nenhuma">Nenhuma / Independente</option>
+                  </select>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <label for="char-oficio" class="block text-[10px] font-mono-code text-gray-400 uppercase">Ofício na Égide</label>
+                    <span class="text-[9px] font-mono-code text-emerald-400">Auto-sincronizado</span>
+                  </div>
+                  <select id="char-oficio" class="w-full px-3 py-2.5 rounded bg-[#0a0912] border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">
+                    <option value="Custódio">Custódio (I · TANKER/DPS)</option>
+                    <option value="Vigilante">Vigilante (II · RECONHECIMENTO)</option>
+                    <option value="Arcanista">Arcanista (III · SUPORTE/CONTROLE)</option>
+                    <option value="Inquisidor">Inquisidor (IV · COMBATE OCULTO)</option>
+                    <option value="Mediador">Mediador (V · DIPLOMACIA)</option>
+                    <option value="Tecelão do Véu">Tecelão do Véu (VI · ILUSÃO)</option>
+                    <option value="Arquivista">Arquivista (VII · ANÁLISE)</option>
+                    <option value="Artífice de Ébano">Artífice de Ébano (VIII · FORJA)</option>
+                    <option value="Sanctificador">Sanctificador (IX · PURIFICAÇÃO)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 5. HISTÓRICO & MOTIVAÇÃO -->
+              <div>
+                <label for="char-resumo" class="block text-[10px] font-mono-code text-gray-400 mb-1 uppercase">Histórico & Motivação na Égide</label>
+                <textarea id="char-resumo" rows="3" class="w-full px-3.5 py-2 rounded bg-white/5 border border-white/10 text-white font-sans text-xs focus:outline-none focus:border-[#d4af37]">Um semideus recém-chegado a Londres após manifestar seus poderes sob a névoa do Tâmisa. Busca proteção e respostas nos corredores da Égide de Avalon.</textarea>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Preview & Copy Box (5 Cols) -->
+          <div class="lg:col-span-5 glass-panel p-6 md:p-8 rounded-xl border border-[#d4af37]/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <h3 class="font-cinzel text-base font-bold text-[#f1d27a] flex items-center gap-2">
+                  <svg class="w-4 h-4 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <span>Rascunho para Envio</span>
+                </h3>
+                <span class="text-[9px] font-mono-code px-2 py-0.5 rounded bg-[#d4af37]/20 text-[#f1d27a]">Pronto para Envio</span>
+              </div>
+
+              <pre id="char-sheet-preview" class="p-4 rounded bg-black/70 border border-white/10 text-xs font-mono-code text-emerald-300 whitespace-pre-wrap overflow-x-auto leading-relaxed h-[360px]"></pre>
+            </div>
+
+            <div class="pt-6 border-t border-white/10 flex flex-col gap-3">
+              <button id="btn-copy-sheet" class="btn-gold w-full py-3.5 rounded text-xs tracking-wider flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPIAR RASCUNHO DA FICHA</span>
+              </button>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" class="btn-secondary-gold w-full py-2.5 rounded text-[10px] text-center">
+                ENTRAR NO DISCORD PARA SOLICITAR A FICHA →
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL MIDNIGHT CITY
+       ========================================================================== -->
+  <footer class="neotheon-global-footer">
+    <div class="footer-container">
+      
+      <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand, Crest & Lore -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-badge">
+            <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+            <div class="footer-brand-info">
+              <span class="footer-brand-title">MIDNIGHT CITY</span>
+              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+            </div>
+          </div>
+          <p class="footer-lore-quote">
+            "Onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens."
+          </p>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">STATUS: VÉU ESTÁVEL // LONDRES, UK</span>
+          </div>
+        </div>
+
+        <!-- Column 2: O Universo & Crônicas -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
+            <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
+            <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
+            <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+            <li><a href="universo.html#season1" class="footer-nav-link">Crônicas da Season 1</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Diretrizes & Sistema -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <ul class="footer-links-list">
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: QG & Comunidade -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
+                <span>Servidor Discord Oficial</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Comunidade Yoble (309183)</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Mesas de Sexta no Roll20</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Inscrições de Missões</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+        </div>
+        <div class="footer-disclaimer">
+          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+         MODAL: DOSSIÊ COMPLETO DA MISSÃO
+         ========================================================================== -->
+  <div id="dossier-modal" role="dialog" aria-modal="true" aria-labelledby="modal-dossier-title" class="fixed inset-0 z-[200] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="glass-panel w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl border border-[#d4af37]/50 shadow-2xl relative" id="modal-content">
+      <!-- Populated dynamically by app.js -->
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+         MODAL: LIMITE DO SIMULADOR (HORA DE SE INSCREVER NO DISCORD)
+         ========================================================================== -->
+  <div id="sim-limit-modal" role="dialog" aria-modal="true" aria-labelledby="sim-limit-title" class="fixed inset-0 z-[250] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div id="sim-limit-card" class="glass-panel w-full max-w-lg rounded-2xl border border-[#d4af37]/60 shadow-[0_0_50px_rgba(212,175,55,0.25)] p-6 sm:p-8 relative text-center">
+
+      <!-- Vector Icon: D20 Dice (No emoji) -->
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/50 flex items-center justify-center shadow-lg transition-transform hover:scale-105">
+        <svg class="w-10 h-10 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 2 8 4.5v9L12 22l-8-4.5v-9L12 2Z"/>
+          <path d="m12 2 4.5 9-4.5 4.5-4.5-4.5L12 2Z"/>
+          <path d="M4 6.5 7.5 11M20 6.5 16.5 11M4 15.5l3.5-4.5M20 15.5l-3.5-4.5M12 15.5V22"/>
+        </svg>
+      </div>
+
+      <span class="text-[10px] font-mono-code px-3 py-1 rounded bg-[#d4af37]/20 border border-[#d4af37]/40 text-[#f1d27a] uppercase font-bold tracking-widest inline-block mb-3">
+        ✦ CHEGA DE TREINO NO VENTO ✦
+      </span>
+
+      <h3 id="sim-limit-title" class="font-cinzel-dec text-2xl sm:text-3xl font-bold text-white mb-3">
+        JÁ DEU DE CLICAR NESSE BOTÃO, NÉ?<br>
+        <span class="text-[#f1d27a]">VEM JOGAR DE VERDADE!</span>
+      </h3>
+
+      <p class="font-garamond italic text-lg sm:text-xl text-[#ded8cb] leading-relaxed mb-6">
+        Você já testou essa build três vezes seguidas... O painel de testes não vai conter as aberrações de Londres sozinho. Chega de fingir que tá salvando o mundo aqui e vem rolar dado de verdade no Discord!
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch justify-center pt-2">
+        <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold py-3.5 px-6 rounded text-xs font-bold tracking-wider flex items-center justify-center gap-2 shadow-lg">
+          <span>BORA JOGAR DE VERDADE!</span>
+          <span>→</span>
+        </a>
+        <button onclick="closeSimLimitModal()" class="btn-secondary-gold py-3.5 px-5 rounded text-xs">
+          Só mais um clique, juro!
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="glass-panel px-6 py-4 rounded border border-[#d4af37] text-xs font-mono-code text-[#f1d27a] shadow-2xl flex items-center gap-3">
+      <span id="toast-msg">Notificação</span>
+    </div>
+  </div>
+
+  <!-- Lottie Web (Vector Animation Engine) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <!-- Premium Media Controller (Higgsfield loops) -->
+  <script src="assets/neotheon-premium/integration/premium-media.js"></script>
+  <!-- Interactive Script -->
+  <script src="app.js"></script>
+</body>
+</html>

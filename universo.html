@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>UNIVERSO & SEASON 1 — MIDNIGHT CITY | Égide de Avalon</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  
+  <!-- Meta & OpenGraph -->
+  <meta name="description" content="Explore a experiência cinematográfica de Midnight City: Londres Sob o Véu, a descida monumental para a Égide, o Conselho de Mármore, o Astrolábio Cósmico e as crônicas da Season 1.">
+  <meta property="og:title" content="UNIVERSO & SEASON 1 — MIDNIGHT CITY">
+  <meta property="og:description" content="Um mundo maior do que uma campanha. Da Londres oculta ao colapso do Submundo.">
+  <meta property="og:image" content="assets/banner_londres_night.png">
+  <meta name="theme-color" content="#020203">
+
+  <!-- Google Fonts: Cinzel & Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Estilos Globais do Projeto -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Módulo Isolado de Estilos de Luxo Universo -->
+  <link rel="stylesheet" href="universo.css">
+</head>
+<body class="universo-page">
+
+  <!-- Linha de Progresso Mobile no Topo -->
+  <div id="uni-mobile-progress" class="uni-mobile-progress" role="progressbar" aria-label="Progresso de leitura"></div>
+
+    <!-- ── GLOBAL HEADER ── -->
+  <header class="santioni-header">
+    <a href="index.html" class="brand-badge">
+      <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+      <div class="brand-text">
+        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-sub">Égide de Avalon</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <nav class="santioni-nav-pill" aria-label="Navegação Principal">
+        <a href="index.html" >INÍCIO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="universo.html" class="active text-[#f1d27a]">UNIVERSO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="poderes.html" >PODERES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="operacoes.html" >OPERAÇÕES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="banners.html" class="hover:text-[#f1d27a]">BANNERS</a>
+        <span class="pill-ornament">❖</span>
+        <a href="sistema.html" >SISTEMA</a>
+        <span class="pill-ornament">❖</span>
+        <a href="agente.html" >AGENTE</a>
+        <span class="pill-ornament">❖</span>
+        <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
+      </nav>
+
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+        DISCORD ↗
+      </a>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-[#cfc7b4] hover:text-white p-1 text-2xl font-mono-code focus:outline-none" aria-label="Abrir menu mobile">
+        ☰
+      </button>
+    </div>
+  </header>
+
+    <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-20 left-0 w-full z-50 bg-[#050608]/98 border-b border-[#d4af37]/20 px-6 py-6 space-y-3 text-xs font-cinzel uppercase tracking-widest backdrop-blur-xl">
+    <a href="index.html" class="block py-2 text-[#cfc7b4] hover:text-white">Início</a>
+    <a href="universo.html" class="block py-2 text-[#f1d27a] font-bold">Universo & Cosmologia</a>
+    <a href="poderes.html" class="block py-2 text-[#cfc7b4] hover:text-white">Poderes & Individualidades</a>
+    <a href="operacoes.html" class="block py-2 text-[#cfc7b4] hover:text-white">❖ Operações (Missões)</a>
+    <a href="banners.html" class="block py-2 text-[#cfc7b4] hover:text-white">✦ Banners Míticos</a>
+    <a href="operacoes.html?view=novato" class="block py-2 text-[#cfc7b4] hover:text-[#f1d27a]">◈ Novato Premium</a>
+    <a href="sistema.html" class="block py-2 text-[#cfc7b4] hover:text-white">Sistema & Guias</a>
+    <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
+    <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
+    <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
+    </div>
+  </div>
+
+  <main class="relative z-10">
+
+    <!-- ==========================================================================
+         ATO I — ABERTURA: LONDRES SOB A TEMPESTADE ARCANA (HERO PROCEDURAL COM CHUVA)
+         ========================================================================== -->
+    <section id="hero" class="uni-hero-viewport" aria-label="Abertura do Universo: Tempestade Arcana sobre Londres">
+      <canvas id="uni-hero-canvas" class="uni-hero-canvas"></canvas>
+      <div class="uni-hero-overlay"></div>
+      <div class="uni-hero-content">
+        <div class="uni-hero-badge font-mono-tech">
+          <span>✦</span>
+          <span>CENÁRIO VIVO & COSMOLOGIA DE AVALON</span>
+          <span>✦</span>
+        </div>
+        <h1 class="uni-hero-title font-cinzel-title">
+          UNIVERSO & LORE
+        </h1>
+        <p class="uni-hero-lead font-editorial-body">
+          O mundo mortal caminha cego pelas ruas de Londres. Mas sob a névoa fria e a chuva inclemente, deuses respiram, pactos são cobrados e a Égide vigia o que não pode ser revelado.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 text-xs font-cinzel uppercase tracking-wider">
+          <a href="#proposta" class="btn-gold px-6 py-3 rounded text-[11px] font-bold tracking-widest inline-flex items-center gap-2">
+            <span>EXPLORAR O CENÁRIO</span>
+            <span>↓</span>
+          </a>
+          <a href="#londres" class="px-5 py-3 rounded border border-white/20 bg-white/5 hover:border-[#d4af37] hover:text-[#f1d27a] transition-all text-[11px] tracking-widest text-[#cfc7b4] inline-flex items-center gap-2">
+            <span>LONDRES SOB O VÉU</span>
+            <span>➔</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO II — "EU POSSO JOGAR AQUI?" (FILOSOFIA DO JOGO)
+         ========================================================================== -->
+    <section id="proposta" class="uni-section-proposta" aria-label="Filosofia de jogo">
+      <div class="uni-proposta-card">
+        <div class="text-center mb-6">
+          <span class="text-[11px] font-mono-tech uppercase tracking-[0.35em] text-[#d4af37]">
+            ✦ FILOSOFIA & EXPERIÊNCIA DE JOGO ✦
+          </span>
+          <h2 class="font-cinzel-title text-2xl sm:text-3xl md:text-4xl font-black text-white mt-2 uppercase">
+            COMO É JOGAR POR AQUI?
+          </h2>
+        </div>
+
+        <div class="font-editorial-body text-base sm:text-lg text-[#ded8cb] leading-relaxed space-y-4 text-justify sm:text-left">
+          <p>
+            Jogar RPG deveria ser uma experiência divertida, empolgante, e que desse espaço para que você construa o seu personagem com a profundidade que desejar, sem exigir que você abra mão do seu tempo livre como se fosse um segundo emprego.
+          </p>
+          <p>
+            Nossa proposta é construir um espaço acolhedor e maduro para que você encontre o seu lazer fora da rotina adulta, sem a pressão de obrigações diárias mecânicas.
+          </p>
+          <p>
+            Aqui você poderá participar das grandes campanhas épicas, com narrativa densa de mesa convencional, engajar em crossovers e operações temporárias de menor compromisso, ou simplesmente desenvolver a história e a vida cotidiana do seu próprio agente.
+          </p>
+          <p>
+            Nosso sistema foi forjado para atender tanto ao jogador que busca desafios táticos e mistérios complexos quanto àquele que deseja apenas escrever boas cenas sem a pressão de otimização de ficha.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO II — LONDRES SOB O VÉU (EXPLORAÇÃO URBANA INTERATIVA)
+         ========================================================================== -->
+    <section id="londres" class="uni-section-urban" aria-label="Londres Sob o Véu">
+      
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+          ✦ EXPLORAÇÃO URBANA INTERATIVA ✦
+        </span>
+        <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-6 uppercase">
+          LONDRES SOB O VÉU
+        </h2>
+        <div class="font-editorial-body text-lg sm:text-xl text-[#ded8cb] leading-relaxed space-y-4 text-left sm:text-center">
+          <p>
+            A maior parte das pessoas conhece Londres por aquilo que consegue ver: edifícios góticos espremidos entre torres de vidro, o trânsito frenético, o Tâmisa dividindo a metrópole e os pubs que atravessaram gerações. Para elas, o inexplicável ainda encontra desculpas convenientes: um clarão no céu é uma tempestade, um corpo em um beco é violência comum, um sumiço é escolha pessoal.
+          </p>
+          <p>
+            Mas existe uma segunda Londres coexistindo nos mesmos endereços. Deuses cruzam o metrô sem serem identificados. Semideuses trabalham em escritórios e bebem ao lado de mortais que jamais suspeitarão de sua linhagem. Criaturas antigas habitam porões de museus, seitas crescem dentro de instituições respeitáveis e os portais mais vitais do mundo sobrenatural permanecem ocultos atrás de portas cotidianas.
+          </p>
+          <p>
+            Londres não é apenas o pano de fundo de Midnight City; ela vive e respira entre as missões. Personagens constroem laços, investigam boatos, criam rivalidades ou simplesmente vivem o cotidiano que subsiste quando ninguém está tentando impedir o fim do mundo.
+          </p>
+          <p class="text-[#f8e48b] italic font-semibold">
+            E para garantir que essa Londres oculta não rompa o tecido da realidade mortal, existe a Égide de Avalon.
+          </p>
+        </div>
+      </div>
+
+      <!-- Interface da Cidade com Pinos Interativos -->
+      <div class="uni-urban-wrapper" aria-label="Mapa visual de Londres sob o Véu">
+        <img src="assets/londres_panorama_mj.png" alt="Panorama urbano de Londres sob o Véu com a névoa e torres de Canary Wharf" class="uni-urban-img" loading="lazy">
+        <div class="uni-urban-vignette"></div>
+
+        <!-- Hotspot 1: The Crossroads (Soho) -->
+        <button class="uni-hotspot" style="top: 56%; left: 34%;" data-spot="crossroads" aria-label="Abrir detalhes de The Crossroads no Soho">
+          <div class="uni-hotspot-beacon">
+            <div class="uni-hotspot-ripple"></div>
+            <div class="uni-hotspot-dot"></div>
+          </div>
+          <span class="uni-hotspot-tag">The Crossroads (Soho)</span>
+        </button>
+
+        <!-- Hotspot 2: Docas Abandonadas do Tâmisa -->
+        <button class="uni-hotspot" style="top: 70%; left: 66%;" data-spot="docks" aria-label="Abrir detalhes das Docas do Tâmisa">
+          <div class="uni-hotspot-beacon">
+            <div class="uni-hotspot-ripple"></div>
+            <div class="uni-hotspot-dot"></div>
+          </div>
+          <span class="uni-hotspot-tag">Docas do Tâmisa</span>
+        </button>
+
+        <!-- Hotspot 3: Westminster & Criptopórticos -->
+        <button class="uni-hotspot" style="top: 46%; left: 50%;" data-spot="westminster" aria-label="Abrir detalhes de Westminster e Criptopórticos">
+          <div class="uni-hotspot-beacon">
+            <div class="uni-hotspot-ripple"></div>
+            <div class="uni-hotspot-dot"></div>
+          </div>
+          <span class="uni-hotspot-tag">Westminster</span>
+        </button>
+
+        <!-- Hotspot 4: Cemitério de Highgate -->
+        <button class="uni-hotspot" style="top: 36%; left: 20%;" data-spot="highgate" aria-label="Abrir detalhes do Cemitério de Highgate">
+          <div class="uni-hotspot-beacon">
+            <div class="uni-hotspot-ripple"></div>
+            <div class="uni-hotspot-dot"></div>
+          </div>
+          <span class="uni-hotspot-tag">Highgate</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO III — A DESCIDA PARA A ÉGIDE (PINNED SCROLL 250vh SEM DUPLICAÇÃO)
+         ========================================================================== -->
+    <section id="descent-container" class="uni-descent-container" aria-label="A Descida para as Profundezas da Égide">
+      <div class="uni-descent-stage">
+        
+        <!-- Camada Subterrânea Strata (Sem repetir imagem de Londres!) -->
+        <div class="uni-descent-strata"></div>
+
+        <!-- Camada de Escuridão Tectônica -->
+        <div id="descent-darkness" class="uni-descent-darkness"></div>
+
+        <!-- Camada do Grande Hall de Avalon (Surge Monumental com Iluminação Dourada) -->
+        <img id="descent-hall" src="assets/cidadela_avalon_mj.png" alt="O Grande Hall de Avalon e a arquitetura monumental subterrânea" class="uni-descent-layer-hall" loading="lazy">
+
+        <!-- Indicador de Profundidade Lateral Chanfrado -->
+        <div class="uni-depth-meter" aria-hidden="true">
+          <div class="uni-depth-line-wrap">
+            <div id="depth-fill" class="uni-depth-progress-fill"></div>
+            <div id="depth-pip" class="uni-depth-pip"></div>
+          </div>
+          <div class="uni-depth-readout">
+            <span id="depth-label" class="uni-depth-label">SUPERFÍCIE</span>
+            <span id="depth-value" class="uni-depth-val">0 m</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO IV — A ÉGIDE DE AVALON & OS 9 OFÍCIOS (DIAGRAMAÇÃO EDITORIAL)
+         ========================================================================== -->
+    <section id="egide" class="uni-section-egide" aria-label="A Égide de Avalon">
+      <div class="uni-egide-backdrop" style="background-image: url('assets/cidadela_avalon_mj.png');"></div>
+
+      <div class="uni-egide-content">
+        <div class="max-w-4xl mx-auto text-center mb-10">
+          <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+            ✦ A ORDEM NAS PROFUNDEZAS ✦
+          </span>
+          <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4 uppercase">
+            A ÉGIDE DE AVALON
+          </h2>
+          <p class="font-editorial-body text-lg text-[#ded8cb]">
+            Sob as fundações de Londres repousa o bastião que impede que o mundo mortal e o cosmos colidam.
+          </p>
+        </div>
+
+        <!-- Diagramação Editorial da Égide (Luxury Codex Spread) -->
+        <div class="uni-egide-editorial-grid">
+          
+          <!-- Card 01: A Ordem Oculta -->
+          <article class="uni-egide-card">
+            <span class="uni-egide-card-num">01 // PROTOCOLO DE INTERVENÇÃO</span>
+            <h3 class="uni-egide-card-title">A Ordem Oculta</h3>
+            <p class="uni-egide-card-body">
+              A Égide é a organização do mundo sobrenatural sediada nas profundezas de Londres, responsável por agir quando aquilo que deveria permanecer nas sombras ameaça romper o equilíbrio entre os mortais e as entidades do além. É através dela que agentes são despachados para missões de investigação, contenção e confronto que frequentemente iniciam nas ruas da cidade e culminam em planos que sequer pertencem à realidade humana.
+            </p>
+          </article>
+
+          <!-- Card 02: A Coexistência Forçada -->
+          <article class="uni-egide-card">
+            <span class="uni-egide-card-num">02 // ALIANÇA SOBRENATURAL</span>
+            <h3 class="uni-egide-card-title">A Coexistência Forçada</h3>
+            <p class="uni-egide-card-body">
+              Seus corredores de mármore e obsidiana reúnem linhagens que jamais dividiriam o mesmo teto em qualquer outra conjuntura. Semideuses gregos e romanos, magos teurgos, médiuns, caçadores e especialistas místicos operam sob uma rígida constituição, consciente de que nenhuma dessas forças sobreviveria isoladamente perante os horrores que espreitam no vácuo.
+            </p>
+          </article>
+
+          <!-- Card 03: A Biblioteca Submersa -->
+          <article class="uni-egide-card">
+            <span class="uni-egide-card-num">ARQUIVOS ANCESTRAIS</span>
+            <h3 class="uni-egide-card-title">A Biblioteca Submersa</h3>
+            <p class="uni-egide-card-body">
+              Nas galerias lacradas sob o Rio Tâmisa repousa a lendária Biblioteca de Alexandria, resgatada antes de sua destruição física no mundo antigo. Não se trata de um mero arquivo bibliográfico: seus códices guardam nomes verdadeiros de divindades esquecidas, profecias seladas em chumbo e segredos tão perigosos que até os próprios deuses do Olimpo preferiram apagar de suas memórias.
+            </p>
+          </article>
+
+          <!-- Card 04: O Vértice do Poder -->
+          <article class="uni-egide-card">
+            <span class="uni-egide-card-num">SUPREMACIA EXECUTIVA</span>
+            <h3 class="uni-egide-card-title">O Conselho de Mármore</h3>
+            <p class="uni-egide-card-body">
+              No topo inquestionável dessa estrutura sentam-se as Sete Cadeiras de Mármore. Seus integrantes não atuam como burocratas: suas votações determinam quais ameaças serão silenciadas, quais agentes serão sacrificados e até onde a Ordem avançará para preservar o Véu. E é exatamente no coração desse conselho que as fissuras do destino começaram a se abrir.
+            </p>
+          </article>
+
+          <!-- Citação Editorial em Destaque -->
+          <div class="uni-egide-quote-box">
+            <p class="uni-egide-quote-text">
+              “Nenhuma dessas forças conseguiria permanecer completamente isolada das demais... E para impedir que a vida comum desmorone sob a verdade cósmica, existe a Égide de Avalon.”
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Linha dos 9 Símbolos dos Ofícios (Grid 9 colunas desktop / 3x3 tablet & mobile) -->
+        <div class="text-center mt-12 mb-4">
+          <span class="text-xs font-cinzel tracking-[0.3em] text-[#f8e48b] uppercase font-bold">
+            OS NOVE OFÍCIOS DA ORDEM (SELECIONE PARA ABRIR O DOSSIÊ)
+          </span>
+        </div>
+        
+        <div class="uni-oficios-grid" role="region" aria-label="Nove Ofícios da Égide">
+          
+          <!-- 1. Custódios -->
+          <button class="uni-oficio-btn" data-oficio="custodio" aria-label="Abrir dossiê do ofício Custódios">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2L4 5V11C4 16.5 7.5 21.5 12 22C16.5 21.5 20 16.5 20 11V5L12 2Z" />
+                <path d="M12 7V17M9 10L15 10" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Custódios</span>
+          </button>
+
+          <!-- 2. Vigilantes -->
+          <button class="uni-oficio-btn" data-oficio="vigilante" aria-label="Abrir dossiê do ofício Vigilantes">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M1 12S5 5 12 5S23 12 23 12S19 19 12 19S1 12 1 12Z" />
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="12" cy="12" r="6" stroke-dasharray="2 2" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Vigilantes</span>
+          </button>
+
+          <!-- 3. Arcanistas -->
+          <button class="uni-oficio-btn" data-oficio="arcanista" aria-label="Abrir dossiê do ofício Arcanistas">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                <circle cx="12" cy="12" r="2.5" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Arcanistas</span>
+          </button>
+
+          <!-- 4. Inquisidores -->
+          <button class="uni-oficio-btn" data-oficio="inquisidor" aria-label="Abrir dossiê do ofício Inquisidores">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 3V21M7 7H17M4 13L7 7L10 13C10 14.5 8.5 15 7 15C5.5 15 4 14.5 4 13ZM14 13L17 7L20 13C20 14.5 18.5 15 17 15C15.5 15 14 14.5 14 13Z" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Inquisidores</span>
+          </button>
+
+          <!-- 5. Mediadores -->
+          <button class="uni-oficio-btn" data-oficio="mediador" aria-label="Abrir dossiê do ofício Mediadores">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="8" />
+                <path d="M12 4C12 8 8 12 4 12M12 20C12 16 16 12 20 12" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Mediadores</span>
+          </button>
+
+          <!-- 6. Tecelões do Véu -->
+          <button class="uni-oficio-btn" data-oficio="tecelao" aria-label="Abrir dossiê do ofício Tecelões do Véu">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" />
+                <polygon points="12,6 18,9.5 18,14.5 12,18 6,14.5 6,9.5" />
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <line x1="2" y1="8.5" x2="22" y2="15.5" />
+                <line x1="2" y1="15.5" x2="22" y2="8.5" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Tecelões</span>
+          </button>
+
+          <!-- 7. Arquivistas -->
+          <button class="uni-oficio-btn" data-oficio="arquivista" aria-label="Abrir dossiê do ofício Arquivistas">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5V19.5Z" />
+                <line x1="9" y1="7" x2="15" y2="7" />
+                <line x1="9" y1="11" x2="15" y2="11" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Arquivistas</span>
+          </button>
+
+          <!-- 8. Artífices de Ébano -->
+          <button class="uni-oficio-btn" data-oficio="artifice" aria-label="Abrir dossiê do ofício Artífices de Ébano">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 5H18L20 8H4L6 5Z" />
+                <path d="M5 8V14C5 17 8 19 12 19C16 19 19 17 19 14V8" />
+                <line x1="12" y1="19" x2="12" y2="22" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Artífices</span>
+          </button>
+
+          <!-- 9. Sanctificadores -->
+          <button class="uni-oficio-btn" data-oficio="sanctificador" aria-label="Abrir dossiê do ofício Sanctificadores">
+            <div class="uni-oficio-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 16.5L5.5 21L7.5 13.5L2 9H9L12 2Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <span class="uni-oficio-name">Sanctificadores</span>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO IV.1 — O CONSELHO DE MÁRMORE (TRONOS INTERATIVOS & DOSSIÊS)
+         ========================================================================== -->
+    <section id="conselho" class="uni-section-council" aria-label="Os Tronos do Conselho de Mármore">
+      <div class="max-w-4xl mx-auto text-center mb-10">
+        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+          ✦ AS SETE CADEIRAS SOBERANAS ✦
+        </span>
+        <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4 uppercase">
+          O CONSELHO DE MÁRMORE
+        </h2>
+        <p class="font-editorial-body text-lg text-[#ded8cb]">
+          A liderança suprema da Égide. Clique em cada trono para inspecionar os dossiês canônicos, identidades civis e segredos das Sete Cadeiras.
+        </p>
+      </div>
+
+      <!-- Interface dos Tronos com Foco e Iluminação -->
+      <div class="uni-council-interface" aria-label="Mesa do Conselho de Mármore">
+        <img src="assets/tronos_conselho_mj.png" alt="A Sala Monumental do Conselho de Mármore com os sete tronos de julgamento" class="uni-council-bg" loading="lazy">
+
+        <!-- Cadeira 1: A Lança - Sr. Eric Bauman -->
+        <button class="uni-seat-spot" style="top: 45%; left: 16%;" data-seat-id="bauman" aria-label="Cadeira da Lança: Sr. Eric Bauman">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M14.5 17.5L3 6V3H6L17.5 14.5" />
+              <path d="M13 19L19 13M16 16L20 20" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">A Lança: Sr. Bauman</span>
+        </button>
+
+        <!-- Cadeira 2: A Torre - Selene Telamon -->
+        <button class="uni-seat-spot" style="top: 38%; left: 28%;" data-seat-id="telamon" aria-label="Cadeira da Torre: Selene Telamon">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 22H18M9 22V6L12 2L15 6V22M9 10H15M9 14H15" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">A Torre: Selene</span>
+        </button>
+
+        <!-- Cadeira 3: O Arquivista - Rowan Escardos -->
+        <button class="uni-seat-spot" style="top: 33%; left: 39%;" data-seat-id="scardos" aria-label="Cadeira do Arquivista: Rowan Escardos">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5V19.5Z" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">O Arquivista: Rowan</span>
+        </button>
+
+        <!-- Cadeira 4: O Julgador - Lukas Ekantor -->
+        <button class="uni-seat-spot" style="top: 32%; left: 50%;" data-seat-id="ekantor" aria-label="Cadeira do Julgador: Lukas Ekantor">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <line x1="12" y1="3" x2="12" y2="21" />
+              <path d="M7 8H17M4 13L7 8L10 13ZM14 13L17 8L20 13Z" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">O Julgador: Lukas</span>
+        </button>
+
+        <!-- Cadeira 5: O Véu - Hector Vermillion -->
+        <button class="uni-seat-spot" style="top: 35%; left: 61%;" data-seat-id="vermillion" aria-label="Cadeira do Véu: Hector Vermillion">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">O Véu: Vermillion</span>
+        </button>
+
+        <!-- Cadeira 6: O Mediador - Alexandre Magno -->
+        <button class="uni-seat-spot" style="top: 40%; left: 73%;" data-seat-id="magno" aria-label="Cadeira do Mediador: Alexandre Magno">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="8" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">O Mediador: Alexandre</span>
+        </button>
+
+        <!-- Cadeira 7: O Oráculo - William Kovacs -->
+        <button class="uni-seat-spot" style="top: 46%; left: 84%;" data-seat-id="kovacs" aria-label="Cadeira do Oráculo: William Kovacs">
+          <div class="uni-seat-marker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+            </svg>
+          </div>
+          <span class="uni-seat-label">O Oráculo: Kovacs</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO V — MAPA DO COSMOS (PADRÃO HONKAI: STAR RAIL)
+         ========================================================================== -->
+    <section id="cosmologia" class="uni-section-cosmology" aria-label="Mapa Cosmológico">
+      <!-- Fundo Dinâmico em Canvas Estelar com Paralaxe -->
+      <canvas id="cosmic-canvas" class="uni-cosmic-canvas"></canvas>
+      <div class="uni-cosmic-vignette"></div>
+
+      <!-- Top-Left HUD (Estilo Honkai: "• Mundos / Cosmologia") -->
+      <div class="uni-astrolabe-hud">
+        <span>✦</span>
+        <span>COSMOLOGIA & MUNDOS</span>
+      </div>
+
+      <div class="uni-cosmic-header">
+        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+          ✦ HIERARQUIA PRIMORDIAL DO COSMO ✦
+        </span>
+        <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4 uppercase">
+          O TEAR DA VIDA & A RODA DO TEMPO
+        </h2>
+        <p class="font-editorial-body text-lg sm:text-xl text-[#ded8cb]">
+          Acima da Égide e dos deuses, o universo é sustentado por geometrias astrais além da compreensão mortal. Explore as esferas sagradas da criação.
+        </p>
+      </div>
+
+      <!-- Palco Estelar Interativo com Órbitas SVG e Esferas Celestes (Honkai Style) -->
+      <div class="uni-honkai-stage" aria-label="Rede Cosmológica de Midnight City">
+        
+        <!-- SVG de Órbitas Douradas Elegantes e Arcos de Astrolábio -->
+        <svg class="uni-honkai-svg" viewBox="0 0 1200 800" fill="none" preserveAspectRatio="xMidYMid meet">
+          <!-- Órbitas Elípticas Principais -->
+          <ellipse cx="600" cy="400" rx="520" ry="290" class="uni-orbit-line" />
+          <ellipse cx="600" cy="400" rx="380" ry="210" class="uni-orbit-dashed" />
+          <ellipse cx="600" cy="400" rx="220" ry="120" class="uni-orbit-line" opacity="0.4" />
+
+          <!-- Linhas de Conexão Arcanas entre os Mundos -->
+          <line x1="600" y1="120" x2="280" y2="280" class="uni-orbit-dashed" />
+          <line x1="600" y1="120" x2="920" y2="380" class="uni-orbit-dashed" />
+          <line x1="280" y1="280" x2="360" y2="550" class="uni-orbit-dashed" />
+          <line x1="920" y1="380" x2="740" y2="680" class="uni-orbit-dashed" />
+          <line x1="360" y1="550" x2="740" y2="680" class="uni-orbit-dashed" />
+
+          <!-- Gráficos de Astrolábio e Cruzamentos de Mira -->
+          <circle cx="600" cy="120" r="54" class="uni-orbit-dashed" opacity="0.3" />
+          <circle cx="280" cy="280" r="54" class="uni-orbit-dashed" opacity="0.3" />
+          <circle cx="920" cy="380" r="54" class="uni-orbit-dashed" opacity="0.3" />
+          <circle cx="360" cy="550" r="54" class="uni-orbit-dashed" opacity="0.3" />
+          <circle cx="740" cy="680" r="54" class="uni-orbit-dashed" opacity="0.3" />
+
+          <!-- Contas Estelares Orbitais (Satélites) -->
+          <circle cx="410" cy="170" r="3" class="uni-orbit-bead" />
+          <circle cx="830" cy="250" r="3.5" class="uni-orbit-bead" />
+          <circle cx="160" cy="400" r="2.5" class="uni-orbit-bead" />
+          <circle cx="1060" cy="470" r="3" class="uni-orbit-bead" />
+          <circle cx="510" cy="620" r="3.5" class="uni-orbit-bead" />
+        </svg>
+
+        <!-- 1. O Criador (Caos Primordial) -->
+        <button class="uni-honkai-entity" style="top: 15%; left: 50%;" data-cosmo-key="creator" aria-label="Abrir esfera O Criador">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-creator">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v4M12 19v4M1 12h4M19 12h4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M4.2 19.8l2.8-2.8M17 7l2.8-2.8" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">O Criador (Caos)</span>
+              <span class="uni-callout-sub">✦ Origem Extraplanar</span>
+            </div>
+          </div>
+        </button>
+
+        <!-- 2. Os Princípios Celestiais (Os Quatro Arquitetos) -->
+        <button class="uni-honkai-entity" style="top: 35%; left: 24%;" data-cosmo-key="architects" aria-label="Abrir esfera Os Quatro Arquitetos">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-architects">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12,2 22,12 12,22 2,12" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">Quatro Arquitetos</span>
+              <span class="uni-callout-sub">✦ Princípios Celestiais</span>
+            </div>
+          </div>
+        </button>
+
+        <!-- 3. Os Celestiais (Deuses Olimpianos) -->
+        <button class="uni-honkai-entity" style="top: 48%; left: 76%;" data-cosmo-key="celestials" aria-label="Abrir esfera Deuses Celestiais">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-celestials">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="7" />
+                <line x1="12" y1="1" x2="12" y2="4" />
+                <line x1="12" y1="20" x2="12" y2="23" />
+                <line x1="1" y1="12" x2="4" y2="12" />
+                <line x1="20" y1="12" x2="23" y2="12" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">Celestiais (Deuses)</span>
+              <span class="uni-callout-sub">✦ Entidades Moldadas</span>
+            </div>
+          </div>
+        </button>
+
+        <!-- 4. Os Perpétuos (Sete Forças Primordiais) -->
+        <button class="uni-honkai-entity" style="top: 68%; left: 30%;" data-cosmo-key="perpetuals" aria-label="Abrir esfera Os Perpétuos">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-perpetuals">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L15 8L22 9L17 14L18 21L12 17L6 21L7 14L2 9L9 8L12 2Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">Os Perpétuos</span>
+              <span class="uni-callout-sub">✦ 7 Forças Indomáveis</span>
+            </div>
+          </div>
+        </button>
+
+        <!-- 5. Os Mortais (Humanidade & Semideuses) -->
+        <button class="uni-honkai-entity" style="top: 85%; left: 62%;" data-cosmo-key="mortals" aria-label="Abrir esfera Os Mortais">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-mortals">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">Os Mortais</span>
+              <span class="uni-callout-sub">✦ O Eixo do Livre Arbítrio</span>
+            </div>
+          </div>
+        </button>
+
+        <!-- 6. ANTI-VIDA (Entidade Oculta no Vazio Primordial Fora do Tear) -->
+        <button class="uni-honkai-entity uni-secret-entity entity-antivida" style="top: 10%; right: 7%;" data-cosmo-key="anti_life" aria-label="Revelar entidade oculta Anti-Vida">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-antivida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="8" stroke-dasharray="2 3" />
+                <circle cx="12" cy="12" r="3" fill="#ef4444" stroke="#ef4444" />
+                <line x1="2" y1="12" x2="6" y2="12" />
+                <line x1="18" y1="12" x2="22" y2="12" />
+                <line x1="12" y1="2" x2="12" y2="6" />
+                <line x1="12" y1="18" x2="12" y2="22" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">Anti-Vida</span>
+              <span class="uni-callout-sub">✦ O Fim de Todas as Coisas</span>
+            </div>
+          </div>
+        </button>
+
+        <!-- 7. FORSAKEN (Entidade Oculta no Vazio Periférico Fora do Tear) -->
+        <button class="uni-honkai-entity uni-secret-entity entity-forsaken" style="top: 78%; left: 8%;" data-cosmo-key="forsaken" aria-label="Revelar entidade oculta Forsaken">
+          <div class="uni-entity-reticle">
+            <div class="uni-reticle-ring-outer"></div>
+            <div class="uni-reticle-ring-inner"></div>
+            <div class="uni-reticle-crosshairs"></div>
+            <div class="uni-entity-orb orb-forsaken">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12,2 15,8 21,9 17,14 18,21 12,17 6,21 7,14 3,9 9,8" stroke="#10b981" />
+                <circle cx="12" cy="12" r="2.5" fill="#10b981" />
+              </svg>
+            </div>
+          </div>
+          <div class="uni-honkai-callout">
+            <div class="uni-callout-line"><div class="uni-callout-pip"></div></div>
+            <div class="uni-callout-text">
+              <span class="uni-callout-title">Forsaken</span>
+              <span class="uni-callout-sub">✦ Os Cinco Ascendidos</span>
+            </div>
+          </div>
+        </button>
+
+      </div>
+
+      <!-- Botão para Abrir Toda a Cosmologia Canônica no Modal -->
+      <div class="text-center mt-12 relative z-10">
+        <button id="uni-btn-read-full-cosmo" class="btn-gold px-8 py-3.5 rounded-full text-xs font-cinzel tracking-[0.25em] font-bold shadow-2xl inline-flex items-center gap-2.5">
+          <svg class="w-4 h-4 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>LER A COSMOLOGIA CANÔNICA COMPLETA</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ATO VI — SEASON 1: AS CRÔNICAS (WIDESCREEN LETTERBOX COM CENÁRIOS DINÂMICOS)
+         ========================================================================== -->
+    <section id="season1" class="uni-season-section" aria-label="Season 1 As Crônicas">
+      
+      <div class="uni-season-header">
+        <div class="uni-stamp-classified">CLASSIFIED // EYES ONLY // ÉGIDE DE AVALON</div>
+        <h2 class="font-cinzel-title text-4xl sm:text-5xl md:text-6xl font-black text-white mt-1 mb-3 uppercase">
+          SEASON 1: AS CRÔNICAS
+        </h2>
+        <p class="font-cinzel text-sm sm:text-base text-[#f8e48b] tracking-[0.3em] uppercase font-bold mb-2">
+          ANTES DE VALÍRIA. ANTES DO CAIRO.
+        </p>
+        <p class="font-editorial-body text-base text-[#cfc7b4] max-w-2xl mx-auto">
+          Os acontecimentos fundadores que deflagraram o despertar de Nyx e o colapso do submundo. Role a página para vivenciar cada cena.
+        </p>
+      </div>
+
+      <!-- SCROLLYTELLING CAPÍTULO 01 — O DESTINO DOS CONDENADOS -->
+      <div id="scrolly-cap1" class="uni-cinema-scene" aria-label="Capítulo 1: O Destino dos Condenados">
+        <div class="uni-cinema-stage">
+          
+          <!-- Stack de Imagens Dinâmicas em Cross-Fade -->
+          <div class="uni-cinema-bg-stack">
+            <img src="assets/crossroads_soho_mj.png" alt="O Rito do Vinho no clube de Dionísio" class="uni-cinema-bg-img is-active" loading="lazy">
+            <img src="assets/jonathan provocando.png" alt="Jonathan provocando Selene e Rowan" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/eric e a condenacao.png" alt="Bauman empunhando a Lança das Almas" class="uni-cinema-bg-img" loading="lazy">
+          </div>
+
+          <div id="scrolly-overlay-cap1" class="uni-cinema-overlay-tint"></div>
+          <div class="uni-cinema-vignette"></div>
+
+          <!-- Beat 1: O Rito do Vinho -->
+          <article class="uni-cinema-beat is-active">
+            <div class="uni-beat-tagline">
+              <span>CENA I</span>
+              <span>•</span>
+              <span>30 DE SETEMBRO</span>
+            </div>
+            <h3 class="uni-beat-title">O Rito do Vinho</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Todos os anos, na casa noturna de Dionísio no centro de Londres, os recrutas mais promissores da Égide eram atraídos para o Rito do Vinho. Por trás da música alta, corpos, drogas e bebidas, uma cerimônia secreta ocorria nas profundezas do prédio.
+            </p>
+          </article>
+
+          <!-- Beat 2: Os Olhos do Conselho -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA II</span>
+              <span>•</span>
+              <span>MÁSCARAS & VIGÍLIA</span>
+            </div>
+            <h3 class="uni-beat-title">Os Olhos do Conselho</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Vestindo trajes de gala e máscaras que encobriam suas faces, as Cadeiras de Mármore observavam cada movimento. Sem saber, jovens agentes recebiam desafios silenciosos, buscando prestígio diante dos veteranos sob o olhar atento da liderança.
+            </p>
+          </article>
+
+          <!-- Beat 3: Tensão no Salão -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA III</span>
+              <span>•</span>
+              <span>CONFLITO INTERNO</span>
+            </div>
+            <h3 class="uni-beat-title">Selene, Rowan e Jonathan</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              A tensão se concentrava em três figuras: Selene (a Torre), Rowan Escardos (Guardião de Alexandria) e Jonathan (o arrogante Arquivista). Jonathan provocava Selene com palavras baixas e insinuações, monitorando a conselheira até se tornar detestável aos olhos de todos.
+            </p>
+          </article>
+
+          <!-- Beat 4: A Acusação da Rosa Negra -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA IV</span>
+              <span>•</span>
+              <span>RUPTURA DO PACTO</span>
+            </div>
+            <h3 class="uni-beat-title">A Lança Toma a Palavra</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              O Sr. Eric Bauman, semideus ctônico impiedoso que carregava a Lança das Almas, interrompeu a festa. Ele declarou provas irrefutáveis de um agente infiltrado no Conselho vazando informações para a temida organização da Rosa Negra.
+            </p>
+          </article>
+
+          <!-- Beat 5: A Execução e o Apagão -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA V</span>
+              <span>•</span>
+              <span>PENITÊNCIA SUMÁRIA</span>
+            </div>
+            <h3 class="uni-beat-title">O Destino dos Condenados</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Seis Cadeiras votaram pela punição por alta traição. Contra todas as expectativas, Bauman decapitou Jonathan diante da festa; o último reflexo em seus olhos foi uma mulher de cabelos negros sorrindo com crueldade. Naquela noite, todos entenderam o destino dos condenados.
+            </p>
+            <div class="pt-2">
+              <button id="uni-btn-read-cap1" class="btn-gold px-5 py-2.5 rounded text-xs tracking-widest font-bold">
+                LER CAPÍTULO COMPLETO ↗
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           INTERLÚDIO MONUMENTAL: TRANSIÇÃO NÍTIDA ENTRE CAPÍTULO 01 E CAPÍTULO 02
+           ========================================================================== -->
+      <div class="uni-chapter-interlude" aria-label="Transição entre Capítulo 1 e Capítulo 2">
+        <div class="uni-interlude-badge">✦ TRANSIÇÃO DE CAPÍTULO ✦</div>
+        <h3 class="uni-interlude-title">O SILÊNCIO APÓS A MORTE DO ARQUIVISTA</h3>
+        <div class="uni-interlude-divider"><span>✦</span></div>
+        <p class="uni-interlude-quote">
+          “A cabeça de Jonathan rolou sobre o mármore em silêncio absoluto. A execução sumária decretada pela Lança não encerrou a conspiração: ela rasgou o véu do submundo e deflagrou um eco ensurdecedor no coração dos Deuses Celestiais. Alguém havia despertado.”
+        </p>
+        <div class="uni-interlude-actions">
+          <button id="uni-btn-jump-cap2" class="btn-gold px-7 py-3.5 rounded-full text-xs font-cinzel font-bold tracking-wider shadow-2xl">
+            INICIAR CAPÍTULO 02: A MÃE E O ASSASSINO ↓
+          </button>
+        </div>
+      </div>
+
+      <!-- SCROLLYTELLING CAPÍTULO 02 — A MÃE E O ASSASSINO -->
+      <div id="scrolly-cap2" class="uni-cinema-scene" aria-label="Capítulo 2: A Mãe e o Assassino">
+        <div class="uni-cinema-stage">
+          
+          <!-- Stack de Imagens Dinâmicas do Capítulo 2 -->
+          <div class="uni-cinema-bg-stack">
+            <img src="assets/despertar de nyx.png" alt="O Despertar da Deusa Primordial Nyx" class="uni-cinema-bg-img is-active" loading="lazy">
+            <img src="assets/o assassino no parque.png" alt="David Sanitas e o massacre de civis no parque" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/as rosas em chamas.png" alt="Lukas Ekantor e o incêndio da estufa no pub" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/noite caida.png" alt="Nyx revelada na dimensão de bolso" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/legio fulminata.png" alt="A Legio Fulminata e o colapso do Submundo" class="uni-cinema-bg-img" loading="lazy">
+          </div>
+
+          <div id="scrolly-overlay-cap2" class="uni-cinema-overlay-tint"></div>
+          <div class="uni-cinema-vignette"></div>
+
+          <!-- Beat 1: O Despertar -->
+          <article class="uni-cinema-beat is-active">
+            <div class="uni-beat-tagline">
+              <span>CENA I</span>
+              <span>•</span>
+              <span>ECO PRIMORDIAL</span>
+            </div>
+            <h3 class="uni-beat-title">Alguma Coisa Despertou</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Após a morte de Jonathan, uma onda de instabilidade abalou o submundo. Um zumbido persistente nos céus transformou-se em um estrondo cósmico de poder puro: a deusa primordial Nyx havia despertado de seu sono forçado.
+            </p>
+          </article>
+
+          <!-- Beat 2: O Massacre no Parque -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA II</span>
+              <span>•</span>
+              <span>AS MÃOS DO ASSASSINO</span>
+            </div>
+            <h3 class="uni-beat-title">David Sanitas & A Rosa Negra</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Liderados por Rowan Escardos, agentes enfrentaram David Sanitas em um parque de Londres. Ao vencerem, o horror se revelou: os clones feridos eram civis inocentes. No chão encharcado de sangue repousava a temível Rosa Negra, capaz de condenar almas ao Tártaro.
+            </p>
+          </article>
+
+          <!-- Beat 3: A Estufa em Chamas -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA III</span>
+              <span>•</span>
+              <span>LUKAS EKANTOR</span>
+            </div>
+            <h3 class="uni-beat-title">O Incêndio no Pub</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Com as pesquisas de Lukas Ekantor na Universidade de Londres, o grupo descobriu que as rosas vinham do Palácio da Noite e eram cultivadas sob o porão de um pub comum. Eles incendiaram a estufa letal, salvando os civis da fúria em chamas do conselheiro.
+            </p>
+          </article>
+
+          <!-- Beat 4: Nyx Revelada -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA IV</span>
+              <span>•</span>
+              <span>DIMENSÃO DE BOLSO</span>
+            </div>
+            <h3 class="uni-beat-title">A Arquiteta Caída</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Em um plano isolado, Nyx se revelou segurando o buquê de rosas. Ela não era uma deusa comum, mas sim uma das Quatro Arquitetas originais — a "Noite Eterna" —, destituída pelos princípios celestiais por defender que o livre arbítrio mortal era indispensável à criação.
+            </p>
+          </article>
+
+          <!-- Beat 5: Legio Fulminata & Colapso -->
+          <article class="uni-cinema-beat">
+            <div class="uni-beat-tagline">
+              <span>CENA V</span>
+              <span>•</span>
+              <span>PACTO ETERNO</span>
+            </div>
+            <h3 class="uni-beat-title">Legio Fulminata & O Colapso</h3>
+            <p class="uni-beat-prose font-editorial-body">
+              Zeus desejava reinar sem amarras; Nyx desejava a liberdade da criação. Ao aceitarem ajudá-la, os mortais receberam o batismo da Legio Fulminata: imortais contra causas naturais e além dos limites humanos. O preço foi o colapso total do Submundo...
+            </p>
+            <div class="pt-2">
+              <button id="uni-btn-read-cap2" class="btn-gold px-5 py-2.5 rounded text-xs tracking-widest font-bold">
+                LER CAPÍTULO COMPLETO ↗
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         ATO VII — ENCERRAMENTO: RETORNO AO PRESENTE & TEMPORADA 2
+         ========================================================================== -->
+    <section class="uni-section-outro" aria-label="Encerramento e Convocação">
+      <div class="max-w-4xl mx-auto">
+        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37] block mb-5">
+          ✦ O EQUILÍBRIO AGUARDA SUA ESCOLHA ✦
+        </span>
+        <h2 class="uni-outro-call font-cinzel-title">
+          AGORA, A ÉGIDE CONVOCA UMA NOVA GERAÇÃO.
+        </h2>
+        <div class="uni-outro-buttons">
+          <a href="index.html" class="btn-gold px-9 py-4 rounded-full text-xs font-cinzel tracking-[0.25em] font-bold shadow-2xl">
+            VER A TEMPORADA 2 ↗
+          </a>
+          <a href="operacoes.html" class="px-9 py-4 rounded-full text-xs font-cinzel tracking-[0.25em] font-bold border border-white/20 hover:border-[#d4af37] text-white hover:text-[#f8e48b] transition-all shadow-xl">
+            EXPLORAR OPERAÇÕES
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── GAVETA LATERAL UNIFICADA (DRAWER COM RETRATOS VERTICAIS) ── -->
+  <div id="uni-drawer-backdrop" class="uni-drawer-backdrop" tabindex="-1"></div>
+  <aside id="uni-drawer" class="uni-drawer" aria-labelledby="uni-drawer-title" role="dialog" aria-modal="true">
+    <div class="uni-drawer-header">
+      <div>
+        <span id="uni-drawer-category" class="text-[10px] font-mono-tech uppercase tracking-widest text-[#d4af37] block">DETALHES</span>
+        <h3 id="uni-drawer-title" class="font-cinzel-title text-lg font-bold text-white">Título</h3>
+      </div>
+      <button id="uni-drawer-close" class="uni-drawer-close" aria-label="Fechar painel lateral">✕</button>
+    </div>
+    <div id="uni-drawer-body" class="uni-drawer-body"></div>
+  </aside>
+
+  <!-- ── MODAL DE LEITURA COMPLETA ── -->
+  <div id="uni-modal" class="uni-modal" role="dialog" aria-modal="true" aria-labelledby="uni-modal-title">
+    <div class="uni-modal-card">
+      <div class="uni-modal-header">
+        <h3 id="uni-modal-title" class="font-cinzel-title text-xl font-bold text-white">Texto Integral</h3>
+        <button id="uni-modal-close" class="uni-drawer-close" aria-label="Fechar texto integral">✕</button>
+      </div>
+      <div id="uni-modal-body" class="uni-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL MIDNIGHT CITY
+       ========================================================================== -->
+  <footer class="neotheon-global-footer">
+    <div class="footer-container">
+      
+      <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand, Crest & Lore -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-badge">
+            <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+            <div class="footer-brand-info">
+              <span class="footer-brand-title">MIDNIGHT CITY</span>
+              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+            </div>
+          </div>
+          <p class="footer-lore-quote">
+            "Onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens."
+          </p>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">STATUS: VÉU ESTÁVEL // LONDRES, UK</span>
+          </div>
+        </div>
+
+        <!-- Column 2: O Universo & Crônicas -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
+            <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
+            <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
+            <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+            <li><a href="universo.html#season1" class="footer-nav-link">Crônicas da Season 1</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Diretrizes & Sistema -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <ul class="footer-links-list">
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: QG & Comunidade -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
+                <span>Servidor Discord Oficial</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Comunidade Yoble (309183)</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Mesas de Sexta no Roll20</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Inscrições de Missões</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+        </div>
+        <div class="footer-disclaimer">
+          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Script Isolado do Universo -->
+  <script src="universo.js" defer></script>
+</body>
+</html>

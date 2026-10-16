@@ -1,0 +1,13 @@
+.premium-stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#050608}
+.premium-stage picture,.premium-stage video{position:absolute;inset:0;width:100%;height:100%}
+.premium-stage img,.premium-stage video{width:100%;height:100%;object-fit:contain}
+.premium-stage video{opacity:0;transition:opacity .24s ease}
+.premium-stage.is-playing video{opacity:1}
+
+.presence-layered{position:relative;width:176px;height:170px;isolation:isolate;pointer-events:none}
+.presence-layered .presence-orb{position:absolute;width:126px;height:auto;left:0;top:24px;animation:presence-idle 4s ease-in-out infinite}
+.presence-layered .presence-broom{position:absolute;width:auto;height:155px;left:127px;top:4px;transform-origin:50% 38%;transform:rotate(-6deg)}
+.presence-layered.is-sweeping .presence-broom{animation:presence-sweep 1.8s ease-in-out 1}
+@keyframes presence-idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes presence-sweep{0%,100%{transform:rotate(-6deg)}25%,65%{transform:rotate(6deg)}45%,85%{transform:rotate(-6deg)}}
+@media(prefers-reduced-motion:reduce){.premium-stage video{transition:none}.presence-layered .presence-orb,.presence-layered.is-sweeping .presence-broom{animation:none}}

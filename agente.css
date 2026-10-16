@@ -1,0 +1,509 @@
+/* ==========================================================================
+   MIDNIGHT CITY — CENTRAL DE VIGILÂNCIA DA ÉGIDE (AGENTE)
+   Estilo corporativo, sofisticado e tático de alta performance
+   ========================================================================== */
+
+/* Paleta e Tokens de Vigilância */
+:root {
+  --ag-dark-bg: #050608;
+  --ag-dark-surface: #0a0b10;
+  --ag-dark-card: #0e1118;
+  --ag-border-subtle: rgba(212, 175, 55, 0.18);
+  --ag-border-glow: rgba(212, 175, 55, 0.45);
+  --ag-gold-primary: #d4af37;
+  --ag-gold-light: #f1d27a;
+  --ag-gold-dim: #8c6a2b;
+  --ag-cyan-tactical: #38bdf8;
+  --ag-cyan-glow: rgba(56, 189, 248, 0.25);
+  --ag-emerald-safe: #10b981;
+  --ag-amber-warn: #f59e0b;
+  --ag-crimson-danger: #ef4444;
+  --ag-text-bright: #f8fafc;
+  --ag-text-muted: #94a3b8;
+  --ag-text-dim: #64748b;
+  --ag-font-code: 'Courier New', Courier, monospace, 'IBM Plex Mono';
+}
+
+/* Tipografia Corporativa */
+.ag-mono {
+  font-family: var(--ag-font-code);
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   HERO SECTION TÁTICA DA CENTRAL DE VIGILÂNCIA
+   ========================================================================== */
+.ag-hero-section {
+  position: relative;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 175, 55, 0.08) 0%, rgba(5, 6, 8, 0.95) 70%, #050608 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  overflow: hidden;
+}
+
+.ag-hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.ag-hero-hud-card {
+  background: rgba(10, 11, 16, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ag-hero-hud-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.6);
+}
+
+.ag-hero-hud-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ag-hero-hud-card:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   CARDS DE ACESSO OPERACIONAL (TERMINAIS OFICIAIS COM BACKGROUND IMERSIVO)
+   ========================================================================== */
+.ag-resource-card {
+  position: relative;
+  min-height: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #08090d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagem de Fundo com Zoom Suave */
+.ag-card-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  filter: brightness(0.55) contrast(1.1) saturate(0.95);
+  z-index: 1;
+}
+
+.ag-resource-card:hover .ag-card-bg-img {
+  transform: scale(1.08);
+  filter: brightness(0.7) contrast(1.15) saturate(1.05);
+}
+
+/* Gradiente de Proteção de Legibilidade */
+.ag-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(6, 7, 10, 0.7) 0%, 
+    rgba(6, 7, 10, 0.4) 40%, 
+    rgba(6, 7, 10, 0.88) 75%, 
+    rgba(6, 7, 10, 0.98) 100%
+  );
+  z-index: 2;
+  transition: background 0.4s ease;
+}
+
+.ag-resource-card:hover .ag-card-overlay {
+  background: linear-gradient(180deg, 
+    rgba(6, 7, 10, 0.55) 0%, 
+    rgba(6, 7, 10, 0.25) 40%, 
+    rgba(6, 7, 10, 0.82) 75%, 
+    rgba(6, 7, 10, 0.96) 100%
+  );
+}
+
+/* Conteúdo sobreposto */
+.ag-card-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+/* Variações de Borda e Brilho Temático */
+.ag-resource-card.theme-gold:hover {
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 25px -4px rgba(212, 175, 55, 0.35);
+  transform: translateY(-4px);
+}
+
+.ag-resource-card.theme-cyan:hover {
+  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 25px -4px rgba(56, 189, 248, 0.35);
+  transform: translateY(-4px);
+}
+
+.ag-resource-card.theme-purple:hover {
+  border-color: rgba(168, 85, 247, 0.7);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 25px -4px rgba(168, 85, 247, 0.35);
+  transform: translateY(-4px);
+}
+
+.ag-resource-card.theme-emerald:hover {
+  border-color: rgba(16, 185, 129, 0.7);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 25px -4px rgba(16, 185, 129, 0.35);
+  transform: translateY(-4px);
+}
+
+/* Botão de Ação Tático no Rodapé do Card */
+.ag-terminal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--ag-font-code);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.theme-gold .ag-terminal-btn {
+  color: #f1d27a;
+  border-color: rgba(212, 175, 55, 0.3);
+}
+.theme-gold:hover .ag-terminal-btn {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+}
+
+.theme-cyan .ag-terminal-btn {
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+.theme-cyan:hover .ag-terminal-btn {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+}
+
+.theme-purple .ag-terminal-btn {
+  color: #d8b4fe;
+  border-color: rgba(168, 85, 247, 0.3);
+}
+.theme-purple:hover .ag-terminal-btn {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+.theme-emerald .ag-terminal-btn {
+  color: #6ee7b7;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.theme-emerald:hover .ag-terminal-btn {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.8);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================================================
+   PAINEL DO MAPA DE LONDRES COM FOTO AÉREA REAL
+   ========================================================================== */
+.ag-map-container {
+  background-color: #06070a;
+  background-image: 
+    linear-gradient(180deg, rgba(6, 8, 12, 0.72) 0%, rgba(6, 8, 12, 0.88) 100%),
+    url('assets/londres_panorama_mj.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid var(--ag-border-subtle);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.9), 0 12px 36px -8px rgba(0, 0, 0, 0.7);
+}
+
+/* Radar Sweep */
+.ag-radar-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.9);
+  animation: ag-sweep-anim 8s linear infinite;
+  pointer-events: none;
+  opacity: 0.65;
+  z-index: 5;
+}
+
+@keyframes ag-sweep-anim {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(600px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ag-radar-sweep { display: none; }
+}
+
+/* Distritos Interativos no SVG */
+.district-zone {
+  transition: fill 0.25s ease, stroke 0.25s ease, opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.district-zone:hover {
+  fill: rgba(212, 175, 55, 0.2) !important;
+  stroke: var(--ag-gold-light) !important;
+}
+
+.district-zone.active {
+  fill: rgba(56, 189, 248, 0.25) !important;
+  stroke: var(--ag-cyan-tactical) !important;
+  stroke-width: 2.5px !important;
+}
+
+/* Marcadores no Mapa */
+.district-pin {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.district-pin:hover, .district-pin.active {
+  transform: scale(1.25);
+}
+
+/* Badge de Risco */
+.ag-badge-risk {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--ag-font-code);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ag-badge-risk.critico {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+}
+
+.ag-badge-risk.alto {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #fcd34d;
+}
+
+.ag-badge-risk.moderado {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #7dd3fc;
+}
+
+.ag-badge-risk.baixo {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+}
+
+/* Gráfico de Telemetria SVG */
+.ag-chart-line {
+  stroke: var(--ag-cyan-tactical);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.4s ease;
+}
+
+.ag-chart-area {
+  fill: url(#chart-gradient);
+  opacity: 0.35;
+  transition: all 0.4s ease;
+}
+
+.ag-chart-dot {
+  fill: var(--ag-dark-bg);
+  stroke: var(--ag-cyan-tactical);
+  stroke-width: 2.5;
+  transition: r 0.2s ease, fill 0.2s ease;
+}
+
+.ag-chart-dot:hover {
+  r: 5;
+  fill: var(--ag-gold-light);
+  stroke: #ffffff;
+}
+
+/* Accordion de Diretrizes e Apoio */
+.ag-accordion-item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(14, 17, 24, 0.6);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.ag-accordion-item:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.ag-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.ag-accordion-header .ag-acc-icon {
+  transition: transform 0.3s ease;
+}
+
+.ag-accordion-item.open .ag-accordion-header .ag-acc-icon {
+  transform: rotate(180deg);
+}
+
+.ag-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+  padding: 0 1.25rem;
+}
+
+.ag-accordion-item.open .ag-accordion-body {
+  max-height: 2000px;
+  transition: max-height 0.4s ease-in-out;
+  padding-bottom: 1.25rem;
+}
+
+/* Indicadores de Photoplayer */
+.ag-photoplayer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-family: var(--ag-font-code);
+}
+
+.ag-photoplayer-pill.livre {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.ag-photoplayer-pill.restrito {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   CARDS DE BOLETINS DE CAMPANHA (COMPACTOS E TÁTICOS)
+   ========================================================================== */
+.ag-bulletin-card {
+  background: rgba(10, 11, 16, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ag-bulletin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+.ag-bulletin-card.valiria {
+  border-color: rgba(239, 68, 68, 0.25);
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.04) 0%, rgba(10, 11, 16, 0.85) 100%);
+}
+.ag-bulletin-card.valiria:hover {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 12px 25px -5px rgba(239, 68, 68, 0.2);
+}
+
+.ag-bulletin-card.cairo {
+  border-color: rgba(245, 158, 11, 0.25);
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.04) 0%, rgba(10, 11, 16, 0.85) 100%);
+}
+.ag-bulletin-card.cairo:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 12px 25px -5px rgba(245, 158, 11, 0.2);
+}
+
+.ag-bulletin-card.merlinianos {
+  border-color: rgba(168, 85, 247, 0.25);
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.04) 0%, rgba(10, 11, 16, 0.85) 100%);
+}
+.ag-bulletin-card.merlinianos:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 12px 25px -5px rgba(168, 85, 247, 0.2);
+}
+

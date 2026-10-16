@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>END GAME — Zonas de Risco Extremo | MIDNIGHT CITY RPG</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  
+  <!-- Meta & OpenGraph -->
+  <meta name="description" content="Zonas de End Game do RPG MIDNIGHT CITY: Abismo Espiral Patch 1.0 'Tempestade Eterna', Berçário Abissal 1.0 'Útero do Tártaro', Reino do Caos e Universo Simulado.">
+  <meta property="og:title" content="END GAME — MIDNIGHT CITY">
+  <meta property="og:description" content="Consulte os desafios disponíveis, prepare sua equipe e conheça as condições de cada incursão.">
+  <meta property="og:image" content="assets/valiria_mission.jpg">
+  <meta name="theme-color" content="#050608">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'gold-primary': '#d4af37',
+            'gold-light': '#f1d27a',
+            'gold-dim': '#8c6a2b',
+            'dark-bg': '#050608',
+            'dark-surface': '#0a0912',
+            'dark-veil': '#0f0e1a',
+            'crimson-pure': '#ef4444',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP Animation Library CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="endgame.css">
+  <link rel="stylesheet" href="assets/neotheon-premium/integration/premium-media.css">
+</head>
+<body class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased selection:bg-red-500/30 selection:text-red-200">
+
+  <!-- Dynamic WebGL Volumetric Mist Canvas -->
+  <canvas id="fog-canvas"></canvas>
+
+  <!-- ── GLOBAL HEADER ── -->
+  <header class="santioni-header">
+    <a href="index.html" class="brand-badge">
+      <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+      <div class="brand-text">
+        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-sub">Égide de Avalon</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <nav class="santioni-nav-pill" aria-label="Navegação Principal">
+        <a href="index.html">INÍCIO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="universo.html">UNIVERSO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="poderes.html">PODERES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="operacoes.html">OPERAÇÕES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="banners.html" class="hover:text-[#f1d27a]">BANNERS</a>
+        <span class="pill-ornament">❖</span>
+        <a href="sistema.html">SISTEMA</a>
+        <span class="pill-ornament">❖</span>
+        <a href="agente.html">AGENTE</a>
+        <span class="pill-ornament">❖</span>
+        <a href="endgame.html" class="active text-red-400 hover:text-red-300">ENDGAME</a>
+      </nav>
+
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+        DISCORD ↗
+      </a>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-[#cfc7b4] hover:text-white p-1 text-2xl font-mono-code focus:outline-none" aria-label="Abrir menu mobile">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Audio Equalizer Floating Button (Bottom Right) -->
+  <button id="audio-toggle-btn" class="audio-toggle-btn border-red-500/40" title="Toggle Áudio Atmosférico da Égide">
+    <div class="audio-bars">
+      <div class="audio-bar bg-red-500"></div>
+      <div class="audio-bar bg-red-500"></div>
+      <div class="audio-bar bg-red-500"></div>
+    </div>
+  </button>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-20 left-0 w-full z-50 bg-[#050608]/98 border-b border-[#d4af37]/20 px-6 py-6 space-y-3 text-xs font-cinzel uppercase tracking-widest backdrop-blur-xl">
+    <a href="index.html" class="block py-2 text-[#cfc7b4] hover:text-white">Início</a>
+    <a href="universo.html" class="block py-2 text-[#cfc7b4] hover:text-white">Universo & Cosmologia</a>
+    <a href="poderes.html" class="block py-2 text-[#cfc7b4] hover:text-white">Poderes & Individualidades</a>
+    <a href="operacoes.html" class="block py-2 text-[#cfc7b4] hover:text-white">❖ Operações (Missões)</a>
+    <a href="banners.html" class="block py-2 text-[#cfc7b4] hover:text-white">✦ Banners Míticos</a>
+    <a href="operacoes.html?view=novato" class="block py-2 text-[#cfc7b4] hover:text-[#f1d27a]">◈ Novato Premium</a>
+    <a href="sistema.html" class="block py-2 text-[#cfc7b4] hover:text-white">Sistema & Guias</a>
+    <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Central de Vigilância (Agente)</a>
+    <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300 font-bold">Endgame (Zonas de Risco)</a>
+    <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
+    </div>
+  </div>
+
+  <main class="relative z-10 pt-28 pb-24">
+
+    <!-- ==========================================================================
+         HERO SECTION: END GAME
+         ========================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 pb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/60 border border-red-500/40 text-red-300 text-[11px] font-mono uppercase tracking-widest mb-6">
+        <svg class="w-3.5 h-3.5 text-red-500 inline shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <span>ACESSO RESTRITO • PROTOCOLOS DE RISCO ÔMEGA</span>
+        <svg class="w-3.5 h-3.5 text-red-500 inline shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+
+      <h1 class="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-tight mb-4">
+        END <span class="text-red-500">GAME</span>
+      </h1>
+
+      <p class="text-sm sm:text-base md:text-lg text-[#cfc7b4] max-w-3xl mx-auto font-sans leading-relaxed">
+        Consulte os desafios disponíveis, prepare sua equipe e conheça as condições de cada incursão.
+      </p>
+    </section>
+
+    <!-- ==========================================================================
+         SELETOR DAS 4 MODALIDADES (GRID 2x2 NO DESKTOP / CARDS VISUAIS)
+         ========================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="eg-selector-grid" role="tablist" aria-label="Modalidades de End-game">
+        
+        <!-- Modalidade 1: Abismo Espiral -->
+        <button type="button" role="tab" id="tab-abismo-espiral" aria-selected="true" aria-controls="view-abismo-espiral" tabindex="0" class="eg-mode-card active text-left w-full" data-mode="abismo-espiral">
+          <div class="eg-card-bg-art" style="background-image: url('assets/neotheon-premium/endgame-abismo-640.webp');"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <span class="eg-badge vigente">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
+                EDIÇÃO VIGENTE
+              </span>
+              <span class="text-xs font-mono text-gray-400">PATCH 1.0</span>
+            </div>
+            <h3 class="font-cinzel text-2xl font-bold text-white mb-1">Abismo Espiral</h3>
+            <span class="text-xs font-mono text-red-400 block mb-3">Tempestade Eterna · vigente até 31/10/2026</span>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              O ponto nexus subterrâneo de Londres. Duas frentes simultâneas: Exploração tática de masmorra em 18 rotas ou Caça direta por ondas.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-red-400 relative z-10">
+            <span class="font-bold">Consultar edição</span>
+            <span>➔</span>
+          </div>
+        </button>
+
+        <!-- Modalidade 2: Berçário Abissal -->
+        <button type="button" role="tab" id="tab-bercario-abissal" aria-selected="false" aria-controls="view-bercario-abissal" tabindex="-1" class="eg-mode-card text-left w-full" data-mode="bercario-abissal">
+          <div class="eg-card-bg-art" style="background-image: url('assets/neotheon-premium/endgame-bercario-640.webp');"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <span class="eg-badge disponivel">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                DISPONÍVEL
+              </span>
+              <span class="text-xs font-mono text-gray-400">REQUER NÍVEL 7+</span>
+            </div>
+            <h3 class="font-cinzel text-2xl font-bold text-white mb-1">Berçário Abissal</h3>
+            <span class="text-xs font-mono text-purple-400 block mb-3">O Útero do Tártaro · 3 Níveis de Risco</span>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              A cratera pulsante onde monstros se regeneram. Desafio sequencial contínuo em esquadrão único contra Lâmia, Medusa e a Porca Carmoniana.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-purple-400 relative z-10">
+            <span class="font-bold">Consultar regras</span>
+            <span>➔</span>
+          </div>
+        </button>
+
+        <!-- Modalidade 3: Reino do Caos -->
+        <button type="button" role="tab" id="tab-reino-do-caos" aria-selected="false" aria-controls="view-reino-do-caos" tabindex="-1" class="eg-mode-card text-left w-full" data-mode="reino-do-caos">
+          <div class="eg-card-bg-art" style="background-image: url('assets/neotheon-premium/endgame-caos-640.webp');"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <span class="eg-badge periodica">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                MODALIDADE PERIÓDICA
+              </span>
+              <span class="text-xs font-mono text-gray-400">ROLL20 + DISCORD</span>
+            </div>
+            <h3 class="font-cinzel text-2xl font-bold text-white mb-1">Reino do Caos</h3>
+            <span class="text-xs font-mono text-amber-400 block mb-3">Aventuras Independentes · Trimestral</span>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              One-shots onde as regras, o sistema e as condições de sobrevivência são descobertos durante a sessão. Aberto a qualquer nível de ficha.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-amber-400 relative z-10">
+            <span class="font-bold">Conhecer modalidade</span>
+            <span>➔</span>
+          </div>
+        </button>
+
+        <!-- Modalidade 4: Universo Simulado -->
+        <button type="button" role="tab" id="tab-universo-simulado" aria-selected="false" aria-controls="view-universo-simulado" tabindex="-1" class="eg-mode-card text-left w-full" data-mode="universo-simulado">
+          <div class="eg-card-bg-art cosmic-bg"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <span class="eg-badge desenvolvimento">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                EM DESENVOLVIMENTO
+              </span>
+              <span class="text-xs font-mono text-gray-400">BREVEMENTE</span>
+            </div>
+            <h3 class="font-cinzel text-2xl font-bold text-white mb-1">Universo Simulado</h3>
+            <span class="text-xs font-mono text-sky-400 block mb-3">Inspirado em Honkai: Star Rail</span>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              Modalidade roguelike em fase de engenharia e balanceamento. Seu sistema, condições e espólios serão publicados oficialmente quando finalizados.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-sky-400 relative z-10">
+            <span class="font-bold">Ver apresentação</span>
+            <span>➔</span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Âncora de Conteúdo -->
+    <div id="eg-content-anchor" class="scroll-mt-24"></div>
+
+    <!-- ==========================================================================
+         DETALHE 1: ABISMO ESPIRAL (PATCH 1.0 TEMPESTADE ETERNA)
+         ========================================================================== -->
+    <section id="view-abismo-espiral" role="tabpanel" aria-labelledby="tab-abismo-espiral" class="eg-mode-view active max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Cenário Higgsfield Widescreen: Abismo Espiral (Seção Completa antes dos Informativos) -->
+      <div class="eg-scenario-hero-stage border border-red-500/30">
+        <div class="premium-stage w-full h-full"
+             data-premium-media
+             data-video-720="assets/neotheon-premium/endgame-abismo-720.mp4"
+             data-video-1080="assets/neotheon-premium/endgame-abismo-1080.mp4">
+          <picture>
+            <source type="image/webp" media="(min-width: 1280px)" srcset="assets/neotheon-premium/endgame-abismo-1920.webp">
+            <source type="image/webp" media="(min-width: 640px)" srcset="assets/neotheon-premium/endgame-abismo-1280.webp">
+            <source type="image/webp" srcset="assets/neotheon-premium/endgame-abismo-640.webp">
+            <img src="assets/neotheon-premium/endgame-abismo-fallback.jpg" alt="Cenário oficial do Abismo Espiral" loading="lazy">
+          </picture>
+          <video muted playsinline loop autoplay aria-hidden="true"></video>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Índice Lateral Sticky (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-3">
+          <div class="eg-sticky-index glass-panel p-5 rounded-2xl border border-red-500/30 space-y-2">
+            <span class="text-[10px] font-mono text-red-400 uppercase tracking-widest block mb-2 font-bold">
+              ÍNDICE DO ABISMO
+            </span>
+            <a href="#ab-historia" class="eg-index-link">1. Anomalia & História</a>
+            <a href="#ab-como-funciona" class="eg-index-link">2. Como vai funcionar</a>
+            <a href="#ab-equipes" class="eg-index-link">3. Formação de Equipe</a>
+            <a href="#ab-modificadores" class="eg-index-link">4. Bênção, Maldição & Caça</a>
+            <a href="#ab-andar-1" class="eg-index-link">5. 1º Andar (Resson)</a>
+            <a href="#ab-andar-1-exploracao" class="eg-index-link pl-4 text-xs text-gray-400">› Modo Exploração (18 Rotas)</a>
+            <a href="#ab-andar-1-caca" class="eg-index-link pl-4 text-xs text-gray-400">› Modo Caça (2 Salas / Ondas)</a>
+            <a href="#ab-andar-2" class="eg-index-link">6. 2º Andar (Poromiel)</a>
+            <a href="#ab-andar-2-invocadora" class="eg-index-link pl-4 text-xs text-gray-400">› Sala 1: Invocadora & Campe</a>
+            <a href="#ab-andar-2-espectros" class="eg-index-link pl-4 text-xs text-gray-400">› Sala 2: Espectros & Catriona</a>
+            <a href="#ab-espolios" class="eg-index-link">7. Espólios & Recompensas</a>
+          </div>
+        </aside>
+
+        <!-- Coluna de Leitura Integral (9 Cols) -->
+        <div class="lg:col-span-9 space-y-12">
+
+          <!-- Cabeçalho da Modalidade -->
+          <div class="border-b border-red-500/30 pb-6">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded bg-red-950/70 border border-red-500/40 text-red-300 text-[10px] font-mono uppercase">
+                PATCH 1.0 OFICIAL
+              </span>
+              <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[10px] font-mono uppercase">
+                VIGENTE ATÉ 31/10/2026
+              </span>
+            </div>
+            <h2 class="font-cinzel text-3xl sm:text-4xl font-black text-white uppercase">
+              ABISMO ESPIRAL: TEMPESTADE ETERNA
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-300 mt-2 font-sans leading-relaxed">
+              Em nosso RPG o Abismo Espiral será um evento de longa duração, e fixo, que é regularmente atualizado de acordo com o banner de evento sazonal. Sua localização dentro do jogo está em uma comunidade reservada com o seu nome "Abismo Espiral", onde os jogadores terão tópicos dos andares para realizar o cumprimento de seus respectivos desafios, que mudam de acordo com atualizações.
+            </p>
+          </div>
+
+          <!-- 1. História da Anomalia -->
+          <article id="ab-historia" class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 space-y-4">
+            <span class="text-[10px] font-mono text-red-400 uppercase tracking-widest block font-bold">LORE DO CENÁRIO</span>
+            <h3 class="font-cinzel text-2xl font-bold text-white">ANOMALIA { a história conhecida por trás do evento }</h3>
+            <div class="text-xs text-gray-300 space-y-3 leading-relaxed font-sans">
+              <p>
+                No mundo místico, Londres sempre foi conhecida como um grande catalisador das linhas de lei — declives dimensionais derivados da influência dos princípios celestiais, de onde a realidade tende a se transformar, e ser mais volúvel aos eventos que são considerados mágicos ou, por alguns, até mesmo divinos. Contudo, esses eventos foram se tornando cada vez mais fortes e frequentes desde que a cidade se tornou um grande aglomerado de uma série de seres não "humanos". Ao ponto que múltiplas crenças, realidades e dimensões colapsaram em um evento catastrófico, e nas profundezas das cidades subterrâneas londrinas, encontrou-se um ponto nexus, um marco zero, ou para ser mais direto, um buraco negro de onde seres desta e de outra época se transformam e surgem.
+              </p>
+              <p>
+                Como qualquer anomalia nascida de uma consequência desordenada, o seu crescimento também se deu desta maneira, e cumprindo sua natureza como buraco negro começou a engolir as civilizações submundanas londrinas. Isso aumentou os avanços dessa população que desejava viver na cidade de cima, e por extensão levou a que todas as forças mágicas da grande Londres encontrassem um meio termo para estudar e conter a anomalia.
+              </p>
+              <p>
+                Ainda não se sabe como destruí-la ou impedi-la, mas é possível usá-la como uma espécie de masmorra, onde se pode entrar, conquistar inimigos, obter recursos de outras épocas múltiplas vezes, tornando-se assim uma grande mina de ouro, fortalecendo indiretamente a população de baixo e despertando o interesse da cidade de cima. Com o tempo, notou-se que ao "invadi-la" e destruir suas ameaças (monstros e criaturas geradas em seu interior), levou a que a anomalia estagnasse, servindo, por hora, como uma solução provisória... desde que jovens corajosos continuassem a invadi-la, Londres de cima ou de baixo não teriam o que temer.
+              </p>
+              <p class="italic text-gray-400">
+                Ou será que deveriam?
+              </p>
+            </div>
+          </article>
+
+          <!-- 2. Como vai funcionar -->
+          <article id="ab-como-funciona" class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 space-y-4">
+            <span class="text-[10px] font-mono text-[#f1d27a] uppercase tracking-widest block font-bold">MECÂNICAS DE JOGO</span>
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">COMO VAI FUNCIONAR</h3>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              Os Agentes da Égide, junto a uma outra facção londrina da magia chamada de "Os Merlinianos", conseguiram catalogar que a morfologia do abismo pode variar entre duas grandes formas:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-black/40 border border-white/10 space-y-2">
+                <span class="text-xs font-mono text-[#f1d27a] font-bold uppercase">✦ MODO EXPLORAÇÃO</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  A primeira, similar a uma "masmorra", elabora um mapa onde força que seus invasores devam conquistar todos os objetivos; o inimigo final permite que seus integrantes consigam sair com vida.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-black/40 border border-red-500/30 space-y-2">
+                <span class="text-xs font-mono text-red-400 font-bold uppercase">✦ MODO CAÇA</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Será definida pelo excesso de combates aplicados no objetivo único de eliminar os invasores. Aqui, diferente da primeira forma, regalias focadas em testes e exploração serão pouco úteis, tendo um peso maior no foco de combatentes.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Formação de Equipe & Funções -->
+          <article id="ab-equipes" class="glass-panel p-6 sm:p-8 rounded-2xl border border-red-500/30 space-y-6">
+            <div>
+              <span class="text-[10px] font-mono text-[#f1d27a] uppercase tracking-widest block font-bold">FORMAÇÃO DE GRUPO</span>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">REGRAS PARA FORMAÇÃO DE EQUIPE</h3>
+              <p class="text-xs text-gray-300 mt-2 leading-relaxed font-sans">
+                Para realizar o desenvolvimento do Abismo, será necessária a formação de <strong>DUAS EQUIPES</strong>, sendo com até <strong>TRÊS INTEGRANTES</strong> em cada. Por consequência, o abismo pode ser feito com até três Jogadores (ou sozinho se tiver 6 personagens).
+              </p>
+              <p class="text-xs text-gray-400 mt-1 font-sans">
+                A conquista do Abismo pode tanto ser feita por texto em turnos na comunidade como estamos normalmente acostumados, ou pode ser solicitada para ocorrer por áudio conferência.
+              </p>
+            </div>
+
+            <!-- As 3 Funções Canônicas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-4 rounded-xl bg-black/40 border border-red-500/30 space-y-2">
+                <div class="flex items-center gap-2 text-red-400 font-bold text-sm font-cinzel">
+                  <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> CARRY (DPS)
+                </div>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Será o personagem responsável por fazer os ataques exclusivamente, restrito a buffar apenas a si mesmo pra causar mais dano e nada mais.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/40 border border-amber-500/30 space-y-2">
+                <div class="flex items-center gap-2 text-amber-400 font-bold text-sm font-cinzel">
+                  <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> TANK (BLINDAGEM)
+                </div>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Será o personagem responsável por fazer as defesas e buffar a equipe.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/40 border border-sky-500/30 space-y-2">
+                <div class="flex items-center gap-2 text-sky-400 font-bold text-sm font-cinzel">
+                  <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg> SUPORTE
+                </div>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Será o personagem responsável por curar, buffar e debuffar inimigos e aliados.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs font-mono text-gray-400">
+              * Cada andar poderá definir a dinâmica das equipes. Por exemplo, em andares com quatro salas a equipe 01 cuida das ímpares e a equipe 02 das pares. É importante ler e ater-se à descrição de cada edição para entender como isso irá ocorrer.
+            </div>
+          </article>
+
+          <!-- 4. Bênção, Maldição & Caça do Abismo -->
+          <article id="ab-modificadores" class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 space-y-6">
+            <div>
+              <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block font-bold">MODIFICADORES DO PATCH 1.0</span>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">BÊNÇÃO, MALDIÇÃO E CAÇA DO ABISMO</h3>
+              <p class="text-xs text-gray-300 mt-2 leading-relaxed font-sans">
+                A bênção do abismo será uma habilidade fortalecida fora do normal, que poderá gerar dano ou defesa adicional caso algum dos integrantes da equipe a possua, e fará uso desta no exercício deste poder. A caça do abismo é uma raça de personagem ao qual a fome do abismo é maior e por essa razão as salas se comportam de maneira atípica.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              
+              <!-- Bênção -->
+              <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 space-y-2">
+                <span class="text-xs font-mono text-emerald-400 font-bold uppercase block">✦ A BÊNÇÃO DE AMARI</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Todo personagem que seja um cavaleiro de dragão [vide: Empyrean] terá vantagem em combate. (O uso de magias menores e sinetes da lista de poderes Empyrean não sofrerá debuffs dos andares do abismo).
+                </p>
+              </div>
+
+              <!-- Maldição -->
+              <div class="p-4 rounded-xl bg-red-950/30 border border-red-500/30 space-y-2">
+                <span class="text-xs font-mono text-red-400 font-bold uppercase block">✦ ALVOS DE POROMIEL</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Todo e qualquer poder, bênção, artefato ou objeto que forneça ativos terão o seu custo de mana estritamente dobrado.
+                </p>
+              </div>
+
+              <!-- Caça do Abismo (Regra Oficial Atualizada) -->
+              <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-500/30 space-y-2">
+                <span class="text-xs font-mono text-purple-400 font-bold uppercase block">✦ CAÇA DO ABISMO</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  <strong>Filhos de Perpétuos:</strong> Quando houver um alvo de Caça do Abismo, todas as ondas previstas para a sala surgem simultaneamente. A quantidade de ondas é a definida na descrição daquela sala.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- 5. 1º Andar - Posto Avançado de Resson -->
+          <article id="ab-andar-1" class="glass-panel p-6 sm:p-8 rounded-2xl border border-red-500/40 space-y-8">
+            <div class="border-b border-white/10 pb-4">
+              <span class="px-2.5 py-0.5 rounded bg-red-950/70 border border-red-500/30 text-red-300 text-[10px] font-mono uppercase inline-block mb-2">
+                PISO 01 • FRONTEIRA NAVARRE / POROMIEL
+              </span>
+              <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-white uppercase">
+                1º ANDAR: POSTO AVANÇADO DE RESSON
+              </h3>
+              <p class="text-xs text-gray-300 mt-2 font-sans">
+                Neste andar do abismo a <strong>Equipe 01</strong> será responsável pela exploração, e a <strong>Equipe 02</strong> pelos combates. Caso a Equipe 01 entre em uma sala de combate, seus integrantes desaparecem e a Equipe 02 entra para enfrentar o monstro. Quando vencerem, desaparecem também e a Equipe 01 ressurge para continuar a exploração.
+              </p>
+            </div>
+
+            <!-- Modo Exploração com Mapa das 18 Rotas -->
+            <div id="ab-andar-1-exploracao" class="space-y-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="font-cinzel text-lg font-bold text-[#f1d27a]">MODO EXPLORAÇÃO: MAPA COM 18 ROTAS</h4>
+                  <p class="text-xs text-gray-400 font-sans">Masmorra interativa com testes de habilidade e bifurcações táticas.</p>
+                </div>
+                <button type="button" class="eg-expandable-map inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/20 text-xs font-mono text-[#f1d27a] hover:bg-white/10 transition-all" 
+                        data-full-src="assets/endgame/abismo_mapa_18_rotas.png" data-title="Mapa Tático de Exploração do 1º Andar (Resson) — 18 Rotas">
+                  <svg class="w-3.5 h-3.5 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                  <span>Ampliar Mapa</span>
+                </button>
+              </div>
+
+              <!-- Imagem Oficial em Alta Resolução do Mapa das 18 Rotas -->
+              <div class="relative rounded-xl overflow-hidden border border-white/15 bg-black/80 group">
+                <img src="assets/endgame/abismo_mapa_18_rotas.png" alt="Mapa Tático de Exploração de Resson - 18 Rotas" class="w-full h-auto max-h-[520px] object-contain object-center eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-[1.01] p-2" data-full-src="assets/endgame/abismo_mapa_18_rotas.png" data-title="Mapa Tático de Exploração de Resson — 1º Andar (18 Rotas)">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-mono pointer-events-none">
+                  <span class="text-white font-bold bg-black/80 px-2.5 py-1 rounded border border-white/20">POSTO AVANÇADO DE RESSON // MAPA 18 ROTAS (OFICIAL)</span>
+                  <span class="text-[#f1d27a] bg-black/80 px-2 py-1 rounded">Clique para ampliar em alta resolução</span>
+                </div>
+              </div>
+
+              <!-- Lista das 18 Rotas Integrais Conforme a Fonte Original -->
+              <div class="space-y-3 font-sans text-xs">
+                <h5 class="font-cinzel text-sm font-bold text-white uppercase border-b border-white/10 pb-2">
+                  LEGENDA E INSTRUÇÕES DAS 18 ROTAS (CONTEÚDO INTEGRAL):
+                </h5>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 1. Teste de Percepção [10]:</span>
+                    <p class="text-gray-300 font-sans text-xs">Em caso de falha será obrigatória a rota "2a". Se sucesso, poderá escolher a rota "2".</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 2 a 4. Exploração do Local:</span>
+                    <p class="text-gray-300 font-sans text-xs">Interpretação do ambiente (interior de uma torre de batalha, corpos de inimigos poromieleses mortos, e principalmente aliados navarrianos mortos).</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 2a a 3a. Exploração do Local:</span>
+                    <p class="text-gray-300 font-sans text-xs">Interpretação do ambiente (sala ampla destruída, escadas com sangue fresco).</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-red-500/30 space-y-1">
+                    <span class="text-red-400 font-bold">› 4a. Combate:</span>
+                    <p class="text-gray-300 font-sans text-xs">Enfrentar "Cavaleiro de Grifo Menor".</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 5a. Exploração:</span>
+                    <p class="text-gray-300 font-sans text-xs">Subir as escadas de madeira podres.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-emerald-500/30 space-y-1">
+                    <span class="text-emerald-400 font-bold">› 6a. Premiação Tática:</span>
+                    <p class="text-gray-300 font-sans text-xs">Analisar o mapa de cima, vendo a posição de todos os inimigos e aliados (+1 em testes de percepção pelo resto da exploração).</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 5. Teste de Percepção [19]:</span>
+                    <p class="text-gray-300 font-sans text-xs">Caso passe, pode escolher em qual portal irá cair em "6".</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 6. Portal de Teleporte:</span>
+                    <p class="text-gray-300 font-sans text-xs">Rode 1d20 para exploração: [1 a 5: rota "7c"; 6 a 10: rota "7b"; 11 a 15: rota "7a"; 16 a 20: rota "7"]. Sucesso no teste "5" permite escolher o destino final.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 7. Portal de Teleporte:</span>
+                    <p class="text-gray-300 font-sans text-xs">Vórtice dimensional ativo para deslocamento de esquadrão.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 8. Teste de Percepção [9]:</span>
+                    <p class="text-gray-300 font-sans text-xs">Sucesso: saberá que a rota "10" é passagem subterrânea segura que leva a "12A" (chefe deste mapa). Falha: acreditará que "10" está cheia de tesouros fáceis e terá que ir para "10" sem escolha.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 9. Bifurcação:</span>
+                    <p class="text-gray-300 font-sans text-xs">Perto demais dos inimigos em "9d", precisa ser sorrateiro e silencioso; avista entrada subterrânea em "10".</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-red-500/30 space-y-1">
+                    <span class="text-red-400 font-bold">› 9d. Combate:</span>
+                    <p class="text-gray-300 font-sans text-xs">Lute contra 2x "Cavaleiros de Grifo Menor".</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 10d. Exploração:</span>
+                    <p class="text-gray-300 font-sans text-xs">Avista no centro do pátio entre soldados [9b e 12a] um baú dourado que emana grande energia viva e recompensa.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 9c. Bifurcação:</span>
+                    <p class="text-gray-300 font-sans text-xs">Nota rota com portal em "8c" e "7c". Escadaria leva ao pátio do baú; soldados próximos exigem disfarce ou poder útil para evitar confronto imediato.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 10. Passagem Subterrânea:</span>
+                    <p class="text-gray-300 font-sans text-xs">Passagem segura com civis assustados escondendo-se dos poromieleses. Uma idosa chora pelo filho mais novo deixado para trás, avisando que Cordella prometeu dá-lo de alimento aos seus grifos.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-red-500/40 space-y-1">
+                    <span class="text-red-400 font-bold">› 11A. Infortúnio [Chefe do Abismo]:</span>
+                    <p class="text-gray-300 font-sans text-xs">Porta emperrada. Ao abrir, inimigos atacam primeiro: enfrente <strong>Catriona Cordella</strong> com 2x Cavaleiros de Grifo Menores. Ela convoca os demais cavaleiros das rotas 10a, 8a, 9a, 11a e 12a (total: 10x Cavaleiros de Grifo Menores!).</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 7a. Portal de Teleporte:</span>
+                    <p class="text-gray-300 font-sans text-xs">Com poderes de infiltração (invisibilidade etc.), lute com uma rota por vez! Caso contrário, enfrenta todos os cavaleiros de uma vez (10x Cavaleiros de Grifo Menores).</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-red-500/30 space-y-1">
+                    <span class="text-red-400 font-bold">› 8a a 12a. Combates de Contenção:</span>
+                    <p class="text-gray-300 font-sans text-xs">Cada uma destas rotas (8a, 9a, 10a, 11a, 12a) abriga 2x Cavaleiros de Grifo Menores.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-emerald-500/30 space-y-1">
+                    <span class="text-emerald-400 font-bold">› 10c / 10b / 12a. Baú Dourado:</span>
+                    <p class="text-gray-300 font-sans text-xs">Encontra bilhete explicando que a chave para sair da masmorra está em "13A" e a saída em "18". Concede uma <strong>medalha navarriana</strong> que dá ao grupo capacidade de <strong>voo sem custo de mana</strong>.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 11b a 16. Exploração:</span>
+                    <p class="text-gray-300 font-sans text-xs">Sobe escadas com cadáveres de civis navarrianos mortos; encontra a criança descrita pela senhora, 60% devorada por grifos.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-red-500/30 space-y-1">
+                    <span class="text-red-400 font-bold">› 15. Combate:</span>
+                    <p class="text-gray-300 font-sans text-xs">Lute contra 2x Cavaleiros de Grifo Menores distraídos entre si; o grupo terá vantagem de ação.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 14 a 12. Exploração:</span>
+                    <p class="text-gray-300 font-sans text-xs">Caso não tenha lutado contra Catriona, poderá avistá-la deste ponto estratégico.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-white/10 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 11. Teste de Sabedoria [13]:</span>
+                    <p class="text-gray-300 font-sans text-xs">Mecanismo de alavanca abre passagem secreta que se fecha devagar; exige supervelocidade para pegar a chave. Se falhar, terá que ir até Catriona Cordella em "11A" para pegar a chave reserva em seu corpo.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-[#d4af37]/40 space-y-1">
+                    <span class="text-[#f1d27a] font-bold">› 13A. Sala Secreta:</span>
+                    <p class="text-gray-300 font-sans text-xs">Muitos tesouros pesados; no centro, um maço de chaves visíveis para abrir a saída (18). Pegar mais do que as chaves fecha a porta automaticamente (exige teste de Vontade [3] para resistir à ganância).</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-black/40 border border-red-500/30 space-y-1">
+                    <span class="text-red-400 font-bold">› 17. Combate:</span>
+                    <p class="text-gray-300 font-sans text-xs">Lute contra 2x Cavaleiros de Grifo Menores discutindo assuntos banais.</p>
+                  </div>
+
+                  <div class="p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/40 space-y-1">
+                    <span class="text-emerald-400 font-bold">› 18. Saída Triunfal!</span>
+                    <p class="text-gray-200 font-sans text-xs">Parabéns, você conquistou o 1º Andar do Abismo!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                        <!-- Modo Caça (2 Salas com Ondas & Bestiário Integral) -->
+            <div id="ab-andar-1-caca" class="space-y-6 pt-6 border-t border-white/10">
+              <div>
+                <span class="text-xs font-mono text-red-400 font-bold uppercase block">SEM EXPLORAÇÃO // COMBATE DIRETO</span>
+                <h4 class="font-cinzel text-lg font-bold text-white">FORMA DA CAÇA — 1º ANDAR</h4>
+                <p class="text-xs text-gray-300 mt-1 font-sans leading-relaxed">
+                  Destinada apenas a quem quiser conquistá-lo sem exploração. As equipes enfrentam DUAS salas: a Equipe 01 assume a Sala 01 (Resson) e a Equipe 02 assume a Sala 02 (Tecarus). Cada sala possui três ondas de criaturas com escudos tártaros de ouro líquido.
+                </p>
+                <div class="p-3 mt-2 rounded bg-purple-950/40 border border-purple-500/30 text-xs font-mono text-purple-200">
+                  <strong>Efeito do Andar (Fome):</strong> A partir de agora todos deixam de ser capazes de usar imunidades. Caso exista um alvo de Caça do Abismo (Filho de Perpétuo), todas as ondas de monstros surgem simultaneamente de uma vez só!
+                </div>
+              </div>
+
+              <!-- Layout das Salas 01 e 02 -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Sala 01 -->
+                <div class="p-5 rounded-xl bg-black/50 border border-white/10 space-y-3">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono text-[#f1d27a] font-bold">SALA 01 • EQUIPE 01</span>
+                    <span class="text-[11px] font-mono text-gray-400">Pátio da Torre em Resson</span>
+                  </div>
+                  <div class="text-xs font-mono text-gray-300 space-y-1.5">
+                    <div>• <strong>Primeira Onda:</strong> 3x Aves de Estinfália [1x ataque cada]</div>
+                    <div>• <strong>Segunda Onda:</strong> 3x Harpias [3x ataques cada]</div>
+                    <div>• <strong>Terceira Onda:</strong> 2x Empousai [3x ataques cada]</div>
+                  </div>
+                  <div class="p-2.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/20 text-[11px] text-amber-200 font-sans">
+                    <strong>OBS:</strong> Cada uma terá um manto poromielês que fornece um escudo de ouro líquido vivo com <strong>200 HP</strong>, que só pode ser estourado por <strong>água</strong>.
+                  </div>
+                </div>
+
+                <!-- Sala 02 -->
+                <div class="p-5 rounded-xl bg-black/50 border border-white/10 space-y-3">
+                  <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono text-sky-400 font-bold">SALA 02 • EQUIPE 02</span>
+                    <span class="text-[11px] font-mono text-gray-400">Céu de Tecarus em Poromiel</span>
+                  </div>
+                  <div class="text-xs font-mono text-gray-300 space-y-1.5">
+                    <div>• <strong>Primeira Onda:</strong> 3x Aves de Estinfália [1x ataque cada]</div>
+                    <div>• <strong>Segunda Onda:</strong> 3x Harpias [3x ataques cada]</div>
+                    <div>• <strong>Terceira Onda:</strong> 2x Grifos sem Cavaleiros [5x ataques cada]</div>
+                  </div>
+                  <div class="p-2.5 rounded bg-sky-950/40 border border-sky-500/30 text-[11px] text-sky-200 font-sans">
+                    <strong>OBS:</strong> Combate em pleno voo (sem voo = queda mortal). Cada uma terá armadura poromielesa com escudo de ouro líquido vivo de <strong>400 HP</strong>, que só pode ser estourado por <strong>gelo ou eletricidade</strong>.
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Dossiê Canônico das 4 Criaturas das Ondas -->
+              <div class="space-y-4 pt-4 border-t border-white/10">
+                <span class="text-[10px] font-mono text-[#f1d27a] uppercase tracking-widest block font-bold">BESTIÁRIO DAS ONDAS DO 1º ANDAR (FICHAS CANÔNICAS COMPLETAS)</span>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  
+                  <!-- Criatura 1: Aves de Estinfália -->
+                  <div class="eg-monster-card p-4 space-y-3">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                      <span class="font-cinzel text-xs font-bold text-white">AVES DE ESTINFÁLIA</span>
+                      <span class="text-[9px] font-mono text-gray-400">10d6 • M. PEQUENO</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 leading-relaxed font-sans">
+                      Pássaros monstruosos de bico de bronze e penas metálicas afiadas. Disparam penas como dardos sônicos.
+                    </p>
+                    <div class="grid grid-cols-3 gap-1 font-mono text-[10px] text-center pt-1">
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">HP</span><span class="stat-val text-xs text-red-400">60</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">MANA</span><span class="stat-val text-xs text-purple-300">20</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">SPD</span><span class="stat-val text-xs text-emerald-400">100</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">ATK</span><span class="stat-val text-xs text-amber-300">30</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">DEF</span><span class="stat-val text-xs text-blue-300">6</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">CRIT</span><span class="stat-val text-xs text-pink-300">10%</span></div>
+                    </div>
+                    <div class="space-y-1 font-sans text-[10px] pt-1">
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-sky-400 block">› Rajada de Penas:</strong>
+                        Raio 6m (até 3 alvos): 20 dano bruto e -1 sucesso em testes de concentração. Custo: 15 mana. Cooldown: 3 turnos.
+                      </div>
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-purple-400 block">› Asa Estridente (Passivo):</strong>
+                        Inimigos em 4m sofrem +1 de dificuldade em testes de foco, magia ou precisão.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Criatura 2: Harpias -->
+                  <div class="eg-monster-card p-4 space-y-3">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                      <span class="font-cinzel text-xs font-bold text-white">HARPIAS</span>
+                      <span class="text-[9px] font-mono text-gray-400">10d5 • MÉDIO</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 leading-relaxed font-sans">
+                      Filhas do medo e desprezo com pernas de ave esquelética e asas de sombra. Atacam a mente e a fala de oradores e conjuradores.
+                    </p>
+                    <div class="grid grid-cols-3 gap-1 font-mono text-[10px] text-center pt-1">
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">HP</span><span class="stat-val text-xs text-red-400">80</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">MANA</span><span class="stat-val text-purple-300">70</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">SPD</span><span class="stat-val text-xs text-emerald-400">100</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">ATK</span><span class="stat-val text-xs text-amber-300">70</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">DEF</span><span class="stat-val text-xs text-blue-300">20</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">CRIT</span><span class="stat-val text-xs text-pink-300">40%</span></div>
+                    </div>
+                    <div class="space-y-1 font-sans text-[10px] pt-1">
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-red-400 block">› Grito Desgarrado:</strong>
+                        Raio 6m: teste mental [1d20, dif 10] ou sofrem -5 de dano (se 2+ graus de falha, perdem 1 ação). Custo: 15 mana. Cooldown: 2 turnos.
+                      </div>
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-purple-400 block">› Rastejante dos Céus (Passivo):</strong>
+                        Inimigos têm +1 de dificuldade em acertos contra a harpia em voo.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Criatura 3: Empousai -->
+                  <div class="eg-monster-card p-4 space-y-3">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                      <span class="font-cinzel text-xs font-bold text-white">EMPOUSAI</span>
+                      <span class="text-[9px] font-mono text-gray-400">10d6 • MÉDIO</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 leading-relaxed font-sans">
+                      Entidades do Submundo que usam beleza ilusória, pernas assimétricas e canções para sugar energia e quebrar defesas mentais.
+                    </p>
+                    <div class="grid grid-cols-3 gap-1 font-mono text-[10px] text-center pt-1">
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">HP</span><span class="stat-val text-xs text-red-400">90</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">MANA</span><span class="stat-val text-purple-300">70</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">SPD</span><span class="stat-val text-xs text-emerald-400">100/200</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">ATK</span><span class="stat-val text-xs text-amber-300">80</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">DEF</span><span class="stat-val text-xs text-blue-300">-20/5</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">CRIT</span><span class="stat-val text-xs text-pink-300">40%</span></div>
+                    </div>
+                    <div class="space-y-1 font-sans text-[10px] pt-1">
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-purple-400 block">› Beijo Sangrento:</strong>
+                        25 dano mágico (se encantado, suga 10 mana). Custo: 20 mana. Cooldown: 3 turnos.
+                      </div>
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-sky-400 block">› Encanto de Vultos:</strong>
+                        Teste mental [1d20, dif 8] ou age com -2 dados (paralisia se &lt;30% HP). Custo: 15 mana. Cooldown: 2 turnos.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Criatura 4: Grifos sem Cavaleiros -->
+                  <div class="eg-monster-card p-4 space-y-3">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                      <span class="font-cinzel text-xs font-bold text-white">GRIFOS LIVRES</span>
+                      <span class="text-[9px] font-mono text-gray-400">10d5 • GRANDE</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 leading-relaxed font-sans">
+                      Símbolo da vigilância divina. Garras de águia e torso de leão, atacam dos céus em alta velocidade, imunes a controle mental.
+                    </p>
+                    <div class="grid grid-cols-3 gap-1 font-mono text-[10px] text-center pt-1">
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">HP</span><span class="stat-val text-xs text-red-400">250</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">MANA</span><span class="stat-val text-purple-300">100</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">SPD</span><span class="stat-val text-xs text-emerald-400">160+40</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">ATK</span><span class="stat-val text-xs text-amber-300">130</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">DEF</span><span class="stat-val text-xs text-blue-300">80</span></div>
+                      <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">CRIT</span><span class="stat-val text-xs text-pink-300">30%</span></div>
+                    </div>
+                    <div class="space-y-1 font-sans text-[10px] pt-1">
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-amber-300 block">› Rasante Imperial:</strong>
+                        +30 ATK nesta ação. Se crítico, atordoa o alvo por 1 turno. Custo: 20 mana. Cooldown: 3 turnos.
+                      </div>
+                      <div class="p-1.5 rounded bg-black/40 border border-white/10">
+                        <strong class="font-mono text-sky-400 block">› Orgulho Áureo (Passivo):</strong>
+                        Imune a medo e controle mental. Ganha +10 DANO CRIT quando um aliado sofre crítico.
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </article>
+
+                    <!-- 6. 2º Andar - A Fúria de Poromiel (Dossiê Completo de Chefes) -->
+          <article id="ab-andar-2" class="glass-panel p-6 sm:p-8 rounded-2xl border border-red-500/50 space-y-8 bg-red-950/10">
+            <div class="border-b border-red-500/30 pb-4">
+              <span class="px-2.5 py-0.5 rounded bg-red-950/80 border border-red-500/50 text-red-200 text-[10px] font-mono uppercase inline-block mb-2">
+                PISO 02 • CLÍMAX DA TEMPESTADE ETERNA
+              </span>
+              <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-white uppercase">
+                2º ANDAR: A FÚRIA DE POROMIEL
+              </h3>
+              <p class="text-xs text-gray-300 mt-2 font-sans">
+                Neste andar, as equipes enfrentam DUAS salas em paralelo: a Equipe 01 vai nas salas 01~03 e a Equipe 02 nas salas 02~04. Cada uma terá um único monstro para aniquilar.
+              </p>
+              <div class="p-4 mt-3 rounded-xl bg-red-950/50 border border-red-500/40 text-xs font-mono text-red-200 space-y-1.5">
+                <div class="font-bold text-red-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> EFEITO DO ANDAR (MORTE):</div>
+                <div>• Todos os jogadores deixam de ser capazes de usar <strong>imunidades</strong>.</div>
+                <div>• Todas as habilidades ativas consomem o <strong>dobro de mana</strong> e seus atributos concedidos são <strong>reduzidos pela metade</strong>.</div>
+                <div>• <strong>Efeito na Sala do Espectro:</strong> O uso de cura pelos jogadores fará com que o Espectro copie a mesma quantidade regenerada para si de vida!</div>
+                <div>• <strong>Efeito contra Catriona:</strong> O uso de DOT (dano contínuo) contra Catriona Cordella fará com que ela resete imediatamente o cooldown de seu sinete!</div>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 SALA 01: A INVOCADORA & SACRIFÍCIO DE CAMPE
+                 ========================================== -->
+            <div id="ab-andar-2-invocadora" class="space-y-8">
+              <div class="border-b border-purple-500/30 pb-3 flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-purple-200">SALA 01: A INVOCADORA DE POROMIEL & SACRIFÍCIO DE CAMPE</h4>
+                  <p class="text-xs text-purple-300/80 font-sans mt-0.5">Ordem Estrita: Os Agentes devem derrotar a Invocadora (1ª Etapa) antes de despertar o confronto com Campe (2ª Etapa).</p>
+                </div>
+                <span class="text-xs font-mono text-purple-400 font-bold px-2.5 py-1 rounded bg-purple-950/60 border border-purple-500/40">ROTAÇÃO 01 // 2 ETAPAS</span>
+              </div>
+
+              <!-- Card 1: A Invocadora de Poromiel (1ª Etapa) -->
+              <div class="eg-monster-card border-purple p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/abismo_invocadora.png" alt="A Invocadora" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/abismo_invocadora.png" data-title="A Invocadora (Cavaleira de Poromiel) — 1ª Etapa da Sala 01">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-purple-200 bg-purple-950/90 border border-purple-500/50 px-2.5 py-1 rounded-full uppercase">1ª ETAPA • ENFRENTE PRIMEIRO</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-purple-300 bg-black/85 px-3 py-1 rounded border border-purple-500/30">A INVOCADORA</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-purple-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest font-bold block">1ª ETAPA // CONFRONTAR ANTES DE CAMPE</span>
+                          <h5 class="font-cinzel font-bold text-white text-xl">A INVOCADORA DE POROMIEL</h5>
+                        </div>
+                        <span class="text-[10px] font-mono text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded border border-purple-500/40 font-bold">CONJURADORA CTÔNICA</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Cavaleira de Poromiel portando um colar de metal londrino de rosas negras e vermelhas. Invoca criaturas vindas diretamente do submundo com devoção absoluta e inquestionável.
+                        </p>
+                        <div class="p-3 rounded-lg bg-purple-950/40 border border-purple-500/30 font-mono text-[11px] text-purple-200 space-y-1">
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-purple-300 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>1ª ETAPA OBRIGATÓRIA:</strong> Deve ser eliminada em primeiro lugar para dissipar o escudo do santuário e despertar Campe.</span></div>
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-purple-300 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>Imunidade Física:</strong> Não pode ser atacada por golpes físicos, APENAS MENTAIS!</span></div>
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-purple-300 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>Vínculo Vital:</strong> Para cada monstro invocado morto, ela perde 150 pontos de vida.</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Stats da Invocadora -->
+                    <div class="p-3 rounded-lg bg-black/50 border border-white/10 font-mono text-xs space-y-1.5">
+                      <div class="text-[11px] text-[#f1d27a] font-bold">STATUS DE SEMIDEUS (NÍVEL 10 - HP & DEF MAX):</div>
+                      <div class="grid grid-cols-4 sm:grid-cols-7 gap-1 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">900</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">800</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">130</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">130</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">180</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">10%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">70%</span></div>
+                      </div>
+                    </div>
+
+                    <!-- Invocação Canônica: Esqueletos Semi-Divinos -->
+                    <div class="p-3.5 rounded-lg bg-black/60 border border-purple-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-purple-300 font-bold">INVOCAÇÃO: ESQUELETOS SEMI-DIVINOS</span>
+                        <span class="text-gray-400">Rolagem: 14d3 • Grande***</span>
+                      </div>
+                      <p class="text-[11px] text-gray-300 font-sans leading-relaxed">
+                        Campeões ressuscitados arrancados do descanso. Empunham armas sagradas e mantêm memórias heróicas de suas antigas vidas.
+                      </p>
+                      <div class="grid grid-cols-3 sm:grid-cols-6 gap-1 text-center text-[10px]">
+                        <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">HP</span><span class="stat-val text-xs text-red-400">900</span></div>
+                        <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">MANA</span><span class="stat-val text-xs text-purple-300">0*</span></div>
+                        <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">SPD</span><span class="stat-val text-emerald-400">180</span></div>
+                        <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">ATK</span><span class="stat-val text-amber-300">260</span></div>
+                        <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">DEF</span><span class="stat-val text-blue-300">200</span></div>
+                        <div class="eg-stat-badge p-1"><span class="stat-label text-[8px]">CRIT</span><span class="stat-val text-pink-300">10/60%</span></div>
+                      </div>
+                      <div class="space-y-1 font-sans text-[10px] text-gray-300 pt-1">
+                        <div>• <strong>Retorno das Glórias:</strong> Mantém magias até nível 4 de sua antiga vida (até 2 por nível).</div>
+                        <div>• <strong>Conexão Etérea:</strong> Não possui mana própria; consome diretamente da reserva da Invocadora!</div>
+                        <div>• <strong>Alma Vinculada:</strong> Compartilha sentidos e visão com a Invocadora.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Card 2: Campe (A Carcereira do Tártaro) (2ª Etapa) -->
+              <div class="eg-monster-card border-red p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/abismo_campe.png" alt="Campe" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/abismo_campe.png" data-title="Campe (A Carcereira do Tártaro) — 2ª Etapa da Sala 01">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-red-200 bg-red-950/90 border border-red-500/50 px-2.5 py-1 rounded-full uppercase">2ª ETAPA • CLÍMAX DA SALA 01</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-red-400 bg-black/85 px-3 py-1 rounded border border-red-500/30">CAMPE // COLOSSO</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-red-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-red-400 uppercase tracking-widest font-bold block">2ª ETAPA // ENFRENTAR APÓS A INVOCADORA</span>
+                          <h5 class="font-cinzel font-bold text-red-200 text-xl">CAMPE: A CARCEREIRA DO TÁRTARO</h5>
+                        </div>
+                        <span class="text-[10px] font-mono text-red-400 font-bold bg-red-950/60 px-2.5 py-1 rounded border border-red-500/40">EXECUTORA DO OLIMPO</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Convocada quando um juramento divino é quebrado ou um titã ameaça renascer. Beleza mórbida com cabelos de víboras, torso de dragão envolto em serpentes vivas, asas demoníacas e cauda de escorpião jorrando veneno que queima até o espírito.
+                        </p>
+                        <div class="p-3 rounded-lg bg-red-950/30 border border-red-500/30 text-xs font-mono text-red-200 space-y-1">
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-red-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>ORDEM DE COMBATE:</strong> Desperta apenas após a derrota da Invocadora de Poromiel. Assume a arena com fúria titânica absoluta!</span></div>
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-red-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>Alvo Prioritário:</strong> Caso exista um <strong>Filho de Perpétuo</strong> na equipe, Campe se dedicará exclusivamente a persegui-lo e executá-lo com ódio ancestral!</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Ficha Técnica de Atributos -->
+                    <div class="p-3 rounded-lg bg-red-950/20 border border-red-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-[#f1d27a] font-bold">ROLAGEM: 15d4 [sugestão mestre]</span>
+                        <span class="text-red-300">PORTE: COLOSSO</span>
+                      </div>
+                      <div class="grid grid-cols-4 sm:grid-cols-7 gap-1 pt-0.5 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">1.000</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">300</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">150</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">600</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">550</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">80%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">150%</span></div>
+                      </div>
+                      <div class="text-[10px] text-gray-400 text-center font-mono">* DEF possui 40% MD. Etnia: Greco-romana | Devoção: Submundo.</div>
+                    </div>
+
+                    <!-- Habilidades Especiais -->
+                    <div class="space-y-2 text-xs font-sans">
+                      <h5 class="font-cinzel text-[11px] font-bold text-[#f1d27a] uppercase">HABILIDADES ESPECIAIS DE CAMPE:</h5>
+                      
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-red-400 font-bold block text-[11px]">➤ Flagelo das Sete Bocas [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          3 ataques simultâneos (+30 ATK cada). Teste de Constituição [1d20, dif 10]: falha = envenenado (-10 HP/turno por 2 rodadas, não acumula). Custo: 40 mana. Cooldown: 2 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-purple-400 font-bold block text-[11px]">➤ Chicote de Agonia [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Chicote arcano de fogo e sombra em cone de 6m: +50 ATK dano mágico, queimando no impacto e impondo <strong>+2 de dificuldade em ações no turno seguinte</strong>. Custo: 60 mana. Cooldown: 3 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-emerald-400 font-bold block text-[11px]">➤ Sangue Imortal [Passivo]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Regenera <strong>+15 de HP por turno</strong>, mesmo sob veneno, maldição ou debuffs. Não pode ser impedido exceto por selamento mágico ou poder divino direto.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 SALA 02: OS ESPECTROS DOS ERMOS & CATRIONA CORDELLA
+                 ========================================== -->
+            <div id="ab-andar-2-espectros" class="space-y-8 pt-6 border-t border-red-500/30">
+              <div class="border-b border-red-500/30 pb-3 flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h4 class="font-cinzel text-xl sm:text-2xl font-bold text-white">SALA 02: OS ESPECTROS DOS ERMOS & CATRIONA CORDELLA</h4>
+                  <p class="text-xs text-red-300/80 font-sans mt-0.5">Ordem Estrita: Exorcize os Espectros (1ª Etapa) antes de confrontar a Lâmina Gélida (2ª Etapa).</p>
+                </div>
+                <span class="text-xs font-mono text-red-400 font-bold px-2.5 py-1 rounded bg-red-950/60 border border-red-500/40">ROTAÇÃO 02 // CHEFE SUPREMO</span>
+              </div>
+
+              <!-- Card 1: Os Espectros dos Ermos (1ª Etapa) -->
+              <div id="ab-andar-2-espectro" class="eg-monster-card border-purple p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/abismo_espectro_ceifador.png" alt="Espectro Ceifador" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/abismo_espectro_ceifador.png" data-title="Os Espectros dos Ermos (Dimensão Sombria de Oberon) — 1ª Etapa da Sala 02">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-purple-200 bg-purple-950/90 border border-purple-500/50 px-2.5 py-1 rounded-full uppercase">1ª ETAPA • ENFRENTE PRIMEIRO</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-purple-300 bg-black/85 px-3 py-1 rounded border border-purple-500/30">ESPECTRO // OBERON</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-purple-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest font-bold block">1ª ETAPA // PURIFICAR ANTES DE CATRIONA</span>
+                          <h5 class="font-cinzel font-bold text-purple-200 text-xl">OS ESPECTROS DOS ERMOS</h5>
+                        </div>
+                        <span class="text-[10px] font-mono text-purple-400 font-bold bg-purple-950/60 px-2.5 py-1 rounded border border-purple-500/40">DIMENSÃO SOMBRIA</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Nascidos da dimensão sombria de Oberon, os Espectros são a própria antivida encarnada. Cobrem o ambiente com neblina negra e drenam a vontade de lutar.
+                        </p>
+                        <div class="p-3 rounded-lg bg-purple-950/40 border border-purple-500/30 font-mono text-[11px] text-purple-200 space-y-1">
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-purple-300 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>1ª ETAPA OBRIGATÓRIA:</strong> Os invasores devem purificar e selar os Espectros antes de avançar contra a torre gélida de Catriona Cordella.</span></div>
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-purple-300 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>ESPELHO DA CURA:</strong> O uso de qualquer cura pelos jogadores nesta sala faz com que o Espectro copie a mesma quantidade regenerada diretamente para sua vida!</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Ficha Técnica de Atributos -->
+                    <div class="p-3 rounded-lg bg-purple-950/20 border border-purple-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-[#f1d27a] font-bold">ROLAGEM: 17d3 [sugestão mestre]</span>
+                        <span class="text-purple-300">PORTE: GRANDE***</span>
+                      </div>
+                      <div class="grid grid-cols-4 sm:grid-cols-7 gap-1 pt-0.5 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">1.100</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">800</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">200</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">600</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">250</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">80%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">10%</span></div>
+                      </div>
+                    </div>
+
+                    <!-- Habilidades Especiais -->
+                    <div class="space-y-2 text-xs font-sans">
+                      <h5 class="font-cinzel text-[11px] font-bold text-[#f1d27a] uppercase">HABILIDADES DO ESPECTRO:</h5>
+                      
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-purple-300 font-bold block text-[11px]">➤ Névoa do Abismo [Passivo]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Todos os inimigos vivos perdem -3 HP por turno enquanto ele estiver presente (não é dano direto, não ativa contra-ataques).
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-red-400 font-bold block text-[11px]">➤ Drenagem Vital [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Raio de 10m: todos os inimigos perdem 10 HP, enquanto o Espectro recupera o valor total somado, <strong>podendo ultrapassar seu HP máximo!</strong> Custo: 35 mana. Cooldown: 2 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-indigo-400 font-bold block text-[11px]">➤ Eco das Trevas [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Libera onda de energia da Dimensão Sombria. Concede +20% DANO CRIT e <strong>retira 1 habilidade mágica ou efeito elemental ativo em até 2 alvos</strong>. Custo: 45 mana. Cooldown: 3 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-sky-400 font-bold block text-[11px]">➤ Intangibilidade Parcial [Passivo]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Pode tornar-se incorpóreo à vontade: <strong>ignora completamente danos físicos</strong>!
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-pink-400 font-bold block text-[11px]">➤ Fenda Sombria [Passivo / Evento de Morte]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Ao morrer, a menos que seja exorcizado no mesmo turno, abre uma fenda dimensional que invoca <strong>2 novos espectros por rodada</strong> até ser fechada com magia especializada!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Card 2: Catriona Cordella & Guarda de Grifos (2ª Etapa - Chefe Supremo) -->
+              <div id="ab-andar-2-cordella" class="eg-monster-card border-red p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/abismo_catriona_cordella.png" alt="Catriona Cordella" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/abismo_catriona_cordella.png" data-title="Catriona Cordella (A Lâmina Gélida) — Chefe Supremo do Abismo Espiral">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-amber-200 bg-amber-950/90 border border-amber-500/50 px-2.5 py-1 rounded-full uppercase">2ª ETAPA • CHEFE SUPREMO</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-[#f1d27a] bg-black/85 px-3 py-1 rounded border border-[#d4af37]/40">CATRIONA CORDELLA // GÉLIDA</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-red-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-amber-400 uppercase tracking-widest font-bold block">2ª ETAPA // CLÍMAX DO ABISMO ESPIRAL</span>
+                          <h5 class="font-cinzel font-bold text-white text-xl">CATRIONA CORDELLA (A LÂMINA GÉLIDA)</h5>
+                        </div>
+                        <span class="text-[10px] font-mono text-red-400 font-bold bg-red-950/60 px-2.5 py-1 rounded border border-red-500/40">CHEFE SUPREMO</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Vinda das montanhas geladas de Poromiel, Catriona é a encarnação da eficiência fria. Comanda o poder do Gelo e Breakheart para desacelerar, quebrar e congelar os Cavaleiros de Dragão antes de desferir o golpe final.
+                        </p>
+                        <div class="p-3 rounded-lg bg-red-950/30 border border-red-500/30 text-xs font-mono text-red-200 space-y-1">
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-amber-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>ORDEM DE COMBATE:</strong> Apenas após o fechamento da fenda dos Espectros os jogadores ganham acesso à câmara de Catriona.</span></div>
+                          <div class="flex items-start gap-1"><svg class="w-3 h-3 text-amber-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> <span><strong>Comportamento:</strong> Prioriza anular lideranças. Usa manipulação emocional para desorganizar a equipe, forçando aliados a atacarem entre si.</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Ficha Técnica de Atributos -->
+                    <div class="p-3 rounded-lg bg-red-950/20 border border-red-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-[#f1d27a] font-bold">ROLAGEM: 14d10 dif 3</span>
+                        <span class="text-red-400">CLASSIFICAÇÃO: CHEFE SUPREMO</span>
+                      </div>
+                      <div class="grid grid-cols-4 sm:grid-cols-7 gap-1 pt-0.5 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">6.800</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">900</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">310</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">1.200</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">850</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">60%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">160%</span></div>
+                      </div>
+                    </div>
+
+                    <!-- Habilidades Especiais -->
+                    <div class="space-y-2 text-xs font-sans">
+                      <h5 class="font-cinzel text-[11px] font-bold text-[#f1d27a] uppercase">HABILIDADES DE CATRIONA:</h5>
+                      
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-sky-400 font-bold block text-[11px]">➤ Geada Laminar [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Lâmina perfurante (+30 ATK, ignora 50 DEF). Aplica 'Congelamento Leve' por 1 turno: -30 SPD e -10% Taxa Crit. Alcance: 25m. Custo: 25 mana. Cooldown: 2 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-red-400 font-bold block text-[11px]">➤ Heartbreak [Ativo – Cooldown 2 turnos]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Drena mente do alvo: -50 ATK e -100 Mana por 2 turnos. Teste de Vontade [1d20, dif 10]: se falhar, luta sob ordens dela por 1 turno atacando o suporte aliado mais forte!
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-purple-400 font-bold block text-[11px]">➤ Garras de Cristal [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Mergulho de grifo em 20m. Teste de Agilidade [1d20, dif 12] ou fica 'Imobilizado' e sofre 20 dano de Gelo no início do turno por 2 turnos. Custo: 35 mana. Cooldown: 3 turnos.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- 3x Cavaleiros de Grifo -->
+                    <div class="p-3 rounded-lg bg-black/60 border border-white/10 space-y-2 font-mono text-xs">
+                      <div class="flex items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-white font-bold">3x CAVALEIROS DE GRIFO (GUARDA DE ELITE)</span>
+                        <span class="text-gray-400">13d10 t3</span>
+                      </div>
+                      <div class="text-[11px] text-gray-300 font-mono">
+                        1.200 HP • 500 Mana • 190 SPD • 600 DEF • 600 ATK • 50% Taxa Crit • 80% Dano Crit.
+                      </div>
+                      <div class="space-y-0.5 text-[10px] text-gray-400 font-sans">
+                        <div>• <strong>Investida Aérea:</strong> +20 ATK físico (Dano dobrado se alvo imobilizado).</div>
+                        <div>• <strong>Voo Evasivo:</strong> +20 DEF por 1 turno. Custo: 10 mana.</div>
+                        <div>• <strong>Chamado de Luta:</strong> +10 ATK e +10% Taxa Crit a aliado próximo.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </article>
+
+          <!-- 7. Espólios do Abismo Espiral -->
+          <article id="ab-espolios" class="p-6 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/40 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-[#f1d27a] font-bold uppercase">RECOMPENSAS OFICIAIS</span>
+              <span class="text-xs font-mono text-emerald-400 font-bold">* DOBRO NA 1ª CONQUISTA DO PERSONAGEM!</span>
+            </div>
+            <h3 class="font-cinzel text-xl font-bold text-white uppercase">ESPÓLIOS DO ABISMO ESPIRAL 1.0</h3>
+            <p class="text-xs text-gray-300 font-sans leading-relaxed">
+              O abismo fornecerá XP, Gold e orações celestiais para serem usadas nos banners temáticos sazonais, sendo este um dos poucos meios no RPG para se obter tal moeda:
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 font-mono text-xs text-center pt-2">
+              <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+                <span class="text-gray-400 block text-[10px]">EXPERIÊNCIA</span>
+                <span class="text-white font-bold text-sm">+1.500 XP</span>
+              </div>
+              <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+                <span class="text-gray-400 block text-[10px]">MOEDA CORRENTE</span>
+                <span class="text-amber-300 font-bold text-sm">600 Golds</span>
+              </div>
+              <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+                <span class="text-gray-400 block text-[10px]">INVOCAÇÃO</span>
+                <span class="text-[#f1d27a] font-bold text-sm">30 Orações</span>
+              </div>
+              <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+                <span class="text-gray-400 block text-[10px]">EQUIPAMENTOS</span>
+                <span class="text-purple-300 font-bold text-sm">4 Artefatos</span>
+              </div>
+              <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+                <span class="text-gray-400 block text-[10px]">APRIMORAMENTO</span>
+                <span class="text-emerald-400 font-bold text-sm">2x Joias Destino</span>
+              </div>
+            </div>
+
+            <div class="text-[11px] font-mono text-gray-400 pt-2 border-t border-white/10 space-y-1">
+              <div>• <strong>Detalhe dos Artefatos:</strong> 1x coroa, 1x mão, 1x corpo e 1x botas (liga e atributos sofrem sorteio normal de loja).</div>
+              <div>• <strong>Joias do Destino:</strong> Define 1x atributo principal e 1x sub-atributo; se combinada com outra joia, a segunda define 2x sub-atributos adicionais.</div>
+              <div>• <strong>Periodicidade:</strong> Conquista válida 1 única vez por mês por conta OFF (vence em 30 ou 31 de cada mês). Repetições no mesmo mês não fornecem espólios.</div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         DETALHE 2: BERÇÁRIO ABISSAL (1.0 O ÚTERO DO TÁRTARO)
+         ========================================================================== -->
+    <section id="view-bercario-abissal" role="tabpanel" aria-labelledby="tab-bercario-abissal" class="eg-mode-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Cenário Higgsfield Widescreen: Berçário Abissal (Seção Completa antes dos Informativos) -->
+      <div class="eg-scenario-hero-stage border border-purple-500/30">
+        <div class="premium-stage w-full h-full"
+             data-premium-media
+             data-video-720="assets/neotheon-premium/endgame-bercario-720.mp4"
+             data-video-1080="assets/neotheon-premium/endgame-bercario-1080.mp4">
+          <picture>
+            <source type="image/webp" media="(min-width: 1280px)" srcset="assets/neotheon-premium/endgame-bercario-1920.webp">
+            <source type="image/webp" media="(min-width: 640px)" srcset="assets/neotheon-premium/endgame-bercario-1280.webp">
+            <source type="image/webp" srcset="assets/neotheon-premium/endgame-bercario-640.webp">
+            <img src="assets/neotheon-premium/endgame-bercario-fallback.jpg" alt="Cenário oficial do Berçário Abissal" loading="lazy">
+          </picture>
+          <video muted playsinline loop autoplay aria-hidden="true"></video>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Índice Lateral Sticky (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-3">
+          <div class="eg-sticky-index glass-panel p-5 rounded-2xl border border-purple-500/30 space-y-2">
+            <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block mb-2 font-bold">
+              ÍNDICE DO BERÇÁRIO
+            </span>
+            <a href="#bc-historia" class="eg-index-link">1. A Invasão & História</a>
+            <a href="#bc-regras" class="eg-index-link">2. Regras de Combate</a>
+            <a href="#bc-riscos" class="eg-index-link">3. Os 3 Níveis de Risco</a>
+            <a href="#bc-modificadores" class="eg-index-link">4. Bênção, Maldição & Dádiva</a>
+            <a href="#bc-inimigos" class="eg-index-link">5. Os 3 Inimigos Canônicos</a>
+            <a href="#bc-espolios" class="eg-index-link">6. Tabela de Espólios</a>
+          </div>
+        </aside>
+
+        <!-- Coluna de Leitura Integral (9 Cols) -->
+        <div class="lg:col-span-9 space-y-12">
+          
+          
+
+          <!-- Cabeçalho -->
+          <div class="border-b border-purple-500/30 pb-6">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="px-2.5 py-1 rounded bg-purple-950/70 border border-purple-500/40 text-purple-300 text-[10px] font-mono uppercase">
+                BERÇÁRIO 1.0 • O ÚTERO DO TÁRTARO
+              </span>
+              <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono uppercase">
+                REQUER NÍVEL 7+
+              </span>
+            </div>
+            <h2 class="font-cinzel text-3xl sm:text-4xl font-black text-white uppercase">
+              BERÇÁRIO ABISSAL
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-300 mt-2 font-sans leading-relaxed">
+              O útero do Tártaro é um setor isolado que não funciona como cela, mas gerencia a renovação contínua dos monstros assassinados no mundo mortal. Os titãs chamavam de matriz; os deuses chamavam de erro; os carcereiros chamavam de necessidade. Uma vasta cratera viva onde o chão pulsa como carne petrificada.
+            </p>
+          </div>
+
+          <!-- 1. A Invasão & História -->
+          <article id="bc-historia" class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 space-y-4">
+            <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block font-bold">LORE DO EVENTO</span>
+            <h3 class="font-cinzel text-2xl font-bold text-white">A INVASÃO { a história conhecida por trás do evento }</h3>
+            <div class="text-xs text-gray-300 space-y-3 leading-relaxed font-sans">
+              <p>
+                O Berçário não é uma arena improvisada no Tártaro, nem uma zona de punição aleatória criada por capricho divino. Ele é um setor isolado do domínio primordial do Tártaro que passou a ser utilizado de forma sistemática após um problema crescente entre os deuses olímpicos: o aumento descontrolado do poder semidivino.
+              </p>
+              <p>
+                Com o passar dos séculos, as linhagens divinas deixaram de ser raridades heroicas e passaram a representar forças militares, políticas e instáveis demais para serem ignoradas. Semideuses não são humanos comuns e tampouco são deuses plenamente responsáveis. São vetores de desequilíbrio. Quando fortes demais, desafiam ordens. Quando fracos demais, tornam-se desperdício de herança divina.
+              </p>
+              <p>
+                O Berçário surge como solução pragmática, emergindo do Tártaro diretamente para um local aleatório do mapa onde existam muitos semideuses ou mortais poderosos demais, e portanto, uma ameaça contra o tear, o fluxo correto do destino e do tempo.
+              </p>
+              <p>
+                Além disso, o Berçário produz dados. O comportamento de cada equipe, suas escolhas táticas e sua eficiência sob pressão são observados e registrados por grandes agentes responsáveis pela administração das defesas na Égide de Avalon. Isso permite que o Conselho de Mármore identifique ameaças potenciais antes que elas se tornem incontroláveis caso uma guerra venha a acontecer.
+              </p>
+            </div>
+          </article>
+
+          <!-- 2. Regras de Combate -->
+          <article id="bc-regras" class="glass-panel p-6 sm:p-8 rounded-2xl border border-purple-500/30 space-y-6">
+            <div>
+              <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block font-bold">DIRETRIZES DE ENFRENTAMENTO</span>
+              <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">COMO VAI FUNCIONAR</h3>
+              <p class="text-xs text-gray-300 mt-1 font-sans">
+                Os Agentes convocados são de patente maior em seus próprios ofícios (requer nível 7) e enfrentam regras rígidas de combate contínuo:
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+              <div class="p-4 rounded-xl bg-black/40 border border-white/10 space-y-1.5">
+                <span class="font-mono text-purple-300 font-bold block">1. Ordem de Postagem & Agressão</span>
+                <p class="text-gray-300 leading-relaxed">
+                  A <strong>SPD dos personagens</strong> determina a ordem em que irão agir. Os monstros irão sempre preferir atacar <strong>SUPORTE &gt; CARRY &gt; TANK</strong>.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/40 border border-white/10 space-y-1.5">
+                <span class="font-mono text-purple-300 font-bold block">2. Formação da Equipe</span>
+                <p class="text-gray-300 leading-relaxed">
+                  Apenas <strong>uma equipe</strong> poderá ser formada, composta por <strong>até 4 personagens</strong>, distribuídos obrigatoriamente entre as classes: Carry, Tank e Suporte.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/40 border border-white/10 space-y-1.5">
+                <span class="font-mono text-purple-300 font-bold block">3. Combate sem Descanso</span>
+                <p class="text-gray-300 leading-relaxed">
+                  Três desafios sequenciais (Lâmia ➔ Medusa ➔ Porca Carmoniana). O combate é contínuo: Mana, HP, cooldowns e regalias de uso único <strong>não resetam entre desafios</strong>!
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/40 border border-white/10 space-y-1.5">
+                <span class="font-mono text-purple-300 font-bold block">4. Reflexo do Invocador</span>
+                <p class="text-gray-300 leading-relaxed">
+                  Caso uma criatura invocada seja atacada e não tenha HP suficiente para mitigar todo o dano, o dano excedente <strong>recai diretamente sobre a vida do seu dono</strong> por reflexo mágico.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Os 3 Níveis de Risco (Interativo) -->
+          <article id="bc-riscos" class="glass-panel p-6 sm:p-8 rounded-2xl border border-purple-500/40 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block font-bold">MODALIDADES DE RISCO</span>
+                <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">ESCOLHA O NÍVEL DE RISCO</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" class="eg-risk-tab-btn active" data-risk="veterano">Veterano</button>
+                <button type="button" class="eg-risk-tab-btn" data-risk="lendario">Lendário</button>
+                <button type="button" class="eg-risk-tab-btn" data-risk="morte-subita">Morte Súbita</button>
+              </div>
+            </div>
+
+            <!-- Painel de Detalhes do Risco Selecionado -->
+            <div class="p-6 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-4">
+              <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h4 class="font-cinzel text-lg font-bold text-purple-200" id="risk-display-title">
+                  Risco Veterano (Modo Convencional)
+                </h4>
+                <span class="text-xs font-mono text-gray-400">SELEÇÃO DINÂMICA</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans">
+                <div>
+                  <span class="text-gray-400 font-mono block text-[11px]">CONDIÇÃO DE TEMPO / RODADAS:</span>
+                  <p class="text-white font-medium mt-0.5" id="risk-display-rounds">Sem limite fixo de rodadas ou morte súbita.</p>
+                </div>
+                <div>
+                  <span class="text-gray-400 font-mono block text-[11px]">QUANTIDADE DE INIMIGOS:</span>
+                  <p class="text-white font-medium mt-0.5" id="risk-display-enemies">Inimigos padrão (1 por desafio: Lâmia ➔ Medusa ➔ Porca Carmoniana).</p>
+                </div>
+                <div class="md:col-span-2">
+                  <span class="text-gray-400 font-mono block text-[11px]">ELEGIBILIDADE & NÍVEL MÍNIMO:</span>
+                  <p class="text-white font-medium mt-0.5" id="risk-display-elig">Acesso liberado para agentes Nível 7+ homologados pelo Conselho de Mármore.</p>
+                </div>
+              </div>
+
+              <!-- Buffs Passivos de Chefes no Risco -->
+              <div class="pt-3 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                <div class="p-3 rounded bg-black/40 border border-white/10">
+                  <span class="text-amber-300 font-bold block mb-1">BUFF PASSIVO DE MEDUSA:</span>
+                  <span id="risk-display-medusa" class="text-white font-bold">+1.000 HP • +50 DEF</span>
+                </div>
+                <div class="p-3 rounded bg-black/40 border border-white/10">
+                  <span class="text-red-300 font-bold block mb-1">BUFF PASSIVO DA PORCA CARMONIANA:</span>
+                  <span id="risk-display-porca" class="text-white font-bold">+120.000 HP • +100 DEF</span>
+                </div>
+              </div>
+
+              <!-- Recompensas Discriminadas do Risco Selecionado -->
+              <div class="pt-3 border-t border-white/10">
+                <span class="text-xs font-mono text-[#f1d27a] font-bold block mb-2">ESPÓLIOS PARA ESTE RISCO:</span>
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center font-mono text-xs">
+                  <div class="p-2 rounded bg-black/40 border border-white/10">
+                    <span class="text-[10px] text-gray-400 block">XP</span>
+                    <span id="risk-rew-xp" class="text-white font-bold">2.500 XP</span>
+                  </div>
+                  <div class="p-2 rounded bg-black/40 border border-white/10">
+                    <span class="text-[10px] text-gray-400 block">GOLDS</span>
+                    <span id="risk-rew-gold" class="text-amber-300 font-bold">900 Golds</span>
+                  </div>
+                  <div class="p-2 rounded bg-black/40 border border-white/10">
+                    <span class="text-[10px] text-gray-400 block">ORAÇÕES</span>
+                    <span id="risk-rew-prayers" class="text-[#f1d27a] font-bold">30 Orações</span>
+                  </div>
+                  <div class="p-2 rounded bg-black/40 border border-white/10">
+                    <span class="text-[10px] text-gray-400 block">ARTEFATOS</span>
+                    <span id="risk-rew-art" class="text-purple-300 font-bold">4 Artefatos</span>
+                  </div>
+                  <div class="p-2 rounded bg-black/40 border border-white/10">
+                    <span class="text-[10px] text-gray-400 block">JOIAS DESTINO</span>
+                    <span id="risk-rew-gems" class="text-emerald-400 font-bold">1 Joia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Bênção, Maldição & Dádiva -->
+          <article id="bc-modificadores" class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 space-y-4">
+            <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block font-bold">FENÔMENOS CTÔNICOS</span>
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-white">BÊNÇÃO, MALDIÇÃO E DÁDIVA</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 space-y-2">
+                <span class="text-xs font-mono text-emerald-400 font-bold uppercase block">✦ RECONHECIMENTO OLIMPIANO</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Todo personagem que use as fórmulas de dano ATK e DEF receberá buff de <strong>+20% destes atributos</strong> em combate.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-red-950/30 border border-red-500/30 space-y-2">
+                <span class="text-xs font-mono text-red-400 font-bold uppercase block">✦ VIOLAÇÃO CTÔNICA</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Todo personagem que use a fórmula de HP para causar dano sofrerá um debuff fixo de <strong>+1 de dificuldade</strong> em suas jogadas.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-500/30 space-y-2">
+                <span class="text-xs font-mono text-purple-400 font-bold uppercase block">✦ DÁDIVA DA ÉGIDE</span>
+                <p class="text-xs text-gray-300 leading-relaxed font-sans">
+                  Será possível ter 1x NPC filho de Psiquê ou Eros para ocupar 1 posição das quatro da equipe. Com lista de poderes completa e build perfeita (ainda a especificar oficialmente pelo narrador).
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Os 3 Inimigos Canônicos (Dossiês Técnicos Completos AAA) -->
+          <article id="bc-inimigos" class="space-y-8">
+            <div class="border-b border-purple-500/30 pb-3">
+              <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest block font-bold">BESTIÁRIO DO TÁRTARO // DOSSIÊ COMPLETO</span>
+              <h3 class="font-cinzel text-2xl font-bold text-white">OS 3 INIMIGOS DO BERÇÁRIO ABISSAL</h3>
+              <p class="text-xs text-gray-300 font-sans mt-1">
+                Fichas técnicas canônicas extraídas do <em>Controle de Seres Fantásticos da Égide</em>. Cada combate é sequencial, sem descanso, com acúmulo de dano e persistência de mana/cooldowns.
+              </p>
+            </div>
+
+            <div class="space-y-8">
+              
+              <!-- Inimigo 1: Lâmia da Líbia -->
+              <div class="eg-monster-card border-purple p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/bercario_lamia.png" alt="Lâmia da Líbia" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/bercario_lamia.png" data-title="Lâmia da Líbia (Rainha Corrompida) — 1º Desafio do Berçário">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-purple-200 bg-purple-950/90 border border-purple-500/50 px-2.5 py-1 rounded-full uppercase">1º DESAFIO • COLOSSO CTÔNICO</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-[#f1d27a] bg-black/85 px-3 py-1 rounded border border-[#d4af37]/40">LÂMIA // LÍBIA</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-purple-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-purple-400 uppercase tracking-widest font-bold block">1º COMBATE SEQUENCIAL</span>
+                          <h4 class="font-cinzel text-xl font-bold text-purple-200">LÂMIA DA LÍBIA</h4>
+                        </div>
+                        <span class="text-[10px] font-mono text-purple-400 font-bold bg-purple-950/60 px-2.5 py-1 rounded border border-purple-500/40">COLOSSO CTÔNICO</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Já foi uma rainha mortal da Líbia, sábia e bela, amada por seu povo e desejada por Zeus. Hera assassinou seus filhos e amaldiçoou-a com loucura e fome eternas. Transformada num híbrido de mulher, serpente e lagarto, vaga consumindo crianças, sonhos e juventude alheia, amaldiçoando gerações com uma única mordida.
+                        </p>
+                        <p>
+                          <strong>Comportamento em Combate:</strong> Manipuladora, sádica e dramática. Nunca ataca primeiro: prefere testar a mente dos adversários com ilusões e vozes perdidas antes de desferir golpes cruéis contra jovens ou conjuradores vulneráveis.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Ficha Técnica de Atributos -->
+                    <div class="p-3 rounded-lg bg-purple-950/20 border border-purple-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-[#f1d27a] font-bold">ROLAGEM: 14d2 [sugestão mestre]</span>
+                        <span class="text-purple-300">DEVOÇÃO: SUBMUNDO</span>
+                      </div>
+                      <div class="grid grid-cols-4 gap-1.5 pt-0.5 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">500</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">600</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">100</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">350</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">700</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">100%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">100%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ROLAGEM</span><span class="stat-val text-purple-300">14d2</span></div>
+                      </div>
+                      <div class="text-[10px] text-gray-400 text-center font-mono">* DEF possui 20% de Mitigação de Dano Mágico (MD).</div>
+                    </div>
+
+                    <!-- Habilidades Especiais -->
+                    <div class="space-y-2 text-xs font-sans">
+                      <h5 class="font-cinzel text-[11px] font-bold text-[#f1d27a] uppercase">HABILIDADES ESPECIAIS DE LÂMIA:</h5>
+                      
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-purple-300 font-bold block text-[11px]">➤ Canção da Mente Quebrada [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Entoa versos malditos no subconsciente. Raio de 10m: teste de Resistência Espiritual [1d20, dif 12] ou fica confuso por 1 turno e sofre -1 sucesso em ações. Custo: 40 mana. Cooldown: 4 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-red-400 font-bold block text-[11px]">➤ Presa dos Filhos Perdidos [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Morde com presas venenosas: +30 ATK. Alvo perde 1 HP/turno e tem cura mágica <strong>completamente anulada por 2 turnos</strong> (semideuses sofrem +2 turnos de maldição). Custo: 30 mana.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-sky-400 font-bold block text-[11px]">➤ Véu da Ilusão Serpentina [Passivo]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Duplicata ilusória permanente: o 1º ataque bem-sucedido contra ela a cada turno é <strong>automaticamente negado</strong> (salvo visão da névoa de Hécate ou hipervigilância). Restaura no início de cada turno.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Inimigo 2: Medusa -->
+              <div class="eg-monster-card border-amber p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/bercario_medusa.png" alt="Medusa" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/bercario_medusa.png" data-title="Medusa (A Maldição de Atena) — 2º Desafio do Berçário">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-amber-200 bg-amber-950/90 border border-amber-500/50 px-2.5 py-1 rounded-full uppercase">2º DESAFIO • CHEFE CTÔNICO</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-amber-300 bg-black/85 px-3 py-1 rounded border border-amber-500/40">MEDUSA // GÓRGONA</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-amber-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-amber-400 uppercase tracking-widest font-bold block">2º COMBATE SEQUENCIAL</span>
+                          <h4 class="font-cinzel text-xl font-bold text-amber-200">MEDUSA (A MALDIÇÃO DE ATENA)</h4>
+                        </div>
+                        <span class="text-[10px] font-mono text-amber-400 font-bold bg-amber-950/60 px-2.5 py-1 rounded border border-amber-500/40">CHEFE CTÔNICO</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Sacerdotisa outrora bela e devota de Atena, profanada por Poseidon e punida injustamente pela deusa com serpentes no lugar de cabelos e um olhar que converte carne em pedra. Mantém intacta sua mente, sofrimento e ódio frio contra deuses e heróis.
+                        </p>
+                        <p>
+                          <strong>Comportamento em Combate:</strong> Evita confronto aberto. Espalha névoa pavorosa, isola alvos enfraquecidos e canaliza o Olhar da Ruína. Persegue com fúria implacável quem portar marcas de Atena ou Poseidon.
+                        </p>
+                      </div>
+
+                      <!-- Regra Imposta & Buffs Passivos de Risco -->
+                      <div class="p-3 mt-2 rounded bg-black/60 border border-amber-500/30 text-[11px] font-mono space-y-1">
+                        <div class="text-amber-300 font-bold flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> REGRA DO BERÇÁRIO: SEMPRE AGE PRIMEIRO!</div>
+                        <div class="text-gray-300 text-[10px]">
+                          <strong>Buffs por Risco:</strong> Veterano (+1k HP, +50 DEF) • Lendário (+2.5k HP, +100 DEF) • Morte Súbita (+5k HP, +200 DEF).
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Ficha Técnica de Atributos -->
+                    <div class="p-3 rounded-lg bg-amber-950/20 border border-amber-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-[#f1d27a] font-bold">ROLAGEM: 15d2 [sugestão mestre]</span>
+                        <span class="text-amber-300">PORTE: GRANDE</span>
+                      </div>
+                      <div class="grid grid-cols-4 gap-1.5 pt-0.5 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">1.500</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">300</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">120</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">950</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">900</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">80%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">150%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ROLAGEM</span><span class="stat-val text-amber-300">15d2</span></div>
+                      </div>
+                      <div class="text-[10px] text-gray-400 text-center font-mono">* DEF possui 70% MD. +50% DANO CRIT se estiver com &lt; 50% de HP!</div>
+                    </div>
+
+                    <!-- Habilidades Especiais -->
+                    <div class="space-y-2 text-xs font-sans">
+                      <h5 class="font-cinzel text-[11px] font-bold text-[#f1d27a] uppercase">HABILIDADES ESPECIAIS DE MEDUSA:</h5>
+                      
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-amber-300 font-bold block text-[11px]">➤ Olhar da Ruína [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Teste de Destreza [1d20, dif 15]. Falha: 'Petrificar Parcial' por 2 turnos (-1 dado em ações e não pode correr). <strong>Se o alvo estiver com 10% HP ou for afetado 3x, vira estátua de pedra permanente!</strong> Custo: 60 mana. Cooldown: 4 turnos.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-purple-400 font-bold block text-[11px]">➤ Névoa da Isolação [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Dura 3 turnos: inimigos em 6m sofrem -3 sucessos (dobra se petrificado) em Percepção e testes Mentais. Medusa pode se ocultar na névoa. Custo: 40 mana. Cooldown: 1 turno.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-emerald-400 font-bold block text-[11px]">➤ Sangue das Extremas Verdades [Passivo]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Lado esquerdo (veneno): ao ser ferida, agressor sofre +60% DANO CRIT. Lado direito (cura): regenera +100 HP por turno se estiver abaixo de 50% da vida. Alterna automaticamente.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Inimigo 3: Porca Carmoniana -->
+              <div class="eg-monster-card border-red p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                  
+                  <!-- Coluna Imagem Destaque (5 Cols) -->
+                  <div class="lg:col-span-5 flex flex-col">
+                    <div class="eg-monster-portrait group flex-1 min-h-[460px]">
+                      <img src="assets/endgame/bercario_porca_carmoniana.png" alt="Porca Carmoniana" class="w-full h-full object-cover object-top eg-expandable-map cursor-pointer transition-transform duration-500 group-hover:scale-105" data-full-src="assets/endgame/bercario_porca_carmoniana.png" data-title="Porca Carmoniana (A Devoradora Fértil) — Clímax do Berçário (30 Metros)">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+                      <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono font-bold text-red-200 bg-red-950/90 border border-red-500/50 px-2.5 py-1 rounded-full uppercase">3º DESAFIO • COLOSSO TITÂNICO (30M)</span>
+                      </div>
+                      <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                        <span class="text-xs font-cinzel font-bold text-red-400 bg-black/85 px-3 py-1 rounded border border-red-500/40">PORCA CARMONIANA // TITÃ</span>
+                        <span class="text-[10px] font-mono text-white bg-black/85 px-2.5 py-1 rounded border border-white/20 inline-flex items-center gap-1"><svg class="w-3 h-3 text-[#f1d27a]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg> Ampliar Arte</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coluna Informações & Ficha Técnica (7 Cols) -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div class="flex items-center justify-between border-b border-red-500/30 pb-2 mb-3">
+                        <div>
+                          <span class="text-[10px] font-mono text-red-400 uppercase tracking-widest font-bold block">3º COMBATE // CLÍMAX TITÂNICO</span>
+                          <h4 class="font-cinzel text-xl font-bold text-red-200">PORCA CARMONIANA (A DEVORADORA FÉRTIL)</h4>
+                        </div>
+                        <span class="text-[10px] font-mono text-red-400 font-bold bg-red-950/60 px-2.5 py-1 rounded border border-red-500/40">COLOSSO SUPREMO (30M)</span>
+                      </div>
+
+                      <div class="text-xs text-gray-300 space-y-2 font-sans leading-relaxed">
+                        <p>
+                          Nascida de Gaia em ira pura. Javali titânico de 30 metros de comprimento, com placas ósseas espinhosas que escorrem bile fértil corruptora. Seu ventre contorce-se em contrações contínuas, parindo horrores a cada rugido, calcificando o solo e multiplicando a fome eterna.
+                        </p>
+                        <p>
+                          <strong>Comportamento em Combate:</strong> Padrão implacável: gerar, sufocar e dominar. Sempre mantém ao menos 1 cria em campo. Sequência fixa: Invocação de Cria ➔ Urro Placentário ➔ Investida das Mamas Rachadas ➔ Germinação Profana.
+                        </p>
+                      </div>
+
+                      <!-- Regra Imposta & Buffs Passivos de Risco -->
+                      <div class="p-3 mt-2 rounded bg-black/60 border border-red-500/30 text-[11px] font-mono space-y-1">
+                        <div class="text-red-400 font-bold flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> REGRA DO BERÇÁRIO: SEMPRE AGE PRIMEIRO!</div>
+                        <div class="text-gray-300 text-[10px]">
+                          <strong>Buffs por Risco:</strong> Veterano (+120k HP, +100 DEF) • Lendário (+235k HP, +200 DEF) • <strong>Morte Súbita (+370k HP, +400 DEF!)</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Ficha Técnica de Atributos -->
+                    <div class="p-3 rounded-lg bg-red-950/20 border border-red-500/30 space-y-2 font-mono text-xs">
+                      <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-1 text-[11px]">
+                        <span class="text-[#f1d27a] font-bold">ROLAGEM: 18d4 [sugestão mestre]</span>
+                        <span class="text-red-400">PORTE: COLOSSO TITÂNICO</span>
+                      </div>
+                      <div class="grid grid-cols-4 gap-1.5 pt-0.5 text-center">
+                        <div class="eg-stat-badge"><span class="stat-label">HP</span><span class="stat-val text-red-400">30k*</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">MANA</span><span class="stat-val text-purple-300">1.000</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">SPD</span><span class="stat-val text-emerald-400">300</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DEF</span><span class="stat-val text-blue-300">1.200</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ATK</span><span class="stat-val text-amber-300">1.000</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">TAXA</span><span class="stat-val text-pink-300">120%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">DANO</span><span class="stat-val text-yellow-300">300%</span></div>
+                        <div class="eg-stat-badge"><span class="stat-label">ROLAGEM</span><span class="stat-val text-red-300">18d4</span></div>
+                      </div>
+                      <div class="text-[10px] text-gray-400 text-center font-mono">* Atinge até 400.000 HP no Risco Morte Súbita! DEF com 70% MD.</div>
+                    </div>
+
+                    <!-- Habilidades Especiais -->
+                    <div class="space-y-2 text-xs font-sans">
+                      <h5 class="font-cinzel text-[11px] font-bold text-[#f1d27a] uppercase">HABILIDADES ESPECIAIS DA PORCA:</h5>
+                      
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-red-400 font-bold block text-[11px]">➤ Ventre Fecundo da Carnificina [Passivo]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          A cada turno cria 1x filhote (máx 5 em campo), com 50% de seus atributos. <strong>Se a Porca perder 1.000 HP, 5 filhotes são paridos instantaneamente!</strong>
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-purple-400 font-bold block text-[11px]">➤ Urro Placentário [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Onda telúrica de medo primal. Teste de Vontade [1d20, dif 12]: falha = -1 dado e -1 de dificuldade permanente em todas as ações. Custo: 50 mana.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-amber-300 font-bold block text-[11px]">➤ Investida das Mamas Rachadas [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Expulsa ácido e pus: +3 bônus de dano. Se causar crítico (&gt; 1/3 do HP total), <strong>anula completamente a DEF do alvo por 1 turno</strong>. Custo: 100 mana. Cooldown: 1 turno.
+                        </p>
+                      </div>
+
+                      <div class="eg-ability-card space-y-1">
+                        <span class="font-mono text-emerald-400 font-bold block text-[11px]">➤ Germinação Profana [Ativo – 1 ação]</span>
+                        <p class="text-gray-300 text-[11px] leading-relaxed">
+                          Infecta raio de 10m com larvas por 3 turnos: inimigos na área sofrem -10 HP por turno e -30 TAXA CRIT. Custo: 60 mana.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Minion: Filhotes Deformados -->
+                    <div class="p-3.5 rounded-lg bg-black/50 border border-white/10 font-mono text-[11px] space-y-1">
+                      <span class="text-red-400 font-bold block">FILHOTES DEFORMADOS DA CARNIFICINA:</span>
+                      <p class="text-gray-300 text-[10px]">
+                        50% dos atributos maternos: 15.000 HP base • 500 Mana • 150 SPD • 500 ATK • 600 DEF [35% MD] • 60% Taxa Crit • 150% Dano Crit.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- 6. Tabela Completa de Espólios do Berçário -->
+          <article id="bc-espolios" class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs font-mono text-[#f1d27a] font-bold uppercase">TABELA COMPARATIVA DE ESPÓLIOS</span>
+                <h3 class="font-cinzel text-xl font-bold text-white uppercase">RECOMPENSAS POR RISCO (BERÇÁRIO 1.0)</h3>
+              </div>
+              <span class="text-xs font-mono text-gray-400">Vencimento mensal (30/31)</span>
+            </div>
+
+            <div class="eg-table-wrap">
+              <table class="eg-table">
+                <thead>
+                  <tr>
+                    <th>Recurso Concedido</th>
+                    <th class="text-gray-300">Risco Veterano</th>
+                    <th class="text-amber-300">Risco Lendário</th>
+                    <th class="text-red-400">Risco Morte Súbita</th>
+                  </tr>
+                </thead>
+                <tbody class="font-mono text-xs">
+                  <tr>
+                    <td class="font-bold text-white">Experiência (XP)</td>
+                    <td>2.500 XP</td>
+                    <td>2.500 XP</td>
+                    <td>2.500 XP</td>
+                  </tr>
+                  <tr>
+                    <td class="font-bold text-white">Moeda (Golds)</td>
+                    <td>900 Golds</td>
+                    <td>900 Golds</td>
+                    <td>900 Golds</td>
+                  </tr>
+                  <tr>
+                    <td class="font-bold text-[#f1d27a]">Orações Celestiais</td>
+                    <td>30</td>
+                    <td class="text-amber-300 font-bold">40 (+10)</td>
+                    <td class="text-red-400 font-bold">60 (+30)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-bold text-purple-300">Artefatos Aleatórios</td>
+                    <td>4</td>
+                    <td class="text-amber-300 font-bold">5 (+1)</td>
+                    <td class="text-red-400 font-bold">6 (+2)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-bold text-emerald-400">Joias do Destino</td>
+                    <td>1</td>
+                    <td class="text-amber-300 font-bold">2 (+1)</td>
+                    <td class="text-red-400 font-bold">4 (+3)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs font-mono text-gray-400 space-y-1">
+              <div>• <strong>Artefatos:</strong> 1x coroa, 1x mão, 1x corpo e 1x botas (liga e atributos sofrem sorteio normal de loja).</div>
+              <div>• <strong>Joias do Destino:</strong> Objeto utilizado para aprimorar artefatos (define 1x atributo principal e 1x sub-atributo; se usada com outra, define 2x sub-atributos).</div>
+              <div>• <strong>Regra Mensal:</strong> O Berçário só pode ser feito 1 única vez por mês e por conta OFF. Repetições no mesmo mês não fornecem recompensas, mesmo que para um risco diferente da primeira conquista.</div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         DETALHE 3: REINO DO CAOS (AVENTURAS INDEPENDENTES)
+         ========================================================================== -->
+    <section id="view-reino-do-caos" role="tabpanel" aria-labelledby="tab-reino-do-caos" class="eg-mode-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-4xl mx-auto space-y-10">
+        
+        <!-- Cenário Higgsfield: Reino do Caos -->
+        <!-- Cenário Higgsfield Widescreen: Reino do Caos -->
+        <div class="eg-scenario-hero-stage border border-amber-500/30">
+          <div class="premium-stage w-full h-full"
+               data-premium-media
+               data-video-720="assets/neotheon-premium/endgame-caos-720.mp4"
+               data-video-1080="assets/neotheon-premium/endgame-caos-1080.mp4">
+            <picture>
+              <source type="image/webp" media="(min-width: 1280px)" srcset="assets/neotheon-premium/endgame-caos-1920.webp">
+              <source type="image/webp" media="(min-width: 640px)" srcset="assets/neotheon-premium/endgame-caos-1280.webp">
+              <source type="image/webp" srcset="assets/neotheon-premium/endgame-caos-640.webp">
+              <img src="assets/neotheon-premium/endgame-caos-fallback.jpg" alt="Cenário oficial do Reino do Caos" loading="lazy">
+            </picture>
+            <video muted playsinline loop autoplay aria-hidden="true"></video>
+          </div>
+        </div>
+
+        <!-- Cabeçalho Aprovado -->
+        <div class="border-b border-amber-500/30 pb-6 text-center">
+          <div class="flex items-center justify-center gap-2 mb-3">
+            <span class="px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/40 text-amber-300 text-[10px] font-mono uppercase tracking-widest">
+              ROLL20 + DISCORD · PERIODICIDADE APROXIMADA TRIMESTRAL
+            </span>
+          </div>
+          <h2 class="font-cinzel text-3xl sm:text-5xl font-black text-white uppercase">
+            REINO DO CAOS
+          </h2>
+          <p class="text-sm sm:text-base text-amber-200/90 mt-3 font-sans max-w-2xl mx-auto leading-relaxed">
+            Aventuras independentes em que o sistema e as condições de sobrevivência são descobertos durante a sessão.
+          </p>
+        </div>
+
+        <!-- Apresentação Completa Conforme Texto Aprovado -->
+        <article class="glass-panel p-8 sm:p-10 rounded-2xl border border-white/10 space-y-6">
+          <h3 class="font-cinzel text-xl font-bold text-white uppercase">COMO FUNCIONA A MODALIDADE</h3>
+          <div class="text-sm text-gray-300 space-y-4 font-sans leading-relaxed">
+            <p>
+              O Reino do Caos reúne aventuras one-shot rápidas, realizadas no Roll20 com os participantes em call pelo Discord. Cada incursão apresenta uma proposta própria: suas regras, seu sistema e os elementos necessários para compreender o desafio são descobertos ao longo da aventura.
+            </p>
+            <p>
+              A modalidade <strong>não é definida pelo nível da ficha</strong>. Uma aventura pode envolver personagens de nível 1 ou de nível 10; o nível, por si só, não determina o formato do desafio. As condições específicas são estabelecidas para cada incursão.
+            </p>
+            <p>
+              As aventuras acontecem, em média, uma vez a cada três meses. Essa frequência é uma referência de programação, não uma data fixa para a próxima sessão.
+            </p>
+          </div>
+        </article>
+
+        <!-- O que esperar (Exemplo Slasher Canônico) -->
+        <article class="glass-panel p-8 sm:p-10 rounded-2xl border border-amber-500/30 space-y-4 bg-amber-950/10">
+          <h3 class="font-cinzel text-xl font-bold text-amber-300 uppercase">O QUE ESPERAR</h3>
+          <div class="text-sm text-gray-300 space-y-3 font-sans leading-relaxed">
+            <p>
+              Cada aventura pode alterar a forma como o grupo compreende o perigo, a morte, o espaço ou a passagem do tempo.
+            </p>
+            <p class="p-4 rounded-xl bg-black/50 border border-white/10 italic text-gray-200">
+              "Em uma incursão anterior, inspirada em um filme slasher, os participantes morriam e retornavam em um loop, até descobrir uma forma de sair do Reino do Caos. Esse exemplo descreve uma aventura passada; não significa que toda sessão terá a mesma mecânica."
+            </p>
+          </div>
+        </article>
+
+        <!-- Recompensas Aprovadas -->
+        <article class="p-8 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/40 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-[#f1d27a] font-bold uppercase">ESPÓLIOS DA AVENTURA</span>
+            <span class="text-xs font-mono text-emerald-400 font-bold">* INDEPENDENTE DE OUTROS END-GAMES</span>
+          </div>
+          <h3 class="font-cinzel text-xl font-bold text-white uppercase">RECOMPENSAS DO REINO DO CAOS</h3>
+          <p class="text-xs text-gray-300 font-sans leading-relaxed">
+            As recompensas equivalem às do Berçário Abissal no risco Veterano, com possíveis extras definidos pelo narrador. A participação em outro end-game não impede o recebimento da recompensa do Reino do Caos: são modalidades distintas.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 font-mono text-xs text-center pt-2">
+            <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+              <span class="text-gray-400 block text-[10px]">XP</span>
+              <span class="text-white font-bold text-sm">2.500 XP</span>
+            </div>
+            <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+              <span class="text-gray-400 block text-[10px]">GOLDS</span>
+              <span class="text-amber-300 font-bold text-sm">900 Golds</span>
+            </div>
+            <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+              <span class="text-gray-400 block text-[10px]">ORAÇÕES</span>
+              <span class="text-[#f1d27a] font-bold text-sm">30 Orações</span>
+            </div>
+            <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+              <span class="text-gray-400 block text-[10px]">ARTEFATOS</span>
+              <span class="text-purple-300 font-bold text-sm">4 Artefatos</span>
+            </div>
+            <div class="p-3 rounded-lg bg-black/60 border border-white/10">
+              <span class="text-gray-400 block text-[10px]">JOIAS DESTINO</span>
+              <span class="text-emerald-400 font-bold text-sm">1x Joia</span>
+            </div>
+          </div>
+          <div class="text-[11px] font-mono text-amber-200 pt-2 border-t border-white/10">
+            * Extras da Incursão: <strong>A critério exclusivo do narrador da aventura.</strong>
+          </div>
+        </article>
+
+        <!-- Próxima Aventura -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div>
+            <span class="text-xs font-mono text-gray-400 block mb-1">PROGRAMAÇÃO OFICIAL:</span>
+            <div class="font-cinzel text-lg font-bold text-white">A próxima incursão será divulgada nos canais oficiais.</div>
+          </div>
+          <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold px-6 py-2.5 rounded-xl font-mono text-xs font-bold whitespace-nowrap">
+            Acompanhar no Discord ↗
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         DETALHE 4: UNIVERSO SIMULADO (PLACEHOLDER HONESTO & ELEGANTE)
+         ========================================================================== -->
+    <section id="view-universo-simulado" role="tabpanel" aria-labelledby="tab-universo-simulado" class="eg-mode-view max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto py-12 text-center space-y-8">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-950/60 border border-sky-500/40 text-sky-300 text-xs font-mono uppercase tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+          STATUS: EM DESENVOLVIMENTO
+        </div>
+
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+          UNIVERSO SIMULADO
+        </h2>
+
+        <!-- Painel Central Atmosférico -->
+        <div class="glass-panel p-8 sm:p-12 rounded-2xl border border-sky-500/30 space-y-6 bg-gradient-to-b from-sky-950/20 via-[#0a0912] to-black/80">
+          <div class="w-20 h-20 mx-auto rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-3xl shadow-[0_0_30px_rgba(56,189,248,0.2)]">
+            <svg class="w-10 h-10 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+
+          <div class="text-sm text-gray-300 font-sans leading-relaxed space-y-4 max-w-xl mx-auto">
+            <p>
+              Uma modalidade inspirada no Universo Simulado de <strong>Honkai: Star Rail</strong> está em desenvolvimento para MIDNIGHT CITY.
+            </p>
+            <p>
+              Seu sistema, suas condições de participação e suas recompensas ainda não foram publicados.
+            </p>
+            <p class="text-xs text-sky-300 font-mono pt-2">
+              As informações oficiais serão apresentadas nesta área quando a modalidade estiver pronta.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-xs font-mono text-gray-500">
+          * A Égide de Avalon anunciará os primeiros testes nos canais oficiais de anúncios da Temporada 2.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL DE IMAGEM AMPLIADA (MAPA DE RESSON)
+       ========================================================================== -->
+  <div id="eg-map-modal" class="eg-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="eg-modal-title">
+    <div class="eg-modal-content">
+      <div class="p-4 border-b border-white/10 flex items-center justify-between bg-black/60">
+        <h3 id="eg-modal-title" class="font-cinzel text-sm sm:text-base font-bold text-white">Visualização Tática Ampliada</h3>
+        <button id="eg-modal-close" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-mono text-xs transition-all" aria-label="Fechar modal">
+          ✕ Fechar (Esc)
+        </button>
+      </div>
+      <div class="p-4 flex items-center justify-center overflow-auto max-h-[80vh] bg-black/80">
+        <img id="eg-modal-img" src="" alt="Mapa Ampliado" class="eg-modal-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL MIDNIGHT CITY
+       ========================================================================== -->
+  <footer class="neotheon-global-footer">
+    <div class="footer-container">
+      
+      <div class="footer-grid">
+        
+        <!-- Coluna 1: Marca & Lore -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-badge">
+            <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+            <div class="footer-brand-info">
+              <span class="footer-brand-title">MIDNIGHT CITY</span>
+              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+            </div>
+          </div>
+          <p class="footer-lore-quote">
+            "Onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens."
+          </p>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">STATUS: VÉU ESTÁVEL // LONDRES, UK</span>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Universo -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
+            <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
+            <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
+            <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+            <li><a href="universo.html#season1" class="footer-nav-link">Crônicas da Season 1</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Sistema & Jogo -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <ul class="footer-links-list">
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Central de Vigilância (Agente)</a></li>
+            <li><a href="endgame.html" class="footer-nav-link text-red-400">Zonas de Risco (Endgame)</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Comunidade -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
+                <span>Servidor Discord Oficial</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Comunidade Yoble (309183)</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Mesas de Sexta no Roll20</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Inscrições de Missões</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+        </div>
+        <div class="footer-disclaimer">
+          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/neotheon-premium/integration/premium-media.js"></script>
+  <script src="app.js"></script>
+  <script src="endgame.js"></script>
+</body>
+</html>

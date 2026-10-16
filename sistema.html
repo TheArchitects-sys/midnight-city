@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sistemas & Guias — Terminal da Égide | MIDNIGHT CITY RPG</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  
+  <!-- Meta & OpenGraph -->
+  <meta name="description" content="Terminal da Égide — Guias oficiais, regras de combate, tabelas de atributos e compêndio de sobrevivência de MIDNIGHT CITY RPG.">
+  <meta property="og:title" content="Sistemas & Guias — Terminal da Égide | MIDNIGHT CITY">
+  <meta property="og:description" content="Consulta rápida de guias, tabelas de XP, fórmulas de dano e diretrizes da Ordem.">
+  <meta property="og:image" content="assets/valiria_mission.jpg">
+  <meta name="theme-color" content="#050608">
+
+  <!-- Google Fonts: Archivo (Títulos & Controles) + Source Sans 3 (Corpo & Tabelas) + Space Mono (Fórmulas) + Cinzel (Brand) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Cinzel:wght@700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Three.js 3D WebGL Engine (Procedural Mascot & Floating 3D Viewports) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'gold-primary': '#d4af37',
+            'gold-light': '#f1d27a',
+            'gold-dim': '#8c6a2b',
+            'dark-bg': '#050608',
+            'dark-surface': '#0a0912',
+            'dark-veil': '#0f0e1a',
+            'crimson-pure': '#c82924',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP Animation Library & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sistema.css">
+</head>
+<body data-page="sistema" class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased">
+
+  <!-- ── 1. CABEÇALHO GLOBAL SANTIONI (IDÊNTICO À HOMEPAGE & UNIVERSO) ── -->
+    <!-- ── GLOBAL HEADER ── -->
+  <header class="santioni-header">
+    <a href="index.html" class="brand-badge">
+      <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+      <div class="brand-text">
+        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-sub">Égide de Avalon</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <nav class="santioni-nav-pill" aria-label="Navegação Principal">
+        <a href="index.html" >INÍCIO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="universo.html" >UNIVERSO</a>
+        <span class="pill-ornament">❖</span>
+        <a href="poderes.html" >PODERES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="operacoes.html" >OPERAÇÕES</a>
+        <span class="pill-ornament">❖</span>
+        <a href="banners.html" class="hover:text-[#f1d27a]">BANNERS</a>
+        <span class="pill-ornament">❖</span>
+        <a href="sistema.html" class="active text-[#f1d27a]">SISTEMA</a>
+        <span class="pill-ornament">❖</span>
+        <a href="agente.html" >AGENTE</a>
+        <span class="pill-ornament">❖</span>
+        <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
+      </nav>
+
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+        DISCORD ↗
+      </a>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-[#cfc7b4] hover:text-white p-1 text-2xl font-mono-code focus:outline-none" aria-label="Abrir menu mobile">
+        ☰
+      </button>
+    </div>
+  </header>
+
+    <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed top-20 left-0 w-full z-50 bg-[#050608]/98 border-b border-[#d4af37]/20 px-6 py-6 space-y-3 text-xs font-cinzel uppercase tracking-widest backdrop-blur-xl">
+    <a href="index.html" class="block py-2 text-[#cfc7b4] hover:text-white">Início</a>
+    <a href="universo.html" class="block py-2 text-[#cfc7b4] hover:text-white">Universo & Cosmologia</a>
+    <a href="poderes.html" class="block py-2 text-[#cfc7b4] hover:text-white">Poderes & Individualidades</a>
+    <a href="operacoes.html" class="block py-2 text-[#cfc7b4] hover:text-white">❖ Operações (Missões)</a>
+    <a href="banners.html" class="block py-2 text-[#cfc7b4] hover:text-white">✦ Banners Míticos</a>
+    <a href="operacoes.html?view=novato" class="block py-2 text-[#cfc7b4] hover:text-[#f1d27a]">◈ Novato Premium</a>
+    <a href="sistema.html" class="block py-2 text-[#f1d27a] font-bold">Sistema & Guias</a>
+    <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
+    <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
+    <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
+    </div>
+  </div>
+
+        <div class="terminal-intro-block">
+          <!-- Selo Hermético Discreto da Égide -->
+          <div class="terminal-crest-icon" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" class="w-10 h-10 mx-auto mb-2 opacity-80">
+              <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <circle cx="50" cy="50" r="38" stroke="#f1d27a" stroke-width="0.8"/>
+              <polygon points="50,15 80,72 20,72" stroke="#d4af37" stroke-width="0.8" fill="none"/>
+              <polygon points="50,85 20,28 80,28" stroke="#d4af37" stroke-width="0.8" fill="none"/>
+              <circle cx="50" cy="50" r="6" fill="#c82924"/>
+            </svg>
+          </div>
+
+          <!-- H1 Único e Descrição Oficial (Seção 5.1 e 14) -->
+          <h1 class="terminal-main-h1">Terminal da Égide</h1>
+          <p class="terminal-lead-desc">Aprenda a jogar ou consulte as regras do MIDNIGHT CITY.</p>
+
+          <!-- Barra de Busca Rápida Imediata (1ª Tela) -->
+          <div class="terminal-search-wrapper" role="search">
+            <label for="terminal-search-input" class="sr-only">Buscar nos guias e regras</label>
+            <div class="terminal-search-field">
+              <span class="terminal-search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input 
+                type="text" 
+                id="terminal-search-input" 
+                class="terminal-search-input" 
+                placeholder="Busque um assunto: ficha, atributos, combate…"
+                aria-label="Buscar nos guias e regras do RPG"
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <button id="terminal-search-clear" class="terminal-search-clear" aria-label="Limpar pesquisa" style="display: none;">✕</button>
+            </div>
+          </div>
+
+          <!-- Alternador de Modos Único (Seção 5.1 e 14) -->
+          <div class="mode-switch-container" role="tablist" aria-label="Modo de Visualização">
+            <button id="mode-btn-novato" class="mode-switch-btn active" role="tab" aria-selected="true" aria-controls="novato-mode-view">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Começar a jogar</span>
+            </button>
+            <button id="mode-btn-arquivo" class="mode-switch-btn" role="tab" aria-selected="false" aria-controls="archive-mode-view">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <span>Consultar regras</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ==========================================================================
+         2. FIGURA 3D FLUTUANTE DA PRESENÇA APRISIONADA (COMPANION CONTEXTUAL)
+         Margem segura • Recolhível • Comentários contextuais e auxílio às regras (Seção 10)
+         ========================================================================== -->
+    <aside id="janitor-floating-dock" class="presence-floating-dock" aria-label="Auxiliar da Presença Aprisionada">
+      
+      <!-- Balão de Comentário Contextual -->
+      <div id="janitor-speech-bubble" class="presence-speech-bubble" role="region" aria-label="Comentário da Presença" style="display: none;">
+        <div class="presence-bubble-header">
+          <span class="presence-bubble-tag">ORIENTAÇÃO DA ÉGIDE</span>
+          <button id="presence-close-bubble-btn" class="presence-bubble-close" aria-label="Fechar comentário">✕</button>
+        </div>
+        <h4 id="janitor-bubble-title" class="presence-bubble-title">A Presença Aprisionada</h4>
+        <div id="janitor-bubble-quote" class="presence-bubble-quote">
+          "Conte os sucessos primeiro."
+        </div>
+        <div id="janitor-bubble-note" class="presence-bubble-note">
+          Em Midnight City, toda ação de combate é uma tentativa resolvida por disputa de sucessos.
+        </div>
+        <div class="presence-pin-status" id="janitor-pin-status" title="Passe o cursor sobre este balão para fixá-lo na tela">
+          <span class="pin-hint-icon">
+            <svg class="w-3.5 h-3.5 inline text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="pin-hint-text">Para fixar uma mensagem, passe o cursor sobre ela</span>
+        </div>
+        <div class="presence-bubble-controls">
+          <button id="janitor-prev-tip-btn" class="presence-cycle-btn" aria-label="Dica Anterior">← Anterior</button>
+          <span id="janitor-tip-counter" class="presence-cycle-indicator">1 / 6</span>
+          <button id="janitor-next-tip-btn" class="presence-cycle-btn" aria-label="Próxima Dica">Próxima →</button>
+        </div>
+      </div>
+
+      <!-- Palco 3D Flutuante com Three.js Canvas -->
+      <div class="presence-stage-wrap">
+        <div id="janitor-canvas-card" class="presence-canvas-card" title="Clique para abrir a Ajuda da Presença" tabindex="0" role="button" aria-label="Presença Aprisionada 3D - Clique para abrir Ajuda">
+          <canvas id="janitor-floating-canvas" class="presence-floating-canvas"></canvas>
+          <!-- Fallback Visual gracioso (Camadas Higgsfield Presença Orbe + Vassoura) quando WebGL falha ou está indisponível -->
+          <div id="presence-fallback-visual" class="presence-fallback-visual" style="display: none;" aria-hidden="true">
+            <div class="presence-layered">
+              <picture>
+                <source srcset="assets/neotheon-premium/presenca-orbe-256.webp" type="image/webp">
+                <img src="assets/neotheon-premium/presenca-orbe.png" class="presence-orb" alt="" width="80" height="80" loading="lazy">
+              </picture>
+              <picture>
+                <source srcset="assets/neotheon-premium/presenca-vassoura-256.webp" type="image/webp">
+                <img src="assets/neotheon-premium/presenca-vassoura.png" class="presence-broom" alt="" width="36" height="105" loading="lazy">
+              </picture>
+            </div>
+          </div>
+          <div class="presence-canvas-badge">PRESENÇA</div>
+        </div>
+
+        <!-- Botão Flutuante de Toggle / Minimizar -->
+        <button id="janitor-toggle-btn" class="presence-toggle-btn" aria-label="Mostrar ou ocultar a Presença" title="Recolher / Expandir Presença">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ==========================================================================
+         3. INTERFACE PRINCIPAL DO TERMINAL DE CONSULTA E APRENDIZADO
+         ========================================================================== -->
+    <section id="egide-terminal" class="egide-terminal" aria-label="Terminal de Arquivos e Regras">
+      <div class="terminal-shell">
+
+        <!-- Fallback Acessível para JavaScript Desativado -->
+        <noscript>
+          <div class="doc-callout warning" style="margin-bottom: 1.5rem;">
+            <strong>AVISO DO TERMINAL:</strong> O interpretador JavaScript está desativado no seu navegador. O acervo completo de regras permanece acessível através dos canais oficiais da Égide de Avalon.
+          </div>
+        </noscript>
+
+        <!-- Painel de Resultados de Busca (Lexical Rápida com Trechos) -->
+        <section id="terminal-search-results" class="terminal-search-results-panel" style="display: none;" aria-live="polite">
+          <div class="search-results-header">
+            <span id="search-results-count">0 resultados</span>
+            <span class="text-xs text-[#d4af37]">RESULTADOS DA BUSCA</span>
+          </div>
+          <div id="search-results-list" class="search-results-list">
+            <!-- Resultados injetados via JS -->
+          </div>
+          <div id="search-pagination-wrap" class="search-pagination-wrap" style="display: none;">
+            <button id="search-show-more-btn" class="btn-secondary-gold px-4 py-2 rounded text-xs font-semibold">
+              Mostrar mais resultados
+            </button>
+          </div>
+        </section>
+
+        <!-- ── SEÇÃO 1: MODO COMEÇAR A JOGAR (GUIA DO RECRUTA) ── -->
+        <section id="novato-mode-view" class="novato-mode-view" role="tabpanel" aria-labelledby="mode-btn-novato">
+          
+          <!-- Banner Editorial de Abertura com Projeção de Microfilme (Seção 6) -->
+          <div class="novato-intro-banner">
+            <div class="intro-banner-content">
+              <div class="intro-stamp-badge">CÓDICE DE INGRESSO // TERMINAL DA ÉGIDE</div>
+              <h2 class="novato-intro-title">Começar a jogar</h2>
+              <p class="novato-intro-desc">
+                Conheça as seis etapas do guia. Você pode seguir a sequência ou ir direto ao assunto de que precisa.
+              </p>
+              <div class="intro-banner-actions">
+                <button id="guide-scroll-first-btn" class="guide-action-btn primary" aria-label="Ir à primeira etapa do guia">
+                  <span>Ir à primeira etapa</span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </button>
+                <button id="guide-goto-archive-btn" class="guide-action-btn secondary" aria-label="Consultar regras no arquivo">
+                  <span>Consultar regras</span>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="intro-banner-visual" aria-hidden="true">
+              <div class="microfilm-frame">
+                <div class="microfilm-overlay"></div>
+                <img src="assets/cidadela_avalon_mj.png" alt="A Cidadela Oculta de Avalon sob o Véu" class="microfilm-img" loading="eager">
+                <div class="microfilm-caption">
+                  <span class="microfilm-label">MICROFILME REF. 84-A</span>
+                  <span class="microfilm-sub">A CIDADELA OCULTA DE AVALON</span>
+                </div>
+                <div class="microfilm-crosshairs"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Estrutura Dossiê: Navegação Lateral Sticky + Capítulos Editoriais -->
+          <div class="guide-dossier-layout">
+            
+            <!-- Índice Lateral Sticky no Desktop / Barra Compacta no Mobile -->
+            <aside class="guide-sticky-sidebar" id="guide-sticky-nav" aria-label="Navegação do Guia do Novato">
+              
+              <!-- Barra Compacta Mobile (< 1120px) -->
+              <div class="guide-mobile-status-bar">
+                <div class="guide-mobile-step-indicator">
+                  <span class="guide-step-tag">GUIA</span>
+                  <span id="guide-mobile-current-label" class="guide-step-current-title">Etapa 1 de 6 · Função na equipe</span>
+                </div>
+                <button id="guide-mobile-toggle-btn" class="guide-mobile-expand-btn" aria-expanded="false" aria-controls="guide-nav-list-wrap">
+                  <span>Todas as etapas</span>
+                  <span class="guide-chevron">▾</span>
+                </button>
+              </div>
+
+              <!-- Lista de Etapas (Sticky no Desktop, Dropdown no Mobile) -->
+              <div class="guide-nav-list-wrap" id="guide-nav-list-wrap">
+                <div class="guide-nav-header">
+                  <span class="guide-nav-title">ETAPAS DO GUIA</span>
+                  <span class="guide-nav-sub">PROGRESSO 01-06</span>
+                </div>
+                <nav class="stations-quick-nav" aria-label="Navegação do Guia do Novato">
+                  <ol class="stations-nav-pills guide-nav-steps-list" role="list">
+                    <li>
+                      <button class="station-nav-btn guide-nav-item active" data-target="1" data-step="1" aria-current="step">
+                        <span class="step-num">01</span>
+                        <span class="step-label">1. Função na equipe</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="station-nav-btn guide-nav-item" data-target="2" data-step="2">
+                        <span class="step-num">02</span>
+                        <span class="step-label">2. História do personagem</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="station-nav-btn guide-nav-item" data-target="3" data-step="3">
+                        <span class="step-num">03</span>
+                        <span class="step-label">3. Primeira ficha</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="station-nav-btn guide-nav-item" data-target="4" data-step="4">
+                        <span class="step-num">04</span>
+                        <span class="step-label">4. Primeiras atividades</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="station-nav-btn guide-nav-item" data-target="5" data-step="5">
+                        <span class="step-num">05</span>
+                        <span class="step-label">5. Dados e combate</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="station-nav-btn guide-nav-item" data-target="6" data-step="6">
+                        <span class="step-num">06</span>
+                        <span class="step-label">6. Moedas e recompensas</span>
+                      </button>
+                    </li>
+                  </ol>
+                </nav>
+                <div class="guide-nav-footer">
+                  <button id="guide-back-to-top-btn" class="guide-nav-top-link" aria-label="Voltar ao início do guia">
+                    ↑ Voltar ao topo
+                  </button>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Grade dos 6 Capítulos Editoriais com Apresentações Específicas -->
+            <div id="novato-stations-grid" class="novato-stations-grid guide-chapters-column">
+              <!-- Injetado dinamicamente via sistema.js -->
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ── SEÇÃO 2: MODO ARQUIVO GERAL (DIRETÓRIOS & LEITOR DE REGRAS) ── -->
+        <section id="archive-mode-view" class="archive-mode-view" style="display: none;" role="tabpanel" aria-labelledby="tab-arquivo">
+          
+          <div class="terminal-grid">
+
+            <!-- Mobile Toggle Button -->
+            <button id="terminal-sidebar-toggle" class="terminal-sidebar-toggle-btn" aria-expanded="false" aria-controls="terminal-sidebar">
+              <span class="flex items-center gap-2">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+                <span>DIRETÓRIOS DE REGRAS</span>
+              </span>
+              <span id="sidebar-toggle-arrow">▾</span>
+            </button>
+
+            <!-- Sidebar de Diretórios -->
+            <aside id="terminal-sidebar" class="terminal-sidebar" aria-label="Categorias de Regras">
+              <div class="sidebar-title">DIRETÓRIOS DE REGRAS</div>
+              <ul id="sidebar-categories-list" class="sidebar-categories-list">
+                <!-- Populado dinamicamente pelo sistema.js com links nativos -->
+              </ul>
+            </aside>
+
+            <!-- Área Principal do Arquivo -->
+            <div id="terminal-main-view" class="terminal-main-view">
+
+              <!-- Visão do Diretório (Lista de Documentos) -->
+              <section id="terminal-category-view" class="terminal-category-view">
+                <header class="category-hero-header">
+                  <span id="cat-code-tag" class="category-code-tag">SEÇÃO 01</span>
+                  <h2 id="cat-name-title" class="category-name-title">Começar e criar ficha</h2>
+                  <p id="cat-desc-text" class="category-description">Papéis táticos de equipe, primeiras cenas, criação e pedido de ficha de novato.</p>
+                </header>
+
+                <div id="category-doc-cards" class="doc-cards-list">
+                  <!-- Cartões de documentos injetados via JS com links nativos -->
+                </div>
+              </section>
+
+              <!-- Leitor de Documento Completo -->
+              <article id="terminal-doc-reader" class="terminal-document-reader" style="display: none;" tabindex="-1">
+                <nav class="reader-breadcrumb" aria-label="Breadcrumb">
+                  <a id="reader-breadcrumb-link" href="#">← Voltar ao Diretório</a>
+                  <span id="reader-breadcrumb-current" class="reader-breadcrumb-sep">/ Documento</span>
+                </nav>
+
+                <h2 id="reader-doc-title" class="reader-title">Título do Documento</h2>
+                <div id="reader-doc-subtitle" class="reader-subtitle">Subtítulo explicativo</div>
+
+                <div class="reader-meta-bar">
+                  <span id="reader-doc-source">Fonte: Manual do Novato</span>
+                  <button id="reader-copy-link-btn" class="talamasca-btn-consult text-[11px] py-1 px-3" title="Copiar link direto para este documento">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copiar Link</span>
+                  </button>
+                </div>
+
+                <!-- Índice de Subtópicos Local (TOC) -->
+                <nav id="reader-toc" class="reader-subtopics-nav" aria-label="Índice da Regra" style="display: none;">
+                  <span class="reader-toc-title">SUBTÓPICOS NESTA REGRA:</span>
+                  <div id="reader-toc-list" class="reader-toc-links"></div>
+                </nav>
+
+                <div id="reader-doc-content" class="reader-body-content">
+                  <!-- Conteúdo HTML do documento renderizado via JS -->
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 4. MODAL DA PRESENÇA APRISIONADA (AJUDA E FAQS • SEM IA) ── -->
+  <div id="presence-modal-backdrop" class="presence-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="presence-modal-title" style="display: none;">
+    <div class="presence-dialog" role="document">
+      
+      <!-- Cabeçalho do Modal -->
+      <div class="presence-header">
+        <div class="presence-title-group">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f1d27a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/></svg>
+          <h3 id="presence-modal-title" class="presence-title">Ajuda da Presença // Registros da Égide</h3>
+        </div>
+        <button id="close-presence-btn" class="presence-close-btn" aria-label="Fechar consulta">✕</button>
+      </div>
+
+      <!-- Corpo da Presença -->
+      <div class="presence-body">
+
+        <!-- Janela de Introdução -->
+        <div class="presence-signal-window">
+          <div class="presence-svg-frame" aria-hidden="true">
+            <picture>
+              <source srcset="assets/neotheon-premium/presenca-completa-256.webp" type="image/webp">
+              <img src="assets/neotheon-premium/presenca-completa.png" alt="" width="60" height="60" class="w-14 h-14 object-contain mx-auto" loading="lazy">
+            </picture>
+          </div>
+          <div class="presence-intro-text">
+            <p><strong>Orientação de Consulta às Regras do MIDNIGHT CITY.</strong></p>
+            <p>Posso indicar onde encontrar as regras. Selecione um assunto pré-cadastrado abaixo ou pesquise no arquivo.</p>
+          </div>
+        </div>
+
+        <!-- Caixa de Resposta Expandida -->
+        <div id="presence-response-box" class="presence-response-box" style="display: none;" aria-live="polite">
+          <div id="presence-response-q" class="presence-response-q">Dúvida selecionada</div>
+          <div id="presence-response-a" class="presence-response-a">Resposta documental</div>
+          <a id="presence-doc-shortcut" href="#" class="presence-doc-shortcut-btn">
+            <span>Abrir Regra Completa</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Grade de Dúvidas Canônicas (FAQs) -->
+        <div class="presence-faq-section">
+          <h4>DÚVIDAS FREQUENTES PRÉ-CADASTRADAS:</h4>
+          <div id="presence-faq-grid" class="presence-faq-grid">
+            <!-- Injetado dinamicamente via JS a partir de presenceFaqs -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── 6. GLOBAL FOOTER ── -->
+  <footer class="santioni-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-grid">
+
+        <!-- Column 1: Brand & Lore Summary -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-header">
+            <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+            <div>
+              <div class="brand-name">MIDNIGHT CITY</div>
+              <div class="brand-sub">Égide de Avalon</div>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            RPG de mitologia urbana e fantasia contemporânea. Deuses ancestrais, ordens arcanas e guerras veladas nas sombras da metrópole.
+          </p>
+          <div class="footer-server-status">
+            <span class="status-indicator"></span>
+            <span class="status-text">Temporada 2: O Despertar dos Deuses</span>
+          </div>
+        </div>
+
+        <!-- Column 2: O Universo -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
+            <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
+            <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
+            <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Diretrizes & Sistema -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <ul class="footer-links-list">
+            <li><a href="sistema.html" class="footer-nav-link text-[#f1d27a]">Terminal da Égide</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: QG & Comunidade -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
+                <span>Servidor Discord Oficial</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Comunidade Yoble (309183)</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+        </div>
+        <div class="footer-disclaimer">
+          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="content/sistema/sistema_data.js"></script>
+  <script src="sistema.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

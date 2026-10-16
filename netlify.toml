@@ -1,0 +1,44 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/banners"
+  to = "/banners.html"
+  status = 200
+
+[[redirects]]
+  from = "/operacoes"
+  to = "/operacoes.html"
+  status = 200
+
+[[redirects]]
+  from = "/sistema"
+  to = "/sistema.html"
+  status = 200
+
+[[redirects]]
+  from = "/universo"
+  to = "/universo.html"
+  status = 200
+
+[[redirects]]
+  from = "/poderes"
+  to = "/poderes.html"
+  status = 200
+
+[[redirects]]
+  from = "/agente"
+  to = "/agente.html"
+  status = 200
+
+[[redirects]]
+  from = "/endgame"
+  to = "/endgame.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"

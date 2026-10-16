@@ -1,0 +1,8 @@
+scratch/
+.backup_before_decode/
+.impeccable/
+*.metadata.json
+*.bak*
+*.exe
+*.dll
+*.docx
