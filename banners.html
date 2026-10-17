@@ -48,6 +48,7 @@
   <script src="assets/atmosphere.js" defer></script>
   <script src="assets/neotheon-premium/integration/premium-media.js" defer></script>
   <script src="banners.js" defer></script>
+  <link rel="stylesheet" href="mobile.css">
 </head>
 <body class="bg-[#050608] text-[#f0ece1] min-h-screen flex flex-col font-sans relative antialiased selection:bg-[#d4af37]/30 selection:text-[#f1d27a]">
 
@@ -1004,21 +1005,100 @@
   </div>
 
   <!-- ── GLOBAL FOOTER ── -->
-  <footer class="mt-20 border-t border-white/10 bg-[#040507] py-12 text-center text-xs text-[#7e786b] font-mono">
-    <div class="max-w-7xl mx-auto px-4 space-y-3">
-      <div class="font-cinzel text-sm text-[#b8b2a5] tracking-widest uppercase">ÉGIDE DE AVALON • MIDNIGHT CITY RPG</div>
-      <p>Banners Míticos & Relíquias da Divergência. Todos os direitos reservados à moderação e aos narradores de Avalon.</p>
-      <div class="pt-2 flex justify-center gap-4 text-[#d4af37]">
-        <a href="operacoes.html" class="hover:underline">Operações</a>
-        <span>•</span>
-        <a href="banners.html" class="hover:underline">Banners</a>
-        <span>•</span>
-        <a href="sistema.html" class="hover:underline">Sistema</a>
-        <span>•</span>
-        <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hover:underline">Discord Oficial ↗</a>
+  <footer class="neotheon-global-footer">
+    <div class="footer-container">
+      
+      <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand, Crest & Lore -->
+        <div class="footer-brand-col">
+          <div class="footer-brand-badge">
+            <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
+            <div class="footer-brand-info">
+              <span class="footer-brand-title">MIDNIGHT CITY</span>
+              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+            </div>
+          </div>
+          <p class="footer-lore-quote">
+            "Onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens."
+          </p>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">STATUS: VÉU ESTÁVEL // LONDRES, UK</span>
+          </div>
+        </div>
+
+        <!-- Column 2: O Universo & Crônicas -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
+            <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
+            <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
+            <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+            <li><a href="universo.html#season1" class="footer-nav-link">Crônicas da Season 1</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Diretrizes & Sistema -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <ul class="footer-links-list">
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: QG & Comunidade -->
+        <div class="footer-nav-col">
+          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <ul class="footer-links-list">
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
+                <span>Servidor Discord Oficial</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Comunidade Yoble (309183)</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Mesas de Sexta no Roll20</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Inscrições de Missões</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
       </div>
+
+      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+        </div>
+        <div class="footer-disclaimer">
+          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+        </div>
+      </div>
+
     </div>
   </footer>
 
+  <script src="mobile.js" defer></script>
 </body>
 </html>

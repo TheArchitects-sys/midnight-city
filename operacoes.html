@@ -51,6 +51,7 @@
   <script src="content/operacoes/operacoes_data.js"></script>
   <script src="assets/atmosphere.js" defer></script>
   <script src="operacoes.js" defer></script>
+  <link rel="stylesheet" href="mobile.css">
 </head>
 <body class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased selection:bg-[#d4af37]/30 selection:text-white">
 
@@ -854,44 +855,55 @@
   </div>
 
   <!-- ── GLOBAL FOOTER ── -->
-  <footer class="santioni-footer">
-    <div class="santioni-footer-inner">
-      <div class="footer-top-grid">
+  <footer class="neotheon-global-footer">
+    <div class="footer-container">
+      
+      <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand, Crest & Lore -->
         <div class="footer-brand-col">
-          <div class="footer-brand-header">
+          <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
-            <div>
-              <div class="footer-brand-title">MIDNIGHT CITY</div>
-              <div class="footer-brand-sub">Égide de Avalon</div>
+            <div class="footer-brand-info">
+              <span class="footer-brand-title">MIDNIGHT CITY</span>
+              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
             </div>
           </div>
-          <p class="footer-brand-desc">
-            RPG de mesa contemporâneo e dark fantasy. O mundo mortal sobrevive na ignorância sob a proteção do Véu, enquanto agentes da Égide enfrentam as fendas do Vazio.
+          <p class="footer-lore-quote">
+            "Onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens."
           </p>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">STATUS: VÉU ESTÁVEL // LONDRES, UK</span>
+          </div>
         </div>
 
+        <!-- Column 2: O Universo & Crônicas -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ NAVEGAÇÃO</h4>
+          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
           <ul class="footer-links-list">
-            <li><a href="index.html" class="footer-nav-link">Início</a></li>
+            <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
-            <li><a href="poderes.html" class="footer-nav-link">Poderes & Classes</a></li>
-            <li><a href="operacoes.html?view=operacoes" class="footer-nav-link text-[#f1d27a]">Operações & Missões</a></li>
-            <li><a href="banners.html" class="footer-nav-link text-[#f1d27a]">Banners Míticos</a></li>
-            <li><a href="operacoes.html?view=novato" class="footer-nav-link text-[#f1d27a]">Novato Premium</a></li>
+            <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
+            <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+            <li><a href="universo.html#season1" class="footer-nav-link">Crônicas da Season 1</a></li>
           </ul>
         </div>
 
+        <!-- Column 3: Diretrizes & Sistema -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ SISTEMA</h4>
+          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
           <ul class="footer-links-list">
             <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
+            <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
             <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
             <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
           </ul>
         </div>
 
+        <!-- Column 4: QG & Comunidade -->
         <div class="footer-nav-col">
           <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
           <ul class="footer-links-list">
@@ -907,10 +919,24 @@
                 <span class="text-xs">↗</span>
               </a>
             </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Mesas de Sexta no Roll20</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Inscrições de Missões</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
           </ul>
         </div>
+
       </div>
 
+      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
           © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
@@ -919,7 +945,9 @@
           Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
         </div>
       </div>
+
     </div>
   </footer>
+  <script src="mobile.js" defer></script>
 </body>
 </html>

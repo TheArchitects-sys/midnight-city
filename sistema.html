@@ -51,6 +51,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="sistema.css">
+  <link rel="stylesheet" href="mobile.css">
 </head>
 <body data-page="sistema" class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased">
 
@@ -502,29 +503,31 @@
   </div>
 
   <!-- ── 6. GLOBAL FOOTER ── -->
-  <footer class="santioni-footer" role="contentinfo">
+  <footer class="neotheon-global-footer">
     <div class="footer-container">
+      
+      <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
       <div class="footer-grid">
-
-        <!-- Column 1: Brand & Lore Summary -->
+        
+        <!-- Column 1: Brand, Crest & Lore -->
         <div class="footer-brand-col">
-          <div class="footer-brand-header">
+          <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
-            <div>
-              <div class="brand-name">MIDNIGHT CITY</div>
-              <div class="brand-sub">Égide de Avalon</div>
+            <div class="footer-brand-info">
+              <span class="footer-brand-title">MIDNIGHT CITY</span>
+              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
             </div>
           </div>
-          <p class="footer-brand-desc">
-            RPG de mitologia urbana e fantasia contemporânea. Deuses ancestrais, ordens arcanas e guerras veladas nas sombras da metrópole.
+          <p class="footer-lore-quote">
+            "Onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens."
           </p>
-          <div class="footer-server-status">
-            <span class="status-indicator"></span>
-            <span class="status-text">Temporada 2: O Despertar dos Deuses</span>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span class="status-text">STATUS: VÉU ESTÁVEL // LONDRES, UK</span>
           </div>
         </div>
 
-        <!-- Column 2: O Universo -->
+        <!-- Column 2: O Universo & Crônicas -->
         <div class="footer-nav-col">
           <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
           <ul class="footer-links-list">
@@ -532,6 +535,7 @@
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
             <li><a href="universo.html#londres" class="footer-nav-link">Londres sob o Véu</a></li>
             <li><a href="universo.html#egide" class="footer-nav-link">A Égide de Avalon</a></li>
+            <li><a href="universo.html#season1" class="footer-nav-link">Crônicas da Season 1</a></li>
           </ul>
         </div>
 
@@ -539,7 +543,7 @@
         <div class="footer-nav-col">
           <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
           <ul class="footer-links-list">
-            <li><a href="sistema.html" class="footer-nav-link text-[#f1d27a]">Terminal da Égide</a></li>
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
             <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
             <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
@@ -563,12 +567,24 @@
                 <span class="text-xs">↗</span>
               </a>
             </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Mesas de Sexta no Roll20</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
+                <span>Inscrições de Missões</span>
+                <span class="text-xs">↗</span>
+              </a>
+            </li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Bottom Bar -->
+      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
           © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
@@ -585,5 +601,6 @@
   <script src="content/sistema/sistema_data.js"></script>
   <script src="sistema.js"></script>
   <script src="app.js"></script>
+  <script src="mobile.js" defer></script>
 </body>
 </html>

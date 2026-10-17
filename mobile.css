@@ -1,0 +1,118 @@
+/* ==========================================================================
+   MIDNIGHT CITY — Ajustes para celular e tablet
+   Carregado por último em todas as páginas. Só age em telas estreitas.
+   ========================================================================== */
+
+/* ── Cabeçalho: fundo sólido (o menu flutuava sobre o texto ao rolar) ── */
+@media (max-width: 1023px) {
+  .santioni-header {
+    background: linear-gradient(180deg, rgba(5, 6, 8, 0.96) 0%, rgba(5, 6, 8, 0.86) 100%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+  }
+}
+
+@media (max-width: 767px) {
+  html, body { overflow-x: hidden; }
+  body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+  #mobile-menu { background: rgba(5, 6, 8, 0.98) !important; }
+
+  /* Cabeçalho mais compacto */
+  .santioni-header { padding: 0.7rem 1rem !important; }
+  .brand-badge { gap: 0.65rem; }
+  .brand-crest.brand-crest--logo { width: 38px; height: 38px; }
+  .brand-name { font-size: 0.92rem; letter-spacing: 0.16em; }
+  .brand-sub { font-size: 0.6rem; letter-spacing: 0.2em; }
+
+  /* Palavras longas não estouram a largura */
+  p, li, dd, td, blockquote, h1, h2, h3, h4 { overflow-wrap: break-word; }
+  img, video, canvas, svg { max-width: 100%; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  /* Texto justificado em coluna estreita abre buracos entre palavras */
+  .text-justify, .agent-lore-text, [style*="text-align: justify"], [style*="text-align:justify"] { text-align: left !important; }
+
+  /* Cartões: menos acolchoamento para sobrar espaço ao texto */
+  .p-10 { padding: 1.5rem !important; }
+  .p-8  { padding: 1.35rem !important; }
+  .p-7  { padding: 1.25rem !important; }
+  .p-6  { padding: 1.15rem !important; }
+  .px-10, .px-8 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+
+  /* Seções: respiro vertical menor */
+  .py-32 { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+  .py-28 { padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
+  .py-24 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+  .py-20 { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
+
+  /* Botões e filtros: alvo de toque confortável */
+  .btn-gold, .btn-secondary-gold, .filter-pill-btn, .choice-pill-btn, .macro-pill,
+  .origin-toggle-btn, .collection-tab-btn, .hub-tab-btn { min-height: 40px; }
+
+  /* Selo flutuante "…" não cobre o conteúdo */
+  .audio-toggle-btn { width: 42px !important; height: 42px !important; bottom: 14px !important; right: 14px !important; }
+
+  /* ── Rodapé global ── */
+  .neotheon-global-footer { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+  .neotheon-global-footer .footer-nav-link { display: inline-block; padding: 0.3rem 0; }
+
+  /* ── INÍCIO: cartões de missão cifrados ── */
+  .decrypt-badge { padding: 0.85rem 1.1rem; top: 144px; }   /* sobre a imagem, não sobre o título */
+  .decrypt-card-wrapper .absolute.top-4.right-4 { top: 3.1rem !important; right: auto !important; left: 1rem !important; }
+
+  /* ── SISTEMA ── */
+  .terminal-intro-block { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .egide-terminal { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .presence-floating-dock { bottom: 12px !important; right: 12px !important; }
+  .presence-canvas-card { width: 58px !important; height: 68px !important; }
+  .station-card { padding: 1.15rem !important; }
+  .requisition-sheet-wrap { padding: 1rem !important; }
+  .requisition-fields-table, .requisition-fields-table tbody,
+  .requisition-fields-table tr, .requisition-fields-table td { display: block; width: 100% !important; }
+  .requisition-fields-table tr { padding: 0.65rem 0; }
+  .requisition-fields-table td { padding: 0.15rem 0 !important; }
+  .field-key-cell { white-space: normal !important; }
+
+  /* ── OPERAÇÕES: abas do painel cabem na tela ── */
+  .hub-nav-track { gap: 0.3rem; }
+  .hub-tab-btn {
+    flex: 1 1 0; min-width: 0; padding: 0.55rem 0.6rem;
+    font-size: 0.7rem; letter-spacing: 0.05em; white-space: normal; line-height: 1.2; text-align: center;
+  }
+  .hub-tab-badge { display: none; }
+
+  /* ── PODERES: vereditos do códice quebram linha ── */
+  .summary-right-actions { flex-shrink: 1; min-width: 0; flex-wrap: wrap; max-width: 100%; }
+  .article-verdict-pill { white-space: normal; max-width: 100%; line-height: 1.35; letter-spacing: 0.08em; }
+
+  .architecture-header { max-width: 100%; min-width: 0; }
+  .architecture-kicker-badge { white-space: normal; max-width: 100%; text-align: center; line-height: 1.35; }
+
+  /* Grades com coluna mínima maior que a tela */
+  .architecture-pillars-grid, .classes-guide-grid, .classes-guide-manifesto,
+  .presence-faq-grid, .missoes-grid { grid-template-columns: minmax(0, 1fr) !important; }
+
+  .tactical-roles-chips { grid-template-columns: minmax(0, 1fr) !important; }
+
+  /* SISTEMA: simulador de dados */
+  .sim-ctrl-group { flex-wrap: wrap; }
+  .sim-select { max-width: 100%; min-width: 0; }
+
+  /* ── UNIVERSO: rótulos do mapa cósmico abaixo das esferas ── */
+  .uni-honkai-entity { flex-direction: column; text-align: center; }
+  .uni-honkai-callout { margin-left: 0; margin-top: 0.4rem; justify-content: center; }
+  .uni-callout-line { display: none; }
+  .uni-callout-text { align-items: center; max-width: 118px; }
+  .uni-callout-title { white-space: normal !important; line-height: 1.25; }
+  .uni-callout-sub { display: none; }
+  .uni-oficio-btn { min-width: 0; }
+  .uni-oficio-name { letter-spacing: 0.03em !important; }
+  .uni-seat-label { white-space: normal; max-width: 150px; text-align: center; letter-spacing: 0.1em; }
+}
+
+/* Telas bem estreitas (≤ 380px) */
+@media (max-width: 380px) {
+  .brand-name { font-size: 0.82rem; letter-spacing: 0.12em; }
+  .brand-crest.brand-crest--logo { width: 34px; height: 34px; }
+}
