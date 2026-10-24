@@ -99,6 +99,26 @@ document.addEventListener('DOMContentLoaded', () => {
   let emberParticles = [];
   let lightningFlash = 0;
   let nextLightning = Date.now() + 4000;
+  let splashes = [];
+  const heroPainting = document.querySelector('.uni-hero-painting');
+  const heroStill = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Vento único para todas as gotas: deslocamento horizontal por pixel de queda
+  const WIND = 0.16;
+  const RAIN_LAYERS = [
+    { every: 18, len: [7, 12], speed: [6, 9], alpha: 0.14, width: 0.6, splash: 0 },
+    { every: 32, len: [14, 24], speed: [12, 16], alpha: 0.22, width: 1, splash: 0.25 },
+    { every: 120, len: [30, 48], speed: [21, 27], alpha: 0.30, width: 1.6, splash: 0.6 }
+  ];
+  const rand = (a, b) => a + Math.random() * (b - a);
+  function spawnDrop(L, w, h, anywhere) {
+    return {
+      x: rand(-h * WIND, w),
+      y: anywhere ? rand(-h, h) : rand(-120, -20),
+      len: rand(L.len[0], L.len[1]),
+      speed: rand(L.speed[0], L.speed[1]),
+      ground: rand(h * 0.8, h)
+    };
+  }
 
   if (heroCanvas) {
     heroCtx = heroCanvas.getContext('2d');
@@ -129,23 +149,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // Chuva fina em paralaxe
-      rainDrops = [];
-      const numRain = Math.floor(w / 18);
-      for (let i = 0; i < numRain; i++) {
-        rainDrops.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          length: Math.random() * 22 + 12,
-          speed: Math.random() * 14 + 10,
-          alpha: Math.random() * 0.25 + 0.1,
-          layer: Math.random() > 0.6 ? 2 : 1
-        });
-      }
+      // Chuva em três profundidades: fundo fino e lento, frente grossa e rápida
+      rainDrops = RAIN_LAYERS.map(L => {
+        const drops = [];
+        for (let i = 0; i < Math.floor(w / L.every); i++) drops.push(spawnDrop(L, w, h, true));
+        return drops;
+      });
+      splashes = [];
 
       // Brasas/poeira arcana suspensa
       emberParticles = [];
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 24; i++) {
         emberParticles.push({
           x: Math.random() * w,
           y: Math.random() * h,
@@ -171,50 +185,22 @@ document.addEventListener('DOMContentLoaded', () => {
       heroMouse.x += (heroMouse.targetX - heroMouse.x) * 0.05;
       heroMouse.y += (heroMouse.targetY - heroMouse.y) * 0.05;
 
-      // Fundo escuro com gradiente
-      heroCtx.fillStyle = '#030306';
-      heroCtx.fillRect(0, 0, w, h);
+      // A pintura de Londres fica por baixo (CSS); o canvas só leva a atmosfera
+      heroCtx.clearRect(0, 0, w, h);
 
-      // Relâmpagos e clarões celestes efêmeros
+      // Relâmpago: a pintura clareia por um instante, com um véu frio por cima
       const now = Date.now();
-      if (now > nextLightning) {
-        lightningFlash = Math.random() * 0.4 + 0.25;
-        nextLightning = now + Math.random() * 7000 + 4000;
+      if (!heroStill && now > nextLightning) {
+        lightningFlash = Math.random() * 0.5 + 0.4;
+        nextLightning = now + Math.random() * 8000 + 5000;
       }
       if (lightningFlash > 0.01) {
-        heroCtx.fillStyle = `rgba(212, 175, 55, ${lightningFlash * 0.35})`;
+        heroCtx.fillStyle = `rgba(190, 205, 235, ${lightningFlash * 0.12})`;
         heroCtx.fillRect(0, 0, w, h);
-        lightningFlash *= 0.88;
+        if (heroPainting) heroPainting.style.filter = `brightness(${0.62 + lightningFlash * 0.7}) saturate(0.85)`;
+        lightningFlash *= 0.9;
+        if (lightningFlash <= 0.01 && heroPainting) heroPainting.style.filter = '';
       }
-
-      // Silhuetas arquitetônicas distantes de Londres no horizonte
-      heroCtx.save();
-      const horizonY = h * 0.78;
-      heroCtx.fillStyle = '#020204';
-      heroCtx.beginPath();
-      heroCtx.moveTo(0, h);
-      heroCtx.lineTo(0, horizonY);
-      // Spire 1 (Big Ben style)
-      heroCtx.lineTo(w * 0.18, horizonY);
-      heroCtx.lineTo(w * 0.19, horizonY - 90);
-      heroCtx.lineTo(w * 0.20, horizonY - 140);
-      heroCtx.lineTo(w * 0.205, horizonY - 90);
-      heroCtx.lineTo(w * 0.22, horizonY);
-      // Gothic Towers & Domes
-      heroCtx.lineTo(w * 0.45, horizonY);
-      heroCtx.lineTo(w * 0.47, horizonY - 70);
-      heroCtx.lineTo(w * 0.50, horizonY - 110);
-      heroCtx.lineTo(w * 0.53, horizonY - 70);
-      heroCtx.lineTo(w * 0.55, horizonY);
-      // Distant Spire
-      heroCtx.lineTo(w * 0.80, horizonY);
-      heroCtx.lineTo(w * 0.82, horizonY - 80);
-      heroCtx.lineTo(w * 0.84, horizonY);
-      heroCtx.lineTo(w, horizonY + 15);
-      heroCtx.lineTo(w, h);
-      heroCtx.closePath();
-      heroCtx.fill();
-      heroCtx.restore();
 
       // Luz sutil que acompanha o cursor (Lanterna Arcana)
       const grad = heroCtx.createRadialGradient(heroMouse.x, heroMouse.y, 10, heroMouse.x, heroMouse.y, 420);
@@ -243,21 +229,37 @@ document.addEventListener('DOMContentLoaded', () => {
         heroCtx.restore();
       });
 
-      // Renderizar chuva fina
-      heroCtx.strokeStyle = 'rgba(200, 210, 230, 0.22)';
-      heroCtx.lineWidth = 1;
-      heroCtx.beginPath();
-      rainDrops.forEach(r => {
-        r.y += r.speed;
-        r.x += 1.2;
-        if (r.y > h) {
-          r.y = -r.length;
-          r.x = Math.random() * w;
-        }
-        heroCtx.moveTo(r.x, r.y);
-        heroCtx.lineTo(r.x + 2, r.y + r.length);
+      // Chuva: cada camada num traço só, inclinada pelo mesmo vento em que cai
+      heroCtx.lineCap = 'round';
+      RAIN_LAYERS.forEach((L, li) => {
+        heroCtx.strokeStyle = `rgba(200, 212, 235, ${L.alpha})`;
+        heroCtx.lineWidth = L.width;
+        heroCtx.beginPath();
+        rainDrops[li].forEach((r, i) => {
+          if (!heroStill) { r.y += r.speed; r.x += r.speed * WIND; }
+          if (r.y > r.ground) {
+            if (Math.random() < L.splash) splashes.push({ x: r.x, y: r.y, r: 1, life: 1, big: li === 2 });
+            rainDrops[li][i] = spawnDrop(L, w, h, false);
+            return;
+          }
+          heroCtx.moveTo(r.x, r.y);
+          heroCtx.lineTo(r.x - r.len * WIND, r.y - r.len);
+        });
+        heroCtx.stroke();
       });
-      heroCtx.stroke();
+
+      // Respingos no chão: anéis achatados que se abrem e somem
+      heroCtx.lineWidth = 0.8;
+      splashes = splashes.filter(s => {
+        s.r += s.big ? 0.9 : 0.6;
+        s.life -= 0.06;
+        if (s.life <= 0) return false;
+        heroCtx.strokeStyle = `rgba(215, 222, 240, ${s.life * 0.35})`;
+        heroCtx.beginPath();
+        heroCtx.ellipse(s.x, s.y, s.r * (s.big ? 3 : 2), s.r * 0.6, 0, 0, Math.PI * 2);
+        heroCtx.stroke();
+        return true;
+      });
 
       // Renderizar brasas arcanas
       emberParticles.forEach(e => {
@@ -278,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       heroCtx.globalAlpha = 1.0;
 
-      heroAnimId = requestAnimationFrame(renderHeroAtmosphere);
+      if (!heroStill) heroAnimId = requestAnimationFrame(renderHeroAtmosphere);
     }
 
     window.addEventListener('resize', resizeHeroCanvas, { passive: true });
@@ -551,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Clube Noturno Oculto & Ponto Neutro',
       desc: `
         <div class="uni-drawer-portrait-wrap">
-          <img src="assets/crossroads_soho_mj.png" alt="The Crossroads Soho" class="uni-drawer-portrait-img">
+          <img src="assets/crossroads_soho_mj.webp" alt="The Crossroads Soho" class="uni-drawer-portrait-img">
           <div class="uni-drawer-portrait-overlay"></div>
         </div>
         <div class="uni-dossier-section">
@@ -574,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Fronteira Fluvial & Acesso Oculto',
       desc: `
         <div class="uni-drawer-portrait-wrap">
-          <img src="assets/docas_tamisa_mj.png" alt="Docas do Tâmisa" class="uni-drawer-portrait-img">
+          <img src="assets/docas_tamisa_mj.webp" alt="Docas do Tâmisa" class="uni-drawer-portrait-img">
           <div class="uni-drawer-portrait-overlay"></div>
         </div>
         <div class="uni-dossier-section">
@@ -597,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Poder Institucional & Alicerces Romanos',
       desc: `
         <div class="uni-drawer-portrait-wrap">
-          <img src="assets/londres_panorama_mj.png" alt="Westminster e Criptas" class="uni-drawer-portrait-img">
+          <img src="assets/londres_panorama_mj.webp" alt="Westminster e Criptas" class="uni-drawer-portrait-img">
           <div class="uni-drawer-portrait-overlay"></div>
         </div>
         <div class="uni-dossier-section">
@@ -620,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Necrópole Oculta & Ancoragem Ctônica',
       desc: `
         <div class="uni-drawer-portrait-wrap">
-          <img src="assets/banner_londres_night.png" alt="Highgate Cemitério" class="uni-drawer-portrait-img">
+          <img src="assets/banner_londres_night.webp" alt="Highgate Cemitério" class="uni-drawer-portrait-img">
           <div class="uni-drawer-portrait-overlay"></div>
         </div>
         <div class="uni-dossier-section">
@@ -656,7 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
     custodio: {
       title: 'Custódios',
       category: 'Ofício Operacional • Vanguarda Militar',
-      img: 'assets/custodio.png',
+      img: 'assets/custodio.webp',
       doutrina: `
         A linha de frente inabalável da Égide de Avalon. Os Custódios são o braço bélico que se interpõe fisicamente entre a fragilidade do mundo mortal e a devastação de feras, titãs e entidades descontroladas. Não há hesitação em suas fileiras: onde outros buscam negociar ou compreender a anomalia, o Custódio já posicionou sua muralha e ergueu sua lâmina.
         Eles respondem diretamente às ordens executivas da Cadeira da Lança (Sr. Eric Bauman), constituindo a espinha dorsal de qualquer operação que envolva alto risco de ruptura do Véu ou derramamento de sangue místico.
@@ -669,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
     vigilante: {
       title: 'Vigilantes',
       category: 'Ofício de Inteligência • Espionagem & Infiltração',
-      img: 'assets/vigilante.png',
+      img: 'assets/vigilante.webp',
       doutrina: `
         Olhos que tudo registram sem jamais serem notados. Os Vigilantes operam no interstício entre a alta sociedade londrina, os becos escuros e os sistemas de informação civis. Eles não entram em combate aberto a menos que sua missão de reconhecimento seja comprometida: sua maior vitória é saber exatamente onde o culto herético celebrará seu rito três semanas antes do primeiro sino tocar.
         Atuam em íntima sinergia com a Cadeira da Torre (Selene Telamon), alimentando a grande rede de vigilância panóptica da Égide com dados de interceptação mística e leitura de frequências ocultas.
@@ -682,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
     arcanista: {
       title: 'Arcanistas',
       category: 'Ofício Teúrgico • Alta Magia, Rituais & Oráculos',
-      img: 'assets/arcanista.png',
+      img: 'assets/arcanista.webp',
       doutrina: `
         Mestres das geometrias sagradas e manipuladores das leis fundamentais que regem o Éter. Enquanto os mortais creem que as leis da física são imutáveis, os Arcanistas conhecem as equações que as divindades sussurraram nos alicerces do Tear da Vida. Eles estabelecem selos de proteção em bairros inteiros de Londres, dissipam fendas dimensionais e decifram línguas mortas que queimam os olhos de quem as lê sem preparo.
         Seus laboratórios subterrâneos em Avalon ressoam com cálculos astrolábicos e círculos de invocação controlada, servindo como suporte teúrgico para todas as outras divisões da Égide.
@@ -695,7 +697,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inquisidor: {
       title: 'Inquisidores',
       category: 'Ofício Disciplinar • Julgamento & Corregedoria',
-      img: 'assets/inquisidores.png',
+      img: 'assets/inquisidores.webp',
       doutrina: `
         A mão implacável da lei interna da Égide. Os Inquisidores não caçam monstros civis: eles caçam traidores, agentes corrompidos, violadores de juramentos e aqueles que ousam romper o segredo sagrado do Véu por ganância ou ambição desmedida. Suas sentenças não admitem recurso quando ratificadas pelo Conselho de Mármore.
         Subordinados à Cadeira do Julgador (Lukas Ekantor), exercem a autoridade judicial com rigor cirúrgico, garantindo que a própria ordem que protege a humanidade não se torne o monstro que ela combate.
@@ -708,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mediador: {
       title: 'Mediadores',
       category: 'Ofício Diplomático • Pactos Estrangeiros & Tréguas',
-      img: 'assets/mediadores.png',
+      img: 'assets/mediadores.webp',
       doutrina: `
         A palavra que impede que cidades inteiras sejam reduzidas a cinzas pelo capricho de um deus ofendido. Os Mediadores compreendem a etiqueta milenar que governa as cortes celestiais, as embaixadas de outros panteões e os espíritos livres das florestas antigas. Eles sabem que uma única palavra mal colocada perante um emissário divino pode equivaler a uma declaração de guerra cósmica.
         Trabalham diretamente vinculados à Cadeira do Mediador (Alexandre Magno), negociando limites de território, sacrifícios aceitáveis e tréguas solenes no limiar do apocalipse.
@@ -721,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tecelao: {
       title: 'Tecelões do Véu',
       category: 'Ofício de Ocultação • Manipulação do Real',
-      img: 'assets/tecelao.png',
+      img: 'assets/tecelao.webp',
       doutrina: `
         Os arquitetos do teatro em que a humanidade vive diariamente. Sem os Tecelões do Véu, a sociedade mortal teria entrado em colapso histérico há séculos. Eles editam filmagens de câmeras de segurança, forjam explicações científicas para tempestades anômalas, neutralizam reportagens de jornal e manipulam as memórias de civis que testemunharam o impossível.
         Trabalham sob as diretrizes da Cadeira do Véu (Hector Vermillion), operando antenas de interferência psíquica e fios de névoa que tecem o esquecimento conveniente sobre as mentes mortais.
@@ -734,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
     arquivista: {
       title: 'Arquivistas de Avalon',
       category: 'Ofício Histórico • Biblioteca de Alexandria',
-      img: 'assets/arquivistas.png',
+      img: 'assets/arquivistas.webp',
       doutrina: `
         Os guardiões da memória do mundo nas profundezas das águas do Tâmisa. A Biblioteca de Alexandria não pereceu em cinzas na antiguidade: seu coração místico foi resgatado e selado sob o leito do rio de Londres. Os Arquivistas catalogam genealogias divinas, nomes verdadeiros de demônios, mapas astrais de eras anteriores e rituais que foram banidos até da memória dos deuses.
         Herdeiros do ofício outrora manchado pela arrogância de Jonathan e hoje honrado pela sabedoria de Rowan Escardos, fornecem as respostas cruciais que salvam missões condenadas ao fracasso.
@@ -747,7 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
     artifice: {
       title: 'Artífices de Ébano',
       category: 'Ofício de Forja & Alquimia • Arsenais Divinos',
-      img: 'assets/artifices.png',
+      img: 'assets/artifices.webp',
       doutrina: `
         As mãos calejadas que transformam metal cru e essência mágica em instrumentos de glória e contenção. Em suas forjas subterrâneas que aproveitam veios de calor telúrico sob Londres, os Artífices fundem bronze celestial, aço valiriano e ligas rúnicas. Cada espada, escudo, bala de prata mística ou amuleto usado pelos agentes da Égide nasceu do suor de seus martelos.
         Eles não constroem apenas armas convencionais: desenvolvem autômatos de sentinela, reatores de contenção dimensional e próteses biomecânicas arcanas para combatentes que perderam membros em batalha.
@@ -760,7 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sanctificador: {
       title: 'Sanctificadores',
       category: 'Ofício Médico & Purificação • Campo & Cidadela',
-      img: 'assets/sanctificadores.png',
+      img: 'assets/sanctificadores.webp',
       doutrina: `
         Os restauradores da vida quando a morte mística já reivindicou a carne. Os Sanctificadores enfrentam ferimentos que a medicina mortal sequer consegue diagnosticar: queimaduras de fogo primordial que consomem a alma, venenos de quimera que petrificam o sangue e maldições de necrose espiritual.
         Eles atuam tanto em hospitais secretos camuflados na superfície quanto na ala cirúrgica avançada de Avalon, curando veteranos mutilados e expurgando miasmas que poderiam infectar o santuário da Ordem.
@@ -831,7 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
       seat: 'A Torre',
       name: 'Selene Telamon',
       clans: 'Sem vassalos',
-      img: 'assets/selene telamon.png',
+      img: 'assets/selene telamon.webp',
       role: 'Vigilância Global & Alertas de Colapso',
       historia: `
         Considerada a vigia entre os vigias, Selene Telamon comanda a rede de radares sobrenaturais da Égide.
@@ -944,7 +946,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${data.img}" alt="${data.name}" class="uni-drawer-portrait-img">
             <div class="uni-drawer-portrait-overlay"></div>
           </div>
-          <div class="inline-block px-3.5 py-1.5 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 text-[#f8e48b] text-[10px] font-mono-tech uppercase mb-3 font-bold">
+          <div class="inline-block px-3.5 py-1.5 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 text-[#f8e48b] text-xs font-mono-tech uppercase mb-3 font-bold">
             ✦ CADEIRA DE MÁRMORE: ${data.seat.toUpperCase()} ✦
           </div>
           <h3 class="font-cinzel-title text-2xl sm:text-3xl font-bold text-white mb-1">${data.name}</h3>
@@ -1106,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     architects: {
       title: 'Os Princípios Celestiais (Os Quatro Arquitetos)',
       category: 'Primeiros Seres Vivos • Guardiões do Sistema',
-      img: 'assets/despertar de nyx.png',
+      img: 'assets/despertar de nyx.webp',
       desc: `
         Os primeiros seres vivos que nasceram do sopro primordial não possuíam forma: pulsavam determinação e controle absolutos. O Criador os denominou "Princípios Celestiais", mas eles próprios se chamavam "Os Quatro Arquitetos". Eram os guardiões incumbidos de preservar o sistema do Criador e garantir que a história de sua criação fosse seguida ciclicamente pelo Tear da Vida e pela Roda do Tempo.
         
@@ -1122,7 +1124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     celestials: {
       title: 'Celestiais (Os Deuses Olimpianos)',
       category: 'Entidades Moldadas • Ligados à Fé Mortal',
-      img: 'assets/tronos_conselho_mj.png',
+      img: 'assets/tronos_conselho_mj.webp',
       desc: `
         Forjados pelo Criador antes de seu sumiço, como resposta à inveja que os Quatro Arquitetos sentiam da liberdade mortal.
         Ao invés de conceder aos Princípios corpos divinos ilimitados, o Criador amarrou os Deuses às regras invisíveis do padrão cósmico.
@@ -1146,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mortals: {
       title: 'Os Mortais (Humanidade & Semideuses)',
       category: 'O Eixo da Criação • O Fogo do Livre Arbítrio',
-      img: 'assets/cidadela_avalon_mj.png',
+      img: 'assets/cidadela_avalon_mj.webp',
       desc: `
         Dotados da preciosa e perigosa capacidade de escolha que despertou a inveja dos próprios Princípios Celestiais.
         São o alicerce sobre o qual os Deuses constroem sua relevância e o solo onde a Égide de Avalon trava sua guerra secreta para impedir que forças antigas apaguem a chama da história mortal.
@@ -1155,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     forsaken: {
       title: 'Os Forsaken (Os Cinco Ascendidos)',
       category: 'Anomalia Extrínseca • Além dos Limites do Tear',
-      img: 'assets/keres_mj.png',
+      img: 'assets/keres_mj.webp',
       desc: `
         Existem cinco mortais e imortais que quebraram os grilhões do Tear da Vida e ascenderam à condição herética de Forsaken, operando à margem da autoridade dos Deuses e dos Princípios Celestiais.
         
@@ -1170,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     anti_life: {
       title: 'A Anti-Vida (O Fim de Todas as Coisas)',
       category: 'Antítese do Criador • Anulação Absoluta',
-      img: 'assets/noite caida.png',
+      img: 'assets/noite caida.webp',
       desc: `
         A Anti-Vida é a antítese irrevogável do Criador e o nêmesis de tudo o que existe.
         
@@ -1204,9 +1206,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Conceito Cósmico - Moldura de Arte Higgsfield / Acervo Oficial -->
           <div class="uni-cosmo-concept-artwork mb-6 rounded-2xl overflow-hidden border border-[#d4af37]/40 relative bg-black/80 shadow-2xl group">
             <div class="relative w-full h-56 sm:h-64 overflow-hidden">
-              <img src="${info.img}" alt="${info.title}" class="w-full h-full object-cover object-center filter brightness-95 group-hover:scale-105 transition-all duration-700" onerror="this.onerror=null; this.src='assets/hero_perpetuos.jpg';">
+              <img src="${info.img}" alt="${info.title}" class="w-full h-full object-cover object-center filter brightness-95 group-hover:scale-105 transition duration-700" onerror="this.onerror=null; this.src='assets/hero_perpetuos.jpg';">
               <div class="absolute inset-0 bg-gradient-to-t from-[#090818] via-transparent to-transparent"></div>
-              <div class="absolute top-3 right-3 text-[10px] font-mono-tech px-2.5 py-1 rounded bg-black/85 border border-[#d4af37]/50 text-[#f1d27a] font-bold uppercase tracking-wider">
+              <div class="absolute top-3 right-3 text-xs font-mono-tech px-2.5 py-1 rounded bg-black/85 border border-[#d4af37]/50 text-[#f1d27a] font-bold uppercase tracking-wider">
                 ✦ ARTE CONCEITUAL // CÓDICE
               </div>
             </div>

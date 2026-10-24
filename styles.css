@@ -329,7 +329,7 @@ body::before {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1.5rem;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .portal-btn-primary {
@@ -345,7 +345,7 @@ body::before {
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0 4px 30px rgba(212, 175, 55, 0.4), 0 0 20px rgba(200, 41, 36, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .portal-btn-primary:hover {
@@ -366,7 +366,7 @@ body::before {
   padding: 1.15rem 2.5rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .portal-btn-secondary:hover {
@@ -387,13 +387,26 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 3rem;
+  gap: 0.75rem;
+  padding: 0.9rem 1.5rem;
   pointer-events: auto;
+}
+
+@media (min-width: 1280px) {
+  .santioni-header {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .santioni-header {
+    padding: 1.2rem 3rem;
+  }
 }
 
 @media (max-width: 768px) {
   .santioni-header {
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 1.25rem;
   }
 }
 
@@ -401,14 +414,16 @@ body::before {
 .brand-badge {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.65rem;
   text-decoration: none;
   user-select: none;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .brand-crest {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid var(--gold-primary);
   display: flex;
@@ -416,11 +431,12 @@ body::before {
   justify-content: center;
   font-family: 'Cinzel Decorative', serif;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--gold-light);
   background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 80%);
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
+  flex-shrink: 0;
 }
 
 .brand-badge:hover .brand-crest {
@@ -431,26 +447,30 @@ body::before {
 .brand-text {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .brand-name {
   font-family: 'Cinzel Decorative', serif;
-  font-size: 1rem;
+  font-size: clamp(0.78rem, 0.95vw, 0.96rem);
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: clamp(0.1em, 0.14vw, 0.18em);
   color: #ffffff;
-  line-height: 1.1;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .brand-sub {
   font-family: 'Cinzel', serif;
-  font-size: 0.55rem;
-  letter-spacing: 0.25em;
+  font-size: 0.6875rem;
+  letter-spacing: clamp(0.12em, 0.16vw, 0.2em);
   color: var(--gold-champagne);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-/* Santioni Pill Capsule (Responsive Luxury Navigation) */
+/* Santioni Pill Capsule (Responsive Luxury Navigation - Notebook & Desktop Safe) */
 .santioni-nav-pill {
   display: none;
 }
@@ -459,13 +479,13 @@ body::before {
   .santioni-nav-pill {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.45rem;
     white-space: nowrap;
-    background: rgba(12, 11, 22, 0.85);
+    background: rgba(12, 11, 22, 0.88);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 0.5rem 1.25rem;
+    padding: 0.45rem 0.95rem;
     border-radius: 100px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.05);
   }
@@ -473,16 +493,23 @@ body::before {
 
 @media (min-width: 1280px) {
   .santioni-nav-pill {
-    gap: 1.15rem;
-    padding: 0.55rem 1.6rem;
+    gap: 0.7rem;
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .santioni-nav-pill {
+    gap: 1rem;
+    padding: 0.55rem 1.5rem;
   }
 }
 
 .santioni-nav-pill a {
   font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
+  font-size: clamp(0.6875rem, 0.74vw, 0.72rem);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: clamp(0.06em, 0.1vw, 0.14em);
   text-transform: uppercase;
   color: var(--silver-muted);
   text-decoration: none;
@@ -497,8 +524,25 @@ body::before {
 
 .pill-ornament {
   color: var(--gold-primary);
-  font-size: 0.75rem;
-  opacity: 0.7;
+  font-size: 0.6875rem;
+  opacity: 0.65;
+  user-select: none;
+}
+
+/* Notebook (1024–1279px, inclusive telas 1366 com zoom do Windows em 125%):
+   o menu inteiro precisa caber numa linha só. Tiramos os ornamentos,
+   apertamos o espaçamento e nunca deixamos o cabeçalho quebrar. */
+.santioni-header { flex-wrap: nowrap; }
+.santioni-header > .flex { flex-wrap: nowrap; min-width: 0; }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .santioni-nav-pill { gap: 0.85rem; padding: 0.45rem 1rem; }
+  .santioni-nav-pill .pill-ornament { display: none; }
+  .santioni-nav-pill a { font-size: 0.6875rem; letter-spacing: 0.1em; }
+  .santioni-header .btn-gold { padding-left: 0.85rem !important; padding-right: 0.85rem !important; }
+}
+@media (min-width: 1024px) and (max-width: 1120px) {
+  .brand-sub { display: none; }
+  .santioni-nav-pill { gap: 0.7rem; }
 }
 
 /* Floating Audio Button */
@@ -519,7 +563,7 @@ body::before {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .audio-toggle-btn:hover {
@@ -648,7 +692,7 @@ body::before {
 
 .scroll-cue-text {
   font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.3em;
   color: var(--gold-champagne);
   text-transform: uppercase;
@@ -665,7 +709,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .hero-scroll-cue:hover .scroll-cue-arrow {
@@ -683,7 +727,7 @@ body::before {
 }
 
 .glass-card-hover {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .glass-card-hover:hover {
@@ -812,7 +856,7 @@ body::before {
 
 .decrypt-badge-subtitle {
   font-family: 'Fira Code', monospace;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   color: #cfc7b4;
   letter-spacing: 0.05em;
 }
@@ -837,7 +881,7 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--silver-muted);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   text-align: left;
   user-select: none;
   width: 100%;
@@ -871,7 +915,7 @@ body::before {
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.08);
   color: var(--gold-champagne);
-  transition: all 0.3s;
+  transition: 0.3s; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 /* Panoramic Visual Banner */
@@ -946,7 +990,7 @@ body::before {
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   box-shadow: 0 4px 25px rgba(212, 175, 55, 0.25);
 }
 
@@ -964,7 +1008,7 @@ body::before {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .btn-secondary-gold:hover {
@@ -1047,7 +1091,7 @@ body::before {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
   position: relative;
   z-index: 2;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .info-step:hover .info-circle {
@@ -1063,7 +1107,7 @@ body::before {
   border-radius: 12px;
   padding: 1.5rem;
   backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .info-step:hover .info-content {
@@ -1094,7 +1138,7 @@ body::before {
   background: rgba(12, 11, 22, 0.65);
   backdrop-filter: blur(10px);
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .acc-item.active,
@@ -1372,7 +1416,7 @@ body::before {
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   position: relative;
   overflow: hidden;
 }
@@ -1410,7 +1454,7 @@ body::before {
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.06);
@@ -1442,7 +1486,7 @@ body::before {
   border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 14px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   margin-bottom: 2rem;
 }
 
@@ -1503,7 +1547,7 @@ body::before {
   border-radius: 4px;
   cursor: pointer !important;
   margin-top: 1.2rem;
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   pointer-events: auto !important;
   position: relative;
   z-index: 30;
@@ -1554,7 +1598,7 @@ body::before {
 .novato-pass-act {
   background: linear-gradient(135deg, rgba(14, 12, 24, 0.95) 0%, rgba(28, 24, 51, 0.6) 100%);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .novato-pass-act:hover {
@@ -1564,7 +1608,7 @@ body::before {
 
 .act-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.15em;
   padding: 0.25rem 0.65rem;
   border-radius: 9999px;
@@ -1692,7 +1736,7 @@ body::before {
 
 .status-text {
   font-family: 'Fira Code', monospace;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.08em;
   color: #cfc7b4;
 }
@@ -1739,37 +1783,98 @@ body::before {
   transform: translateX(3px);
 }
 
-/* Bottom Bar */
-.footer-bottom-bar {
-  padding-top: 2rem;
+/* Bottom Bar & High-Visibility Legal Fanfic Callout */
+.footer-legal-callout {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(15, 14, 24, 0.96) 50%, rgba(200, 41, 36, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 0 20px rgba(212, 175, 55, 0.06);
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  text-align: center;
+  gap: 0.55rem;
+}
+
+.footer-legal-badge-row {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-legal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(241, 210, 122, 0.5);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #f1d27a;
+  text-transform: uppercase;
+}
+
+.footer-legal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.footer-legal-text {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #e8e2d5;
+}
+
+.footer-legal-text strong {
+  color: #f1d27a;
+  font-weight: 700;
+}
+
+.footer-bottom-bar {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  align-items: stretch;
   justify-content: space-between;
 }
 
 @media (min-width: 768px) {
   .footer-bottom-bar {
-    flex-direction: row;
     text-align: left;
   }
 }
 
 .footer-copyright {
   font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
-  color: #a59e92;
+  color: #cfc7b4;
 }
 
 .footer-disclaimer {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.03em;
-  color: #7a7469;
-  max-width: 580px;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: #e8e2d5;
+  max-width: 100%;
+  padding: 1.1rem 1.35rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(14, 13, 22, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
 }
 
 /* Reduced Motion Preference (WCAG 2.3.3) */
@@ -1833,7 +1938,7 @@ body::before {
   border: 1px solid rgba(212, 175, 55, 0.28);
   background: #08080e;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.6);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .mj-frame:hover {
@@ -1926,7 +2031,7 @@ body::before {
   color: #78716c !important;
   cursor: not-allowed !important;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(248, 113, 113, 0.2) !important;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   user-select: none;
 }
 
@@ -1973,13 +2078,20 @@ body::before {
 
 /* ── Logo Midnight City no lugar do monograma ── */
 .brand-crest.brand-crest--logo {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border: 0;
   border-radius: 0;
   background: none;
   box-shadow: none;
   font-size: 0;
+  flex-shrink: 0;
+}
+@media (min-width: 1440px) {
+  .brand-crest.brand-crest--logo {
+    width: 42px;
+    height: 42px;
+  }
 }
 .brand-crest.brand-crest--logo img {
   display: block;
@@ -1994,3 +2106,49 @@ body::before {
 .brand-badge:hover .brand-crest.brand-crest--logo img {
   filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.55));
 }
+.santioni-header .btn-gold {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Cabeçalho com fundo depois de rolar (todas as larguras) */
+.santioni-header { transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease, backdrop-filter .35s ease; border-bottom: 1px solid transparent; }
+.santioni-header.is-scrolled {
+  background: rgba(5, 6, 8, 0.88);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom-color: rgba(212, 175, 55, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Rodapé: link do aviso legal como texto, não como caixa */
+.footer-bottom-bar .footer-disclaimer { background: none !important; border: 0 !important; padding: 0 !important; box-shadow: none !important; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: .82rem; color: #a59e92; }
+.footer-bottom-bar .footer-copyright { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: .8rem; letter-spacing: 0; text-transform: none; color: #8e8778; }
+
+/* ==========================================================================
+   LEGIBILIDADE E TOQUE (QA Playwright, out/2026)
+   Piso de 11px para rótulos e alvos de 44px nos controles do celular.
+   ========================================================================== */
+@media (max-width: 1023px) {
+  #mobile-menu-btn { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+}
+.footer-nav-link { padding-block: .45rem; }
+@media (max-width: 767px) {
+  .footer-nav-link { min-height: 44px; display: inline-flex; align-items: center; }
+  .footer-disclaimer a, .sys-hero-scroll { display: inline-flex; align-items: center; min-height: 44px; }
+}
+@media (max-width: 767px) {
+  [data-filter-nature], .district-tab-btn, #mission-sort-select, #btn-clear-filters,
+  .op-modal-close, .btn-zoom-scale, .legal-toc a, .toc-subtopic-link, .reader-breadcrumb a, .step-link {
+    min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center;
+  }
+  .legal-toc a, .toc-subtopic-link, .reader-breadcrumb a, .step-link { justify-content: flex-start; }
+}
+
+/* Links dentro de frases: área de toque maior sem mexer no layout da linha */
+@media (max-width: 767px) {
+  p a.underline, p a:not([class]) { padding: .55rem .5rem; margin-inline: -.5rem; }
+}
+
+/* Revisão impeccable (out/2026): pontos de status estáticos, sem pulsar para sempre */
+.status-pulse-dot, .decrypt-badge-dot, .gossip-live, .gossip-status::before { animation: none !important; }

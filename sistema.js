@@ -206,30 +206,27 @@
     golds: {
       title: 'Golds (Moeda Corrente)',
       role: 'MOEDA CORRENTE',
-      desc: 'Compram suprimentos na loja, pagam as taxas de criação e manutenção aos artesãos e adquirem artefatos e poções comuns para as operações rotineiras da Égide.'
+      desc: 'Compra itens na loja do Hub e financia a Forja de artefatos. O saldo e o histórico ficam na sua conta do Hub.'
     },
     contas: {
       title: 'Contas Celestiais (Moeda Intermediária)',
       role: 'CONVERSÃO & PROGRESSO',
-      desc: 'Moeda intermediária obtida em missões, caronas e eventos. Você pode trocar 100 Contas Celestiais por 1 Oração Celestial no Tesouro da Égide.'
+      desc: 'Moeda intermediária obtida em missões, caronas e eventos. No Hub, 100 Contas Celestiais viram 1 Oração Celestial, sem pedir a ninguém.'
     },
     oracoes: {
       title: 'Orações Celestiais (Recurso Raro)',
       role: 'BANNERS & GACHA DE ELITE',
-      desc: 'O recurso mais precioso do sistema. Servem para atirar nos Banners Sazonais. A cada Oração gasta, você rola 1d20: se tirar 20 natural, conquista a bênção ou arma exclusiva do banner!'
+      desc: 'O recurso mais precioso do RPG. Com ela você ora nos banners do Hub, em x1 ou x10. Nos temporários, a 41ª oração sem exclusivo garante um; no permanente, a 91ª.'
     }
   };
 
   // Modelo Textual para Cópia Oficial (Etapa 03)
-  const REQUISITION_MODEL_TEXT = `Nº DA FICHA GERAL: [Escolha um número livre na lista de fichas]
-E-MAIL: [Seu e-mail para acesso às planilhas no Google Drive]
-NOME DA FICHA GERAL: [Seu nome de jogador em off]
-NOME DO PERSONAGEM: [Nome do personagem aceito na aprovação]
-FILIAÇÃO: [Divindade paterna/materna ou Linhagem arcana]
+  const REQUISITION_MODEL_TEXT = `NOME DO PERSONAGEM: [Nome aceito na aprovação]
+FILIAÇÃO: [Divindade paterna/materna ou linhagem arcana]
 OFÍCIO: [Seu emprego na Égide: Custódio, Vigilante, Arcanista, etc.]
-IDADE & SHAPE: [Idade do personagem e duas fotos do faceclaim]
-INDIVIDUALIDADES: [Escolha 3 poderes por nível disponível na lista]
-DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
+IDADE & SHAPE: [Idade e photoplayer; o Hub avisa se o rosto já estiver em uso]
+INDIVIDUALIDADES: [3 poderes por nível disponível na lista]
+DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributo]`;
 
   function renderStationCustomContent(station) {
     if (station.step === 1) {
@@ -344,7 +341,7 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
           <!-- Ambientação Visual em Microfilme -->
           <div class="microfilm-frame origin-microfilm-preview" aria-hidden="true">
             <div class="microfilm-overlay"></div>
-            <img src="assets/londres_panorama_mj.png" alt="Panorama de Londres Sob o Véu Místico" class="microfilm-img" loading="lazy">
+            <img src="assets/londres_panorama_mj.webp" alt="Panorama de Londres Sob o Véu Místico" class="microfilm-img" loading="lazy">
             <div class="microfilm-caption">
               <span class="microfilm-label">AMBIENTAÇÃO URBANA</span>
               <span class="microfilm-sub">LONDRES SOB O VÉU</span>
@@ -360,65 +357,7 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
     }
 
     if (station.step === 3) {
-      return `
-        <p>A ficha geral de atributos é criada por um dos ADMs da Égide no tópico oficial da Central. Preencha o protocolo com os campos obrigatórios:</p>
-        <div class="requisition-sheet-wrap">
-          <div class="requisition-sheet-header">
-            <div class="requisition-stamp">PROTOCOLO DE INGRESSO // CENTRAL DE REGISTROS DA ÉGIDE</div>
-            <button id="copy-requisition-model-btn" class="copy-model-btn" aria-label="Copiar modelo de pedido para a área de transferência">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <span id="copy-btn-text">Copiar modelo de pedido</span>
-            </button>
-            <span id="copy-feedback-msg" class="copy-feedback-msg" role="status" aria-live="polite">✓ Modelo copiado. Preencha e envie no canal indicado pela equipe.</span>
-          </div>
-
-          <table class="requisition-fields-table" aria-label="Campos Obrigatórios da Ficha Geral">
-            <tbody>
-              <tr>
-                <td class="field-key-cell">Nº DA FICHA GERAL</td>
-                <td class="field-inst-cell">Escolha um número livre na lista pública de fichas da Central.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">E-MAIL DO JOGADOR</td>
-                <td class="field-inst-cell">Seu e-mail oficial para liberação de permissão de edição da planilha no Google Drive.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">NOME DA FICHA GERAL</td>
-                <td class="field-inst-cell">Seu apelido ou nome de jogador no Discord (em off).</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">NOME DO PERSONAGEM</td>
-                <td class="field-inst-cell">Nome completo do personagem aprovado na triagem de lore.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">FILIAÇÃO DIVINA / LINHAGEM</td>
-                <td class="field-inst-cell">Divindade patrona, progenitor místico ou linhagem arcana escolhida.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">OFÍCIO NA ÉGIDE</td>
-                <td class="field-inst-cell">Seu posto operacional: Custódio, Vigilante, Arcanista, etc.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">IDADE & FACECLAIM (SHAPE)</td>
-                <td class="field-inst-cell">Idade do personagem e links para duas fotos de referência visual.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">INDIVIDUALIDADES</td>
-                <td class="field-inst-cell">Escolha 3 poderes correspondentes ao Nível 1 na lista oficial da sua filiação.</td>
-              </tr>
-              <tr>
-                <td class="field-key-cell">DISTRIBUIÇÃO DE PONTOS</td>
-                <td class="field-inst-cell">Alocação de pontos iniciais nos atributos (Recomendado: 30 HP e 10 ATK ou 10 DEF).</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="talamasca-tip-box">
-            <strong>Distribuição Recomendada para Novatos:</strong>
-            Coloque sempre <strong>30 HP</strong> e <strong>10 ATK</strong> (se for DPS) ou <strong>10 DEF</strong> (se for Tanker). Essa configuração garante sobrevivência nas primeiras semanas sem dispersar recursos.
-          </div>
-        </div>
-      `;
+      return station.bodyHtml;
     }
 
     if (station.step === 4) {
@@ -530,7 +469,11 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
         </div>
 
         <div class="talamasca-tip-box">
-          <strong>Recomendação Estratégica:</strong> Guarde suas orações para o banner que traz a <em>Bênção Assinatura</em> da sua filiação divina. Os banners sazonais têm rotação periódica.
+          <strong>Recomendação estratégica:</strong> guarde suas orações para o banner que traz o prêmio que combina com a classe da sua lista. Os banners temporários têm rotação periódica, mas o pity acumulado não se perde.
+        </div>
+        <div class="station-doc-reference">
+          <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="station-direct-link"><span>Abrir o Hub</span><span>↗</span></a>
+          <a href="banners.html" class="station-direct-link"><span>Ver banners e prêmios</span><span>→</span></a>
         </div>
       `;
     }
@@ -1074,7 +1017,7 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
               <span>${isRolling ? 'Rolando dados...' : 'Rolar Dados Novamente'}</span>
             </button>
-            <a href="?mode=arquivo&doc=rolagem-e-tentativa" class="station-direct-link text-xs">
+            <a href="?mode=arquivo&doc=rolagem-de-dados" class="station-direct-link text-xs">
               <span>Ler Regra Completa de Rolagens</span> →
             </a>
           </div>
@@ -1137,7 +1080,7 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
         <li class="sidebar-category-group ${isCatActive ? 'active-group' : ''}" data-cat-id="${c.id}">
           <div class="sidebar-cat-row">
             <a href="?mode=arquivo&cat=${c.id}" class="sidebar-cat-btn ${isCatActive && !state.currentDoc ? 'active' : ''}" data-cat-id="${c.id}" role="button">
-              <span class="sidebar-cat-icon">${ICONS[c.svgIcon] || ICONS.index}</span>
+              <span class="sidebar-cat-num" aria-hidden="true">${c.code.replace(/\D/g, '')}</span>
               <span class="sidebar-cat-label">${c.name}</span>
             </a>
             <button class="sidebar-cat-expander" type="button" data-cat-id="${c.id}" aria-label="Alternar subtópicos de ${c.name}" aria-expanded="${isExpanded ? 'true' : 'false'}" title="Expandir/recolher tópicos deste tema">
@@ -1165,6 +1108,13 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
   function selectCategory(catId, updateHistory = true) {
     const cat = TERMINAL_DATABASE.categories.find(c => c.id === catId);
     if (!cat) return;
+
+    // Seção com um único documento: abre a regra direto, sem a lista intermediária
+    const onlyDocs = TERMINAL_DATABASE.documents.filter(d => d.categoryId === catId);
+    if (onlyDocs.length === 1) {
+      openDocument(onlyDocs[0].id, '', updateHistory);
+      return;
+    }
 
     state.currentCategory = catId;
     state.currentDoc = null;
@@ -1195,7 +1145,6 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
           <div class="doc-card-body">
             <h3 class="doc-row-title">${doc.title}</h3>
             <p class="doc-row-summary">${doc.summary}</p>
-            <div class="doc-row-source">Fonte: ${doc.source}</div>
           </div>
           <span class="doc-row-action" aria-hidden="true">Abrir regra →</span>
         </a>
@@ -1268,6 +1217,10 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
     if (dom.readerBreadcrumbLink) {
       dom.readerBreadcrumbLink.textContent = `← Voltar a: ${cat ? cat.name : 'Diretório'}`;
       dom.readerBreadcrumbLink.href = `?mode=arquivo&cat=${doc.categoryId}`;
+      // seção de documento único abre direto nesta regra: "voltar" para ela não levaria a lugar nenhum
+      const singleDoc = TERMINAL_DATABASE.documents.filter(d => d.categoryId === doc.categoryId).length === 1;
+      dom.readerBreadcrumbLink.hidden = singleDoc;
+      if (dom.readerBreadcrumbCurrent) dom.readerBreadcrumbCurrent.hidden = singleDoc;
     }
     if (dom.readerBreadcrumbCurrent) {
       dom.readerBreadcrumbCurrent.textContent = ` / ${doc.title}`;
@@ -1288,7 +1241,11 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
     if (dom.searchResults) dom.searchResults.style.display = 'none';
     if (dom.docReader) {
       dom.docReader.style.display = 'block';
-      dom.docReader.focus();
+      dom.docReader.focus({ preventScroll: true });
+      if (window.gsap && !state.reducedMotion) {
+        gsap.fromTo(dom.docReader, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: 'power2.out', clearProps: 'transform' });
+      }
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
     }
 
     if (updateHistory) {
@@ -1701,11 +1658,11 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]`;
     const tips = TERMINAL_DATABASE.presenceTips || [];
 
     if (contextKey.includes('etapa-5') || contextKey.includes('rolagem')) {
-      matchedIdx = tips.findIndex(t => t.docId === 'rolagem-e-tentativa');
+      matchedIdx = tips.findIndex(t => t.docId === 'rolagem-de-dados');
     } else if (contextKey.includes('etapa-1') || contextKey.includes('papeis')) {
-      matchedIdx = tips.findIndex(t => t.docId === 'papeis-taticos');
+      matchedIdx = tips.findIndex(t => t.docId === 'classes-e-principios-celestiais');
     } else if (contextKey.includes('etapa-3') || contextKey.includes('ficha')) {
-      matchedIdx = tips.findIndex(t => t.docId === 'pedido-ficha-oficial');
+      matchedIdx = tips.findIndex(t => t.docId === 'fichas-de-jogadores');
     } else if (contextKey.includes('busca-vazia')) {
       matchedIdx = 2; // Dica de ajuda geral
     }

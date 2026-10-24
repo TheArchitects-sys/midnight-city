@@ -1,5 +1,5 @@
 /**
- * MIDNIGHT CITY — ARQUIVOS CONFIDENCIAIS DA ÉGIDE (SISTEMA & DIRETRIZES)
+ * Midnight City — ARQUIVOS CONFIDENCIAIS DA ÉGIDE (SISTEMA & DIRETRIZES)
  * Padrão Talamasca / Microfilme Âmbar dos Anos 80/90
  * Autoridade Editorial: Manual do Novato & Compêndio Canônico de Regras & Sistemas
  */
@@ -18,7 +18,7 @@ const TERMINAL_DATABASE = {
       shortLabel: "Função na equipe",
       title: "Entenda seu Papel na Ordem",
       badge: "FUNDAMENTAL",
-      docId: "papeis-taticos",
+      docId: "classes-e-principios-celestiais",
       visualType: "tactical-squad",
       contextKey: "etapa-1",
       objective: "Compreenda a vocação tática do seu personagem (DPS, Tanker ou Suporte) para atuar de forma coordenada na equipe.",
@@ -63,9 +63,9 @@ const TERMINAL_DATABASE = {
       shortLabel: "História do personagem",
       title: "Crie a História do seu Personagem",
       badge: "LORE & ROLEPLAY",
-      docId: "primeira-inscricao-jogo",
+      docId: "missoes-fixas",
       visualType: "origin-dossier",
-      visualAsset: "assets/londres_panorama_mj.png",
+      visualAsset: "assets/londres_panorama_mj.webp",
       visualAlt: "Panorama de Londres Sob o Véu",
       contextKey: "etapa-2",
       objective: "Construa uma narrativa inicial como novato recém-chegado à Égide sem medo de errar a ambientação mística.",
@@ -86,37 +86,32 @@ const TERMINAL_DATABASE = {
       step: 3,
       tag: "ETAPA 03",
       shortLabel: "Primeira ficha",
-      title: "Como Solicitar sua Primeira Ficha",
+      title: "Crie sua primeira ficha no Hub",
       badge: "MECÂNICA INICIAL",
-      docId: "pedido-ficha-oficial",
+      docId: "fichas-de-jogadores",
       visualType: "official-requisition",
       contextKey: "etapa-3",
-      objective: "Reúna os dados obrigatórios e requisite sua planilha oficial de atributos no tópico designado da Central.",
-      lead: "Após fazer seu primeiro jogo na comunidade, é hora de oficializar seus atributos com a administração.",
+      objective: "Crie a ficha do seu personagem no Hub Midnight City e distribua os seus primeiros pontos de atributo.",
+      lead: "A ficha agora nasce e vive no Hub: nada de planilha ou pedido em tópico.",
       bodyHtml: `
-        <p>A ficha geral de atributos é criada por um dos ADMs da Égide no tópico oficial da Central. Você só precisa fornecer os seguintes dados:</p>
-        <div class="talamasca-code-terminal">
-Nº DA FICHA GERAL: [Escolha um número livre na lista de fichas]
-E-MAIL: [Seu e-mail para acesso às planilhas no Google Drive]
-NOME DA FICHA GERAL: [Seu nome de jogador em off]
-NOME DO PERSONAGEM: [Nome do personagem aceito na aprovação]
-FILIAÇÃO: [Divindade paterna/materna ou Linhagem arcana]
+        <p>Depois do seu primeiro jogo na comunidade, crie a ficha do personagem no <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer"><strong>Hub Midnight City</strong></a>. Tenha em mãos:</p>
+        <div class="talamasca-code-terminal">NOME DO PERSONAGEM: [Nome aceito na aprovação]
+FILIAÇÃO: [Divindade paterna/materna ou linhagem arcana]
 OFÍCIO: [Seu emprego na Égide: Custódio, Vigilante, Arcanista, etc.]
-IDADE & SHAPE: [Idade do personagem e duas fotos do faceclaim]
-INDIVIDUALIDADES: [Escolha 3 poderes por nível disponível na lista]
-DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]
-        </div>
+IDADE & SHAPE: [Idade e photoplayer; o Hub avisa se o rosto já estiver em uso]
+INDIVIDUALIDADES: [3 poderes por nível disponível na lista]
+DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributo]</div>
         <div class="talamasca-tip-box">
-          <strong>Distribuição Recomendada para Novatos:</strong>
-          Coloque sempre <strong>30 HP</strong> e <strong>10 ATK</strong> (se for DPS) ou <strong>10 DEF</strong> (se for Tanker). Essa configuração garante sobrevivência nas primeiras semanas sem dispersar recursos.
+          <strong>Distribuição recomendada para novatos:</strong>
+          coloque <strong>30 HP</strong> e <strong>10 ATK</strong> (se for DPS) ou <strong>10 DEF</strong> (se for Tanker). Assim você sobrevive às primeiras semanas sem dispersar recursos.
         </div>
         <div class="stencil-quote warning-note">
-          <strong>Atenção:</strong> É impresindível que você leia a sua lista de poderes para entender qual é o atributo principal ao qual ela escalona. Por exemplo, se bate com ATK, DEF ou HP. Se Tanka, ou se buffa baseado em seu ATK, HP, DEF e etc. Isso será fundamental para uma boa distribuição de atributos.
+          <strong>Atenção:</strong> é imprescindível ler a sua lista de poderes para entender com qual atributo ela escala: se bate com ATK, DEF ou HP, se tanka, ou se buffa com base no seu ATK, HP, DEF, etc. Isso é fundamental para uma boa distribuição de atributos.
         </div>
         <div class="station-doc-reference">
-          <p>Para a tabela integral de conversão por nível e detalhes dos atributos críticos, consulte o registro canônico:</p>
-          <a href="?mode=arquivo&doc=conversao-atributos-build" class="station-direct-link">
-            <span>Consultar Tabela Completa de Atributos & Conversão</span>
+          <p>Tabela completa de conversão e atributos base por nível:</p>
+          <a href="?mode=arquivo&doc=conversao-de-atributos" class="station-direct-link">
+            <span>Consultar conversão de atributos</span>
             <span>→</span>
           </a>
         </div>
@@ -128,7 +123,7 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]
       shortLabel: "Primeiras atividades",
       title: "O Primeiro Dia em Campo (Sem Risco de Morte)",
       badge: "SOBREVIVÊNCIA",
-      docId: "guia-farm-estagios",
+      docId: "sistema-de-eventos",
       visualType: "activity-trail",
       contextKey: "etapa-4",
       objective: "Evolua com segurança até o nível 5 através de turnos livres de roleplay e missões interpretativas sem combate letal.",
@@ -154,7 +149,7 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]
       shortLabel: "Dados e combate",
       title: "Como Rolar Dados no Discord",
       badge: "RESOLUÇÃO DE AÇÕES",
-      docId: "rolagem-e-tentativa",
+      docId: "rolagem-de-dados",
       visualType: "dice-console",
       contextKey: "etapa-5",
       objective: "Aprenda a fórmula de tentativa no Discord (/roll 10d10 t5), contagem de sucessos e disputa com a defesa adversária.",
@@ -177,22 +172,25 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]
       step: 6,
       tag: "ETAPA 06",
       shortLabel: "Moedas e recompensas",
-      title: "Moedas & O Sistema de Banners",
-      badge: "ECONOMIA & GACHA",
-      docId: "moedas-e-economia",
+      title: "Moedas, orações e banners",
+      badge: "ECONOMIA & BANNERS",
+      docId: "fichas-de-jogadores",
       visualType: "currency-vault",
       contextKey: "etapa-6",
-      objective: "Conheça o fluxo de Golds, Contas Celestiais e Orações para planejar seus tiros em Banners Sazonais.",
-      lead: "Golds, Contas e Orações: como funciona o sistema de aquisição de equipamentos de elite.",
+      objective: "Entenda Gold, Conta Celestial e Oração Celestial, e onde usá-las no Hub.",
+      lead: "Toda a economia do RPG fica no Hub: saldo, conversões, loja e orações.",
       bodyHtml: `
-        <p>A economia é dividida em três pilares fundamentais:</p>
+        <p>A economia tem três moedas, todas controladas no Hub:</p>
         <ul>
-          <li><strong>Golds:</strong> Compram suprimentos na loja, pagam as taxas de criação aos artesãos e adquirem artefatos comuns.</li>
-          <li><strong>Contas Celestiais:</strong> Moeda intermediária. Você pode trocar <strong>100 Contas por 1 Oração Celestial</strong>.</li>
-          <li><strong>Orações Celestiais:</strong> O recurso mais precioso. Servem para atirar nos Banners Sazonais. A cada Oração gasta, você rola <strong>1d20</strong>. Se tirar <strong>20 natural</strong>, conquista a bênção ou arma exclusiva do banner!</li>
+          <li><strong>Gold:</strong> compra itens na loja e financia a Forja de artefatos.</li>
+          <li><strong>Conta Celestial:</strong> moeda intermediária. <strong>100 Contas Celestiais viram 1 Oração</strong>, direto no Hub.</li>
+          <li><strong>Oração Celestial:</strong> o recurso mais precioso. É com ela que você ora nos banners, em x1 ou x10, com o pity salvo na sua conta.</li>
         </ul>
         <div class="talamasca-tip-box">
-          <strong>Aproveite as Ofertas:</strong> Invista seus recursos quando houver banners com armas, bênçãos ou artefatos que interessem ao desenvolvimento do seu agente.
+          <strong>Pity garantido:</strong> nos banners temporários, a 41ª oração sem exclusivo garante um; no permanente, a 91ª. E se vierem 3 exclusivos que não são o seu pretendido, o 4º é ele.
+        </div>
+        <div class="station-doc-reference">
+          <a href="banners.html" class="station-direct-link"><span>Ver banners e prêmios</span><span>→</span></a>
         </div>
       `
     }
@@ -203,32 +201,32 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]
     {
       quote: "Conte os sucessos primeiro.",
       note: "Em Midnight City, toda ação de combate é uma tentativa. Role os dados com a dificuldade definida e compare a soma de sucessos com a defesa do adversário.",
-      docId: "rolagem-e-tentativa"
+      docId: "rolagem-de-dados"
     },
     {
       quote: "Não faça seu personagem ser um pato!",
       note: "Especializar seu agente em uma função principal (DPS, Tanker ou Suporte) é o que garante a sobrevivência da equipe nas missões da Égide.",
-      docId: "papeis-taticos"
+      docId: "classes-e-principios-celestiais"
     },
     {
       quote: "Perdeu algum campo da ficha?",
-      note: "O formulário da Central exige número da ficha, e-mail, filiação, ofício, shape e poderes. A lista completa de campos está no diretório de Primeiros Passos.",
-      docId: "pedido-ficha-oficial"
+      note: "A ficha agora é criada e atualizada no Hub. Tenha em mãos filiação, ofício, shape, individualidades e a distribuição dos seus pontos.",
+      docId: "fichas-de-jogadores"
     },
     {
       quote: "Turnos livres rendem XP seguro.",
       note: "No nível 1, escrever cenas com amigos rende 10 XP a cada 40 palavras. É o método ideal para subir de nível sem perigo de morte prematura.",
-      docId: "primeira-inscricao-jogo"
+      docId: "missoes-fixas"
     },
     {
       quote: "Taxa Crítica e Dano Crítico são separados.",
-      note: "A Taxa Crítica define se o golpe foi excepcional; o Dano Crítico determina o multiplicador aplicado após a confirmação do acerto.",
-      docId: "critico-e-rd"
+      note: "Cada 10% de taxa crítica tira 1 de dificuldade da rolagem de crítico; cada 10% de dano crítico soma 1 dado. Limites: 600% e 1200%.",
+      docId: "calculo-de-dano"
     },
     {
       quote: "As melhores premiações estão em missões e campanhas.",
       note: "Os itens personalizados mais fortes do RPG vêm de tramas e narrativas, onde você pode moldar o equipamento à personalidade do seu agente.",
-      docId: "guia-farm-estagios"
+      docId: "sistema-de-eventos"
     }
   ],
 
@@ -236,316 +234,479 @@ DISTRIBUIÇÃO: [Onde você vai alocar seus pontos de atributos]
     return this.presenceTips;
   },
 
-  // ── OS 9 DIRETÓRIOS CANÔNICOS (REGRA DE CONVIVÊNCIA É O PRIMEIRO TÓPICO!) ──
+  // ── DIRETÓRIOS DO ACERVO (TRANSCRIÇÃO INTEGRAL DE "REGRAS & SISTEMAS 2026") ──
   categories: [
     {
       id: "convivencia-interpretacao",
       code: "SEÇÃO 01",
-      name: "Convivência & Conduta",
-      desc: "O código de conduta da Égide, regra da tentativa, respeito aos tópicos e diretrizes gerais.",
+      name: "Convivência",
+      desc: "As dez regras de convivência que valem para todo jogador, em qualquer espaço do RPG.",
       svgIcon: "scales",
-      sources: ["Regras & Sistemas (Site Antigo - Convivência)", "Manual do Novato p. 2"]
+      sources: ["Regras & Sistemas 2026 — Regras de Convivência"]
     },
     {
-      id: "primeiros-passos",
+      id: "evolucao",
       code: "SEÇÃO 02",
-      name: "Começar e criar ficha",
-      desc: "Papéis táticos de equipe, primeiras cenas, criação e pedido de ficha de novato.",
-      svgIcon: "compass",
-      sources: ["Manual do Novato pp. 2–9"]
-    },
-    {
-      id: "personagem-progressao",
-      code: "SEÇÃO 03",
-      name: "Atributos & Bonificações",
-      desc: "Nomenclaturas de combate, escudos, mana, bônus interpretativos, escalas de XP e conversão.",
+      name: "Evolução e atributos",
+      desc: "Níveis, XP para ascender, pontos de atributo, conversão e a tabela base de cada nível.",
       svgIcon: "chart",
-      sources: ["Regras & Sistemas (Site Antigo - Atributos)", "Tabela Canônica de Evolução"]
+      sources: ["Regras & Sistemas 2026 — Sistema de Evolução"]
     },
     {
-      id: "combate-dados",
-      code: "SEÇÃO 04",
-      name: "Dados e combate",
-      desc: "Rolagens de d10 no Discord, cálculo de dano clássico e composto, crítico, RD e SPD.",
+      id: "combate",
+      code: "SEÇÃO 03",
+      name: "Combate e dados",
+      desc: "Rolagem de dados no Discord, cálculo de dano, crítico, velocidade, defesa em tanks e mana.",
       svgIcon: "daggers",
-      sources: ["Regras & Sistemas (Site Antigo)", "Manual do Novato p. 7"]
+      sources: ["Regras & Sistemas 2026 — Sistema de Combate"]
     },
     {
-      id: "economia-recompensas",
+      id: "bonificacoes",
+      code: "SEÇÃO 04",
+      name: "Atributos e bonificações",
+      desc: "Todos os tipos de bônus (buffs, defensivos, debuffs e utilitários) e a bonificação interpretativa.",
+      svgIcon: "compass",
+      sources: ["Regras & Sistemas 2026 — Atributos & Bonificações"]
+    },
+    {
+      id: "eventos-premiacoes",
       code: "SEÇÃO 05",
-      name: "Moedas e recompensas",
-      desc: "Golds, Contas Celestiais, Orações, Banners e mecânicas do gacha sazonal.",
+      name: "Eventos e premiações",
+      desc: "Tipos de evento, recompensas por variante, tipos e classificação de prêmios, custos e limites.",
       svgIcon: "coins",
-      sources: ["Manual do Novato pp. 13–16"]
+      sources: ["Regras & Sistemas 2026 — Sistema de Eventos"]
     },
     {
-      id: "atividades-rotina",
+      id: "criacao",
       code: "SEÇÃO 06",
-      name: "Atividades e rotina",
-      desc: "Guia de farm por estágio (exemplos), missões narrativas e políticas semanais.",
-      svgIcon: "hourglass",
-      sources: ["Manual do Novato pp. 18–21", "Tabela de Eventos"]
-    },
-    {
-      id: "criacao-refinamento",
-      code: "SEÇÃO 07",
-      name: "Criação e manufatura",
-      desc: "Forja, Encantamento, Boticário, Manipulação Genética (tabela completa) e regras de refino.",
+      name: "Criação",
+      desc: "Forja, encantamento, boticário, alquimia, manipulação genética e os limites de cada fabricante.",
       svgIcon: "anvil",
-      sources: ["Regras & Sistemas (Site Antigo - Criação)"]
+      sources: ["Regras & Sistemas 2026 — Sistema de Criação"]
     },
     {
-      id: "eventos-premios-mesticos",
-      code: "SEÇÃO 08",
-      name: "Eventos, Prêmios & Mestiços",
-      desc: "Sistema de eventos, graus de premiações (IV a VI), herança de mestiços e regras genéticas.",
+      id: "filiacoes-classes",
+      code: "SEÇÃO 07",
+      name: "Filiações e classes",
+      desc: "Semideuses, bruxos, grupos divinos, as classes perpétuas e as dúvidas frequentes sobre poderes.",
       svgIcon: "helix",
-      sources: ["Regras & Sistemas (Eventos & Premiações)", "Doutrina Canônica de Mestiços"]
+      sources: ["Regras & Sistemas 2026 — Filiações e Afiliações"]
     },
     {
-      id: "tabelas-termos",
+      id: "missoes-fixas",
+      code: "SEÇÃO 08",
+      name: "Missões fixas",
+      desc: "As atividades permanentes de Londres, com frequência, entrega e recompensa de cada uma.",
+      svgIcon: "hourglass",
+      sources: ["Regras & Sistemas 2026 — Missões Fixas"]
+    },
+    {
+      id: "fichas-registros",
       code: "SEÇÃO 09",
-      name: "Custos, Limites & Glossário",
-      desc: "Custos e limites para montar premiações no RPG, regras de refino e glossário de termos.",
+      name: "Fichas, deuses e registros",
+      desc: "Fichas no Hub, vagas de deuses, hospedeiros, ocupações provisórias e photoplayers.",
       svgIcon: "index",
-      sources: ["Compilação Integral das Fontes Oficiais"]
+      sources: ["Regras & Sistemas 2026 — Tipos de Fichas & Registros"]
+    },
+    {
+      id: "mesticos",
+      code: "SEÇÃO 10",
+      name: "Mestiços",
+      desc: "Gestação, envelhecimento, filhos de todos os casais, uniões entre etnias e herança genética.",
+      svgIcon: "helix",
+      sources: ["Regras & Sistemas 2026 — Sistemas e Regras sobre Mestiços"]
     }
   ],
 
-  // ── ACERVO DOCUMENTAL COMPLETO (ORDEM SISTEMÁTICA E LINEAR) ──
+  // ── ACERVO DOCUMENTAL ──
   documents: [
     // ══════════════════════════════════════════════════════════
-    // SEÇÃO 01: CONVIVÊNCIA & CONDUTA (PRIMEIRO TÓPICO DO SISTEMA!)
+    // SEÇÃO 01 · CONVIVÊNCIA
     // ══════════════════════════════════════════════════════════
     {
-      id: "codigo-conduta-egide",
+      id: "regras-de-convivencia",
       categoryId: "convivencia-interpretacao",
-      title: "Código de Convivência: As Regras Fundamentais",
-      subtitle: "Normas de convivência, turnos de 600px, respeito aos jogos e regra da tentativa",
-      aliases: ["regras", "conduta", "convivencia", "mandamentos", "600px", "respeito", "alerta 18", "regras de convivencia"],
-      summary: "As 10 regras fundamentais de respeito, formatação de postagens e convivência em comunidade dentro do RPG.",
-      source: "Regras & Sistemas (Site Antigo) — Convivência",
+      title: "Regras de convivência",
+      subtitle: "As dez regras que todo jogador precisa conhecer antes do primeiro turno",
+      aliases: ["regras", "conduta", "convivencia", "convivência", "600px", "72h", "72 horas", "alerta +18", "sexo", "patente", "tentativa", "títulos", "educado"],
+      summary: "Não inventar posses, informar atributos no turno, respeitar o combate e os jogos alheios, a regra da tentativa, turnos de 600px, educação, alerta +18 e uso de títulos.",
+      source: "Regras & Sistemas 2026 — Regras de Convivência",
       contentHtml: `
-        <div class="talamasca-callout warning">
-          <strong>BEM-VINDO AO MIDNIGHT CITY:</strong>
-          Antes de qualquer ficha, combate ou rolagem de dados, a convivência e o respeito mútuo são a pedra fundamental do nosso RPG. Leia atentamente as diretrizes abaixo:
-        </div>
-
         <ol class="talamasca-ordered-list">
-          <li><strong>Não invente o que você não tem:</strong> É terminantemente proibido presumir ou inventar a posse de itens, armas ou artefatos que não estejam devidamente aprovados e registrados na sua ficha de personagem. Armas e objetos são adquiridos através de compras, eventos ou tarefas rotineiras.</li>
-          <li><strong>Sempre deixe no seu turno o valor dos seus atributos:</strong> É exaustivo abrir ficha por ficha em combates. Para facilitar o cálculo dos colegas e do narrador, informe sempre ATK, DEF e HP atuais no início ou término do turno.</li>
-          <li><strong>Respeite o sistema de combate:</strong> Temos pontos de vida, mana e variantes de dados. Siga rigorosamente o sistema e utilize apenas os efeitos que suas magias, poderes ou objetos fornecem.</li>
-          <li><strong>Tenha bom senso quanto a jogos alheios:</strong> Respeite tópicos ocupados por eventos ou cenas particulares entre jogadores (regra das 72 horas). Todo tópico possui réplicas para evitar transtornos.</li>
-          <li><strong>Você não faz, você tenta:</strong> Como utilizamos sistema de dados, investidas físicas, mentais ou mágicas são sempre uma <em>"tentativa"</em>. Escreva sempre que vai <em>tentar bater, tentar defender, tentar persuadir</em>, etc. A resolução cabe aos dados.</li>
-          <li><strong>Não existe PATENTE exclusiva:</strong> Em eventos pode-se solicitar qualquer tipo de recompensa, mas isso não impede que outros conquistem objetivos similares em eventos futuros. Tenha bom senso para não realizar plágios descarados.</li>
-          <li><strong>Turnos com extensão mínima de 600px:</strong> Para preservar o padrão estético e a riqueza narrativa da comunidade.</li>
-          <li><strong>Seja educado:</strong> Não toleramos brigas, ofensas ou desrespeito de qualquer natureza em espaços de convivência. Rivalidades pertencem exclusivamente à ficção e à trama dos personagens.</li>
-          <li><strong>Cuidado com o Conteúdo Adulto (+18):</strong> Este é um RPG adulto, mas é obrigatório sinalizar no <strong>INÍCIO</strong> do turno qualquer conteúdo erótico ou violento com um aviso de <code>ALERTA +18</code>, evitando leituras indesejadas por terceiros.</li>
-          <li><strong>Procure usar os títulos de cada personagem:</strong> Sempre que possível, refira-se a personagens consagrados pelos seus títulos. Eles representam esforço, reputação e conquistas históricas dentro da trama.</li>
+          <li><strong>Não invente o que você não tem:</strong> é proibido que o jogador invente a posse de itens, seja ele qual for. Armas e objetos são adquiridos por meio de compras, eventos ou tarefas rotineiras.</li>
+          <li><strong>Sempre deixe no seu turno o valor dos seus atributos:</strong> é chato demais ter que ficar abrindo ficha por ficha para saber quanto de ataque, defesa e HP você tem. Então, para facilitar o cálculo do amiguinho ou do mestre de mesa durante uma narrativa de combate, deixe esses valores no seu turno.</li>
+          <li><strong>Respeite o sistema de combate:</strong> aqui temos pontos de vida, de mana e outras variantes que podem ajudar ou prejudicar suas rolagens de dados. Então não invente nada: siga o sistema de combate e use apenas o que suas magias, poderes ou objetos fornecem!</li>
+          <li><strong>Tenha bom senso quanto a jogos alheios:</strong> respeite tópicos que estejam sendo usados para eventos ou jogos particulares entre jogadores (regra de 72h). Todo tópico tem uma cópia para evitar esse tipo de transtorno.</li>
+          <li><strong>Você não faz, você tenta:</strong> como usamos sistema de dados, em combates físicos, mentais ou derivados sempre será uma "tentativa". Então é importante ter em mente, ao digitar, que você vai <em>tentar</em> bater em alguém, <em>tentar</em> defender, <em>tentar</em> persuadir, etc.</li>
+          <li><strong>Não existe PATENTE:</strong> em eventos pode-se pedir todo tipo de coisa, até mesmo a roupa do Homem-Aranha, mas isso não impede que outras pessoas possam obter o mesmo objetivo em eventos futuros. Só pedimos bom senso em relação à descrição, para não ser um plágio descarado.</li>
+          <li><strong>Os turnos devem ter no mínimo 600px</strong>, para preservar o padrão.</li>
+          <li><strong>Seja educado:</strong> não toleramos brigas e falta de respeito de qualquer natureza em espaços de convivência. Elas só são aceitas dentro do jogo, no desenvolvimento de tramas pessoais ou do RPG.</li>
+          <li><strong>Cuidado com o SEXO.txt:</strong> este é um RPG adulto e, naturalmente, não vamos impedir que determinados tipos de conteúdo sejam desenvolvidos. Mas é importante sinalizar no <strong>INÍCIO</strong> do turno que o seu post possui conteúdo erótico, para que outros jogadores não leiam intimidades indesejadas. Sugerimos: <code>ALERTA +18</code> ou algo parecido.</li>
+          <li><strong>Procure usar os títulos de cada personagem:</strong> isso não é uma regra, mas uma instrução. Procure se referir a personagens que possuem título por ele, e não pelo nome. Isso é importante porque o título de cada personagem foi conquistado com muito esforço dentro do jogo; então prefira sempre se reportar usando ele.</li>
         </ol>
       `
     },
 
     // ══════════════════════════════════════════════════════════
-    // SEÇÃO 02: INICIAÇÃO & CRIAÇÃO DE FICHA
+    // SEÇÃO 02 · EVOLUÇÃO E ATRIBUTOS
     // ══════════════════════════════════════════════════════════
     {
-      id: "papeis-taticos",
-      categoryId: "primeiros-passos",
-      title: "Funções de Equipe: DPS, Tanker e Suporte",
-      subtitle: "Como o RPG é estruturado para trabalho coletivo",
-      aliases: ["classes", "papeis", "dps", "tanker", "suporte", "pato", "filiações", "macro classes"],
-      summary: "Midnight City é propositalmente montado para ninguém resolver nada sozinho. Cada personagem desempenha uma ou duas das três funções primárias.",
-      source: "Manual do Novato, p. 4",
+      id: "sistema-de-evolucao",
+      categoryId: "evolucao",
+      title: "Sistema de evolução",
+      subtitle: "Os 10 níveis, o XP necessário para ascender e os pontos de atributo de cada nível",
+      aliases: ["xp", "nivel", "nível", "niveis", "níveis", "evolução", "evolucao", "ascender", "upar", "pontos de atributo", "experiência"],
+      summary: "Os personagens têm 10 níveis. Cada nível exige um total de XP e concede pontos de atributo para distribuir na ficha.",
+      source: "Regras & Sistemas 2026 — Sistema de Evolução",
       contentHtml: `
-        <div class="talamasca-callout warning">
-          <strong>DIRETRIZ FUNDAMENTAL DE COMBATE:</strong> O RPG é montado de forma proposital para que ninguém consiga resolver nada sozinho! Cada personagem irá sempre trabalhar dentro de um time.
-        </div>
+        <p>No nosso RPG, os personagens têm nivelamento de <strong>10 níveis</strong>, que possibilitam adquirir magias, habilidades, pontos de vida e mana à medida que se desenvolvem no jogo e na academia do Cairo. Esses pontos de experiência podem ser obtidos nas atividades acadêmicas ou, principalmente, participando de oficinas e narrações.</p>
 
-        <h3>As Três Funções Primárias</h3>
-        <ul>
-          <li><strong>DPS (Causadores de Dano):</strong> Geralmente frágeis contra ataques pesados, mas capazes de infligir danos devastadores. <em>"Bate primeiro e pergunta depois."</em></li>
-          <li><strong>Tanker (Defensores de Linha de Frente):</strong> A barreira que impede que o DPS e o Suporte morram. Possuem atributos altos de HP, DEF e Redução de Dano (RD) para absorver impactos críticos. <em>"Meu peito é meu para-brisa."</em></li>
-          <li><strong>Suporte (Amplificadores e Controladores):</strong> Curam tankers, concedem buffs de ataque ao DPS e aplicam debuffs, escudos ou alterações de dados nos inimigos. Sem eles, o time sucumbe.</li>
-        </ul>
-
-        <div class="stencil-quote">
-          <strong>A Regra de Ouro do Tio H:</strong> 
-          <p><em>“O pato nada, anda e voa, mas faz os três mal. Não faça seu personagem ser um pato!”</em> Foque a build do seu personagem para desempenhar com excelência sua função primária.</p>
-        </div>
-
-        <div class="talamasca-callout">
-          <strong>ATENÇÃO (LISTAS RECOMENDADAS SÃO EXEMPLOS):</strong>
-          As listas e filiações citadas na tabela abaixo são <strong>apenas exemplos ilustrativos de tendências comuns</strong> e <strong>não apenas aquelas citadas</strong>! Qualquer personagem de qualquer divindade pode atuar em papéis diversos de acordo com a sua distribuição de atributos e a escolha das suas individualidades.
-        </div>
-
-        <h3>Classificação das Linhagens por Função Tática (Exemplos Ilustrativos)</h3>
-        <p>Abaixo a distribuição descrita no Manual do Novato para orientar a escolha do seu personagem:</p>
+        <h3>XP necessário e pontos por nível</h3>
         <div class="table-microfilm-wrap">
           <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Função Tática</th>
-                <th>Filiações & Escolas Místicas Sugeridas (Exemplos Ilustrativos)</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Nível</th><th>Pontos necessários para ascender</th><th>Pontos de atributo</th></tr></thead>
             <tbody>
-              <tr>
-                <td><strong>DPS</strong></td>
-                <td><em>Exemplos:</em> Zeus, Hades, Poseidon, Hera, Deméter, Afrodite, Ares, Hermes, Melinoe, Oberon, Tânatos, Delírio, Despina; Magos Conjuradores.</td>
-              </tr>
-              <tr>
-                <td><strong>TANKER</strong></td>
-                <td><em>Exemplos:</em> Poseidon, Apolo, Atena, Hefesto, Hermes, Hécate, Delírio, Despina; Magos Astrológicos.</td>
-              </tr>
-              <tr>
-                <td><strong>SUPORTE</strong></td>
-                <td><em>Exemplos:</em> Zeus, Hades, Hera, Afrodite, Apolo, Ares, Dionísio, Perséfone, Hécate, Melinoe, Tânatos, Hipnos, Morfeu, Delírio, Circe, Despina, Eros, Psiquê, Tique; Magos de Evocação Espiritual, Biologia Espiritual.</td>
-              </tr>
+              <tr><td>01</td><td>0 XP</td><td>1 ponto de atributo</td></tr>
+              <tr><td>02</td><td>600 XP</td><td>1 ponto de atributo</td></tr>
+              <tr><td>03</td><td>1.100 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>04</td><td>2.000 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>05</td><td>3.000 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>06</td><td>4.100 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>07</td><td>5.300 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>08</td><td>6.600 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>09</td><td>8.000 XP</td><td>2 pontos de atributo</td></tr>
+              <tr><td>10</td><td>10.000 XP</td><td>4 pontos de atributo</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="talamasca-source-note">Nota: Uma filiação pode abranger mais de uma função dependendo dos poderes escolhidos. O ofício civil ou militar exercido na Égide não restringe sua função de combate.</p>
+        <p>A ascensão de cada personagem acontece assim que ele atinge a quantidade de pontos de experiência necessária para o nível seguinte. A partir disso, ele terá uma determinada quantidade de pontos de atributo para usar na sua ficha de personagem.</p>
       `
     },
     {
-      id: "primeira-inscricao-jogo",
-      categoryId: "primeiros-passos",
-      title: "Inscrição Inicial & Primeira Experiência de Jogo",
-      subtitle: "Como iniciar sua jornada na Égide sem risco de morte precoce",
-      aliases: ["inscricao", "primeiro jogo", "farm inicial", "xp novato", "cenas"],
-      summary: "Orientações sobre criação do personagem novato, turnos livres de 10 XP a cada 40 palavras e atividades seguras até o nível 5.",
-      source: "Manual do Novato, pp. 5, 7",
+      id: "conversao-de-atributos",
+      categoryId: "evolucao",
+      title: "Conversão de pontos de atributo",
+      subtitle: "Quanto cada ponto de atributo vale em ATK, DEF, HP, taxa crítica, dano crítico e SPD",
+      aliases: ["conversão", "conversao", "atributo", "atk", "def", "hp", "taxa crit", "dano crit", "spd", "distribuir pontos", "build"],
+      summary: "1 ponto = 10 ATK, 10 DEF, 30 HP, 10% de taxa crítica, 10% de dano crítico ou 3 SPD. A distribuição é registrada na ficha do Hub.",
+      source: "Regras & Sistemas 2026 — Sistema de Evolução",
       contentHtml: `
-        <h3>Dicas de Lore para o Primeiro Personagem</h3>
-        <p>Para facilitar a sua adaptação, faça um personagem que acabou de chegar à <strong>Égide de Avalon</strong> e não conhece a fundo o mundo místico. Ele aprenderá a ambientação junto com você!</p>
-        <p>Você pode começar narrando o primeiro dia de trabalho no departamento ou uma cena de resgate em que agentes da Égide salvaram seu personagem de um ataque de monstros.</p>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Atributo</th><th>Custo</th><th>Valor de conversão</th></tr></thead>
+            <tbody>
+              <tr><td>ATK</td><td>1 ponto de atributo</td><td>10 ATK</td></tr>
+              <tr><td>DEF</td><td>1 ponto de atributo</td><td>10 DEF</td></tr>
+              <tr><td>HP</td><td>1 ponto de atributo</td><td>30 HP</td></tr>
+              <tr><td>TAXA CRIT.</td><td>1 ponto de atributo</td><td>10% TAXA CRIT.</td></tr>
+              <tr><td>DANO CRIT.</td><td>1 ponto de atributo</td><td>10% DANO CRIT.</td></tr>
+              <tr><td>SPD</td><td>1 ponto de atributo</td><td>3 SPD</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Cada atributo tem um valor diferente e resulta num valor de conversão diferente; por isso é importante estar atento a essa tabela para não errar nas suas conversões.</p>
+        <p>Os pontos que você escolher devem ser registrados <strong>na ficha do personagem no Hub</strong> à medida que ele subir de nível.</p>
+        <div class="talamasca-tip-box">
+          <strong>Dica do Mestre:</strong> fique atento às observações em negrito dos seus poderes. Pode ser que a sua lista tenha alguns que escalam com atributos específicos, e investir neles pode ser mais vantajoso.
+        </div>
+      `
+    },
+    {
+      id: "tabela-base-por-nivel",
+      categoryId: "evolucao",
+      title: "Atributos base por nível",
+      subtitle: "Rolagem padrão, HP, ATK, DEF, taxa crítica, dano crítico, SPD e mana de cada nível",
+      aliases: ["tabela base", "rolagem padrão", "rolagem padrao", "hp base", "mana base", "três grandes", "tres grandes", "perpétuos", "perpetuos", "legenda", "dados na dificuldade"],
+      summary: "Valores base de cada nível antes dos pontos distribuídos, com os bônus dos filhos dos três grandes e dos perpétuos e a legenda de cada atributo.",
+      source: "Regras & Sistemas 2026 — Sistema de Evolução",
+      contentHtml: `
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Nível</th><th>Rolagem padrão</th><th>HP</th><th>ATK</th><th>DEF</th><th>Taxa crit.</th><th>Dano crit.</th><th>SPD</th><th>Mana</th></tr></thead>
+            <tbody>
+              <tr><td>01</td><td>10 dados na dificuldade 8</td><td>60</td><td>15</td><td>15</td><td>0%</td><td>50%</td><td>100</td><td>200</td></tr>
+              <tr><td>02</td><td>10 dados na dificuldade 7</td><td>110</td><td>20</td><td>20</td><td>0%</td><td>50%</td><td>100</td><td>250</td></tr>
+              <tr><td>03</td><td>10 dados na dificuldade 7</td><td>160</td><td>25</td><td>25</td><td>0%</td><td>50%</td><td>100</td><td>300</td></tr>
+              <tr><td>04</td><td>10 dados na dificuldade 6</td><td>200</td><td>35</td><td>35</td><td>0%</td><td>50%</td><td>100</td><td>350</td></tr>
+              <tr><td>05</td><td>10 dados na dificuldade 6</td><td>240</td><td>45</td><td>45</td><td>0%</td><td>50%</td><td>100</td><td>400</td></tr>
+              <tr><td>06</td><td>10 dados na dificuldade 5</td><td>280</td><td>60</td><td>60</td><td>0%</td><td>50%</td><td>100</td><td>450</td></tr>
+              <tr><td>07</td><td>10 dados na dificuldade 5</td><td>320</td><td>70</td><td>70</td><td>10%</td><td>60%</td><td>100</td><td>500</td></tr>
+              <tr><td>08</td><td>10 dados na dificuldade 4</td><td>380</td><td>80</td><td>80</td><td>10%</td><td>60%</td><td>110</td><td>550</td></tr>
+              <tr><td>09</td><td>11 dados na dificuldade 4</td><td>420</td><td>100</td><td>100</td><td>10%</td><td>60%</td><td>120</td><td>600</td></tr>
+              <tr><td>10</td><td>12 dados na dificuldade 3</td><td>500</td><td>130</td><td>130</td><td>10%</td><td>70%</td><td>130</td><td>800</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-        <h3>Fontes Iniciais de XP & Economia de Novato</h3>
+        <div class="talamasca-callout">
+          <strong>OBS¹:</strong> filhos dos três grandes (Zeus/Júpiter, Hades/Plutão e Poseidon/Netuno) têm +30 HP e 10% de taxa crítica a mais que o normal.<br>
+          <strong>Atenção¹:</strong> isso não altera a quantidade que aumenta por nível. Se no nível 02 um semideus normal teria 60 HP, o filho dos grandes terá 110.<br>
+          <strong>OBS²:</strong> os filhos dos deuses que se revelarem Perpétuos terão direito ao bônus dos filhos dos grandes, além de 200 de mana a mais que o normal e +10 SPD.
+        </div>
+
+        <h3>Legenda</h3>
         <ul>
-          <li><strong>Turnos Livres:</strong> Rendem <strong>10 XP a cada 40 palavras</strong> escritas. Excelente para quem gosta de desenvolver roleplay detalhado e subir os primeiros níveis sem perigo. Não rende gold.</li>
-          <li><strong>Missões Fixas:</strong> Pagam pouco XP e Gold, mas servem para ambientação. Evite combates antes do nível 5.</li>
-          <li><strong>Missões Sazonais (Variante Verde):</strong> Roteiros interpretativos em grupo, sem risco de morte, que permitem somar facilmente até 3.000 XP.</li>
+          <li><strong>Rolagem padrão:</strong> é o valor da sua rolagem pura, de onde será definido se a ação que você tem em mente foi realizada com sucesso ou não.</li>
+          <li><strong>HP:</strong> são os seus pontos de vida dentro do jogo.</li>
+          <li><strong>ATK:</strong> são os pontos com que o seu personagem consegue causar dano. Eles se sustentam na sua força, destreza e vigor físico, mental ou mágico.</li>
+          <li><strong>DEF:</strong> são os seus pontos de resistência física, mental e mágica do seu corpo.</li>
+          <li><strong>TAXA CRIT.:</strong> são os pontos capazes de reduzir a dificuldade da rolagem para crítico de uma ação.</li>
+          <li><strong>DANO CRIT.:</strong> são os pontos capazes de aumentar os dados da rolagem para crítico de uma ação.</li>
+          <li><strong>SPD:</strong> são os pontos de velocidade que permitem ao personagem se movimentar mais rápido ou ainda ganhar surtos de ação ou dano adicional, a depender da quantidade.</li>
+          <li><strong>MANA:</strong> são os pontos de energia mental/espiritual. Eles são usados para causar manifestações dos poderes divinos do personagem.</li>
         </ul>
 
-        <div class="talamasca-callout danger">
-          <strong>AVISO DE SOBREVIVÊNCIA:</strong> Não invente de lutar sozinho antes de atingir o Nível 5! Em caso de morte em combate de farm, a morte é permanente. Se quiser participar de batalhas, peça reforço a veteranos.
-        </div>
-
-        <h3>Sugestões de Primeiras Cenas</h3>
-        <ol>
-          <li><strong>Turno Livre no Departamento:</strong> Combine uma interação com um colega do mesmo ofício em que o agente experiente explica as tarefas da ordem.</li>
-          <li><strong>Reconhecimento no Metrô:</strong> Uma missão de reconhecimento na estação abandonada que se complica e necessita de resgate veterano.</li>
-          <li><strong>Reunião da Égide:</strong> Personagens se conhecendo nas dependências da base de Avalon.</li>
-        </ol>
-      `
-    },
-    {
-      id: "pedido-ficha-oficial",
-      categoryId: "primeiros-passos",
-      title: "Protocolo do Pedido de Ficha Geral",
-      subtitle: "Instruções formais para abertura de ficha de atributos na Central",
-      aliases: ["ficha", "pedido de ficha", "atributos iniciais", "silver", "shape", "dados da ficha"],
-      summary: "Formulário oficial para solicitar a primeira ficha após a primeira interação de jogo aceita.",
-      source: "Manual do Novato, pp. 5, 9",
-      contentHtml: `
-        <div class="talamasca-callout">
-          <strong>QUANDO PEDIR:</strong> Faça o primeiro jogo na comunidade e em seguida solicite a abertura da sua ficha no tópico designado da Central. A primeira ficha é gerada por um administrador.
-        </div>
-
-        <h3>Campos Obrigatórios do Pedido</h3>
-        <div class="talamasca-code-terminal">
-Nº da Ficha Geral: [Número livre da lista de fichas gerais]
-E-mail: [Seu e-mail para acesso às fichas no dia a dia]
-Nome da Ficha Geral: [Identificação do jogador por trás dos personagens]
-Nome do Personagem: [Nome do personagem aceito na aprovação]
-Filiação: [Parente direto celestial/divino]
-Afiliação: [Celestial ou ordem que segue]
-Ofício: [Emprego do mundo místico em que atua]
-Idade: [Idade do personagem]
-Shape: [Duas fotos do shape cortadas em formato padrão]
-Individualidades Escolhidas: [Até 3 poderes por nível existente na lista]
-Distribuição de Atributos: [Onde você alocará seus pontos disponíveis]
-        </div>
-
-        <div class="talamasca-tip-box">
-          <strong>Recomendação Oficial para a 1ª Ficha:</strong>
-          Coloque sempre <strong>30 HP</strong> e <strong>10 ATK</strong> (se DPS) ou <strong>10 DEF</strong> (se Tanker). Mantenha a coerência com a função primária do seu personagem.
-        </div>
-
-        <div class="stencil-quote warning-note">
-          <strong>Atenção:</strong> É impresindível que você leia a sua lista de poderes para entender qual é o atributo principal ao qual ela escalona. Por exemplo, se bate com ATK, DEF ou HP. Se Tanka, ou se buffa baseado em seu ATK, HP, DEF e etc. Isso será fundamental para uma boa distribuição de atributos.
-        </div>
-
-        <p class="talamasca-source-note">Cada jogador inicia com direito a <strong>4 slots de personagem</strong> e recebe <strong>10 Orações Celestiais</strong> ao entrar no RPG + 10 a cada ficha inscrita.</p>
+        <h3>Os três grandes e os Perpétuos</h3>
+        <p><strong>Os três grandes são:</strong> Zeus/Júpiter; Poseidon/Netuno; Hades/Plutão.</p>
+        <p><strong>Os deuses manifestos como Perpétuos são</strong> [entidades do criador; são os deuses, mas não se limitam a eles]: Destruição — Deméter/Ceres; Destino — Apolo/Phoebus; Morte — Tânatos/Letus; Sonho — Morfeu/Somnia; Delírio — Paraphronia/Delirium; Desejo — Eros/Cúpido; e Desespero — Melinoe/Phantessa.</p>
       `
     },
 
     // ══════════════════════════════════════════════════════════
-    // SEÇÃO 03: ATRIBUTOS, BONIFICAÇÕES & PROGRESSÃO
+    // SEÇÃO 03 · COMBATE E DADOS
+    // ══════════════════════════════════════════════════════════
+    {
+      id: "sistema-de-combate",
+      categoryId: "combate",
+      title: "Sistema de combate",
+      subtitle: "O que é o sistema de combate e quando ele vale",
+      aliases: ["combate", "duelo", "competição", "interpretação", "dados ou interpretativo"],
+      summary: "Conjunto de regras que rege combates e bônus de dados, de duelos a competições. Combates podem ser por dados ou apenas interpretação.",
+      source: "Regras & Sistemas 2026 — Sistema de Combate",
+      contentHtml: `
+        <p>O Sistema de Combate é um conjunto de regras que rege os combates e os bônus de dados no RPG, desde duelos até competições. É crucial seguir rigorosamente essas normas para evitar problemas e punições. Na Academia, são permitidos combates que envolvem dados e também o sistema apenas de interpretação, conforme a decisão dos organizadores ou dos participantes.</p>
+        <p>Depois de ver qual será sua rolagem padrão por nível, seus pontos de vida e sua mana no sistema de evolução, agora vamos explicar como funcionam os ferimentos quando você não consegue se defender, o consumo de mana e, principalmente, como rolar os dados.</p>
+        <div class="station-doc-reference">
+          <a href="?mode=arquivo&doc=rolagem-de-dados" class="station-direct-link"><span>Como rolar os dados</span><span>→</span></a>
+          <a href="?mode=arquivo&doc=calculo-de-dano" class="station-direct-link"><span>Como calcular o dano</span><span>→</span></a>
+        </div>
+      `
+    },
+    {
+      id: "rolagem-de-dados",
+      categoryId: "combate",
+      title: "Rolagem de dados",
+      subtitle: "Como rolar dados no Discord com o comando /roll, passo a passo",
+      aliases: ["roll", "/roll", "dados", "rolagem", "d10", "10d10", "t5", "dificuldade", "sucessos", "discord", "rolador", "dice maiden"],
+      summary: "As rolagens de combate e de testes continuam no Discord: na sua sala de rolagem, identifique personagem e motivo e use /roll XdY tZ.",
+      source: "Regras & Sistemas 2026 — Rolagem de Dados",
+      contentHtml: `
+        <p>Assim como nos RPGs de mesa, o RPG online usa a rolagem de dados para determinar circunstâncias ao longo das aventuras de cada jogador. Esse procedimento é recomendado para que exista justiça nas batalhas. Os jogadores sempre deverão rolar dados para as ações em que decidirem usá-los durante a sua estadia no RPG, se optarem pelo combate via dados.</p>
+        <div class="talamasca-callout">
+          <strong>Onde rolar:</strong> as rolagens de combate e de testes continuam sendo feitas no <strong>servidor do Discord</strong>. (As orações dos banners são feitas no Hub.)
+        </div>
+        <p>Esse procedimento é feito pelo nosso servidor do Discord, onde todo jogador recebe uma sala na aba <strong>"rolador"</strong>. Nessa sala, ele poderá usar o código de rolagens para pedir que o bot existente simule e entregue os resultados.</p>
+
+        <h3>Passo 1: encontre a sua sala de rolagens</h3>
+        <p>Cada jogador terá, no servidor do Discord, um canal de texto com o número da sua ficha (por exemplo, <code>#001</code>, <code>#002</code>, <code>#003</code>). Esse número é o da sua ficha de jogador <strong>no Hub</strong>.</p>
+
+        <h3>Passo 2: identifique o personagem e o motivo</h3>
+        <p>Depois de encontrar a sua sala (que corresponde ao número da sua ficha de jogador), identifique o nome do personagem que está em uso e o motivo da rolagem.</p>
+        <p><em>Exemplo: tenho um personagem chamado Shen e quero que ele ataque alguém.</em></p>
+        <div class="talamasca-code-terminal">Shen
+Ataque</div>
+
+        <h3>Passo 3: chame o bot com /roll</h3>
+        <p>Use o código necessário para que o bot do servidor entenda que queremos que ele simule uma rolagem de dados. Para isso, digite: <code>/roll</code></p>
+        <p>Ao fazer isso, o servidor vai sugerir um quadro negro; dentro dele, poderemos informar ao bot quantos dados queremos usar e qual a dificuldade.</p>
+
+        <h3>Passo 4: informe a rolagem do personagem</h3>
+        <p>Informe dentro desse quadro negro a rolagem do personagem. Vamos supor que, neste mesmo exemplo, o personagem Shen usa a rolagem de 10 dados com 5 de dificuldade. Para o bot entender, escreva desta forma: <code>10d10 t5</code></p>
+        <ul>
+          <li>O número antes do primeiro "d" (<strong>10</strong>d10 t5) é o número de dados que estou usando;</li>
+          <li>O número depois do "t" (10d10 t<strong>5</strong>) é a dificuldade que estamos usando.</li>
+        </ul>
+
+        <h3>Passo 5: leia o resultado</h3>
+        <p>Por último, o bot vai simular a rolagem dos dados e informar os resultados, que vão corresponder ao <strong>sucesso daquela ação</strong>. Se o número de sucessos do personagem for maior que o do seu rival, a ação dele deu certo.</p>
+        <p>Seguindo esse exemplo, o ataque de Shen corresponde a 6 sucessos:</p>
+        <div class="talamasca-code-terminal">Request: [10d10 t5] Roll: [10, 8, 8, 8, 8, 7, 4, 2, 2, 1] Result: 6</div>
+      `
+    },
+    {
+      id: "calculo-de-dano",
+      categoryId: "combate",
+      title: "Elementos de batalha: como calcular dano",
+      subtitle: "Combate clássico, combate composto com poderes ativos e o cálculo do crítico",
+      aliases: ["dano", "fórmula", "formula", "atk - def", "dano sofrido", "dano real", "composto", "clássico", "classico", "crítico", "critico", "base atk", "base def", "base hp", "bônus de dano"],
+      summary: "Clássico: ATK − DEF = dano sofrido. Composto: (NÍVEL + [ATK × 1], [DEF × 0,6] ou [HP × 0,4]) × CRÍTICO + BÔNUS DE DANO = DANO REAL.",
+      source: "Regras & Sistemas 2026 — Elementos de Batalha",
+      contentHtml: `
+        <p>Antes de qualquer coisa, saiba que para causar dano você primeiro precisa ganhar a disputa na rolagem de dados da ação. Se os sucessos da sua ação ofensiva forem maiores que os sucessos da ação defensiva do inimigo, a sua ação acertou o alvo.</p>
+        <p>É recomendável que, sempre que você atacar, mencione no seu turno os seus status, como ATK, DEF, etc. Se estiver usando um poder, cite na ação quantos pontos de dano final você conseguiu gerar; eles serão levados em consideração se a sua ação ofensiva vencer a disputa inicial de dados.</p>
+        <p>Então, vamos às fórmulas para calcular o dano final da sua ação ofensiva. Saiba que, quanto mais status o seu personagem tiver, ou dependendo do poder que estiver usando, o cálculo de dano pode ser diferente.</p>
+
+        <h3>Combate clássico (sem poderes ativos)</h3>
+        <p>Quando pensamos numa situação de combate clássico, em que você tenta bater em alguém na mão (usando um soco, uma arma ou o hit básico do seu maguinho), o cálculo é simples.</p>
+        <p>Imagine que o seu oponente te atacou com um soco e você tentou se esquivar, mas os sucessos dele nos dados foram maiores que os seus para se defender. Então você terá que calcular quanto de vida perdeu:</p>
+        <div class="talamasca-code-terminal">ATK − DEF = DANO SOFRIDO</div>
+        <p>O ataque é do oponente, a defesa é a sua e… sim, burra, o dano sofrido é a quantidade de HP que você vai perder.</p>
+
+        <h3>Combate composto (uso de poderes ativos)</h3>
+        <p>Pode ser que, em combate, você ou o seu oponente decidam usar algum poder ou técnica dos artefatos ou cone para melhorar a ação em questão. Nesse caso, cada poder ofensivo determina qual status principal vai usar para causar dano (podendo variar entre ATK, DEF e HP).</p>
+        <p>Quando um poder não especificar o status principal a ser considerado no cálculo do seu dano, ele <strong>sempre</strong> terá como base o valor de ataque (ATK) do personagem.</p>
+        <p>Pensando no nivelamento de combate, aqui embaixo estão as fórmulas para calcular o dano dos poderes de acordo com o tipo de status:</p>
+        <ul>
+          <li><strong>Base ATK:</strong> <code>(NÍVEL + [ATK × 1]) × CRÍTICO + BÔNUS DE DANO = DANO REAL</code></li>
+          <li><strong>Base DEF:</strong> <code>(NÍVEL + [DEF × 0,6]) × CRÍTICO + BÔNUS DE DANO = DANO REAL</code></li>
+          <li><strong>Base HP:</strong> <code>(NÍVEL + [HP × 0,4]) × CRÍTICO + BÔNUS DE DANO = DANO REAL</code></li>
+        </ul>
+
+        <h3>Exemplo usando ATK</h3>
+        <p>Imagine que um personagem ganha a disputa de dados e o ataque acerta o alvo. Ele está no <strong>nível 7</strong>, tem <strong>100 de ATK</strong> e, ao rolar dados <strong>para crítico</strong>, obtém <strong>3 sucessos</strong>. Ele não está sob efeito de nenhum poder que melhore o dano final.</p>
+        <p>A fórmula dessa ação será: (NÍVEL + [ATK × 1]) × CRÍTICO + BÔNUS DE DANO = DANO REAL</p>
+        <div class="talamasca-code-terminal">(7 + [100 × 1]) × 3 + 0 = ???
+(7 + 100) × 3 = ???
+107 × 3 = 321</div>
+        <p>Seguindo ainda esse exemplo, a diferença entre esse valor e os pontos de DEF do oponente será a quantidade de HP que ele vai perder.</p>
+
+        <h3>Calculando o crítico</h3>
+        <p>Sempre que uma ação ofensiva for usada com um poder, e essa ação tiver vencido a disputa contra a rolagem de esquiva ou defesa do oponente, o jogador atacante poderá rodar um dado para calcular o efeito crítico daquela ação. Essa rolagem é fixa e terá como base o valor de: <strong>0 dados com 10 de dificuldade</strong>.</p>
+        <ul>
+          <li>Para cada 10% de pontos de <em>taxa crítica</em>, será possível diminuir em <strong>−1 a dificuldade</strong> dessa rolagem (máximo de 100% e, portanto, dificuldade 1). O limite geral de taxa crítica passou a ser 600%, mas a dificuldade desta rolagem nunca fica abaixo de 1: o que passar de 100% vale para os efeitos de poderes, bênçãos e itens que usem a taxa crítica.</li>
+          <li>Para cada 10% de pontos de <em>dano crítico</em>, será possível somar <strong>+1 dado</strong> nessa rolagem (não tem limite).</li>
+        </ul>
+        <p>Os <strong>sucessos dessa ação</strong> vão compor a fórmula de dano final da ação ofensiva, usando as fórmulas corretas de acordo com o tipo de status principal que o seu poder usa como base. Isso sempre vai estar especificado no final do seu poder, na parte em negrito; caso não esteja especificado, use a fórmula de ATK.</p>
+      `
+    },
+    {
+      id: "velocidade-spd",
+      categoryId: "combate",
+      title: "O uso da velocidade (SPD)",
+      subtitle: "Ordem de ação no turno, duas ações por turno e surtos de ação",
+      aliases: ["spd", "velocidade", "iniciativa", "ordem", "surto de ação", "surtos", "ações por turno", "200 spd", "300 spd"],
+      summary: "O SPD define quem age primeiro. Todos têm duas ações por turno; 200 SPD dá +1 ação, 300 SPD dá +2 e, a partir de 200, cada +10 SPD dá +5 ATK passivo.",
+      source: "Regras & Sistemas 2026 — O Uso da Velocidade",
+      contentHtml: `
+        <p>Durante campanhas e eventos, <strong>a ordem de postagem/ação dos personagens em cada rodada</strong> será definida com base no atributo <strong>Velocidade (SPD)</strong>: quanto maior o SPD do personagem, <strong>mais cedo ele age no turno</strong>.</p>
+        <p>Cada personagem, por padrão, pode realizar <strong>duas ações por turno</strong> (ataques, uso de poderes ativos, etc.).</p>
+        <p>Contudo, personagens com altos níveis de SPD passam a gerar naturalmente <strong><em>surtos de ação</em></strong>, que permitem executar <strong>ações adicionais</strong> no mesmo turno.</p>
+        <ul>
+          <li><strong>100 SPD:</strong> valor base de todos os personagens (sem bônus).</li>
+          <li><strong>200 SPD:</strong> ganha +1 surto de ação (ou seja, +1 ação extra por turno).</li>
+          <li><strong>300 SPD:</strong> ganha +2 surtos de ação (totalizando +2 ações extras por turno).</li>
+          <li><strong>A partir de 200 SPD:</strong> para cada +10 SPD acima de 200, ganha-se +5 ATK passivo.</li>
+        </ul>
+        <div class="talamasca-callout"><strong>OBS:</strong> essas regras podem agir de forma diferente dependendo do semideus e dos seus poderes.</div>
+      `
+    },
+    {
+      id: "defesa-em-tanks",
+      categoryId: "combate",
+      title: "O uso da defesa em tanks (DEF)",
+      subtitle: "Redução de dano (RD) e HP extra por marcos de DEF",
+      aliases: ["def", "defesa", "tank", "tanker", "rd", "redução de dano", "reducao de dano", "250 def", "70% rd", "marcos de def"],
+      summary: "A partir de 250 DEF, e a cada 100 DEF, o personagem ganha HP e Redução de Dano (RD) percentual, até 70% de RD.",
+      source: "Regras & Sistemas 2026 — O Uso da Defesa em Tanks",
+      contentHtml: `
+        <p>Para viabilizar o uso de <strong>DEF</strong> no RPG, de maneira que possa de fato contribuir para o exercício adequado da classe de Tank (especialmente de quem queira trilhar esse caminho), a aquisição massiva de defesa (DEF) vai fornecer um atributo único chamado <strong>Redução de Dano (RD)</strong>. Ela não será concedida em valores fixos, e sim percentuais. Além disso, para garantir que o personagem também tenha vida para resistir a um número maior de ataques e não faça desta uma build suicida, ele também ganha HP.</p>
+        <p>Abaixo estão os marcos de DEF em que você ganha esses atributos e seus respectivos valores. Eles <strong>não são acumulativos</strong>: o valor indicado é o total. Em resumo, o primeiro marco começa em 250 DEF e, a cada 100 DEF adquiridos, mais desse atributo é concedido naturalmente.</p>
+        <p>Em eventos, os mestres de mesa devem indicar se os inimigos possuem RD adquirida no valor da sua DEF. Um mestre poderá, por exemplo, dizer que um inimigo não tem RD ou tem acima do permitido.</p>
+        <ul>
+          <li><strong>250 DEF:</strong> ganha-se +60 HP e +10% RD</li>
+          <li><strong>350 DEF:</strong> ganha-se +120 HP e +20% RD</li>
+          <li><strong>450 DEF:</strong> ganha-se +180 HP e +30% RD</li>
+          <li><strong>550 DEF:</strong> ganha-se +240 HP e +40% RD</li>
+          <li><strong>650 DEF:</strong> ganha-se +300 HP e +50% RD</li>
+          <li><strong>750 DEF:</strong> ganha-se +360 HP e +60% RD</li>
+          <li><strong>850 DEF:</strong> ganha-se +420 HP e +70% RD</li>
+        </ul>
+        <div class="talamasca-callout"><strong>OBS:</strong> não é possível ter mais de 70% de RD no RPG, salvo exceções (regalias que o garantam).</div>
+      `
+    },
+    {
+      id: "consumo-de-mana",
+      categoryId: "combate",
+      title: "Consumo de mana",
+      subtitle: "Como descontar a mana de cada poder usado, com exemplo",
+      aliases: ["mana", "consumo", "energia", "cansaço", "off"],
+      summary: "Todo poder ativo tem um gasto de mana que deve ser descontado do total a cada uso, em combates por dados ou interpretativos.",
+      source: "Regras & Sistemas 2026 — Consumo de Mana",
+      contentHtml: `
+        <p>Por lógica, um mago, independentemente do seu tipo de habilidade, poder ou magia, tem limites, e esse limite é relativo ao número de vezes em que ele usa uma magia ou um determinado poder. Os pontos de mana servem para que o jogador em questão possa calcular essas situações: as vezes em que poderá usar uma determinada magia, quando estará cansado, próximo de desmaiar, etc.</p>
+        <p>Todo poder ativo possui um gasto X de mana e, todas as vezes em que for usado, o mago deverá descontar a energia que ele requer do seu total. Esse cálculo é <strong>obrigatório</strong>, tanto em combates via dados quanto interpretativos.</p>
+        <h3>Exemplo</h3>
+        <p>Deku está lutando com Todoroki. Ainda não usou nenhum poder nem desferiu muitos ataques, de tal forma que ainda está sem qualquer sinal de cansaço.</p>
+        <div class="talamasca-code-terminal">OFF TODOROKI: Mana: 100/100</div>
+        <p>Todoroki usa a manipulação de gelo contra Deku.</p>
+        <div class="talamasca-code-terminal">OFF TODOROKI: Mana: 80/100 | Poder usado: Criocinese (−20)</div>
+      `
+    },
+
+    // ══════════════════════════════════════════════════════════
+    // SEÇÃO 04 · ATRIBUTOS E BONIFICAÇÕES
     // ══════════════════════════════════════════════════════════
     {
       id: "atributos-e-bonificacoes",
-      categoryId: "personagem-progressao",
-      title: "Atributos & Bonificações: Elementos que Mudam sua Rolagem",
-      subtitle: "Nomenclaturas oficiais: escudos, mana, defesa, regeneração e modificadores",
-      aliases: ["atributos e bonificacoes", "bonificacoes", "escudos", "regeneracao", "nomenclaturas", "rolagens modificadas"],
-      summary: "Explicação minuciosa das nomenclaturas do RPG: criação de escudos, reserva e regeneração de mana, mitigação de defesa e bônus em rolagens.",
-      source: "Regras & Sistemas (Site Antigo) — Atributos & Bonificações",
+      categoryId: "bonificacoes",
+      title: "Atributos e bonificações: elementos que mudam sua rolagem",
+      subtitle: "Buffs, defensivos, debuffs e utilitários: o que cada bônus faz e exemplos",
+      aliases: ["bonificação", "bonificacao", "buff", "debuff", "escudo", "defesa absoluta", "mana total", "regeneração", "sucesso adicional", "dano real", "surto de sorte", "bônus de condição", "energia infinita", "respaldo", "cooldown", "utilitários"],
+      summary: "Tabela completa dos tipos de bônus que poderes, magias, itens e armas podem aplicar, com o que cada um faz e exemplos de valores.",
+      source: "Regras & Sistemas 2026 — Atributos & Bonificações",
       contentHtml: `
-        <p>As bonificações e atributos são elementos vitais que alteram ativamente a rolagem, o resultado ou as consequências de suas ações. Em nosso RPG, cada poder, magia, item, bênção ou arma poderá aplicar essas bonificações, aprimorando capacidades ou impondo penalidades aos inimigos.</p>
+        <p>As bonificações e os atributos são elementos que podem mudar a rolagem, o resultado ou as consequências das suas jogadas. No nosso RPG, cada poder, magia, item ou arma poderá aplicar essas bonificações, aprimorando ou prejudicando esses valores ativamente no jogo. Por exemplo: rolar com mais dados, com menos dificuldade, causar mais dano, etc. Tudo depende do que você tem à sua disposição.</p>
 
-        <h3>Nomenclaturas Fundamentais de Combate</h3>
+        <h3>Buff (facilitadores)</h3>
         <div class="table-microfilm-wrap">
           <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Nomenclatura</th>
-                <th>Definição Canônica</th>
-                <th>Como Funciona na Prática</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Tipo de bônus</th><th>O que ele geralmente faz interpretativamente</th><th>Exemplos</th></tr></thead>
             <tbody>
-              <tr>
-                <td><strong>Escudo (Shield)</strong></td>
-                <td>Barreira de absorção temporária de impacto físico ou mágico.</td>
-                <td>O escudo recebe dano antes do HP do personagem sofrer redução. Enquanto o escudo estiver ativo, o dano recebido é abatido do valor do escudo até que ele quebre ou expire.</td>
-              </tr>
-              <tr>
-                <td><strong>Mana (Energia Espiritual)</strong></td>
-                <td>Reserva de energia mística para ativação de poderes divinos e magias.</td>
-                <td>Toda técnica ativa consome uma quantidade específica de Mana. Quando a Mana zera, o personagem não consegue ativar poderes e entra em fadiga.</td>
-              </tr>
-              <tr>
-                <td><strong>Defesa (DEF)</strong></td>
-                <td>Resistência estrutural física e mágica do corpo.</td>
-                <td>Atenua o dano recebido no combate clássico (ATK − DEF) e serve de base para poderes defensivos e cálculo de Redução de Dano (RD).</td>
-              </tr>
-              <tr>
-                <td><strong>Regeneração de Mana</strong></td>
-                <td>Recuperação periódica de pontos de energia por turno ou ação.</td>
-                <td>Permite restaurar pontos de Mana gastos durante uma batalha prolongada através de itens, auras de suporte ou poderes passivos.</td>
-              </tr>
-              <tr>
-                <td><strong>Regeneração de HP (Cura)</strong></td>
-                <td>Restauração de vitalidade ao longo do combate.</td>
-                <td>Habilidades de cura restauram HP perdido. Em Midnight City, a cura não ultrapassa o HP máximo original do personagem salvo por escudos adicionais.</td>
-              </tr>
-              <tr>
-                <td><strong>Bônus de Dados (+Dados)</strong></td>
-                <td>Acréscimo direto de dados d10 na rolagem de tentativa.</td>
-                <td>Aumenta a probabilidade de acumular sucessos na disputa contra o alvo.</td>
-              </tr>
-              <tr>
-                <td><strong>Redução de Dificuldade (-Dificuldade)</strong></td>
-                <td>Diminui o alvo numérico (t) da rolagem no Discord.</td>
-                <td>Permite que valores menores no d10 sejam computados como sucesso (ex: dif 5 para dif 4 torna os dados 4, 5, 6, 7, 8, 9 e 10 como sucessos).</td>
-              </tr>
-              <tr>
-                <td><strong>Bônus de Dano Fixo</strong></td>
-                <td>Valor numérico fixo adicionado ao final do dano real.</td>
-                <td>Não depende de crítico: se o golpe acerta a disputa de dados, soma integralmente ao impacto.</td>
-              </tr>
+              <tr><td><strong>ATK adicional</strong></td><td>Aumenta o potencial de uma determinada ação.<br><em>Exemplo:</em> aumento da força física.</td><td>+10 de ATK</td></tr>
+              <tr><td><strong>HP adicional</strong></td><td>Adiciona pontos de vida (HP) aos do número padrão de um jogador.<br><em>Exemplo:</em> fortificação biológica, gigantismo.</td><td>Considerando 100 de HP como padrão: +30 HP total (100/100 → 130/130)</td></tr>
+              <tr><td><strong>DEF adicional</strong></td><td>Quando você tem o seu estado físico alterado a ponto de ser mais capaz de suportar danos, independentemente do seu teor.<br><em>Exemplo:</em> armadura, escudo e manto elementar.</td><td>+10 de DEF</td></tr>
+              <tr><td><strong>TAXA CRIT. adicional</strong></td><td>Aumenta a chance de um surto de explosão física/mágica para uma determinada habilidade, podendo atingir uma área maior ou sendo ainda mais letal que naturalmente.<br><em>Exemplo:</em> aumento da sorte, perícias, proficiência.</td><td>+10% de TAXA CRIT.</td></tr>
+              <tr><td><strong>DANO CRIT. adicional</strong></td><td>Aumenta o dano de um surto de explosão física/mágica para uma determinada habilidade, podendo atingir uma área maior ou sendo ainda mais letal que naturalmente.<br><em>Exemplo:</em> aumento da sorte, perícias, proficiência.</td><td>+10% de DANO CRIT.</td></tr>
+              <tr><td><strong>Dano real adicional</strong></td><td>É quando um poder, artefato ou cone consegue gerar mudança do dano final causado. De todos, é o mais raro de existir (<strong>entra no final da fórmula de dano composto</strong>).<br><em>Exemplo:</em> explosão, amplificação, acerto garantido, etc.</td><td>+1 Bônus de Dano</td></tr>
+              <tr><td><strong>Sucesso adicional</strong></td><td>Quando algo afeta a essência da sua ação, ou ainda as leis celestiais e a física do ambiente ou de uma determinada ação.<br><em>Exemplo:</em> magia do caos, manipulação da probabilidade, controle do tempo.</td><td>+1 Sucesso nas ações (não vale para crítico)<br>ou<br>+1 no resultado final da rolagem de 1 dado</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Defensivos</h3>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Tipo de bônus</th><th>O que ele geralmente faz interpretativamente</th><th>Exemplos</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Escudo</strong></td><td>Permite gerar uma aura sobre um alvo capaz de mitigar uma determinada quantidade de dano, sempre escalando com a DEF do conjurador.<br><em>Exemplo:</em> aura, manto.</td><td>Geração de escudo de 10% ATK (tem: 500 ATK). Ele transforma o status original previsto em HP fixo, baseado no tipo de dano da classe.<br>Escudo 50 HP<br><strong>OBS:</strong> não se aplica a fórmulas de dano e outros cálculos.</td></tr>
+              <tr><td><strong>Defesa absoluta</strong></td><td>Dispensa explicações.</td><td>Garante uma defesa perfeita.</td></tr>
+              <tr><td><strong>Mana TOTAL</strong></td><td>Pretende o valor total de energia que o personagem possui.<br><em>Exemplo:</em> aprimoramento mágico, apogeu arcano.</td><td>Considerando 100 de mana como padrão:<br>+10 mana total (100/100 → 110/110)<br>x2 de mana total (100/100 → 200/200)</td></tr>
+              <tr><td><strong>Redução do consumo de mana</strong></td><td>Energia externa e própria que pretende reduzir ou abater parte do consumo de energia das ações do usuário.<br><em>Exemplo:</em> joia de energia, aprimoramento mágico.</td><td>−10 do consumo de mana: se o poder iria consumir 30, agora vai consumir 20. Se ia consumir 10, agora não vai consumir energia.<br>−½ do consumo de mana: se iria consumir 30, agora vai consumir 15. Se ia consumir 10, agora vai consumir 5.</td></tr>
+              <tr><td><strong>Regeneração de mana</strong></td><td>Regenera a energia perdida após ações que a tenham consumido.<br><em>Exemplo:</em> absorção de energia elementar.</td><td>Considerando 100 de mana como padrão e que já havia perdido 50: +10 (50/100 → 60/100)</td></tr>
+              <tr><td><strong>Regeneração de HP</strong></td><td>Regenera tecidos, ferimentos ou fraturas provocados em combate.<br><em>Exemplo:</em> cura.</td><td>Considerando 500 de HP como padrão e que já havia perdido 50 de HP: +10 HP (450/500 → 460/500)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Debuff (penalizadores)</h3>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Tipo de bônus</th><th>O que ele geralmente faz interpretativamente</th><th>Exemplos</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Redução de sucessos</strong></td><td>Diminui o potencial de uma determinada ação do oponente.<br><em>Exemplo:</em> sono, manipulação do tempo.</td><td>−1 Sucesso: se iria defender com 5 sucessos, serão 4.</td></tr>
+              <tr><td><strong>Alteração de dificuldade</strong></td><td>Torna uma determinada ação mais difícil.<br><em>Exemplo:</em> manipulação da gravidade, neblina.</td><td>+1 de dificuldade</td></tr>
+              <tr><td><strong>Redução de dados</strong></td><td>Reduz as chances de uma determinada ação ser efetuada com sucesso.<br><em>Exemplo:</em> aumento da velocidade.</td><td>−1 dado: se iria rolar com 10, vai rolar com 9.</td></tr>
+              <tr><td><strong>Redução ATK</strong></td><td>Reduz o potencial de uma determinada ação cuja classe use ATK para causar dano.<br><em>Exemplo:</em> redução de força física.</td><td>−10 de ATK</td></tr>
+              <tr><td><strong>Redução HP TOTAL</strong></td><td>Reduz o potencial de uma determinada ação cuja classe use HP para causar dano.<br><em>Exemplo:</em> redução de tamanho fisiológico.</td><td>Considerando 100 de HP como padrão: −30 HP total (100/100 → 70/70)</td></tr>
+              <tr><td><strong>Redução DEF</strong></td><td>Reduz o potencial de uma determinada ação cuja classe use DEF para causar dano.<br><em>Exemplo:</em> redução de resistência.</td><td>−10 de DEF</td></tr>
+              <tr><td><strong>Redução TAXA CRIT.</strong></td><td>Reduz a chance presumível de um surto de explosão física/mágica para uma determinada habilidade, podendo atingir uma área maior ou sendo ainda mais letal que naturalmente.<br><em>Exemplo:</em> redução de sorte.</td><td>−10% de TAXA CRIT.</td></tr>
+              <tr><td><strong>Redução DANO CRIT.</strong></td><td>Reduz o dano presumível de um surto de explosão física/mágica para uma determinada habilidade, podendo atingir uma área maior ou sendo ainda mais letal que naturalmente.<br><em>Exemplo:</em> redução de sorte.</td><td>−10% de DANO CRIT.</td></tr>
+              <tr><td><strong>Redução de dano real</strong></td><td>É quando um poder, artefato ou cone consegue reduzir a mudança do dano final causado. De todos, é o mais raro de existir (<strong>entra no final da fórmula de dano composto</strong>).<br><em>Exemplo:</em> manipulação do destino.</td><td>−1 Bônus de Dano</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Utilitários</h3>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Tipo de bônus</th><th>O que ele geralmente faz interpretativamente</th><th>Exemplos</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Surto de sorte</strong></td><td>É quando você é escolhido pelo destino, pelas linhas que regem o mundo e a história do universo. Você pode rodar duas vezes, para todas ou para um determinado tipo de ação, e escolher o resultado que for mais conveniente.<br><em>Exemplo:</em> magia do caos, manipulação da probabilidade, controle do tempo.</td><td>+1 Sucesso nas ações (não vale para crítico)<br>ou<br>+1 Sucesso no resultado final da rolagem de testes</td></tr>
+              <tr><td><strong>Bônus de condição</strong></td><td>Concede outro bônus determinado com base num valor que escalou. Como ganhar X dados a cada X de HP perdido, ou ainda causar X de dano mágico adicional a cada X de energia perdida.<br><em>Exemplo:</em> vampirismo.</td><td>+X bônus a cada 3× perdidos/causados/ganhos<br>+X bônus a cada 5× perdidos/causados/ganhos</td></tr>
+              <tr><td><strong>Energia infinita</strong></td><td>O bônus deve se aplicar a uma condição específica, como não consumir energia sob a lua, em locais com luz solar, etc.<br><em>Exemplo:</em> reconhecimento de um deus, ou do trono do Cairo.</td><td>—</td></tr>
+              <tr><td><strong>+1 individualidade por nível</strong></td><td>Algo raro, geralmente concedido em eventos de nível de missão.<br><em>Exemplo:</em> reconhecimento de um deus.</td><td>+1 individualidade por nível para as listas à sua disposição</td></tr>
+              <tr><td><strong>+1 lista divina</strong></td><td>Algo raro, geralmente concedido em eventos de nível de missão, em que se pode seguir outra lista de deus com 3 individualidades à sua escolha.<br><em>Exemplo:</em> reconhecimento de um deus e/ou apadrinhamento.</td><td>+3 individualidades por nível da lista de escolha</td></tr>
+              <tr><td><strong>Reduzir respaldos</strong></td><td>Geralmente quando você está numa condição tão íntima com o seu parente divino a ponto de os respaldos dos poderes que vêm dele poderem ser quebrados pela metade, voltando antes do necessário.<br><em>Exemplo:</em> reconhecimento divino.</td><td>Reduz pela metade o tempo de espera para usar o mesmo poder novamente (sempre arredondar para baixo/menos)</td></tr>
             </tbody>
           </table>
         </div>
@@ -553,843 +714,806 @@ Distribuição de Atributos: [Onde você alocará seus pontos disponíveis]
     },
     {
       id: "bonificacao-interpretativa",
-      categoryId: "personagem-progressao",
-      title: "Bonificação Interpretativa: Os Níveis de Controle",
-      subtitle: "Justificativa e gradação de poderes: Brando, Moderado, Forte e Perfeito",
-      aliases: ["bonificacao interpretativa", "brando", "moderado", "forte", "perfeito", "niveis interpretativos", "graus de poder"],
-      summary: "Como o sistema justifica e equilibra o nível de controle narrativo que cada prêmio ou técnica concede ao jogador.",
-      source: "Regras & Sistemas (Site Antigo) — Bonificação Interpretativa",
+      categoryId: "bonificacoes",
+      title: "Bonificação interpretativa",
+      subtitle: "Os níveis de controle Brando, Moderado, Forte e Perfeito, e como convertê-los",
+      aliases: ["brando", "moderado", "forte", "perfeito", "interpretativo", "nível do poder", "conversão interpretativa", "pirocinese"],
+      summary: "Todo prêmio pode agregar poderes interpretativos em quatro níveis de controle. Níveis maiores podem ser convertidos em combinações de níveis menores.",
+      source: "Regras & Sistemas 2026 — Bonificação Interpretativa",
       contentHtml: `
-        <p>Todo prêmio, artefato ou criação no RPG permite agregar poderes interpretativos. Eles definem com clareza o nível de controle que o item permite que o jogador tenha sobre a natureza da habilidade, tornando as cenas justas, verossímeis e sem apelações.</p>
-
+        <p>Como já percebido, todo prêmio permite agregar poderes interpretativos. Eles definem o nível de controle que o prêmio vai permitir que o jogador tenha sobre a natureza do poder escolhido, de modo que fique mais fácil entender como seria aplicado:</p>
         <div class="table-microfilm-wrap">
           <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Nível Interpretativo</th>
-                <th>Sigla</th>
-                <th>Escopo de Controle Permitido</th>
-                <th>Exemplos Típicos em Jogo</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Nível do poder</th><th>Descrição do seu controle sobre ele</th><th>Conversão</th></tr></thead>
             <tbody>
               <tr>
                 <td><strong>Brando</strong></td>
-                <td><strong>B</strong></td>
-                <td>Pequenas manipulações sensoriais, efeitos estéticos, utilidades cotidianas ou resistências a fatores amenos.</td>
-                <td>Acender faíscas, faro aguçado, visão no escuro, resistência a frio leve, alterar cor de objetos, iluminação suave.</td>
+                <td>Controle quase inconsciente. Consegue controlar pequenas quantidades da natureza da sua individualidade.<br><em><strong>Por exemplo, na hipótese de pirocinese:</strong> aquecer a mão, atirar bolas de fogo.</em></td>
+                <td>Não pode ser convertido.</td>
               </tr>
               <tr>
                 <td><strong>Moderado</strong></td>
-                <td><strong>M</strong></td>
-                <td>Manipulações táticas concretas com impacto perceptível no ambiente ou em combates de média intensidade.</td>
-                <td>Rajadas de vento capazes de derrubar oponentes, lâminas flamejantes, saltos sobre-humanos, encantos de ilusão parcial, venenos atordoantes.</td>
+                <td>Consegue controlar quantidades consideráveis da natureza da sua individualidade.<br><em><strong>Por exemplo, na hipótese de pirocinese:</strong> envolver-se em chamas, produzir rajadas ou colunas de fogo.</em></td>
+                <td>Pode ser convertido para 2 Brandos.</td>
               </tr>
               <tr>
                 <td><strong>Forte</strong></td>
-                <td><strong>F</strong></td>
-                <td>Poder devastador capaz de alterar o rumo de batalhas, grande alcance ou controle avançado de elementos.</td>
-                <td>Tempestades localizadas, lanças de plasma/raio, carapaças blindadas quase impenetráveis, transmutação material temporária, telecinese pesada.</td>
+                <td>Consegue controlar boa parte da própria natureza da sua individualidade e seus derivados.<br><em><strong>Por exemplo, na hipótese de pirocinese:</strong> iniciar incêndios, cuspir grandes rajadas de fogo, se imunizar dele.</em></td>
+                <td><ul><li>Pode ser convertido para 2 Moderados.</li><li>Pode ser convertido para 1 Moderado e 2 Brandos.</li><li>Pode ser convertido para 4 Brandos.</li></ul></td>
               </tr>
-              <tr class="talamasca-highlight-row">
+              <tr>
                 <td><strong>Perfeito</strong></td>
-                <td><strong>P</strong></td>
-                <td>O ápice da natureza do poder; trunfos absolutos de calibre mitológico ou alterações conceituais profundas.</td>
-                <td>Rupturas dimensionais, manipulação de espaço-tempo local, ressurreição pontual de aliados, maldições milenares, poderes diretos de deuses maiores.</td>
+                <td>Perfeito: encarna a verdadeira essência da sua individualidade, com uma série de trunfos.<br><em><strong>Por exemplo, na hipótese de pirocinese:</strong> criar formas vivas de fogo, ou ainda incluir características únicas, como só apagar quando for desejo do jogador.</em></td>
+                <td><ul><li>Pode ser convertido para 2 Fortes.</li><li>Pode ser convertido para 1 Forte e 2 Moderados.</li><li>Pode ser convertido para 1 Forte, 1 Moderado e 2 Brandos.</li><li>Pode ser convertido para 4 Moderados.</li><li>Pode ser convertido para 3 Moderados e 2 Brandos.</li><li>Pode ser convertido para 2 Moderados e 4 Brandos.</li><li>Pode ser convertido para 1 Moderado e 6 Brandos.</li><li>Pode ser convertido para 8 Brandos.</li></ul></td>
               </tr>
             </tbody>
           </table>
-        </div>
-
-        <div class="stencil-quote">
-          <strong>Notação Oficial nos Prêmios:</strong>
-          Ao final da descrição de um item, você encontrará os colchetes com os níveis interpretativos. Exemplo: <code>✩✩✩✩✩ [1P | 2F]</code> significa 1 Poder Perfeito e 2 Poderes Fortes agregados à peça.
-        </div>
-      `
-    },
-    {
-      id: "evolucao-xp-niveis",
-      categoryId: "personagem-progressao",
-      title: "Escala de XP & Ascensão de Níveis (N1 a N10)",
-      subtitle: "Marcos numéricos de XP e conversão pós-teto",
-      aliases: ["xp", "niveis", "ascensao", "tabela de xp", "teto", "10000 xp"],
-      summary: "Progressão de 0 a 10.000 XP. Ao atingir o nível 10, todo XP excedente é convertido em Gold na razão 10 para 1.",
-      source: "Manual do Novato, p. 13-14",
-      contentHtml: `
-        <p>A ascensão de nível é o marco que destrava pontos adicionais de atributos e o teto de novos poderes. São 10 níveis oficiais:</p>
-
-        <div class="table-microfilm-wrap">
-          <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Nível</th>
-                <th>XP Necessário para Ascender</th>
-                <th>Pontos de Atributo Ganhos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Nível 01</td><td>0 xp</td><td>1 ponto de atributo</td></tr>
-              <tr><td>Nível 02</td><td>600 xp</td><td>1 ponto de atributo</td></tr>
-              <tr><td>Nível 03</td><td>1.100 xp</td><td>2 pontos de atributo</td></tr>
-              <tr><td>Nível 04</td><td>2.000 xp</td><td>2 pontos de atributo</td></tr>
-              <tr><td>Nível 05</td><td>3.000 xp</td><td>2 pontos de atributo</td></tr>
-              <tr><td>Nível 06</td><td>4.100 xp</td><td>2 pontos de atributo</td></tr>
-              <tr><td>Nível 07</td><td>5.300 xp</td><td>2 pontos de atributo</td></tr>
-              <tr><td>Nível 08</td><td>6.600 xp</td><td>2 pontos de atributo</td></tr>
-              <tr><td>Nível 09</td><td>8.000 xp</td><td>2 pontos de atributo</td></tr>
-              <tr class="talamasca-highlight-row"><td>Nível 10</td><td>10.000 xp</td><td><strong>4 pontos de atributo</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="talamasca-callout">
-          <strong>CONVERSÃO PÓS-NÍVEL 10:</strong>
-          Ao alcançar 10.000 XP, o personagem atinge o teto de nível. A partir deste ponto, todo XP obtido em missões e farms é <strong>automaticamente convertido em Gold</strong> na proporção de <strong>10 XP = 1 Gold</strong> (exemplo: 1.000 XP vira 100 Golds).
-        </div>
-      `
-    },
-    {
-      id: "atributos-base-canonica",
-      categoryId: "personagem-progressao",
-      title: "Tabela Canônica de Atributos Base por Nível",
-      subtitle: "Valores estatísticos absolutos antes dos pontos distribuídos pelo jogador",
-      aliases: ["atributos base", "tabela 3", "hp base", "atk base", "def base", "mana base", "tres grandes", "perpetuos"],
-      summary: "Estatísticas fixas de HP, ATK, DEF, Mana, SPD e rolagens padrão por nível, com regras dos Três Grandes e Perpétuos.",
-      source: "Compêndio de Regras (Site Antigo) & Manual do Novato",
-      contentHtml: `
-        <p>Valores inatos de cada personagem em cada nível, antes de computar os pontos adicionais de distribuição:</p>
-
-        <div class="table-microfilm-wrap">
-          <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Nível</th>
-                <th>Rolagem Padrão</th>
-                <th>HP</th>
-                <th>ATK</th>
-                <th>DEF</th>
-                <th>Taxa Crit.</th>
-                <th>Dano Crit.</th>
-                <th>SPD</th>
-                <th>MANA</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>01</td><td>10 dados dif. 8</td><td>60</td><td>15</td><td>15</td><td>0%</td><td>50%</td><td>100</td><td>200</td></tr>
-              <tr><td>02</td><td>10 dados dif. 7</td><td>110</td><td>20</td><td>20</td><td>0%</td><td>50%</td><td>100</td><td>250</td></tr>
-              <tr><td>03</td><td>10 dados dif. 7</td><td>160</td><td>25</td><td>25</td><td>0%</td><td>50%</td><td>100</td><td>300</td></tr>
-              <tr><td>04</td><td>10 dados dif. 6</td><td>200</td><td>35</td><td>35</td><td>0%</td><td>50%</td><td>100</td><td>350</td></tr>
-              <tr><td>05</td><td>10 dados dif. 6</td><td>240</td><td>45</td><td>45</td><td>0%</td><td>50%</td><td>100</td><td>400</td></tr>
-              <tr><td>06</td><td>10 dados dif. 5</td><td>280</td><td>60</td><td>60</td><td>0%</td><td>50%</td><td>100</td><td>450</td></tr>
-              <tr><td>07</td><td>10 dados dif. 5</td><td>320</td><td>70</td><td>70</td><td>10%</td><td>60%</td><td>100</td><td>500</td></tr>
-              <tr><td>08</td><td>10 dados dif. 4</td><td>380</td><td>80</td><td>80</td><td>10%</td><td>60%</td><td>110</td><td>550</td></tr>
-              <tr><td>09</td><td>11 dados dif. 4</td><td>420</td><td>100</td><td>100</td><td>10%</td><td>60%</td><td>120</td><td>600</td></tr>
-              <tr class="talamasca-highlight-row"><td>10</td><td>12 dados dif. 3</td><td>500</td><td>130</td><td>130</td><td>10%</td><td>70%</td><td>130</td><td>800</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Doutrina de Linhagem Especial</h3>
-        <ul>
-          <li><strong>Filhos dos Três Grandes (Zeus, Poseidon, Hades):</strong> Recebem <strong>+30 HP</strong> e <strong>+10% de Taxa Crítica</strong> sobre os valores normais. Não altera o ganho por nível.</li>
-          <li><strong>Filhos de Deuses Perpétuos:</strong> Recebem o bônus dos grandes mais <strong>+200 de Mana</strong> e <strong>+10 SPD</strong>.</li>
-        </ul>
-      `
-    },
-    {
-      id: "conversao-atributos-build",
-      categoryId: "personagem-progressao",
-      title: "Custo & Conversão de Pontos de Atributo",
-      subtitle: "Tabela oficial de conversão de pontos ganhos ao subir de nível",
-      aliases: ["conversao", "distribuicao", "pontos de atributo", "hp atk def conversao", "regras de build"],
-      summary: "Cada 1 ponto de atributo ganho por nível converte em valores específicos: 10 ATK, 10 DEF, 30 HP, 10% Crítico ou 3 SPD.",
-      source: "Regras & Sistemas (Site Antigo) & Manual p. 4",
-      contentHtml: `
-        <div class="table-microfilm-wrap">
-          <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Atributo Escolhido</th>
-                <th>Custo em Pontos</th>
-                <th>Valor de Conversão Efetivo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>ATK</strong> (Ataque)</td><td>1 ponto</td><td>+10 ATK</td></tr>
-              <tr><td><strong>DEF</strong> (Defesa)</td><td>1 ponto</td><td>+10 DEF</td></tr>
-              <tr><td><strong>HP</strong> (Pontos de Vida)</td><td>1 ponto</td><td>+30 HP</td></tr>
-              <tr><td><strong>Taxa Crítica</strong></td><td>1 ponto</td><td>+10% Taxa Crit.</td></tr>
-              <tr><td><strong>Dano Crítico</strong></td><td>1 ponto</td><td>+10% Dano Crit.</td></tr>
-              <tr><td><strong>SPD</strong> (Velocidade)</td><td>1 ponto</td><td>+3 SPD</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="talamasca-callout">
-          <strong>REGRA DE SELEÇÃO DE PODERES:</strong> Todo personagem tem direito a <strong>3 individualidades por nível</strong> em sua lista divina ou mágica. Se uma habilidade tiver progressão (ex: Nível I, II e Final), é obrigatório adquirir o nível anterior antes do mais avançado.
         </div>
       `
     },
 
     // ══════════════════════════════════════════════════════════
-    // SEÇÃO 04: BALÍSTICA OCULTA & COMBATE
+    // SEÇÃO 05 · EVENTOS E PREMIAÇÕES
     // ══════════════════════════════════════════════════════════
     {
-      id: "rolagem-e-tentativa",
-      categoryId: "combate-dados",
-      title: "Resolução de Ações & Comando /roll no Discord",
-      subtitle: "A mecânica de tentativa e contagem de sucessos",
-      aliases: ["rolagem", "roll", "discord", "tentativa", "dificuldade", "sucessos"],
-      summary: "Todo combate físico ou mágico é resolvido por disputa de sucessos no bot do Discord via /roll com contagem de sucessos.",
-      source: "Regras & Sistemas (Site Antigo) - Acordeão III",
+      id: "sistema-de-eventos",
+      categoryId: "eventos-premiacoes",
+      title: "Sistema de eventos",
+      subtitle: "Narração, desafio, mini-missão e missão: variantes de perigo e recompensas",
+      aliases: ["eventos", "narração", "narracao", "desafio", "mini-missão", "mini missao", "missão", "campanha", "verde", "amarelo", "vermelho", "artefato roletável", "central", "recompensa de evento"],
+      summary: "Eventos são classificados por tipo e por cor de perigo (verde, amarelo, vermelho). Cada combinação tem XP, Gold e prêmios definidos.",
+      source: "Regras & Sistemas 2026 — Sistema de Eventos",
       contentHtml: `
-        <h3>A Filosofia da Tentativa</h3>
-        <p>Em Midnight City, nada é garantido antecipadamente. Ao narrar um ataque ou esquiva, nunca afirme o acerto absoluto: escreva sempre <strong>"meu personagem tenta atacar"</strong> ou <strong>"tenta se esquivar"</strong>. Os dados determinam a eficácia da ação.</p>
+        <p>Os eventos, como já explicado, podem ser desenvolvidos pela ADM, por Deuses e por instrutores. Eles podem fazer narrações a qualquer momento, desde que não existam mais de duas acontecendo ao mesmo tempo, sendo esse o número limite. Outros eventos, como Desafios, Mini-missões e Missões, devem ser solicitados <strong>no Hub</strong> para serem desenvolvidos, já que eles têm uma fila para serem executados.</p>
+        <p>Alguns fatores, como tempo e periculosidade, são fundamentais na variação deles. Por isso, devem sinalizar sempre qual é o <strong>nível de perigo do evento</strong>, por meio das cores: <strong>verde</strong> (pouco), <strong>amarelo</strong> (considerável) e <strong>vermelho</strong> (perigoso). Além disso, eventos sinalizados com uma cor podem, sim, se tornar mais perigosos ao longo do seu desenvolvimento, e isso afeta diretamente a premiação dos participantes, a fim de tornar tudo mais flexível e justo.</p>
 
-        <h3>Como rolar no Discord</h3>
-        <ol>
-          <li>Acesse o canal exclusivo de rolagem com o número da sua ficha na aba do servidor.</li>
-          <li>Identifique o personagem e a ação (exemplo: <code>Shen — Ataque com Lança</code>).</li>
-          <li>Digite o comando no formato: <code>/roll [quantidade]d10 t[dificuldade]</code> (exemplo: <code>/roll 10d10 t5</code> para 10 dados com alvo 5).</li>
-          <li>O bot reporta a quantidade de sucessos obtidos. O atacante precisa de <strong>mais sucessos que o defensor</strong> para acertar a ação. Em caso de empate, a tentativa falha.</li>
-        </ol>
-      `
-    },
-    {
-      id: "formulas-dano-combate",
-      categoryId: "combate-dados",
-      title: "Fórmulas de Dano: Clássico e Composto",
-      subtitle: "Resolução matemática exata de dano físico e mágico",
-      aliases: ["dano", "formula", "classico", "composto", "dano real", "rd", "formula de dano"],
-      summary: "Combate Clássico (ATK - DEF) vs Combate com Poderes baseado na escala de atributos (ATK 100%, DEF 60%, HP 40%).",
-      source: "Regras & Sistemas (Site Antigo) - Sistema de Combate",
-      contentHtml: `
-        <h3>1. Combate Clássico (Sem Poderes Ativos)</h3>
-        <p>Ataques mundanos com punhos ou armas comuns sem gasto de energia:</p>
-        <div class="talamasca-code-terminal">
-Dano Sofrido = ATK do Atacante − DEF do Defensor
-(Se o resultado for zero ou negativo, nenhum dano é causado).
-        </div>
-
-        <h3>2. Combate com Poderes (Dano Composto)</h3>
-        <p>Quando uma habilidade ativa ou poder divino é desferido. Crítico e Bônus de Dano entram exclusivamente neste modo:</p>
+        <h3>Narração</h3>
+        <p>São eventos de um acontecimento curto, administrado por um narrador. Geralmente acontecem num único dia e ocupam pouco tempo, a fim de desenvolver algo simples e mais objetivo.</p>
         <ul>
-          <li><strong>Base ATK (100% de escala):</strong><br>
-            <code>Dano Real = (Nível + [ATK × 1.0]) × Crítico + Bônus de Dano</code>
-          </li>
-          <li><strong>Base DEF (60% de escala):</strong><br>
-            <code>Dano Real = (Nível + [DEF × 0.6]) × Crítico + Bônus de Dano</code>
-          </li>
-          <li><strong>Base HP (40% de escala):</strong><br>
-            <code>Dano Real = (Nível + [HP × 0.4]) × Crítico + Bônus de Dano</code>
-          </li>
+          <li><strong>Variante verde:</strong> quando não oferece risco e é menos elaborada, com o objetivo de ser simples.</li>
+          <li><strong>Variante amarela:</strong> quando é mais elaborada, longa e oferece risco moderado aos participantes.</li>
+          <li><strong>Variante vermelha:</strong> quando oferece risco de morte ou de sequelas severas, é muito elaborada e bem desenvolvida.</li>
         </ul>
-
         <div class="talamasca-tip-box">
-          <strong>O que é o Bônus de Dano?</strong>
-          É um valor fixo concedido por armas ou bênçãos somado ao final do cálculo. <strong>Não depende de rolagem ou taxa crítica para ativar</strong>: se o golpe acerta, o bônus soma integralmente.
+          <strong>Recompensa:</strong><br>
+          Pontos de experiência (XP): 400 · 500 · 600 XP.<br>
+          Gold: 100 · 200 · 300.<br>
+          <strong>Verde e amarela (1 prêmio):</strong> espólios, apenas simbólicos.<br>
+          <strong>Vermelha (1 prêmio):</strong> 1x artefato roletável.
+        </div>
+
+        <h3>Desafio</h3>
+        <p>São eventos que se assemelham a uma tarefa a ser cumprida. O narrador pode narrar num determinado local, comunicando o desafio e permitindo que os participantes o executem ali mesmo ou até entreguem por meio de DOCS. Esses desafios podem ser algo mais sucinto ou algo mais elaborado, como sobreviver a uma prova de resistência por dias, ou até participar de um torneio.</p>
+        <ul>
+          <li><strong>Variante verde:</strong> quando não oferece risco, produzido num único turno ou em DOCS à parte.</li>
+          <li><strong>Variante amarela:</strong> quando é mais elaborada, longa e oferece risco moderado aos participantes, exercida em um ou mais turnos ou DOCS.</li>
+          <li><strong>Variante vermelha:</strong> quando oferece risco de morte ou de sequelas severas, é muito elaborada e bem desenvolvida, demandando comprometimento e tempo, como torneios ou competições.</li>
+        </ul>
+        <div class="talamasca-tip-box">
+          <strong>Recompensa:</strong><br>
+          Pontos de experiência (XP): 600 · 700 · 800 XP.<br>
+          Gold: 150 se amarelo, 300 se vermelho.<br>
+          <strong>Verde e amarela (1x prêmio):</strong> 2x artefatos roletáveis.<br>
+          <strong>Vermelha (2x prêmios):</strong> 2x artefatos roletáveis · 1x arma ✩✩✩✩ · 1x pet suporte ✩✩✩✩ · 1x bênção ✩✩✩✩.
+        </div>
+
+        <h3>Mini-missão</h3>
+        <p>São eventos que demandam exclusividade dos jogadores, oferecem algum tipo de risco e pertencem a alguma trama particular do narrador. Têm prazo mínimo de 1 semana e máximo de 2 semanas.</p>
+        <ul>
+          <li><strong>Variante verde:</strong> quando oferece risco moderado, executada com prazo curto e pouca participação.</li>
+          <li><strong>Variante amarela:</strong> quando oferece risco de morte ou de sequelas severas, ocupa um prazo longo e tem boa participação dos jogadores.</li>
+          <li><strong>Variante vermelha:</strong> quando oferece risco de morte ou de sequelas severas, ocupa um prazo longo e tem grande participação.</li>
+        </ul>
+        <div class="talamasca-tip-box">
+          <strong>Recompensa:</strong><br>
+          Pontos de experiência (XP): 700 · 800 · 900 XP.<br>
+          Gold: 200 · 300 · 400.<br>
+          <strong>Verde e amarela (2x prêmios):</strong> 2x artefatos roletáveis · 1x arma ✩✩✩✩ · 1x pet suporte ✩✩✩✩.<br>
+          <strong>Vermelha (2x prêmios):</strong> 4x artefatos roletáveis · 1x artefato customizado ✩✩✩✩ · 1x arma ✩✩✩✩✩ · 1x pet suporte ✩✩✩✩✩ · 1x bênção ✩✩✩✩✩.
+        </div>
+
+        <h3>Missão (campanha)</h3>
+        <p>São eventos que demandam exclusividade dos jogadores, oferecem obrigatoriamente risco de morte e sequelas e pertencem a alguma trama particular do narrador. Só podem ser feitos por Deuses e pela própria ADM. Ocupam prazo mínimo de 2 semanas e podem se estender até 1 mês.</p>
+        <ul>
+          <li><strong>Variante verde:</strong> quando executada com prazo curto e pouca participação.</li>
+          <li><strong>Variante amarela:</strong> quando ocupa um prazo longo e tem boa participação dos jogadores.</li>
+          <li><strong>Variante vermelha:</strong> quando ocupa um prazo longo e tem grande participação.</li>
+        </ul>
+        <div class="talamasca-tip-box">
+          <strong>Recompensa:</strong><br>
+          Pontos de experiência (XP): 1.000 · 1.500 · 2.000 XP.<br>
+          Gold: 400 · 600 · 800.<br>
+          <strong>Verde (2x prêmios):</strong> 4x artefatos roletáveis · 1x artefato customizado ✩✩✩✩✩ · 1x arma ✩✩✩✩✩ · 1x pet suporte ✩✩✩✩✩ · 1x bênção ✩✩✩✩✩.<br>
+          <strong>Amarela (3x prêmios):</strong> 5x artefatos roletáveis · 1x artefato customizado ✩✩✩✩✩ · 1x arma ✩✩✩✩✩ · 1x pet suporte ✩✩✩✩✩ · 1x bênção ✩✩✩✩✩.<br>
+          <strong>Vermelha (4x prêmios):</strong> 6x artefatos roletáveis · 1x artefato customizado ✩✩✩✩✩ · 1x arma ✩✩✩✩✩ · 1x pet suporte ✩✩✩✩✩ · 1x bênção ✩✩✩✩✩.
+        </div>
+        <p class="talamasca-source-note">Nos valores de XP e Gold, a ordem é sempre verde · amarela · vermelha.</p>
+        <div class="talamasca-callout">
+          <strong>Recebendo os prêmios:</strong> as recompensas de eventos são pedidas <strong>no Hub</strong>, em Solicitações. A equipe analisa e aprova, e o XP, o Gold e os itens caem direto na ficha e no Baú.
         </div>
       `
     },
     {
-      id: "critico-e-rd",
-      categoryId: "combate-dados",
-      title: "Mecânicas de Crítico & Redução de Dano (RD)",
-      subtitle: "Como funcionam o multiplicador crítico e os marcos de 250 a 850 DEF",
-      aliases: ["critico", "rd", "reducao de dano", "taxa critica", "dano critico", "defesa"],
-      summary: "Crítico parte de 0 dados dif 10. RD mitiga porcentagem fixa de dano antes da subtração de DEF, até o teto de 70%.",
-      source: "Regras & Sistemas (Site Antigo) - Acordeão III",
+      id: "tipos-de-premiacao",
+      categoryId: "eventos-premiacoes",
+      title: "Tipos de premiação",
+      subtitle: "Artefatos, armas, pet suporte, pet de combate e bênçãos",
+      aliases: ["artefato", "arma", "pet suporte", "pet de combate", "bênção", "bencao", "ambidestro", "limite de criaturas", "invocações"],
+      summary: "O que é cada tipo de prêmio que o organizador de um evento pode dar aos participantes.",
+      source: "Regras & Sistemas 2026 — Tipos de Premiação",
       contentHtml: `
-        <h3>Mecânica do Crítico (Exclusivo para Poderes)</h3>
-        <p>A rolagem de crítico é um teste à parte que parte de <strong>0 dados com dificuldade 10</strong>:</p>
+        <p>Todo evento dentro do RPG permite que o organizador premie os participantes, dando acesso a uma série de variantes valiosas. São elas:</p>
         <ul>
-          <li><strong>Taxa Crítica:</strong> Cada 10% reduz em <strong>−1 a dificuldade</strong> da rolagem de crítico (mínimo de dif. 1).</li>
-          <li><strong>Dano Crítico:</strong> Cada 10% adiciona <strong>+1 dado</strong> à rolagem de crítico.</li>
-          <li><strong>Multiplicador Final:</strong> <code>(Sucessos de Crítico ÷ 10) + 1.0</code><br>
-            (0 sucessos = ×1.0 • 5 sucessos = ×1.5 • 10 sucessos = ×2.0).
+          <li><strong>Artefatos:</strong> são itens, objetos ou amuletos que não chegam a ser uma arma, mas oferecem poder interpretativo ao usuário.</li>
+          <li><strong>Armas:</strong> são objetos físicos ou não físicos destinados a auxiliar o personagem em combate. Podem ser armaduras dedicadas, espadas, lanças, grimórios, cetros, arco e flechas, e muito mais. [Listas que citem poderes de ambidestria permitem usar 2 armas ao mesmo tempo, desde que possam ser usadas em mãos diferentes.]</li>
+          <li><strong>Pet suporte:</strong> geralmente é um animal, espírito ou criatura fantástica de companhia que serve exclusivamente para buffar o aliado e/ou os aliados, assim como debuffar oponentes, para aumentar a jogabilidade da equipe. [Consomem o limite de criaturas em controle; o limite é de até 3, entre pets, clones e invocações.]</li>
+          <li><strong>Pet de combate:</strong> é um animal, espírito ou criatura fantástica de companhia que serve para a batalha, geralmente usado pela classe Delírio como o centro da sua jogabilidade, buffando-o para atacar em seu lugar.</li>
+          <li><strong>Bênçãos:</strong> são poderes ou magias concedidos pelo próprio narrador de maneira única e singular ao jogador, de modo que ele possa acessar um poder distinto de qualquer lista ou amplificar aqueles que já possui.</li>
+        </ul>
+      `
+    },
+    {
+      id: "classificacao-das-premiacoes",
+      categoryId: "eventos-premiacoes",
+      title: "Classificação das premiações",
+      subtitle: "Prêmios de 4, 5 e 6 estrelas: atributos, níveis interpretativos e como anotá-los",
+      aliases: ["estrelas", "4 estrelas", "5 estrelas", "6 estrelas", "classificação", "classificacao", "raro", "buffar prêmio", "wallenstein", "colchetes", "1P", "2M"],
+      summary: "A classificação em estrelas define o potencial de cada prêmio e se ele ainda pode ser melhorado. Inclui as regras de buff e o exemplo do Legado Wallenstein.",
+      source: "Regras & Sistemas 2026 — Classificação das Premiações",
+      contentHtml: `
+        <p>Para tornar tudo mais transparente e intuitivo, todo prêmio vem acompanhado de uma classificação no final da sua descrição. É ela que determina o nível do seu potencial e também se ele ainda pode ser melhorado. Como citado no sistema de criação, e mais adiante neste mesmo sistema, os prêmios podem ser melhorados infinitamente por meio de eventos, a não ser que pertençam a uma classificação rara. Seguem abaixo as classificações:</p>
+
+        <h3>✩✩✩✩ (4 estrelas)</h3>
+        <p>São prêmios com potencial interpretativo muito forte. Eles agregam grandes mudanças ou elevam o nível do personagem a um mais promissor que o seu. A quantidade de bônus é alta.</p>
+        <ul>
+          <li><strong>Bênçãos terão:</strong> 6 atributos, com 1 Forte e 1 Moderado.</li>
+          <li><strong>Armas terão:</strong> 4 atributos, com 2 Moderados.</li>
+          <li><strong>Pet suporte:</strong> não terão atributos de combate; terão DEF e HP [25% do total de um personagem nível 5]; poderão dar buff ou debuff com 4 atributos, e com 1 Forte.</li>
+          <li><strong>Pet de combate:</strong> terão os atributos base de um personagem de nível 5 [com seus atributos de ascensão para distribuir]; deverão ter 4 atributos além dos mencionados em poderes [ou absorvidos como atributos base, caso escolha que esses interpretativos sejam exclusivamente passivos], e com até 2 Moderados em nível interpretativo.</li>
+        </ul>
+
+        <h3>✩✩✩✩✩ (5 estrelas)</h3>
+        <p>São prêmios com potencial interpretativo no mínimo perfeito. Eles trazem o ápice da natureza do poder escolhido, ou então trunfos peculiares que agregam atribuições a quem os usa. A sua bonificação é a mais alta, no mínimo de 6, sem um limite definido. Por essa razão, são muito valiosos.</p>
+        <ul>
+          <li><strong>Bênçãos terão:</strong>
+            <ul>
+              <li>Verde/amarelo: 10 atributos + 2 atributos especiais, com 2 Fortes interpretativos.</li>
+              <li>Vermelho: 12 atributos + 3 atributos especiais, com 2 Perfeitos interpretativos.</li>
+              <li>OBS: se forem de campanha principal, terão +2 atributos, +1 a +3 atributos especiais e +1 Perfeito interpretativo.</li>
+            </ul>
+          </li>
+          <li><strong>Armas terão:</strong> 8 atributos, e 2 Moderados.
+            <ul>
+              <li>Verde/amarelo: 8 atributos, com 2 Fortes interpretativos.</li>
+              <li>Vermelho: 10 atributos + 2 atributos especiais, com 1 Perfeito e 1 Forte interpretativos.</li>
+              <li>OBS: se forem de campanha principal, terão +2 atributos, +1 a +2 atributos especiais, com +1 Perfeito interpretativo.</li>
+            </ul>
+          </li>
+          <li><strong>Pet suporte:</strong> não terão atributos de combate; terão DEF e HP [25% do total de um personagem nível 5].
+            <ul>
+              <li>Verde/amarelo: 6 atributos, com 2 Fortes interpretativos.</li>
+              <li>Vermelho: 8 atributos + 1 atributo especial, com 1 Perfeito e 1 Forte interpretativos.</li>
+              <li>OBS: se forem de campanha principal, terão +2 atributos, +1 atributo especial, com +1 Forte interpretativo.</li>
+            </ul>
+          </li>
+          <li><strong>Pet de combate:</strong> terão os atributos base de um personagem de nível 7 [com seus atributos de ascensão para distribuir].
+            <ul>
+              <li>Verde/amarelo: 6 atributos [podem ser somados aos atributos base se forem poderes passivos interpretativos], com 2 Fortes interpretativos.</li>
+              <li>Vermelho: 6 atributos [podem ser somados aos atributos base se forem poderes passivos interpretativos] + 1 atributo especial, com 1 Perfeito e 1 Forte interpretativos.</li>
+              <li>OBS: se forem de campanha principal, terão +2 atributos, +1 atributo especial e +1 Forte interpretativo.</li>
+            </ul>
           </li>
         </ul>
 
-        <h3>Redução de Dano (RD) por Marcos de DEF</h3>
-        <p>A Redução de Dano é uma mitigação percentual que age <strong>antes</strong> da DEF do personagem sofrer o dano:</p>
-        <div class="talamasca-code-terminal">
-Ordem Canônica de Resolução:
-Dano Recebido ➔ Aplica % de RD ➔ Subtrai DEF ➔ Perda de HP
-        </div>
+        <h3>✩✩✩✩✩✩ (6 estrelas)</h3>
+        <p>São os prêmios raros e únicos. Só podem ser conseguidos em eventos especiais e, por essa razão, têm um interpretativo muito singular e atípico, com bônus ainda mais atípicos. Eles podem fugir dos limites ou padrões, desde que tenham grandes limites e condições cabíveis. Por isso, não podem ser melhorados.</p>
+        <ul><li>Basicamente, são prêmios que não podem ser upados nem refinados de maneira nenhuma!</li></ul>
 
-        <div class="table-microfilm-wrap">
-          <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Marco de DEF</th>
-                <th>Bônus de HP Concedido</th>
-                <th>Redução de Dano (RD)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>250 DEF</td><td>+60 HP</td><td>10% RD</td></tr>
-              <tr><td>350 DEF</td><td>+120 HP</td><td>20% RD</td></tr>
-              <tr><td>450 DEF</td><td>+180 HP</td><td>30% RD</td></tr>
-              <tr><td>550 DEF</td><td>+240 HP</td><td>40% RD</td></tr>
-              <tr><td>650 DEF</td><td>+300 HP</td><td>50% RD</td></tr>
-              <tr><td>750 DEF</td><td>+360 HP</td><td>60% RD</td></tr>
-              <tr class="talamasca-highlight-row"><td>850 DEF</td><td>+420 HP</td><td><strong>70% RD (Limite Máximo do Jogo)</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="talamasca-source-note">Atenção: Os marcos não são acumulativos. Ter 850 DEF confere 70% de RD no total, não a soma de todos os degraus anteriores.</p>
-      `
-    },
-    {
-      id: "spd-e-mana",
-      categoryId: "combate-dados",
-      title: "Velocidade (SPD) & Gerenciamento de Mana",
-      subtitle: "Iniciativa de turnos, surtos de ação e registro obrigatório de energia",
-      aliases: ["spd", "velocidade", "acoes", "surto", "mana", "consumo"],
-      summary: "Todos têm 2 ações por turno. Marcos de 200 e 300 SPD concedem surtos de ação extra. Registro de Mana obrigatório a cada turno.",
-      source: "Regras & Sistemas (Site Antigo) - SPD & Mana",
-      contentHtml: `
-        <h3>Marcos de Velocidade (SPD)</h3>
-        <p>A iniciativa das ações em eventos e batalhas segue o valor de SPD:</p>
-        <ul>
-          <li><strong>100 SPD:</strong> Valor base de todos os personagens (concede <strong>2 ações normais por turno</strong>).</li>
-          <li><strong>200 SPD:</strong> Concede <strong>+1 surto de ação extra</strong> por turno (3 ações no total).</li>
-          <li><strong>300 SPD:</strong> Concede <strong>+2 surtos de ação extra</strong> por turno (4 ações no total).</li>
-          <li><strong>Acima de 300 SPD:</strong> A cada +10 pontos de SPD além de 300, o personagem ganha <strong>+5 de ATK passivo</strong> permanente.</li>
-        </ul>
-
-        <h3>Gerenciamento e Registro de Mana</h3>
-        <p>Todo poder ativo possui um custo de Mana específico. É obrigatório manter o registro no final ou início do seu post de turno:</p>
-        <div class="talamasca-code-terminal">
-Exemplo correto de turno:
-STATUS: Mana: 100/100
-[Ação narrada usando Raio Divino (-20 Mana)]
-STATUS FINAL: Mana: 80/100 | Poderes Usados: Raio Divino (-20)
-        </div>
-        <p>Quando a Mana do personagem zera, ele é incapaz de acionar poderes mágicos ou divinos até descansar ou receber recargas.</p>
-      `
-    },
-
-    // ══════════════════════════════════════════════════════════
-    // SEÇÃO 05: ERÁRIO CELESTIAL & BANNERS
-    // ══════════════════════════════════════════════════════════
-    {
-      id: "moedas-e-economia",
-      categoryId: "economia-recompensas",
-      title: "Economia do RPG: Golds, Contas & Orações",
-      subtitle: "Guia completo sobre as três moedas de Midnight City e sua utilidade",
-      aliases: ["golds", "contas", "oracoes", "moedas", "economia", "banco", "oracao celestial"],
-      summary: "Golds para loja e refinos; Contas Celestiais como moeda de câmbio; Orações Celestiais para rolar no Banner Sazonal.",
-      source: "Manual do Novato, pp. 13–14",
-      contentHtml: `
-        <h3>As Três Moedas da Égide</h3>
-        <ul>
-          <li><strong>Golds:</strong> A moeda comum e mais abundante. Utilizada para comprar itens na lojinha, pagar a taxa obrigatória de refinamento/criação de 50 Golds aos artesãos e comprar artefatos comuns. Pode ser convertida em Contas Celestiais.</li>
-          <li><strong>Contas Celestiais:</strong> Moeda de câmbio intermediária. Permite trocar 100 Contas por 100 Golds ou <strong>100 Contas por 1 Oração Celestial</strong>. Em eventos promocionais raros, a taxa de troca pode cair para 50 Contas por 1 Oração.</li>
-          <li><strong>Orações Celestiais:</strong> A moeda mais valiosa e cobiçada do RPG. Serve exclusivamente para atirar no <strong>Banner Sazonal Ativo</strong> e obter armas exclusivas, artefatos raros e bênçãos de classe.</li>
-        </ul>
-      `
-    },
-    {
-      id: "banner-e-prioridades",
-      categoryId: "economia-recompensas",
-      title: "Banners Sazonais & Invocação Mítica",
-      subtitle: "Probabilidades do gacha no d20 e mecânicas de aquisição",
-      aliases: ["banner", "gacha", "d20", "tiros", "invocacao", "bencao assinatura"],
-      summary: "Cada Oração Celestial gasta rola 1d20. Tirar 20 garante o prêmio da rodada (arma, artefato ou bênção exclusiva).",
-      source: "Manual do Novato, pp. 13, 16",
-      contentHtml: `
-        <h3>Como funciona o Banner Sazonal</h3>
-        <p>Os banners sazonais funcionam como um sorteio estilo gacha conduzido diretamente no servidor com a moderação:</p>
-        <ul>
-          <li>A cada <strong>1 Oração Celestial gasta</strong>, o jogador rola <strong>1d20</strong>.</li>
-          <li>Toda vez que obtiver o resultado <strong>20 natural</strong>, conquista um prêmio especial (Bênção, Arma ou Artefato em destaque na rotação).</li>
-          <li>Os banners costumam ficar ativos de <strong>15 a 30 dias</strong> no servidor, trazendo sempre rotações de itens míticos e temáticos para fortalecer diferentes arquétipos.</li>
-        </ul>
-
-        <div class="talamasca-tip-box">
-          <strong>Aproveite as Rotações:</strong> Participe dos banners que oferecem equipamentos e bênçãos compatíveis com o conceito e o crescimento do seu personagem. Ficar apenas esperando passivamente atrasa a evolução da sua build.
-        </div>
-      `
-    },
-
-    // ══════════════════════════════════════════════════════════
-    // SEÇÃO 06: OPERAÇÕES DE CAMPO & ROTINA
-    // ══════════════════════════════════════════════════════════
-    {
-      id: "guia-farm-estagios",
-      categoryId: "atividades-rotina",
-      title: "Guia de Farm por Estágio de Personagem",
-      subtitle: "Roteiro exemplificativo de atividades recomendadas do Nível 1 ao Nível 10",
-      aliases: ["farm", "sereias", "scyllas", "abismo", "rotina", "estagios", "missoes narrativas"],
-      summary: "Roteiro ilustrativo de progressão: carona em Sereias no N1 a N4; suporte em N5 a N9; autonomia e grandes campanhas no N10.",
-      source: "Manual do Novato, pp. 18–19",
-      contentHtml: `
-        <div class="talamasca-callout">
-          <strong>AVISO IMPORTANTE (ROTEIRO EXEMPLIFICATIVO):</strong>
-          Este guia de farm é <strong>apenas um exemplo</strong> do que o personagem pode fazer ao longo de sua jornada, e não uma grade mandatória ou limitante.
-        </div>
-
-        <div class="talamasca-callout warning">
-          <strong>AS VERDADEIRAS MELHORES PREMIAÇÕES:</strong>
-          As melhores premiações do RPG <strong>NÃO estão em endgames puramente mecânicos</strong>, mas sim em <strong>Missões e Campanhas Narrativas</strong>! É nas missões oficiais da história onde narradores concedem <strong>itens personalizados exclusivos</strong> (armas ancestrais, bênçãos singulares e artefatos customizados), permitindo que cada jogador personalize cada vez mais seu personagem e deixe ele com a sua cara!
-        </div>
-
-        <h3>1. Estágio: Nível 1 ao Nível 4 (Foco em atingir 3.000 XP com Segurança)</h3>
-        <ul>
-          <li><strong>Sereias/Scyllas com Veterano (Carona):</strong> 1x por semana. Um único turno rende <strong>1.200 XP, 1.000 Contas Celestiais e 25 Orações</strong>. Peça ajuda a agentes experientes no canal de interações!</li>
-          <li><strong>Variantes Vermelhas Interpretativas:</strong> Roteiros como Anarquia e Promessa do Grifo com rolagem interpretativa de 1d20. Rende até <strong>1.700 XP</strong> semanais sem risco físico.</li>
-          <li><strong>Abismo Espiral (Novato):</strong> Primeira realização rende cerca de <strong>60 Orações</strong> e alto XP em sessão narrada.</li>
-          <li><strong>Missões Sazonais Verdes:</strong> Quatro turnos interpretativos fecham os 3.000 XP com tranquilidade.</li>
-        </ul>
-
-        <h3>2. Estágio: Nível 5 ao Nível 9 (Transição para Combate)</h3>
-        <ul>
-          <li><strong>Sereias/Scyllas como Suporte:</strong> Agora você já contribui com buffs e proteção, tornando o combate dinâmico.</li>
-          <li><strong>Eventos de Campanha (Empyrean, Fate):</strong> Primeiros atos são focados em interpretação e entregam recompensas de alto calibre.</li>
-          <li><strong>Missões Fixas das Keres:</strong> Desafio seguro para farmar artefatos base com ataques em área.</li>
-        </ul>
-
-        <h3>3. Estágio: Nível 10 Forte (O Horizonte do Agente)</h3>
-        <ul>
-          <li><strong>Missões e Campanhas Principais:</strong> Onde se encontram as melhores premiações e itens personalizados do jogo!</li>
-          <li><strong>Berçário Espiral (A Porca):</strong> Alto desafio tático para 4 jogadores em call ou turnos coordenados.</li>
-          <li><strong>Mentoria de Novos Agentes:</strong> Auxiliar novatos da sua guilda e agilizar o desenvolvimento de laços comunitários.</li>
-        </ul>
-      `
-    },
-    {
-      id: "regras-semanais-rotina",
-      categoryId: "atividades-rotina",
-      title: "Políticas de Boa Vizinhança & Limites Semanais",
-      subtitle: "Regras de convivência em tópicos, atualização de fichas e prazos",
-      aliases: ["rotina", "reset", "limite semanal", "baú", "atualizacao de ficha", "topicos"],
-      summary: "Resets ocorrem de domingo para segunda. Atualização de ficha e baús deve ser feita logo após o término do farm.",
-      source: "Manual do Novato, p. 21",
-      contentHtml: `
-        <h3>Diretrizes Gerais de Farm do Malandro</h3>
-        <ul>
-          <li><strong>Flexibilidade de Tópicos:</strong> Se o tópico principal (ex: SOHO) estiver ocupado, a cena de caça pode ser realizada em qualquer outro tópico com nome semelhante ou ambiente coerente (exemplo: água para Scyllas).</li>
-          <li><strong>Atualização Imediata de Fichas:</strong> Atualize seus ganhos no tópico de fichas logo após concluir a missão. Não acumule pendências para não perder registros de itens.</li>
-          <li><strong>Reset Semanal:</strong> Todos os limites de farm semanal resetam na virada de domingo para segunda-feira.</li>
-          <li><strong>Junção de Linhas:</strong> Se uma missão exigir 3 turnos de 10 linhas, você pode publicar um turno único e coeso de 30 linhas com o mesmo valor de validação.</li>
-        </ul>
-      `
-    },
-
-    // ══════════════════════════════════════════════════════════
-    // SEÇÃO 07: OFICINAS ARCANAS & MANUFATURA
-    // ══════════════════════════════════════════════════════════
-    {
-      id: "sistema-criacao-artesaos",
-      categoryId: "criacao-refinamento",
-      title: "Sistema de Criação: Forja, Encantamento, Boticário & Genética",
-      subtitle: "Regras completas de fabricação artesanal para agentes especializados",
-      aliases: ["forja", "encantamento", "boticario", "genetica", "refino", "criacao", "artesaos", "shabits", "50 golds", "manipuladores geneticos"],
-      summary: "Diretrizes de criação para Forjadores, Encantadores, Boticários e Manipuladores Genéticos (com tabela de incrementos). Taxa de 50 Golds.",
-      source: "Regras & Sistemas (Site Antigo) — Sistema de Criação",
-      contentHtml: `
         <div class="talamasca-callout danger">
-          <strong>TAXA OBRIGATÓRIA DE 50 GOLDS:</strong>
-          Qualquer serviço de refino ou fabricação deve cobrar <strong>50 Golds por trabalho realizado</strong>, independente do nível do artesão. A prestação de serviços gratuitos é proibida e sujeita a sanções no RPG.
+          <strong>OBS¹:</strong> caso um prêmio já obtido que não seja de banner seja buffado, ele terá metade dos atributos do prêmio a ser usado (exemplo: se o prêmio dava 12 atributos, o buff do item que você já possui poderá ser de até 6 atributos). <strong>Isso não se aplica aos valores interpretativos do prêmio:</strong> se tinha 2 Fortes, continua tendo 2 Fortes.<br><br>
+          <strong>OBS²:</strong> caso o prêmio de 4 ou 5 estrelas esteja com muitos atributos, ele poderá se tornar de 6 estrelas, não podendo mais receber atributos, mas ainda podendo receber buffs interpretativos.
         </div>
 
-        <h3>1. Forjadores (Hefesto, Atena, Saus)</h3>
-        <p>Criam armas mecânicas, armaduras pesadas, autômatos e <strong>Shabits</strong> (bonecos de argila egípcios com ativação vocal):</p>
+        <h3>Como anotar o nível interpretativo</h3>
+        <p>Como todo prêmio tem, entre parênteses ou no mínimo em negrito, os atributos determinantes, o nível de poder interpretativo (para não ficar só baseado em inferências) é colocado no final da descrição, depois dos bônus determinantes e da classificação, entre colchetes "[ ]": a primeira letra do nível interpretativo e o número correspondente à quantidade dele que existe no prêmio.</p>
+
+        <h3>Exemplo</h3>
+        <p><strong>Legado Wallenstein:</strong> desde a antiguidade, o clã Wallenstein foi uma casa muito dedicada à coroa do Egito, mesmo nos tempos antigos, quando deuses caminhavam entre os homens, e depois que deixaram de caminhar. Por isso sempre foram conhecidos como uma força muito poderosa e próxima da nobreza, que poderia e deveria pôr fim a qualquer um que colocasse em risco os acordos sociais da aristocracia egípcia, a não ser que a própria estivesse contra o fluxo e o avanço da sociedade mágica. Por isso seus descendentes sempre foram muito poderosos, ligados intimamente a deuses que exerciam esse mesmo perfil em situações equivalentes. São abençoados naturalmente por esses mesmos deuses e, por isso, quase sempre acabam seguindo-os. Por isso todo herdeiro dessa dádiva tem cabelos ruivos e uma marca de nascença na coxa direita no formato de um leão. É a garantia física de um prodígio, mas também uma maldição, pois determina o seu futuro, determina o seu caminho. ✩✩✩✩✩ [1P | total: 4P2M]</p>
         <ul>
-          <li><strong>Iniciante (N3-4):</strong> 1 Brando interpretativo • 1 atributo de bônus.</li>
-          <li><strong>Intermediário (N5-6):</strong> 2 Brandos • 2 atributos • Autômato nível 4.</li>
-          <li><strong>Mestre (N7-9):</strong> 1 Moderado + 1 Brando • 3 atributos • Autômato nível 8.</li>
-          <li><strong>Supremo (N10+):</strong> 1 Forte • 4 atributos • Autômato nível 10.</li>
+          <li><strong>Supremacia Mágica:</strong> um descendente do legado dos Wallenstein tem um poder acima do comum; mesmo as magias e individualidades mais simples sempre afloram nele com um potencial incomum. Elas duram mais que o esperado, seu potencial e raio de ação são praticamente dobrados, e seu grau destrutivo é digno de alguém a ser eleito faraó ou perto disso. Por isso a menor das regalias nas mãos de um mago do seu clã é, no mínimo, perigosa. (<strong>Dobra o valor interpretativo e de bonificações de todas as individualidades e magias da maga</strong>) ✩✩✩✩✩ [3P]</li>
+          <li><strong>Príncipes da Guerra:</strong> o leão é a garantia da sua descendência e da ligação direta com os irmãos da guerra Sekhmet e Anhur. Por isso todo herdeiro do dom Wallenstein tem uma perícia nata para todo tipo de arte da guerrilha, sejam estilos de luta, armas ou itens. Isso garante a eles uma versatilidade no campo de batalha que os torna dignos de serem considerados guerreiros exímios, caráter único do seu nome e também razão pela qual são temidos. (<strong>Concede +1 Sucesso em suas ações derivadas de artes da guerrilha</strong>) ✩✩✩✩ [2M]</li>
         </ul>
-
-        <h3>2. Encantadores (Hécate, Circe, Utgardlok, Loki, Gullveig, Saus)</h3>
-        <p>Imbuem magia do próprio grimório em objetos e podem refinar bênçãos do Banner Sazonal:</p>
-        <ul>
-          <li><strong>Iniciante (N3-4):</strong> 1 Brando • 1 atributo.</li>
-          <li><strong>Intermediário (N5-6):</strong> 1 Moderado • 2 atributos.</li>
-          <li><strong>Mestre (N7-9):</strong> 2 Moderados + 1 Brando • 3 atributos.</li>
-          <li><strong>Supremo (N10+):</strong> 1 Forte + 1 Moderado • 4 atributos.</li>
-        </ul>
-
-        <h3>3. Boticários (Deméter, Perséfone, Asclépio, Circe, Sunus)</h3>
-        <p>Elaboram poções, tônicos e venenos. <strong>Todas as poções são de USO ÚNICO</strong> e devem ser excluídas da ficha após o consumo:</p>
-        <ul>
-          <li><strong>Iniciante (N3-4):</strong> Cicatrização simples • 1 Brando • 2 atributos.</li>
-          <li><strong>Intermediário (N5-6):</strong> Remédios e venenos • 1 Moderado • 3 atributos.</li>
-          <li><strong>Mestre (N7-9):</strong> Melhorias físicas e óleos de armas • 1 Forte • 4 atributos.</li>
-          <li><strong>Supremo (N10+):</strong> Soluções biológicas avançadas • 1 Perfeito • 5 atributos.</li>
-        </ul>
-
-        <h3>4. Manipuladores Genéticos (Asclépio, Sunu)</h3>
-        <p>Promovem mutações biológicas em pets e criaturas de companhia para conceder rolagem de dados OU atributos de combate, além de poderes interpretativos. Podem refinar pets de banner cobrando a taxa obrigatória de 50 Golds.</p>
-
-        <div class="table-microfilm-wrap">
-          <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Grau do Manipulador</th>
-                <th>Nível Mínimo</th>
-                <th>O que é Permitido Incrementar (Rolagem OU Atributos)</th>
-                <th>Poder Interpretativo Permitido</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Iniciante</strong></td>
-                <td>Nível 3–4</td>
-                <td>Rolagem de dados simples (10 dados dif. 8) <em>OU</em> <strong>+1 Atributo</strong></td>
-                <td>1 Brando (ex: faro apurado, visão noturna, escamas leves)</td>
-              </tr>
-              <tr>
-                <td><strong>Intermediário</strong></td>
-                <td>Nível 5–6</td>
-                <td>Rolagem de dados intermediária (10 dados dif. 7) <em>OU</em> <strong>+2 Atributos</strong></td>
-                <td>1 Moderado (ex: garras reforçadas, asas para planar, veneno brando)</td>
-              </tr>
-              <tr>
-                <td><strong>Mestre</strong></td>
-                <td>Nível 7–9</td>
-                <td>Rolagem de dados de combate (10 dados dif. 6) <em>OU</em> <strong>+3 Atributos</strong></td>
-                <td>1 Forte (ex: sopro elemental, carapaça de blindagem, regeneração)</td>
-              </tr>
-              <tr class="talamasca-highlight-row">
-                <td><strong>Supremo</strong></td>
-                <td>Nível 10+</td>
-                <td>Rolagem de dados avançada (10 dados dif. 5) <em>OU</em> <strong>+4 Atributos</strong></td>
-                <td>1 Perfeito (ex: mutação quimérica completa, fusão de linhagem pura)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="talamasca-callout warning">
-          <strong>REGRA CAPITAL DO MANIPULADOR:</strong> A mutação deve escolher obrigatoriamente entre conceder <strong>rolagem com poderes</strong> OU atribuir <strong>bonificação e poderes</strong> — jamais as duas coisas simultaneamente! É necessário obter amostras genéticas da criatura-alvo.
-        </div>
       `
     },
-
-    // ══════════════════════════════════════════════════════════
-    // SEÇÃO 08: EVENTOS, PREMIAÇÕES & MESTIÇOS
-    // ══════════════════════════════════════════════════════════
-    {
-      id: "sistema-eventos-e-premiacoes",
-      categoryId: "eventos-premios-mesticos",
-      title: "Sistema de Eventos & Tipos de Premiação",
-      subtitle: "Diretrizes para elaboração, periculosidade (Verde, Amarelo, Vermelho) e tipos de prêmios",
-      aliases: ["eventos", "tipos de premiacao", "verde amarelo vermelho", "armas", "artefatos", "pets", "bencaos", "narradores"],
-      summary: "Regras que regem como mestres e jogadores elaboram eventos no RPG, níveis de periculosidade e categorias oficiais de prêmios.",
-      source: "Regras & Sistemas (Site Antigo) — Sistema de Eventos",
-      contentHtml: `
-        <p>Os eventos podem ser desenvolvidos pela Administração, Deuses e Instrutores. Eles podem fazer narrações a qualquer momento desde que não existam mais de <strong>2 narrações acontecendo ao mesmo tempo</strong>, tornando esse o número limite simultâneo.</p>
-        <p>Outros eventos como <strong>Desafios, Mini-missões e Missões</strong> devem ser solicitados na Central para serem desenvolvidos, tendo em vista que possuem fila de agendamento.</p>
-
-        <h3>Níveis de Perigo & Variação de Risco</h3>
-        <p>O narrador deve sempre sinalizar a periculosidade do evento através do código de cores:</p>
-        <ul>
-          <li><strong>Verde (Pouco Perigo):</strong> Roteiros focados em investigação e interpretação, sem risco iminente de morte.</li>
-          <li><strong>Amarelo (Perigo Considerável):</strong> Encontros com criaturas hostis e armadilhas que exigem coordenação e estratégia.</li>
-          <li><strong>Vermelho (Altamente Perigoso):</strong> Confrontos severos com risco real de ferimentos graves ou baixa de personagens.</li>
-        </ul>
-        <div class="talamasca-tip-box">
-          <strong>Escalação de Risco:</strong> Eventos que se tornam mais perigosos no decorrer da trama aumentam proporcionalmente a premiação final dos participantes!
-        </div>
-
-        <h3>Os 5 Tipos Oficiais de Premiação</h3>
-        <div class="table-microfilm-wrap">
-          <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Tipo de Prêmio</th>
-                <th>Definição Canônica</th>
-                <th>Particularidades & Regras</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Artefatos</strong></td>
-                <td>Itens, amuletos ou objetos místicos utilitários.</td>
-                <td>Não são armas de combate direto, mas oferecem utilidade e poder interpretativo versátil ao usuário.</td>
-              </tr>
-              <tr>
-                <td><strong>Armas</strong></td>
-                <td>Objetos físicos ou arcanos destinados ao combate direto.</td>
-                <td>Espadas, armaduras, lanças, arcos, manoplas. Personagens com poder de ambidestria podem portar até 2 armas em mãos distintas.</td>
-              </tr>
-              <tr>
-                <td><strong>Pet Suporte</strong></td>
-                <td>Criatura mágica ou espírito de auxílio.</td>
-                <td>Não possui atributos de ataque. Concede buffs aos aliados ou debuffs aos oponentes. Consome a cota de controle de criaturas (máximo de 3 entre pets, clones e invocações).</td>
-              </tr>
-              <tr>
-                <td><strong>Pet de Combate</strong></td>
-                <td>Criatura fantástica especializada em batalha.</td>
-                <td>Possui ficha própria e combate diretamente no lugar do jogador, sendo a base tática de classes como Delírio.</td>
-              </tr>
-              <tr>
-                <td><strong>Bênçãos</strong></td>
-                <td>Dádivas sagradas concedidas diretamente pelo narrador.</td>
-                <td>Poderes singulares que expandem o repertório da ficha ou amplificam drasticamente habilidades que o personagem já possui.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      `
-    },
-    {
-      id: "classificacao-premiacoes",
-      categoryId: "eventos-premios-mesticos",
-      title: "Classificação das Premiações: Graus IV, V e VI",
-      subtitle: "Escala em estrelas, atributos determinantes e regras de refino",
-      aliases: ["estrelas", "premios", "4 estrelas", "5 estrelas", "6 estrelas", "grau iv", "grau v", "grau vi", "atributos especiais"],
-      summary: "Diretrizes sobre artefatos de 4 Estrelas, 5 Estrelas e 6 Estrelas (únicos e imutáveis), com atributos e interpretativos.",
-      source: "Regras & Sistemas (Site Antigo) — Classificação das Premiações",
-      contentHtml: `
-        <p>Para tornar a evolução transparente, todo prêmio é acompanhado de uma classificação em estrelas que determina seu potencial e se ele pode ser aprimorado em eventos futuros:</p>
-
-        <h3>✩✩✩✩ (4 Estrelas) — Potencial Muito Forte</h3>
-        <p>Agregam grandes mudanças e elevam o nível do agente com alta quantidade de bônus:</p>
-        <ul>
-          <li><strong>Bênçãos:</strong> 6 atributos determinantes (com 1 Forte e 1 Mediano interpretativo).</li>
-          <li><strong>Armas:</strong> 4 atributos determinantes (com 2 Medianos interpretativos).</li>
-          <li><strong>Pet Suporte:</strong> Sem atributos de ataque; DEF e HP equivalentes a 25% de um personagem N5; buff/debuff de 4 atributos com 1 Forte interpretativo.</li>
-          <li><strong>Pet de Combate:</strong> Atributos base de um personagem N5 (com pontos de ascensão); 4 atributos e até 2 Medianos interpretativos.</li>
-        </ul>
-
-        <h3>✩✩✩✩✩ (5 Estrelas) — Potencial no Mínimo Perfeito</h3>
-        <p>O ápice da natureza do poder, com trunfos singulares e bônus excepcionais:</p>
-        <ul>
-          <li><strong>Bênçãos (Verde/Amarelo):</strong> 10 atributos + 2 atributos especiais, com 2 Fortes interpretativos.</li>
-          <li><strong>Bênçãos (Vermelho):</strong> 12 atributos + 3 atributos especiais, com 2 Perfeitos interpretativos. <em>(Em campanha principal: +2 atributos, +1 a +3 especiais e +1 perfeito extra).</em></li>
-          <li><strong>Armas (Verde/Amarelo):</strong> 8 atributos determinantes, com 2 Fortes interpretativos.</li>
-          <li><strong>Armas (Vermelho):</strong> 10 atributos + 2 atributos especiais, com 1 Perfeito e 1 Forte interpretativo.</li>
-          <li><strong>Pet Suporte:</strong> DEF e HP (25% do N5); Verde/Amarelo: 6 atributos com 2 Fortes; Vermelho: 8 atributos + 1 especial, com 1 Perfeito e 1 Forte.</li>
-          <li><strong>Pet de Combate:</strong> Base de Nível 7; Verde/Amarelo: 6 atributos com 2 Fortes; Vermelho: 6 atributos + 1 especial, com 1 Perfeito e 1 Forte.</li>
-        </ul>
-
-        <h3>✩✩✩✩✩✩ (6 Estrelas) — Peças Raras e Únicas</h3>
-        <p>Prêmios raríssimos obtidos apenas em grandes eventos especiais. Possuem poder singular que foge aos padrões sob condições e limites cabíveis.</p>
-        <div class="talamasca-danger-warning">
-          <strong>REGRA DE OURO DAS 6 ESTRELAS:</strong> São prêmios que <strong>NÃO podem ser upados, refinados ou melhorados</strong> de maneira nenhuma por artesãos!
-        </div>
-
-        <div class="talamasca-callout">
-          <strong>Regras de Aprimoramento de Prêmios Já Existentes:</strong>
-          <ul>
-            <li>Caso um prêmio já obtido seja buffado em evento, ele receberá a <strong>metade dos atributos</strong> da premiação (ex: se o evento concede 12 atributos, o buff do seu item antigo será de até 6 atributos). Isso não reduz os valores interpretativos concedidos.</li>
-            <li>Caso um item de 4 ou 5 estrelas atinja acúmulo excessivo de atributos, ele poderá ser consagrado como <strong>6 estrelas</strong>, não podendo mais receber atributos adicionais, mas ainda aceitando ajustes interpretativos.</li>
-          </ul>
-        </div>
-      `
-    },
-    {
-      id: "doutrina-mesticos",
-      categoryId: "eventos-premios-mesticos",
-      title: "Doutrina Canônica de Mestiços & Herança",
-      subtitle: "União entre etnias, gestação, maturação e acesso integral ao grimório",
-      aliases: ["mesticos", "filhos", "gestacao", "envelhecimento", "circe", "homoafetivo", "grimorio", "heranca genetica"],
-      summary: "Regras canônicas completas para união entre etnias, casais homoafetivos, gestação, feitiço da casa de bonecas e acesso a todo o grimório.",
-      source: "Compêndio Canônico — Mestiços (https://sites.google.com/view/neotheon/mestiços)",
-      contentHtml: `
-        <p>É comum que os personagens se relacionem e formem casais entre si. Apesar de que são poucos que chegam à fase adulta, alguns inclusive geram herdeiros. Estes possuem ligação com as divindades das quais descendem proporcionalmente, sendo que em maior parte suas habilidades podem ser herdadas dos seus pais.</p>
-        <p>Para o nascimento de um Mestiço, é preciso que o casal poste dentro do acampamento se envolvendo, não sendo necessárias turnagens de sexo. A/O gestante deve postar dentro do RPG durante o período de gravidez e é necessário que seja feito post da mesma na hora do parto. Caso contrário, não será possível a validação do personagem.</p>
-
-        <h3>Gestação</h3>
-        <p>Cada três meses online equivale a um mês off. O tempo de gestação dos mestiços é de dez meses on, que equivale a <strong>3 meses e uma semana OFF</strong>, contados a partir da relação dos dois personagens. Quando a prole nascer, ela irá crescer e somente quando possuir cinco anos se tornará um personagem jogável.</p>
-
-        <h3>Envelhecimento e Maturação Acelerada</h3>
-        <p>Para jogadores mais ansiosos, existem formas de realizar a gestação e o envelhecimento das crianças de maneira mais rápida e produtiva:</p>
-        <ul>
-          <li><strong>Feitiço da Casa de Bonecas (Circe):</strong> Em Londres, em uma de suas lojas pagãs, com o objetivo de executar o <em>feitiço da casa de bonecas</em>. Um feitiço muito poderoso que transporta o casal e seus filhos para dentro de uma dimensão alternativa alimentada por magia. Nele são reproduzidos os dias que viveriam no mundo real em um único dia, permitindo criar e educar os filhos até atingirem a maioridade sem envelhecer os pais, a custo de uma bênção ou item precioso.</li>
-          <li><strong>Templo de Deusa do Matrimônio/Maternidade:</strong> A divindade pode beneficiá-los com a transição do tempo em um limbo sagrado onde a saúde, felicidade e segurança da família sejam preservadas sem envelhecer os progenitores.</li>
-        </ul>
-
-        <h3>Todos os Casais Podem Ter Filhos</h3>
-        <p>Todos os casais podem possuir filhos, inclusive os homoafetivos. Na colina dos templos, deuses do matrimônio, da fertilidade e do amor costumam acolher preces e conceder essa bênção mágica através de frutos, luzes ou dádivas místicas. De modo similar a Atena ou Apolo, que concebem por vias divinas, um dos integrantes do casal passa a carregar o herdeiro com material genético de ambos, sustentado pelos poderes dos deuses.</p>
-
-        <h3>União Entre Etnias & Linhagens</h3>
-        <ul>
-          <li><strong>Deus e Deus:</strong> Gera um semideus mestiço. Escolhe 2 individualidades de cada pai por nível. Energia de semideus. <em>(Não se aplica a deuses egípcios).</em></li>
-          <li><strong>Deus e Semideus:</strong> Escolhe 1 individualidade por nível do avô/avó e 3 individualidades do pai ou mãe divino. Energia de semideus.</li>
-          <li><strong>Deus e Semideus Bruxo/Feiticeiro:</strong> Escolhe 1 individualidade por nível do avô/avó, 3 individualidades do pai/mãe divino e <strong>vai ter acesso a todo o grimório!</strong></li>
-          <li><strong>Deus e Mestiço:</strong> Possui ligação apenas com a divindade e age como um semideus normal, não herdando habilidades do bisavô.</li>
-          <li><strong>Deus e Mago:</strong> O mestiço fruto desta união será um mago semideus. Terá 3 individualidades por nível do parente divino e 2 magias do shesh egípcio comum. Pode acessar 2 individualidades de caminho divino.</li>
-          <li><strong>Semideus e Semideus:</strong> O fruto mais comum. Tem direito a 2 individualidades de um dos avós e 1 do outro, podendo intercalar nos níveis.</li>
-          <li><strong>Semideus e Semideus Bruxo/Feiticeiro:</strong> Tem direito a 2 individualidades do avô sem vínculo com magia e <strong>vai ter acesso a todo o grimório!</strong></li>
-          <li><strong>Semideus e Mestiço:</strong> Tem direito a 1 individualidade de um dos bisavós e 2 individualidades do avô (no nível 7 terá 2 individualidades).</li>
-          <li><strong>Semideus (B/F) e Mago:</strong> Mago semideus com 1 individualidade divina, magias do shesh egípcio e <strong>vai ter acesso a todo o grimório!</strong></li>
-          <li><strong>Semideus Bruxo/Feiticeiro e Mestiço:</strong> Terá direito a 1 individualidade de um dos bisavós, 1 individualidade do avô e <strong>vai ter acesso a todo o grimório!</strong></li>
-          <li><strong>Semideus Bruxo/Feiticeiro e Semideus Bruxo/Feiticeiro:</strong> Terá direito a 1 individualidade de cada avô e <strong>vai ter acesso a todo o grimório!</strong></li>
-          <li><strong>Mestiço e Mestiço:</strong> Filhos escolhem 1 individualidade de dois ancestrais divinos (e até o nível 7, apenas 1 individualidade independente).</li>
-          <li><strong>Mestiço e Mago:</strong> Considerados magos, com energia de semideus.</li>
-          <li><strong>Mago e Mago:</strong> Mago comum que segue o caminho de uma divindade de escolha.</li>
-        </ul>
-
-        <h3>Herança Genética</h3>
-        <p>Quando um personagem recebe uma bênção/maldição peculiar, esta inevitavelmente irá alterar seu código genético. Há uma chance remota dessas peculiaridades acabarem passando de progenitor para filho. Poderão ser escolhidas uma bênção interpretativa sem valor combativo.</p>
-      `
-    },
-
-    // ══════════════════════════════════════════════════════════
-    // SEÇÃO 09: CUSTOS, LIMITES & GLOSSÁRIO
-    // ══════════════════════════════════════════════════════════
     {
       id: "custos-e-limites",
-      categoryId: "tabelas-termos",
-      title: "Custos & Limites de Premiações no Sistema",
-      subtitle: "Tabela oficial de valores determinantes para elaboração de prêmios",
-      aliases: ["custos", "limites", "montar premiacao", "regras de evento", "regras de mestre", "tabela de custos"],
-      summary: "Como o jogador e narrador devem calcular e dosar cada modalidade de bônus ao montar premiações de acordo com as regras.",
-      source: "Regras & Sistemas (Site Antigo) — Custos & Limites",
+      categoryId: "eventos-premiacoes",
+      title: "Custos e limites",
+      subtitle: "Quanto custa cada bônus determinante em atributos e qual o teto de cada um",
+      aliases: ["custos", "limites", "teto", "limite taxa crit", "600%", "1200%", "limite dano crit", "atributo especial", "rd 70%", "dot", "roubo de vida", "multiplicador de dano", "inventário", "slot de benção", "cooldown"],
+      summary: "Tabela oficial com o custo e o limite de cada bônus. Limite de taxa crítica: 600%. Limite de dano crítico: 1200%.",
+      source: "Regras & Sistemas 2026 — Custos & Limites",
       contentHtml: `
-        <p>Abaixo segue a tabela oficial com o valor e peso de cada modalidade de bônus determinante existente no RPG, para que mestres e jogadores tenham ciência de como montar suas premiações respeitando o equilíbrio e os limites do sistema:</p>
-
+        <p>Abaixo segue uma tabela com o valor de cada modalidade de bônus determinante que existe no RPG, para que você saiba quanto eles podem custar e como e quando pode ter acesso a eles. É importante estar atento aos limites que um jogador deve respeitar em cada bônus.</p>
+        <div class="talamasca-callout">
+          <strong>Atualização:</strong> o limite de <strong>taxa crítica</strong> passou a ser <strong>600%</strong>, e o de <strong>dano crítico</strong>, <strong>1200%</strong>.
+        </div>
         <div class="table-microfilm-wrap">
           <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Modalidade do Bônus</th>
-                <th>Custo em Pontos de Atributo</th>
-                <th>Limite Máximo Recomendado</th>
-                <th>Regras & Aplicação</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Atributo</th><th>Modalidade</th><th>Custo e limite</th></tr></thead>
             <tbody>
-              <tr>
-                <td><strong>Ataque (ATK)</strong></td>
-                <td>1 Atributo = +10 ATK</td>
-                <td>Conforme o grau da arma</td>
-                <td>Soma ao dano clássico e ao multiplicador de habilidades com escala de ataque.</td>
-              </tr>
-              <tr>
-                <td><strong>Defesa (DEF)</strong></td>
-                <td>1 Atributo = +10 DEF</td>
-                <td>Conforme o grau do item</td>
-                <td>Mitiga dano e contribui para o alcance dos marcos percentuais de Redução de Dano.</td>
-              </tr>
-              <tr>
-                <td><strong>Pontos de Vida (HP)</strong></td>
-                <td>1 Atributo = +30 HP</td>
-                <td>Conforme o grau do item</td>
-                <td>Aumenta a reserva vital total do personagem.</td>
-              </tr>
-              <tr>
-                <td><strong>Taxa Crítica</strong></td>
-                <td>1 Atributo = +10% Taxa Crit.</td>
-                <td>Máximo de 100% (Dif. 1)</td>
-                <td>Cada 10% reduz em −1 a dificuldade da rolagem de crítico de poderes.</td>
-              </tr>
-              <tr>
-                <td><strong>Dano Crítico</strong></td>
-                <td>1 Atributo = +10% Dano Crit.</td>
-                <td>Sem teto numérico</td>
-                <td>Cada 10% soma +1 dado na rolagem de crítico de poderes ativos.</td>
-              </tr>
-              <tr>
-                <td><strong>Velocidade (SPD)</strong></td>
-                <td>1 Atributo = +3 SPD</td>
-                <td>Até marcos de 200/300</td>
-                <td>Antecipa iniciativa e garante surtos de ação adicionais em 200 e 300 pontos.</td>
-              </tr>
-              <tr>
-                <td><strong>Bônus de Dano Fixo</strong></td>
-                <td>1 Atributo = +15 Dano Fixo</td>
-                <td>Definido pelo Grau</td>
-                <td>Soma após o cálculo composto, sem depender de ativação de crítico.</td>
-              </tr>
-              <tr>
-                <td><strong>Escudo Fixo</strong></td>
-                <td>1 Atributo = +40 Escudo</td>
-                <td>Duração por turnos</td>
-                <td>Barreira de absorção direta que protege a integridade do HP.</td>
-              </tr>
+              <tr><td rowspan="2"><strong>Atributo base</strong> (ATK, DEF e HP)</td><td>+10 ATK; +10 DEF; +30 HP</td><td>1 atributo</td></tr>
+              <tr><td>+10% ATK; +10% DEF; +10% HP</td><td>3 atributos ou 1 atributo especial</td></tr>
+              <tr><td><strong>Redução de atributos base</strong></td><td>−10 ATK; −10 DEF; −30 HP</td><td>1 atributo<br><em>Limite: é possível deixar o alvo com até a metade do atributo original.</em></td></tr>
+              <tr><td><strong>Bônus de dano</strong></td><td>+1 de bônus de dano</td><td>1 atributo especial<br><em>Limite: +30 de bônus de dano.</em></td></tr>
+              <tr><td rowspan="2"><strong>Velocidade (SPD)</strong></td><td>+3 SPD<br><small>OBS: quando em missões vermelhas ou da trama, será dobrado.</small></td><td>1 atributo</td></tr>
+              <tr><td>+10% SPD</td><td>3 atributos ou 1 atributo especial</td></tr>
+              <tr><td rowspan="2"><strong>Mana TOTAL</strong></td><td>+20 de mana TOTAL</td><td>1 atributo<br><em>Limite: +200 de mana TOTAL.</em></td></tr>
+              <tr><td>x2 de mana TOTAL</td><td>12 atributos ou 4 atributos especiais<br><em>Limite: x2 de mana TOTAL.</em></td></tr>
+              <tr><td rowspan="2"><strong>Redução do consumo de mana</strong></td><td>−10 de consumo de mana</td><td>2 atributos<br><em>Limite: −80 de consumo de mana.</em></td></tr>
+              <tr><td>−½ de consumo de mana</td><td>12 atributos ou 4 atributos especiais<br><em>Limite: −½ de consumo de mana.</em></td></tr>
+              <tr><td><strong>Regeneração de mana ativa</strong></td><td>10% do ATK ou DEF; 5% do HP<br><small>OBS: será tratada como um poder novo, não podendo ser combinada com outro.</small></td><td>2 atributos<br><em>Limite: 50% se ATK ou DEF; 30% se HP.</em></td></tr>
+              <tr><td><strong>Regeneração de mana passiva</strong></td><td>+10 de mana</td><td>1 atributo<br><em>Limite: +50 de mana.</em></td></tr>
+              <tr><td><strong>Taxa crítica</strong> (TAXA CRIT)</td><td>+10% TAXA CRIT</td><td>1 atributo<br><em>Limite: 600% TAXA CRIT.</em></td></tr>
+              <tr><td><strong>Dano crítico</strong> (DANO CRIT)</td><td>+10% DANO CRIT</td><td>1 atributo<br><em>Limite: 1200% DANO CRIT.</em></td></tr>
+              <tr><td><strong>Ataque absoluto</strong></td><td>Ataca 1x sem chance de defesa<br><small>OBS: apenas defesa absoluta defende.</small></td><td>6 atributos ou 2 especiais<br><em>Limite: 2 defesas absolutas.</em></td></tr>
+              <tr><td><strong>Regeneração de HP passiva</strong></td><td>+10 HP por turno</td><td>1 atributo<br><em>Limite: +100 HP por turno.</em></td></tr>
+              <tr><td><strong>Regeneração de HP ativa</strong></td><td>10% de ATK ou DEF como cura de HP; 5% de HP como cura de HP<br><small>OBS: será tratada como um poder novo, não podendo ser combinada com outro.</small></td><td>1 atributo<br><em>Limite: 100% se ATK ou DEF; 60% se HP.</em></td></tr>
+              <tr><td><strong>Eficiência de cura</strong></td><td>5% de eficiência de cura<br><small>OBS: aplica-se a poderes de cura já existentes.</small></td><td>2 atributos<br><em>Limite: +100% de eficiência de cura.</em></td></tr>
+              <tr><td><strong>Geração de escudo</strong></td><td>10% de ATK ou DEF como escudo; 5% de HP como escudo<br><small>OBS: será tratada como um poder novo, não podendo ser combinada com outro.</small></td><td>1 atributo<br><em>Limite: 100% se ATK ou DEF; 60% se HP.</em></td></tr>
+              <tr><td><strong>Eficiência de escudo</strong></td><td>5% de eficiência de escudo<br><small>OBS: aplica-se a poderes de escudo já existentes.</small></td><td>2 atributos<br><em>Limite: +100% de eficiência de escudo.</em></td></tr>
+              <tr><td><strong>Defesa absoluta</strong></td><td>Defende 1x qualquer ataque</td><td>6 atributos ou 2 especiais<br><em>Limite: 2 defesas absolutas.</em></td></tr>
+              <tr><td><strong>Redução de dano</strong> (RD)</td><td>5% RD</td><td>3 atributos ou 1 atributo especial<br><em>Limite: 70% RD.</em></td></tr>
+              <tr><td><strong>Redução de dano verdadeiro</strong></td><td>−1 bônus de dano</td><td>1 atributo especial<br><em>Limite: −20 bônus de dano.</em></td></tr>
+              <tr><td><strong>Multiplicador de DOT</strong></td><td>2% DOT, baseado em ATK ou DEF; 1% DOT, baseado em HP</td><td>1 atributo<br><em>Limite: 20% se ATK ou DEF; 10% se HP.</em></td></tr>
+              <tr><td><strong>Eficiência de DOT</strong></td><td>+1% DOT</td><td>1 atributo especial<br><em>Limite: 20% se ATK ou DEF; 10% se HP.</em></td></tr>
+              <tr><td><strong>Dano total de DOT</strong></td><td>+5% de dano final em DOT</td><td>1 atributo especial<br><em>Limite: 75% final em DOT.</em></td></tr>
+              <tr><td><strong>Sucesso em teste específico</strong></td><td>+1 sucesso ou −1 sucesso em teste de X [carisma, vontade, etc.]</td><td>3 atributos ou 1 atributo especial<br><em>Limite: +5 ou −5 sucessos.</em></td></tr>
+              <tr><td><strong>Sucesso em quaisquer testes</strong></td><td>+1 sucesso ou −1 sucesso em testes</td><td>2 atributos especiais<br><em>Limite: +5 ou −5 sucessos.</em></td></tr>
+              <tr><td><strong>Sucessos em combate</strong></td><td>+1 sucesso ou −1 sucesso</td><td>2 atributos especiais<br><em>Limite: +10 ou −6 sucessos.</em></td></tr>
+              <tr><td><strong>Dados</strong></td><td>+1 dado ou −1 dado</td><td>1 atributo especial<br><em>Limite: +13 [25 dados] ou −10 dados [10 dados].</em></td></tr>
+              <tr><td><strong>Alteração de dificuldade</strong></td><td>+1 de dificuldade ou −1 de dificuldade</td><td>1 atributo especial<br><em>Limite: −6 [2 de dificuldade] ou +5 [8 de dificuldade].</em></td></tr>
+              <tr><td rowspan="2"><strong>Reduzir cooldown</strong></td><td>−1 turno de cooldown</td><td>3 atributos ou 1 atributo especial<br><em>Limite: −4 de cooldown.</em></td></tr>
+              <tr><td>Quebra o cooldown pela metade (−½)</td><td>12 atributos ou 4 atributos especiais<br><em>Limite: −½ de cooldown.</em></td></tr>
+              <tr><td><strong>Energia infinita</strong></td><td>—<br><small>OBS: será tratada como um poder novo, não podendo ser combinada com outro.</small></td><td>6 atributos especiais</td></tr>
+              <tr><td><strong>Roubo de vida</strong></td><td>5% do dano causado como HP<br><small>OBS: será tratado como um poder novo, não podendo ser combinado com outro.</small></td><td>3 atributos ou 1 atributo especial<br><em>Limite: 50% do dano causado.</em></td></tr>
+              <tr><td><strong>Roubo de mana</strong></td><td>5% do dano causado como mana<br><small>OBS: será tratado como um poder novo, não podendo ser combinado com outro.</small></td><td>3 atributos ou 1 atributo especial<br><em>Limite: 50% do dano causado.</em></td></tr>
+              <tr><td><strong>Transferência de atributos</strong> [pet e invocação]</td><td>10% dos atributos totais</td><td>3 atributos ou 1 atributo especial<br><em>Limite: 100% dos atributos.</em></td></tr>
+              <tr><td><strong>Aumento de individualidades</strong></td><td>+1 individualidade por nível</td><td>4 atributos especiais<br><em>Limite: +3 individualidades por nível.</em></td></tr>
+              <tr><td><strong>Dobro de poderes</strong></td><td>Dobrar o poder interpretativo e o bônus da sua lista de individualidades/magias</td><td>4 atributos especiais<br><em>Limite: x2 power.</em></td></tr>
+              <tr><td><strong>Aumentar o inventário</strong></td><td>+1 slot de bênção<br><small>OBS: bênção, arma ou pet.</small></td><td>3 Perfeitos<br><em>Limite: até +2 slots.</em></td></tr>
+              <tr><td rowspan="2"><strong>Bônus de condição</strong></td><td>+1 atributo básico a cada 3x perdidos/causados/ganhos<br>+1 atributo básico a cada 5x perdidos/causados/ganhos</td><td>6 atributos<br>12 atributos</td></tr>
+              <tr><td>+1 atributo especial a cada 3x perdidos/causados/ganhos<br>+1 atributo especial a cada 5x perdidos/causados/ganhos</td><td>6 atributos + 2 especiais<br>12 atributos + 4 especiais</td></tr>
+              <tr><td><strong>Multiplicador de dano</strong></td><td>+0,1 de ATK/DEF/HP<br><small>OBS: será tratado como um poder novo, não podendo ser combinado com outro. Na primeira vez que for adicionado a uma bênção, consome 1 Perfeito; não é preciso um novo para aumentar o atributo.</small></td><td>+2 especiais<br><em>Limite: até +1,5.</em><br><em>Travado: apenas por meio da campanha principal.</em></td></tr>
             </tbody>
           </table>
         </div>
+      `
+    },
 
+    // ══════════════════════════════════════════════════════════
+    // SEÇÃO 06 · CRIAÇÃO
+    // ══════════════════════════════════════════════════════════
+    {
+      id: "forja-e-fabricacoes",
+      categoryId: "criacao",
+      title: "Sistema de criação: forja e fabricações",
+      subtitle: "Níveis de forjador, autômatos, shabtis, materiais e cobrança de refino",
+      aliases: ["criação", "criacao", "forja", "forjador", "fabricação", "autômato", "automato", "shabti", "shabit", "escultor", "materiais", "kg", "refino", "refinamento", "hefesto", "atena"],
+      summary: "Forjadores (filhos de Hefesto/Vulcano, Atena e os Saus) criam armas, itens, autômatos e shabtis conforme o seu nível. O refino agora é feito no Hub.",
+      source: "Regras & Sistemas 2026 — Sistema de Criação",
+      contentHtml: `
+        <p>O sistema de criação é destinado àqueles que têm algum poder relacionado à fabricação e otimização de armas, artefatos, poções, remédios e pets. Cada tipo de criação/otimização está separado por classe, então leia atentamente para entender em qual você se encaixa e como deverá proceder.</p>
+
+        <h3>Forja e fabricações</h3>
+        <p>Os forjadores são personagens capacitados com o poder de criar instrumentos mecânicos capazes de assumir grandes papéis na evolução de personagens em seus respectivos objetivos. São capazes de criar armas, itens, autômatos e shabtis. São eles os filhos de <em>Hefesto/Vulcano, Atena e os Saus</em>, e devem seguir as orientações a seguir:</p>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Nível</th><th>Poderes interpretativos</th><th>Atributos</th><th>Autômatos/Shabtis</th></tr></thead>
+            <tbody>
+              <tr><td>Forjador Iniciante [3 e 4]</td><td>1 Brando</td><td>1 atributo</td><td>Sem capacidade combativa</td></tr>
+              <tr><td>Forjador Intermediário [5 e 6]</td><td>2 Brandos</td><td>2 atributos</td><td>Status de um semideus n.4</td></tr>
+              <tr><td>Forjador Mestre [7]</td><td>1 Moderado + 1 Brando</td><td>3 atributos</td><td>Status de um semideus n.8</td></tr>
+              <tr><td>Forjador Supremo [10+]</td><td>1 Forte</td><td>4 atributos</td><td>Status de um semideus n.10</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Poderes interpretativos:</strong> são os lança-chamas, entre outras capacidades mecanicamente possíveis de serem atribuídas por meio de forjas.</li>
+          <li><strong>Bonificações:</strong> são alteradores na rolagem de dados ao usar as criações, explicados no sistema de premiações.</li>
+          <li><strong>Autômatos:</strong> são robôs com inteligência artificial atribuída pelos poderes do forjador.</li>
+          <li><strong>Shabtis:</strong> são bonecos de argila vivos feitos pelos egípcios.</li>
+          <li><strong>10+:</strong> estar no nível 10 e ganhar reconhecimento do pai/mãe e da ADM na forma de uma bênção de ascensão.</li>
+        </ul>
+        <p>A quantidade de material a ser usada varia de acordo com o objetivo da criação, e ela é indicada na avaliação das criações. Os critérios de avaliação do controle são: no caso de armas de pequeno porte, como adagas, facas, manoplas, capacetes, etc. [requerem 3 kg]; armas de médio porte, como espadas, lanças, peitoral, escudo, etc. [requerem 7 kg]; armas de grande porte, como armaduras, canhão, etc. [requerem de 15 a 30 kg]. Lembrando que, a depender da complexidade da criação, esses valores podem ser aumentados ou reduzidos, servindo apenas de parâmetro para os jogadores.</p>
+        <p>Escultores fazem shabtis. Eles são moldados com argila e depois viram esculturas de bolso da forma final desejada pelo criador. Sempre que ele tem a intenção de usá-la, ele a ativa por um comando de voz definido no processo de criação. Depois de ser usada, ela volta à sua forma retrátil de bolso novamente; mas, assim como um autômato, precisa ser reparada e, às vezes, fica inviabilizada a depender do dano. Os critérios de avaliação variam entre comuns [1 kg], de combate de pequeno porte [2 kg], de combate de médio porte [3 kg], de grande porte [4 kg, <em>vetado a supremos</em>] e clone perfeito [5 kg, <em>vetado a supremos</em>].</p>
         <div class="talamasca-tip-box">
-          <strong>Como Montar seu Prêmio:</strong>
-          Verifique o Grau da Premiação conquistada (4 Estrelas concede 6 atributos para bênçãos ou 4 para armas; 5 Estrelas concede 10 a 12 atributos). Distribua os pontos disponíveis respeitando a proporção da tabela acima e os poderes interpretativos cabíveis.
+          <strong>Refino no Hub:</strong> o refino agora é feito direto no Hub e substitui a cobrança de 50 Golds por trabalho dos criadores. Cada nível consome uma cópia R1 livre do mesmo item, chegando normalmente até R5 (ou R6 em casos especiais).
         </div>
       `
     },
     {
-      id: "glossario-mecanico",
-      categoryId: "tabelas-termos",
-      title: "Glossário Mecânico & Termos da Égide",
-      subtitle: "Índice de siglas e terminologias de jogo para consulta ágil",
-      aliases: ["glossario", "termos", "siglas", "atk", "def", "hp", "spd", "rd", "dot", "shabit"],
-      summary: "Definições diretas de ATK, DEF, HP, SPD, RD, DoT, Bônus de Dano, Resfriado e Shabits.",
-      source: "Compilação Geral de Regras",
+      id: "encantamento-de-objetos",
+      categoryId: "criacao",
+      title: "Encantamento de objetos",
+      subtitle: "Níveis de encantador, origem dos encantamentos e refino de bênçãos de banner",
+      aliases: ["encantamento", "encantador", "hécate", "hecate", "circe", "loki", "gullveig", "grimório", "grimorio", "othila", "shesh"],
+      summary: "Encantadores (filhos de Hécate/Trívia, Circe, Utgardlok, Loki, Gullveig e os Saus) acrescentam magias a objetos conforme o nível e podem refinar bênçãos do banner sazonal.",
+      source: "Regras & Sistemas 2026 — Encantamento de Objetos",
       contentHtml: `
+        <p>Os encantamentos são a perícia de criação que permite aos criadores acrescentar magias a determinados objetos e, assim, fortificá-los. São semideuses e magos relacionados ao dom de encantamento: semideuses filhos de <em>Hécate/Trívia, Circe, Utgardlok, Loki, Gullveig e os Saus</em>. Devem seguir as orientações a seguir:</p>
         <div class="table-microfilm-wrap">
           <table class="talamasca-table">
-            <thead>
-              <tr>
-                <th>Termo / Sigla</th>
-                <th>Definição Canônica</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Nível</th><th>Descrição</th><th>Poderes interpretativos</th><th>Atributo</th></tr></thead>
             <tbody>
-              <tr><td><strong>HP</strong></td><td>Pontos de Vida. Quando zerados, o personagem entra em estado de incapacitação ou morte clínica.</td></tr>
-              <tr><td><strong>ATK</strong></td><td>Ataque. Representa a força e o potencial de dano físico ou mágico de uma ação.</td></tr>
-              <tr><td><strong>DEF</strong></td><td>Defesa. Resistência a impactos e mitigação direta de dano no cálculo clássico.</td></tr>
-              <tr><td><strong>SPD</strong></td><td>Velocidade. Determina a ordem das jogadas e confere ações adicionais em 200 e 300 pontos.</td></tr>
-              <tr><td><strong>RD</strong></td><td>Redução de Dano. Porcentagem de atenuação sofrida antes da aplicação da DEF (marcos de 250 a 850 DEF, teto de 70%).</td></tr>
-              <tr><td><strong>DoT</strong></td><td>Damage over Time (Dano contínuo por Turno).</td></tr>
-              <tr><td><strong>Bônus de Dano</strong></td><td>Valor numérico fixo que se soma ao dano composto sem necessitar de taxa crítica.</td></tr>
-              <tr><td><strong>Escudo (Shield)</strong></td><td>Proteção temporária que absorve dano antes que o HP seja afetado.</td></tr>
-              <tr><td><strong>Shabit</strong></td><td>Autômato egípcio de argila ativado por comando vocal para suporte ou combate.</td></tr>
+              <tr><td>Encantador Iniciante</td><td>Neste nível de encantamento, eles se mostram apenas capazes de adicionar formas retráteis e a capacidade de melhorar um pouco as habilidades que um item já possui.</td><td>1 Brando</td><td>1 atributo</td></tr>
+              <tr><td>Encantador Intermediário</td><td>Agora adquirem a capacidade de atribuir habilidades novas a um artefato [restrito ao seu grimório de magias].</td><td>1 Moderado</td><td>2 atributos</td></tr>
+              <tr><td>Encantador Mestre</td><td>Agora adquirem a capacidade de imbuir ainda mais habilidades novas a um artefato ou arma [restrito ao seu grimório de magias].</td><td>2 Moderados + 1 Brando</td><td>3 atributos</td></tr>
+              <tr><td>Encantador Supremo</td><td>No seu máximo, são capazes de melhorar qualquer tipo de objeto e, a depender da sua bênção, poderão ter formas alternativas de fonte para os seus buffs [poderão buscar poderes de outros lugares a depender da bênção, como sangue de semideuses, materiais, etc.].</td><td>1 Forte + 1 Moderado</td><td>4 atributos</td></tr>
             </tbody>
           </table>
         </div>
+        <ul>
+          <li><strong>Poderes interpretativos:</strong> são a interpretação dos atributos aplicados. Por exemplo: resistência, cinesias, telepatias, clarividência limitada, etc.</li>
+          <li><strong>Origem:</strong> seus encantamentos são baseados nas magias que eles têm em seus grimórios/othila/shesh. Sujeito a nerf de acordo com o nível interpretativo do encantador [não é copia e cola; são a base, o tema de onde vão costurar o que querem dar ao item].</li>
+        </ul>
+        <div class="talamasca-tip-box">
+          <strong>Refino no Hub:</strong> o refino das <strong>Bênçãos do Banner Sazonal</strong>, que antes era feito por encantadores ao custo de 50 Golds, agora é feito direto no Hub. Cada nível consome uma cópia R1 livre da mesma bênção.
+        </div>
+      `
+    },
+    {
+      id: "boticario-e-alquimicos",
+      categoryId: "criacao",
+      title: "Boticário e alquímicos",
+      subtitle: "Venenos, poções e remédios de uso único, e o que muda na alquimia",
+      aliases: ["boticário", "boticario", "alquimia", "alquimista", "poção", "pocao", "veneno", "remédio", "uso único", "deméter", "perséfone", "asclépio"],
+      summary: "Boticários (filhos de Deméter/Ceres, Perséfone/Proserpina, Asclépio/Esculápio, Circe, Hécate/Trívia, Loki, Gullveig e os Sunus) criam venenos, poções e remédios de uso único.",
+      source: "Regras & Sistemas 2026 — Boticário & Alquímicos",
+      contentHtml: `
+        <p>Os boticários são aqueles que demonstram habilidades para a criação de venenos, poções e remédios. São semideuses relacionados a esse dom de criação os filhos de <em>Deméter/Ceres, Perséfone/Proserpina, Asclépio/Esculápio, Circe, Hécate/Trívia, Loki, Gullveig e os Sunus</em>. Devem seguir as orientações a seguir:</p>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Nível</th><th>Descrição</th><th>Poderes interpretativos</th><th>Atributos</th></tr></thead>
+            <tbody>
+              <tr><td>Boticário Iniciante</td><td>São capazes de fazer pequenas soluções e alguns remédios que podem ajudar na cicatrização mais rápida de ferimentos. [USO ÚNICO]</td><td>1 Brando</td><td>2 atributos</td></tr>
+              <tr><td>Boticário Intermediário</td><td>Suas criações começam a demonstrar um maior potencial; agora são capazes de criar tanto remédios quanto venenos, se tiverem os materiais corretos. [USO ÚNICO]</td><td>1 Moderado</td><td>3 atributos</td></tr>
+              <tr><td>Boticário Mestre</td><td>Sua capacidade aumenta, sendo agora capaz de criar algumas soluções que têm como função a melhoria das condições físicas de quem as ingere [USO ÚNICO], ou então atribuir essas soluções a instrumentos e armas.</td><td>1 Forte</td><td>4 atributos</td></tr>
+              <tr><td>Boticário Supremo</td><td>No ápice do seu poder, suas soluções podem atribuir poderes de outros semideuses e magos, desde que haja manipulação de material genético suficiente de outro personagem. [USO ÚNICO]</td><td>1 Perfeito</td><td>5 atributos</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Uso único:</strong> significa que as criações de um boticário, assim que são usadas, devem ser excluídas da ficha do personagem, pois só podem ser usadas uma vez.</li>
+          <li><strong>Poderes interpretativos:</strong> são venenos e curas, entre outras capacidades químicas possíveis de serem atribuídas por meio de soluções.</li>
+          <li><strong>Alquimia:</strong> quando for derivada de alquimia, e não dos meios convencionais [boticário], as produções podem conter as magias que eles têm em seus grimórios/othila/shesh. Sujeito a nerf de acordo com o nível interpretativo do alquimista.</li>
+        </ul>
+      `
+    },
+    {
+      id: "manipulacao-genetica",
+      categoryId: "criacao",
+      title: "Manipulação genética",
+      subtitle: "Mutações em pets, níveis de manipulador e refino de pets do banner",
+      aliases: ["manipulação genética", "manipulacao genetica", "manipulador", "mutação", "mutacao", "pet", "asclépio", "sunu", "dragão"],
+      summary: "Manipuladores (filhos de Asclépio/Esculápio e os Sunu) melhoram pets com rolagem padrão ou bonificações e poderes interpretativos, nunca as duas coisas.",
+      source: "Regras & Sistemas 2026 — Manipulação Genética",
+      contentHtml: `
+        <p>São mutações específicas que um número muito restrito de personagens é capaz de exercer, a fim de melhorar pets, seja para atribuir rolagem padrão caso eles não a tenham, seja para dar bonificações e poderes interpretativos. São personagens capazes desse tipo de feito: semideuses filhos de <em>Asclépio/Esculápio e os Sunu</em>. Devem seguir as orientações a seguir:</p>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Nível</th><th>Poderes interpretativos</th><th>Atributos</th><th>Atributo raro</th></tr></thead>
+            <tbody>
+              <tr><td>Manipulador Iniciante</td><td>1 Brando</td><td>1 atributo</td><td>+1 dado</td></tr>
+              <tr><td>Manipulador Intermediário</td><td>1 Moderado</td><td>2 atributos</td><td>+1 dado</td></tr>
+              <tr><td>Manipulador Mestre</td><td>1 Forte</td><td>3 atributos</td><td>+1 dado e −1 dificuldade</td></tr>
+              <tr><td>Manipulador Supremo</td><td>1 Perfeito</td><td>4 atributos</td><td>+2 dados e −1 dificuldade</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Limite:</strong> a mutação de um manipulador deve escolher entre dar rolagem com poderes ou atribuir bonificação e poderes; jamais as duas.</li>
+          <li><strong>Poderes interpretativos:</strong> são os lança-chamas de um dragão, entre outras capacidades biologicamente possíveis por meio de mutações.</li>
+          <li><strong>Origem:</strong> são necessárias amostras genéticas de criaturas que tenham o poder a ser concebido. Sujeito a nerf de acordo com o nível interpretativo do manipulador.</li>
+        </ul>
+        <div class="talamasca-tip-box">
+          <strong>Refino no Hub:</strong> o refino de <strong>Pets de combate e Pets suporte do Banner Sazonal</strong>, que antes era feito por manipuladores genéticos ao custo de 50 Golds, agora é feito direto no Hub. Cada nível consome uma cópia R1 livre do mesmo pet.
+        </div>
+      `
+    },
+    {
+      id: "limites-dos-fabricantes",
+      categoryId: "criacao",
+      title: "Limites dos fabricantes e suas otimizações",
+      subtitle: "Quem pode upar o quê e até quantos atributos cada criação pode ter",
+      aliases: ["limites", "fabricantes", "otimização", "upar", "quem pode upar", "melhoria da mesma natureza"],
+      summary: "Tabela de quem pode melhorar cada criação e o limite de atributos por criador e nível. Prêmios de eventos podem melhorar objetos sem limite.",
+      source: "Regras & Sistemas 2026 — Limites dos Fabricantes",
+      contentHtml: `
+        <p>Toda criação tem um teto. A tabela abaixo mostra, para cada tipo de criador e cada nível, quem pode melhorar (upar) uma criação já feita e quantos atributos ela pode ter no máximo:</p>
+        <div class="table-microfilm-wrap">
+          <table class="talamasca-table">
+            <thead><tr><th>Criador</th><th>Nível</th><th>Quem pode upar</th><th>Limite</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="4"><strong>Forjador</strong></td><td>Iniciante</td><td>Forjadores de nível maior e encantadores.</td><td>Possuir até 4 atributos</td></tr>
+              <tr><td>Intermediário</td><td>Forjadores de nível maior e outros criadores.</td><td>Possuir até 6 atributos</td></tr>
+              <tr><td>Mestre</td><td>Forjadores de nível supremo e outros criadores.</td><td>Possuir até 7 atributos</td></tr>
+              <tr><td>Supremo</td><td>Outros criadores supremos.</td><td>Possuir até 9 atributos</td></tr>
+              <tr><td rowspan="4"><strong>Encantador</strong></td><td>Iniciante</td><td>Encantadores Mestres ou Supremos.</td><td>Possuir até 4 atributos</td></tr>
+              <tr><td>Intermediário</td><td>Encantadores Supremos.</td><td>Possuir até 6 atributos</td></tr>
+              <tr><td>Mestre</td><td>Encantadores Supremos.</td><td>Possuir até 7 atributos</td></tr>
+              <tr><td>Supremo</td><td>Ninguém.</td><td>Possuir até 9 atributos</td></tr>
+              <tr><td rowspan="4"><strong>Boticário</strong></td><td>Iniciante</td><td>Boticários Mestres ou Supremos.</td><td>Possuir até 4 atributos</td></tr>
+              <tr><td>Intermediário</td><td>Boticários Supremos.</td><td>Possuir até 4 atributos</td></tr>
+              <tr><td>Mestre</td><td>Boticários Supremos.</td><td>Possuir até 5 atributos</td></tr>
+              <tr><td>Supremo</td><td>Ninguém.</td><td>Possuir até 5 atributos</td></tr>
+              <tr><td rowspan="4"><strong>Manipulador</strong></td><td>Iniciante</td><td>Manipuladores de nível maior.</td><td rowspan="4">Só podem ser upados uma única vez caso já tenham rolagem, ou tenham vindo a obtê-la por mutação.</td></tr>
+              <tr><td>Intermediário</td><td>Manipuladores de nível maior.</td></tr>
+              <tr><td>Mestre</td><td>Manipuladores Supremos.</td></tr>
+              <tr><td>Supremo</td><td>Manipuladores Supremos.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Quem pode upar:</strong> essa coluna indica quem pode melhorar o item que já tenha sido upado ou feito pelo criador em questão.</li>
+          <li><strong>Melhoria da mesma natureza:</strong> qualquer objeto que já tenha sido criado ou melhorado por um tipo de criação só pode ser melhorado pela mesma apenas uma vez. <em>Por exemplo: uma arma criada por um forjador pode ser upada apenas mais 1 vez por meio de forja.</em></li>
+          <li><strong>Eventos:</strong> premiações em eventos podem ser usadas para melhorar objetos e pets, e estas não têm limites: podem ser melhorados quantas vezes forem do agrado do jogador.</li>
+        </ul>
+      `
+    },
+
+    // ══════════════════════════════════════════════════════════
+    // SEÇÃO 07 · FILIAÇÕES E CLASSES
+    // ══════════════════════════════════════════════════════════
+    {
+      id: "filiacoes-e-afiliacoes",
+      categoryId: "filiacoes-classes",
+      title: "Filiações e afiliações",
+      subtitle: "Semideuses, semideuses bruxos e grupos divinos",
+      aliases: ["filiação", "filiacao", "afiliação", "afiliacao", "semideus", "semideuses", "bruxo", "grupo divino", "individualidades", "3 individualidades", "ritual de iniciação"],
+      summary: "Filiação: descendentes de deuses. Afiliação: seguidores por ritual. Semideuses têm 3 individualidades por nível; grupos divinos dão +1 por nível, com pelo menos 1 da afiliação.",
+      source: "Regras & Sistemas 2026 — Filiações e Afiliações",
+      contentHtml: `
+        <p><strong>Filiação</strong> é a categoria mais comum: são personagens descendentes de deuses, herdeiros diretos de entidades divinas, que acessam os poderes herdados à medida que sobem de nível e se tornam mais fortes. As <strong>Afiliações</strong> são uma categoria de personagens que não têm vínculo consanguíneo, mas genético, mediante um ritual de iniciação; ou seja, o personagem aceita ser seguidor de uma determinada divindade e, a partir daí, recebe voluntariamente as individualidades dela, que alteram o seu código genético e o tornam ligado à entidade divina.</p>
+
+        <h3>Semideuses</h3>
+        <p>Todo semideus, filho de um deus e de um humano, tem direito a acesso às individualidades apresentadas na lista do deus do qual é inscrito e aceito. As listas são divididas em 7 níveis diferentes, com poderes de todos os níveis de pontuação interpretativa e uma quantidade considerável de bônus, com vantagens de destaque para os grandes de cada etnia. Seus descendentes podem ter acesso a exatamente <strong>3 individualidades</strong> por nível.</p>
+
+        <h3>Semideuses bruxos</h3>
+        <p>Todo semideus filho de um deus relacionado à magia e de um humano tem direito a acesso às individualidades apresentadas na lista do deus do qual é inscrito e aceito, além de uma ou mais listas complementares relacionadas ao uso da magia dentro do aspecto da sua filiação.</p>
+
+        <h3>Grupos divinos ou afiliações divinas</h3>
+        <p>No RPG, alguns deuses organizam grupos com propósitos específicos e regras rígidas. Eles são regidos por entidades divinas específicas e, por meio de um pacto, concedem aos seus seguidores dons únicos, por vezes à custa do próprio poder. Todo personagem que passar a pertencer a grupos divinos que tenham lista de poderes ganha <strong>+1 individualidade por nível</strong>, mas é obrigado a ter <strong>no mínimo 1 individualidade</strong> da lista de poderes [quando houver] dessa afiliação na sua lista, por nível.</p>
+      `
+    },
+    {
+      id: "classes-e-principios-celestiais",
+      categoryId: "filiacoes-classes",
+      title: "As classes e os princípios celestiais",
+      subtitle: "Os Perpétuos e o foco de cada uma das sete classes",
+      aliases: ["classes", "classe", "perpétuos", "perpetuos", "destruição", "destino", "morte", "sonho", "desespero", "desejo", "delírio", "princípios celestiais", "até 2 perpétuos", "dps", "tank", "suporte"],
+      summary: "Toda lista é compatível com até 2 Perpétuos (classes), que determinam as bênçãos que o personagem pode usar. Cada classe tem um foco de build.",
+      source: "Regras & Sistemas 2026 — As Classes & Os Princípios Celestiais",
+      contentHtml: `
+        <p>No RPG, todo semideus, além de ser regido pelos celestiais (que são o nome das raças dos deuses), também é regido pelas forças cósmicas que estão acima deles. Essas forças são regras impostas na realidade, como equações que controlam algo mais poderoso que o próprio destino, o tempo ou o espaço. Os deuses os chamam de princípios celestiais, mas os mortais os chamam de <strong><em>Os Perpétuos</em></strong>.</p>
+        <p>São forças da criação que existem alheias a ela e dentro dela, como algo indissociado, destinado a contemplar o nascimento e a morte de todas as coisas no seu próprio tempo e da sua própria maneira. São singulares, estranhos e, no mínimo, intrigantes, mas extremamente raros. Pouco se sabe dentro do jogo, mas, para nós, jogadores off-line, teremos que respeitar uma regra muito clara e específica: toda e qualquer lista terá compatibilidade com <em>até 2 Perpétuos</em>, que aqui vamos chamar de classes. Isso vai determinar quais tipos de bênção esse personagem poderá usar e, sendo esse o principal recurso da sua build, poderá determinar totalmente a construção desse personagem dentro do jogo.</p>
+        <p>As classes carregam o nome dos Perpétuos, sendo elas:</p>
+        <ul>
+          <li><strong>Destruição:</strong> cujo foco é escalar com ATK e crítico;</li>
+          <li><strong>Destino:</strong> cujo foco é escalar com DEF e crítico;</li>
+          <li><strong>Morte:</strong> cujo foco é escalar com HP e crítico;</li>
+          <li><strong>Sonho:</strong> cujo foco é conceder buffs poderosos;</li>
+          <li><strong>Desespero:</strong> cujo foco é conceder debuffs poderosos e DOT (<em>damage over time</em>);</li>
+          <li><strong>Desejo:</strong> cujo foco é conceder curas poderosas e buffs/debuffs menores;</li>
+          <li><strong>Delírio:</strong> cujo foco é amplificar a jogabilidade do uso de invocações/pets de combate.</li>
+        </ul>
+      `
+    },
+    {
+      id: "duvidas-frequentes",
+      categoryId: "filiacoes-classes",
+      title: "Dúvidas frequentes",
+      subtitle: "Ordem das individualidades, poderes de continuidade e bênçãos de outras classes",
+      aliases: ["dúvidas", "duvidas", "faq", "perguntas", "continuidade", "umbracinese", "poder II", "nível anterior", "bênção de outra classe"],
+      summary: "As individualidades são escolhidas na ordem do nível; poderes de continuidade exigem as etapas anteriores; não se usa bênção de classe fora da sua lista.",
+      source: "Regras & Sistemas 2026 — Dúvidas Frequentes",
+      contentHtml: `
+        <h3>Posso escolher qualquer individualidade em qualquer ordem?</h3>
+        <p>Não. Deve-se escolher somente a quantidade determinada acima, e na ordem de nível correspondente.</p>
+
+        <h3>Se alguma das individualidades do nível que alcancei não me agradar, posso escolher uma de um nível anterior?</h3>
+        <p>Não. Você pode escolher apenas individualidades do nível que alcançou.</p>
+
+        <h3>Como funcionam os poderes/magias de continuidade?</h3>
+        <p>É simples: poderes ou magias de continuidade são como um poder que inicialmente é simples, mas que, com o passar do tempo e o seu amadurecimento, se torna mais forte. Por isso são divididos em etapas. Para ter um controle aprimorado dele, é preciso tê-lo escolhido inicialmente.</p>
+        <p><strong>Exemplo:</strong> um filho de Hades decide que vai manipular as sombras, por isso escolhe "Umbracinese I", porque se interessou muito pela "Umbracinese Final" da lista. Isso só será possível se antes ele escolher "Umbracinese II".</p>
+        <p>Basicamente, um poder "II" jamais poderá ser escolhido se o "I" não tiver sido escolhido antes. O mesmo vale para o "Final" ou "III", caso venham a existir.</p>
+
+        <h3>Posso usar bênçãos e artefatos de uma classe que não é a minha?</h3>
+        <p>Não: você não pode usar bênçãos e artefatos de uma classe que não pertença à sua lista. Se ela estiver restrita, por exemplo, a Desespero e Morte, você não poderá usar Destino, Destruição, etc.</p>
+      `
+    },
+
+    // ══════════════════════════════════════════════════════════
+    // SEÇÃO 08 · MISSÕES FIXAS
+    // ══════════════════════════════════════════════════════════
+    {
+      id: "missoes-fixas",
+      categoryId: "missoes-fixas",
+      title: "Missões fixas",
+      subtitle: "As 11 atividades permanentes de Londres: frequência, local, indicação, entrega e recompensa",
+      aliases: ["missões fixas", "missoes fixas", "patrulha", "tâmisa", "whitechapel", "highgate", "esgotos", "soho", "metrô", "diplomacia", "museu britânico", "keres", "hyde park", "turnos aleatórios", "3x por semana", "8 linhas", "40 palavras"],
+      summary: "Atividades que não mudam com as atualizações do RPG e rendem XP e Gold. A entrega é registrada no Hub com o link dos turnos.",
+      source: "Regras & Sistemas 2026 — Missões Fixas",
+      contentHtml: `
+        <p>São o conjunto de atividades coletivas ou individuais que podem gerar XP e Gold dentro do RPG. Pode-se dizer que são uma forma de pontuar outros atos que não são mensuráveis nos outros espaços de pontuação (como nas atividades da própria Égide ou nas missões sazonais). Essas atividades não mudam com as atualizações do RPG e são uma ótima pedida para quem prefere desenvolver mais conversas e relacionamentos do que combates e estudos.</p>
+        <div class="talamasca-callout">
+          <strong>Registro:</strong> ao concluir a entrega, registre a atividade <strong>no Hub</strong>, com o link dos seus turnos, para receber a recompensa na ficha.
+        </div>
+
+        <h3>1. Patrulha da Névoa no Tâmisa</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>As margens do Tâmisa são vigiadas há séculos, mas a névoa não guarda apenas ladrões comuns. Patrulhar essa região é percorrer pontes de onde suicidas se jogam e onde o Véu precisa ser constantemente reforçado. A atividade exige silêncio, disciplina e atenção a sinais sutis: um reflexo que não deveria estar ali, um corpo que desaparece antes de tocar a água, uma sombra que caminha sobre a corrente. Algumas patrulhas terminam sem nada além do frio da noite; outras, com cultistas sendo contidos discretamente.</p>
+        <ul>
+          <li><strong>Local:</strong> Docks de Londres e margens do Tâmisa.</li>
+          <li><strong>Indicação:</strong> Custódios (linha de frente), Tecelões do Véu (reforço do disfarce), Inquisidores (caso haja suspeitos).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP + 60 Golds.</li>
+        </ul>
+
+        <h3>2. Ronda em Whitechapel</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Os becos estreitos de Whitechapel são terreno fértil para crimes, mas também para rumores de coisas mais antigas. Gangues mortais disputam território com cultos menores, e algumas vezes relatos de criaturas noturnas se misturam à violência cotidiana. Um Vigilante pode se infiltrar, um Custódio impor disciplina, um Mediador negociar com líderes locais. A tarefa é simples na superfície: manter o equilíbrio da região. Mas o verdadeiro trabalho é impedir que o caos mortal se torne brecha para o divino se manifestar em plena rua.</p>
+        <ul>
+          <li><strong>Local:</strong> Whitechapel, leste de Londres.</li>
+          <li><strong>Indicação:</strong> Vigilantes (infiltração em gangues), Custódios (manutenção da ordem), Mediadores (negociação política local).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP + 60 Golds.</li>
+        </ul>
+
+        <h3>3. Acalmar os Espíritos do Cemitério de Highgate</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Entre esculturas góticas e mausoléus cobertos de hera, o silêncio é interrompido por murmúrios que não pertencem a este tempo. O cemitério de Highgate é um lugar onde o Véu enfraquece com facilidade, e espíritos inquietos exigem intervenção. Tecelões do Véu, Arcanistas e Sanctificadores são os principais convocados, conduzindo rituais ou impondo barreiras sutis para que os mortos não transbordem sobre os vivos. A missão não é de combate, mas de contenção — e exige sensibilidade para não despertar aquilo que prefere dormir.</p>
+        <ul>
+          <li><strong>Local:</strong> Highgate Cemetery.</li>
+          <li><strong>Indicação:</strong> Sanctificadores (cura espiritual), Arcanistas (rituais de contenção), Tecelões do Véu (encobrimento sobrenatural).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP.</li>
+        </ul>
+
+        <h3>4. Varredura nos Esgotos Antigos</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Sob as ruas iluminadas por néon, os corredores úmidos e abafados guardam tanto água estagnada quanto segredos antigos. A missão é caminhar entre túneis romanos, limpando marcas de rituais, rastreando sinais de infiltração de cultistas e certificando-se de que nada tenha sido invocado indevidamente. É comum encontrar apenas grafite, mas às vezes o cheiro de enxofre denuncia algo além do humano. Patrulhas mais desafiadoras já registraram a presença de criaturas anfíbias menores ligadas ao mar, que preferem as profundezas.</p>
+        <ul>
+          <li><strong>Local:</strong> rede de esgotos romanos e vitorianos.</li>
+          <li><strong>Indicação:</strong> Custódios (segurança em corredores), Artífices de Ébano (selos e armadilhas), Vigilantes (rastreio de cultistas).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP + 60 Golds.</li>
+        </ul>
+
+        <h3>5. Rastreio de Cultos no Soho</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>O bairro do Soho pulsa com casas noturnas, bares e teatros, mas por trás do brilho artificial existem portas que não aparecem em mapas. Cultos menores costumam se infiltrar nesses espaços, aproveitando a música e o fluxo de pessoas para mascarar seus rituais. O trabalho consiste em infiltrar-se, observar sem ser visto, seguir os passos errados até o porão certo — e só então agir. Nem sempre é necessário combater; muitas vezes basta recolher provas, identificar líderes e reportar aos Inquisidores. Mas há noites em que uma invocação se perde, e a fumaça no teto não é mais humana.</p>
+        <ul>
+          <li><strong>Local:</strong> Soho, West End.</li>
+          <li><strong>Indicação:</strong> Vigilantes (espionagem), Inquisidores (investigação), Mediadores (manipular líderes locais).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP.</li>
+        </ul>
+
+        <h3>6. Caçada na Linha do Metrô Abandonada</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Alguns trechos do metrô londrino foram lacrados após acidentes inexplicáveis, mas o Conselho sabe bem a verdade: criaturas atraídas pelos labirintos de ferro vagam por ali. O trabalho é de risco elevado, destinado a Custódios e Artífices, que devem explorar túneis apagados, instalar selos de contenção e eliminar o que restar. Monstros menores costumam habitar esses corredores, mas, em raros casos, relatos de criaturas maiores (como <strong>minotauros</strong> deslocados de seus próprios labirintos) tornam a tarefa quase suicida.</p>
+        <ul>
+          <li><strong>Local:</strong> linhas abandonadas do metrô (estação Aldwych e trechos lacrados).</li>
+          <li><strong>Indicação:</strong> Custódios (combate direto), Artífices de Ébano (manutenção dos selos), Inquisidores (recolher provas).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 350 XP + 100 Golds.</li>
+        </ul>
+
+        <h3>7. Proteção de Diplomacia Oculta</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Nem toda batalha é travada com espadas. Reuniões secretas entre facções divinas e representantes da Égide ocorrem em lugares discretos: porões de igrejas, salões privados de hotéis ou templos escondidos. O trabalho dos agentes é assegurar que a diplomacia siga seu curso sem interrupções externas. A tensão está em vigiar portas, identificar intrusos e, em casos extremos, conter emissários rivais que preferem a força ao diálogo. Combate não é esperado, mas é sempre possível.</p>
+        <ul>
+          <li><strong>Local:</strong> locais neutros de encontro, escolhidos pela Torre.</li>
+          <li><strong>Indicação:</strong> Mediadores (diplomacia), Custódios (segurança), Inquisidores (controle disciplinar).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP.</li>
+        </ul>
+
+        <h3>8. Investigação de Profecias no Museu Britânico</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Algumas peças em exposição carregam mais do que história. Inscrições roubadas da Biblioteca de Alexandria costumam reaparecer no Museu, disfarçadas de artefatos acadêmicos. Os Arquivistas são enviados para decifrar sinais, enquanto Vigilantes observam visitantes suspeitos. A tarefa é analisar, identificar possíveis riscos e impedir que manuscritos sejam levados. Muitas vezes não há combate, mas disputas intelectuais e perseguições discretas até becos vizinhos.</p>
+        <ul>
+          <li><strong>Local:</strong> Museu Britânico, setor de antiguidades.</li>
+          <li><strong>Indicação:</strong> Arquivistas de Avalon (interpretação), Arcanistas (rituais e leitura de energia), Vigilantes (observar suspeitos).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 200 XP.</li>
+        </ul>
+
+        <h3>9. Caçada às Keres no Tâmisa Noturno</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Em raras ocasiões, a concentração de mortes violentas em Londres atrai mais do que ecos. Bandos de <strong>Keres</strong> surgem sobre a água como pássaros negros de carne rasgada, atacando tudo que se move. É uma missão de alto risco, para esquadrões preparados e coordenados. A caçada ocorre sempre sob a névoa espessa, onde os gritos são abafados pelo rio. Enfrentar essas criaturas significa entrar em combate direto com a morte em sua forma mais voraz.</p>
+        <ul>
+          <li><strong>Local:</strong> trechos do Tâmisa em noites sem lua.</li>
+          <li><strong>Indicação:</strong> Custódios (combate direto), Sanctificadores (suporte de cura), Arautos de campo (nível mais alto, para coordenar o esquadrão).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 400 XP + 200 Golds.</li>
+        </ul>
+
+        <h3>10. Patrulha no Hyde Park</h3>
+        <p><em>(até 3x por semana)</em></p>
+        <p>Durante o dia, o parque é um refúgio de tranquilidade. À noite, o espaço muda de natureza. Cultos pequenos usam clareiras para rituais, e é comum que os guardiões encontrem sinais de feitiçaria recente: cinzas ainda quentes, sangue fresco em pedras, símbolos gravados em árvores. A missão é assegurar que o local permaneça seguro, tanto para mortais quanto para a própria Égide. Criaturas ocasionais podem aparecer, mas a maior ameaça costuma ser o acúmulo de energia mágica fora de controle.</p>
+        <ul>
+          <li><strong>Local:</strong> Hyde Park, principalmente as clareiras internas.</li>
+          <li><strong>Indicação:</strong> Custódios (segurança física), Arcanistas (controle mágico), Tecelões do Véu (reparação da realidade).</li>
+          <li><strong>Entrega:</strong> a cada 3 turnos (mínimo de 8 linhas cada).</li>
+          <li><strong>Recompensa:</strong> 100 XP + 50 Golds.</li>
+        </ul>
+
+        <h3>11. Turnos aleatórios</h3>
+        <ul>
+          <li><strong>Entrega:</strong> a cada turno.</li>
+          <li><strong>Recompensa:</strong> 10 XP (a cada 40 palavras).</li>
+        </ul>
+
+        <div class="talamasca-callout warning">
+          <strong>OBS:</strong> se o turno tiver mais linhas do que a atividade pede, ele poderá ser considerado como mais de um turno. Por exemplo: se a atividade pede 3 turnos de 8 linhas e o jogador faz 1 turno com 24, não precisará escrever mais dois.
+        </div>
+      `
+    },
+
+    // ══════════════════════════════════════════════════════════
+    // SEÇÃO 09 · FICHAS, DEUSES E REGISTROS
+    // ══════════════════════════════════════════════════════════
+    {
+      id: "fichas-de-jogadores",
+      categoryId: "fichas-registros",
+      title: "Fichas de jogadores (no Hub)",
+      subtitle: "Personagens por conta, o que fica na ficha, o Baú e os seis espaços de artefato",
+      aliases: ["ficha", "fichas", "hub", "criar ficha", "atualizar ficha", "4 personagens", "baú", "bau", "artefatos", "cabeça", "corpo", "mãos", "pés", "esfera", "corda", "bênção ativa", "slots", "tipos de fichas", "registros"],
+      summary: "A criação e a atualização de fichas agora são feitas no Hub. Até 4 personagens; cada ficha tem bênçãos, uma arma e seis artefatos; o resto fica no Baú.",
+      source: "Regras & Sistemas 2026 — Tipos de Fichas & Registros (atualizado para o Hub)",
+      contentHtml: `
+        <div class="talamasca-callout">
+          <strong>Tipos de fichas e registros:</strong> fichas de jogadores, de deuses e o registro de shapes (photoplayers) agora ficam no <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer"><strong>Hub Midnight City</strong></a>. É lá que você cria e atualiza fichas, registra a distribuição de atributos, guarda itens no Baú e consulta o histórico. <strong>As inscrições em missões continuam no Discord.</strong>
+        </div>
+        <p>No jogo, todo jogador terá direito a ter no máximo <strong>4 personagens por ficha</strong>, adquirindo direito a mais personagens à medida que cada season chega ao fim, ou quando receber como premiação por participar de eventos especiais da estação vigente.</p>
+        <p>Na sua conta de jogador no Hub ficam as fichas dos seus respectivos personagens, deuses e conselheiros/governantes, NPCs, e o seu <strong>Baú</strong>, onde ficam os seus artefatos, bênçãos (compradas na loja) e armas para buildar os seus personagens.</p>
+        <p>Na ficha do personagem ficam apenas as bênçãos que ele conquistar com o tempo (ou que você escolher comprar para buildá-lo, mas apenas uma ficará ativa por vez, e as outras terão efeito somente interpretativo), a sua arma e os seus <strong>seis artefatos</strong>, um em cada espaço: <strong>Cabeça, Corpo, Mãos, Pés, Esfera e Corda</strong>. Outras armas e artefatos terão que ser armazenados no Baú do jogador.</p>
+      `
+    },
+    {
+      id: "deuses-e-hospedeiros",
+      categoryId: "fichas-registros",
+      title: "Deuses, hospedeiros e ocupações provisórias",
+      subtitle: "Como funciona ocupar a vaga de um deus, as formas de representação e a ocupação temporária",
+      aliases: ["deus", "deuses", "vaga de deus", "hospedeiro", "manifestação", "emanador", "4 vagas", "dois grandes", "ocupação provisória", "narrador", "hélio", "selene"],
+      summary: "Cada jogador pode ocupar até 4 vagas de deuses (até 2 dos grandes). Deuses se manifestam por hospedeiros; também existem manifestações e emanadores.",
+      source: "Regras & Sistemas 2026 — Deuses e Ocupações Provisórias",
+      contentHtml: `
+        <h3>Deuses</h3>
+        <p>Todo jogador que pretender ocupar a vaga de um deus deve ter ciência de que eles são uma categoria especial: têm um grande comprometimento com seus (a)filiados e estão constantemente sendo alvo de uma série de pessoas interessadas na vaga, por razões próprias.</p>
+        <p>Os deuses <em>não podem manifestar a sua forma original</em>, já que isso pode ser catastrófico em vários sentidos. Como ainda buscam vínculos e promovem proteção aos seus herdeiros, <em>utilizam outros mortais</em>, sejam eles semideuses, magos ou não mágicos, para se manifestar pelo mundo. Vale ressaltar que uma divindade sempre deposita parte do seu poder no seu hospedeiro, o que significa que pode ocupar outros hospedeiros em vários lugares ao mesmo tempo.</p>
+        <p><em>O nível de consciência do hospedeiro</em> varia de acordo com o desejo do jogador, podendo oscilar entre um personagem cuja consciência opera de forma ativa, parcial ou completamente inativa, como uma casca vazia. O intuito é dar ao portador da vaga e aos descendentes desse deus mais possibilidades interpretativas em seus jogos particulares.</p>
+        <p>Sendo assim, quando se pretende ocupar a vaga de um deus, é preciso se preocupar com a história do hospedeiro, enquanto personagem, e do deus, enquanto representação divina. <strong>Todo jogador tem o direito de ocupar até <em>4 vagas de deuses</em></strong> — sendo no máximo 2 dos grandes —, que são listadas na ficha do jogador, para que as pessoas saibam de forma mais prática a quem ele pertence.</p>
+
+        <h3>Curiosidade: outras formas de representação</h3>
+        <p>Além dos hospedeiros, existem outras formas de representação dos deuses no RPG, como:</p>
+        <ul>
+          <li><strong>Manifestação:</strong> é a encarnação da energia divina desse deus por meio de objetos ou seres inanimados, ou ainda, em casos mais raros, a energia propriamente dita na forma parecida com a do próprio deus, onde a conexão dele com o divino seja mais forte, como templos. São, de maneira geral, perigosas e representam em 80% dos casos um alto risco à vida e aos segredos da ordem, o que requer eliminação encomendada.</li>
+          <li><strong>Emanador:</strong> é o caso mais especial de todos. É o cruzamento das linhas do destino de um celestial com as de um mortal, em que eles ficam intrinsecamente ligados e acabam sendo reconhecidos como um arauto do celestial em questão, ou então são tratados como uma ameaça e um risco à existência dos princípios celestiais. Diferente de um hospedeiro e de uma manifestação, o emanador não é controlado pelo deus: ele usa a fonte do poder dele como um parasita, sendo a presença mais poderosa das três modalidades, capaz de matar outro celestial se aprender a usar o seu poder adequadamente. Existem mitos apagados da história por "tabus" que dizem que algo parecido aconteceu com Hélio e Selene.</li>
+        </ul>
+
+        <h3>Ocupações provisórias</h3>
+        <p>Representa a possibilidade de jogadores que pretendem se tornar narradores temporariamente solicitarem a ocupação de um deus na plataforma. Isso acontece por meio de outro hospedeiro. Caso já exista alguém ocupando a vaga do deus, a ocupação provisória para a execução da trama que o jogador tem em mente é avaliada pelo próprio dono da vaga; na ausência dele, é avaliada pela ADM.</p>
+      `
+    },
+    {
+      id: "photoplayers",
+      categoryId: "fichas-registros",
+      title: "Photoplayers (shapes)",
+      subtitle: "Como o registro de rostos funciona no Hub e o que fazer em caso de conflito",
+      aliases: ["photoplayer", "shape", "faceclaim", "rosto", "registro", "conflito", "compartilhar", "verde", "vermelho"],
+      summary: "É proibido usar o photoplayer de outro jogador. O Hub registra automaticamente, avisa quando o rosto já está ocupado e sugere dividir ou escolher outro.",
+      source: "Regras & Sistemas 2026 — Fichas de Jogadores (atualizado para o Hub)",
+      contentHtml: `
+        <p>É estritamente proibido usar o photoplayer de outro jogador.</p>
+        <p>O controle de photoplayers agora é feito <strong>no Hub</strong>: o registro acontece automaticamente quando você cadastra o rosto do personagem. Se o photoplayer já estiver ocupado, o Hub avisa na hora e sugere duas saídas: <strong>pedir para dividir</strong> o rosto com quem já o usa ou <strong>procurar outro</strong>.</p>
+      `
+    },
+
+    // ══════════════════════════════════════════════════════════
+    // SEÇÃO 10 · MESTIÇOS
+    // ══════════════════════════════════════════════════════════
+    {
+      id: "sistema-de-mesticos",
+      categoryId: "mesticos",
+      title: "Sistemas e regras sobre mestiços",
+      subtitle: "Gestação, envelhecimento, filhos de todos os casais, uniões entre etnias e herança genética",
+      aliases: ["mestiço", "mestico", "mestiços", "gestação", "gravidez", "filhos", "herdeiro", "casa de bonecas", "circe", "envelhecimento", "maturação", "homoafetivo", "etnias", "herança genética", "neto", "bisneto"],
+      summary: "Como nascem os mestiços, quanto dura a gestação, como acelerar o crescimento, e quantas individualidades herda cada combinação de pais.",
+      source: "Regras & Sistemas 2026 — Sistemas e Regras sobre Mestiços",
+      contentHtml: `
+        <p>É comum que os personagens se relacionem e formem casais entre si. Apesar de serem poucos os que chegam à fase adulta, alguns inclusive geram herdeiros. Estes têm, por vezes, uma ligação proporcional com as divindades das quais descendem, e na maior parte das vezes suas habilidades podem ser herdadas dos pais. Para o nascimento de um mestiço, é preciso que o casal poste dentro do acampamento se envolvendo, não sendo necessárias as turnagens de sexo. A/O gestante, portanto, deve postar dentro do RPG durante o período de gravidez, e é inclusive necessário que seja feito um post na hora do parto. Caso contrário, não será possível a validação do personagem.</p>
+
+        <h3>Gestação</h3>
+        <p>Cada três meses online equivalem a um mês off. O tempo de gestação dos mestiços é de dez meses on, o que equivale a <strong>3 meses e uma semana OFF</strong>. Esse tempo é contado a partir da relação dos dois personagens. Quando a prole nascer, ela vai crescer, e somente quando tiver <strong>cinco anos</strong> se tornará um personagem jogável.</p>
+
+        <h3>Envelhecimento e maturação</h3>
+        <p>Para jogadores mais ansiosos, existem formas de realizar a gestação e o envelhecimento das crianças de maneira mais rápida e produtiva. A primeira delas é procurar a deusa Circe, em Londres, numa de suas lojas pagãs, com o objetivo de executar <strong>o feitiço da casa de bonecas</strong>. É um feitiço muito poderoso, que permite que o casal e seus filhos sejam transportados para dentro de um ambiente ensaiado, uma dimensão alternativa alimentada por magia. Nela são reproduzidos os dias que os pais e seus filhos viveriam no mundo real num único dia. O feitiço permite que os pais desfrutem desse período com seus filhos, criando-os e educando-os, até que atinjam a maioridade, sem envelhecer, mas tudo isso ao custo de uma de suas bênçãos ou de um item precioso.</p>
+        <p>A segunda forma é por meio do <strong>Templo de uma deusa do casamento ou da maternidade</strong>, que pode beneficiá-lo com a transição do tempo sem envelhecer os pais, num limbo, uma pequena faixa dimensional onde a saúde, a felicidade e a segurança da família são garantidas, conservando o tempo de qualidade e a ligação entre o casal e a sua prole.</p>
+
+        <h3>Todos os casais podem ter filhos</h3>
+        <p>Isso mesmo: todos os casais podem ter filhos, mesmo aqueles que sejam homoafetivos. Na colina dos templos, especificamente nos de deuses e deusas do matrimônio, da fertilidade e do amor, costuma-se receber esse tipo de casal em orações para contemplar um fruto. Quando é do interesse desses deuses, eles podem conceder essa dádiva de várias maneiras: por meio de um fruto, uma luz estranha ou até uma bebida suspeita. De todo modo, ao aceitar a bênção concedida pelos deuses, um dos personagens passa a ter a capacidade de se tornar gestante. De modo similar ao que acontece com Atena/Minerva, Apolo/Febo ou outros deuses que podem conceber por meios não convencionais, o casal homoafetivo, após uma noite de amor e união, é agraciado com essa dádiva: um deles desenvolve, de forma mágica, a capacidade biológica e orgânica de carregar um (ou mais) herdeiros, passando por todos os mesmos eventos de uma gravidez comum. No caso de um gestante masculino, ele está fadado a ter um parto por cesariana. Vale ressaltar, com o objetivo de verossimilhança, que o fato é sustentado pelos poderes divinos dos deuses: ele não se baseia na fecundação de um óvulo por um espermatozoide; os poderes divinos executam o processo de reunir o material genético do casal para que nasça um(a) herdeiro(a).</p>
+
+        <h3>Todas as etnias podem se unir</h3>
+        <ul>
+          <li><strong>Deus e Deus:</strong> no caso de dois hospedeiros de deuses se relacionarem entre si, vão gerar um semideus mestiço. Ele vai escolher <strong>4 individualidades</strong>, com no mínimo 1 de cada progenitor divino. A sua energia é equivalente à de um semideus, já que é filho de hospedeiros portadores dos deuses, e não dos deuses diretamente.</li>
+          <li><strong>Deus e Semideus:</strong> no caso de algum hospedeiro de deus se relacionar com um semideus, vai gerar um mestiço diferente. Ele vai escolher apenas <strong>1 individualidade</strong> por nível do seu avô (avó) e <strong>3 individualidades</strong> do seu pai ou mãe divino. Usa a energia de um semideus.</li>
+          <li><strong>Deus e Mestiço:</strong> quando o hospedeiro de uma divindade tem um filho com um mestiço, este terá ligação apenas com a divindade e então será como um semideus normal, não herdando nenhuma habilidade do bisavô. Usa a energia de um semideus. [Isso não se aplica a deuses egípcios.]</li>
+          <li><strong>Semideus e Semideus:</strong> o fruto da relação entre dois semideuses é, de longe, o mais comum. Quando isso acontece, o filho dessa relação terá direito a <strong>2 individualidades</strong> de um dos seus avós e <strong>1 individualidade</strong> do restante, podendo intercalar ao longo dos níveis.</li>
+          <li><strong>Semideus e Mestiço:</strong> quando um mestiço se relaciona com um semideus e consequentemente tem um filho, a situação é parecida com a do filho de Semideus e Deus. Quando isso acontece, o filho dessa relação terá direito a <strong>1 individualidade</strong> de um dos bisavós e <strong>2 individualidades</strong> do avô (avó). No entanto, no nível sete terá apenas 2 individualidades.</li>
+          <li><strong>Mestiço e Mestiço:</strong> sempre que dois mestiços se juntarem, de primeira geração em diante, os filhos deles vão escolher apenas <strong>1 individualidade</strong> de dois dos ancestrais divinos e, até o nível 7, apenas <strong>1 individualidade</strong> independente entre os ancestrais.</li>
+        </ul>
+
+        <h3>Herança genética</h3>
+        <p>Quando um personagem recebe uma bênção/maldição peculiar, ela inevitavelmente vai alterar o seu código genético. Há uma chance remota de essas peculiaridades acabarem passando de progenitor para filho. Poderá ser escolhida uma bênção interpretativa sem valor combativo.</p>
       `
     }
   ],
+
 
   // ── ACERVO DA PRESENÇA (FAQS PRÉ-REVISADAS • SEM IA) ──
   presenceFaqs: [
     {
       id: "faq-primeira-ficha",
-      question: "Como crio e peço minha primeira ficha?",
-      category: "Iniciação",
-      docId: "pedido-ficha-oficial",
-      answer: "Após realizar seu primeiro jogo na comunidade, solicite sua ficha no tópico da Central. Preencha os campos com número livre da lista, e-mail, nome do personagem, filiação, ofício, fotos do shape e escolha de 3 individualidades por nível. A recomendação padrão de atributos para iniciantes é 30 HP e 10 ATK (para DPS) ou 10 DEF (para Tanker). Lembre-se: é imprescindível ler a lista de poderes para saber qual atributo escalona sua habilidade!"
+      question: "Onde crio e atualizo a ficha do meu personagem?",
+      category: "Fichas",
+      docId: "fichas-de-jogadores",
+      answer: "No Hub Midnight City (midnight-city.cloud/dashboard). Lá você cria a ficha, registra os pontos de atributo a cada nível, equipa arma, bênçãos e os seis artefatos (Cabeça, Corpo, Mãos, Pés, Esfera e Corda) e guarda o resto no Baú. As inscrições em missões continuam no Discord."
     },
     {
       id: "faq-distribuicao-atributos",
-      question: "Como funciona a distribuição de atributos ao subir de nível?",
-      category: "Progressão",
-      docId: "conversao-atributos-build",
-      answer: "Ao ascender de nível você recebe pontos de atributo. Cada 1 ponto investido se converte em: +10 ATK, +10 DEF, +30 HP, +10% de Taxa Crítica, +10% de Dano Crítico ou +3 SPD. Cada personagem escolhe até 3 individualidades por nível da sua lista divina ou mágica, respeitando a progressão de Níveis I, II e Final."
+      question: "Quanto vale cada ponto de atributo?",
+      category: "Evolução",
+      docId: "conversao-de-atributos",
+      answer: "1 ponto de atributo vale 10 ATK, 10 DEF, 30 HP, 10% de taxa crítica, 10% de dano crítico ou 3 SPD. Os pontos ganhos ao subir de nível são registrados na ficha do Hub."
     },
     {
       id: "faq-progressao-xp",
-      question: "Quanto XP é necessário do Nível 1 ao Nível 10?",
-      category: "Progressão",
-      docId: "evolucao-xp-niveis",
-      answer: "A progressão inicia no Nível 1 com 0 XP e culmina no Nível 10 com 10.000 XP (passando por N2=600, N3=1.100, N4=2.000, N5=3.000, N6=4.100, N7=5.300, N8=6.600 e N9=8.000). Ao atingir 10.000 XP, o personagem atinge o teto e todo XP subsequente converte-se em Gold na proporção de 10 XP para 1 Gold."
+      question: "Quanto XP preciso para cada nível?",
+      category: "Evolução",
+      docId: "sistema-de-evolucao",
+      answer: "N1 0 XP · N2 600 · N3 1.100 · N4 2.000 · N5 3.000 · N6 4.100 · N7 5.300 · N8 6.600 · N9 8.000 · N10 10.000 XP. Os níveis 1 e 2 dão 1 ponto de atributo, do 3 ao 9 dão 2 pontos, e o nível 10 dá 4."
     },
     {
       id: "faq-formulas-dano",
-      question: "Quais são as fórmulas de dano (Clássico e com Poderes)?",
+      question: "Quais são as fórmulas de dano?",
       category: "Combate",
-      docId: "formulas-dano-combate",
-      answer: "No Combate Clássico sem magia: Dano = ATK - DEF. No Combate com Poderes Ativos (Dano Composto), o cálculo baseia-se na escala do poder: (Nível + [ATK x 1.0]) x Crítico + Bônus de Dano; ou com base DEF: (Nível + [DEF x 0.6]) x Crítico + Bônus; ou com base HP: (Nível + [HP x 0.4]) x Crítico + Bônus. A Redução de Dano (RD) mitiga porcentagem antes da DEF."
+      docId: "calculo-de-dano",
+      answer: "Combate clássico: ATK − DEF = dano sofrido. Com poderes ativos: (NÍVEL + [ATK × 1]) × CRÍTICO + BÔNUS DE DANO; base DEF usa [DEF × 0,6]; base HP usa [HP × 0,4]. Se o poder não disser a base, use ATK."
     },
     {
-      id: "faq-oracoes-banners",
-      question: "Como funcionam as moedas e os Banners Sazonais?",
-      category: "Erário Celestial",
-      docId: "banner-e-prioridades",
-      answer: "Midnight City possui Golds (itens da loja e refinos de 50G), Contas Celestiais (100 contas = 1 oração) e Orações Celestiais. A Oração serve para atirar no Banner Sazonal rolando 1d20: tirar 20 natural garante um prêmio especial (arma, bênção ou artefato)."
+      id: "faq-rolagem",
+      question: "Onde e como rolo os dados?",
+      category: "Combate",
+      docId: "rolagem-de-dados",
+      answer: "As rolagens de combate e de testes continuam no Discord, na sua sala da aba \"rolador\" (com o número da sua ficha). Escreva o personagem e o motivo, use /roll e informe, por exemplo, 10d10 t5: 10 dados com dificuldade 5. Cada dado que atinge a dificuldade é um sucesso."
     },
     {
-      id: "faq-primeiro-jogo-novato",
-      question: "O que um novato deve fazer no primeiro dia de jogo?",
-      category: "Iniciação",
-      docId: "primeira-inscricao-jogo",
-      answer: "Crie uma cena de novato recém-chegado à Égide ou salvo por agentes veteranos. Ganhe XP seguro com turnos livres (10 XP a cada 40 palavras) ou missões verdes de evento. Não entre em combates reais antes do Nível 5 para evitar morte permanente. Ao atingir o Nível 1 com jogo aceito, solicite sua primeira ficha na Central."
+      id: "faq-limites-critico",
+      question: "Qual o limite de taxa crítica e de dano crítico?",
+      category: "Custos e limites",
+      docId: "custos-e-limites",
+      answer: "O limite de taxa crítica é 600% e o de dano crítico é 1200%. Cada +10% custa 1 atributo."
+    },
+    {
+      id: "faq-oracoes",
+      question: "Onde faço minhas orações nos banners?",
+      category: "Banners",
+      docId: "fichas-de-jogadores",
+      answer: "No Hub. Lá você converte Contas Celestiais em Orações, escolhe o banner e o prêmio pretendido, faz x1 ou x10 e acompanha o seu pity. Os detalhes estão na página Banners."
     }
   ]
 };

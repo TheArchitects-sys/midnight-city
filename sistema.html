@@ -3,16 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Sistemas & Guias — Terminal da Égide | MIDNIGHT CITY RPG</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.goatcounter.com; worker-src 'self' blob:; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Sistemas & Guias — Terminal da Égide | Midnight City RPG</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
   <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
   
   <!-- Meta & OpenGraph -->
-  <meta name="description" content="Terminal da Égide — Guias oficiais, regras de combate, tabelas de atributos e compêndio de sobrevivência de MIDNIGHT CITY RPG.">
-  <meta property="og:title" content="Sistemas & Guias — Terminal da Égide | MIDNIGHT CITY">
+  <meta name="description" content="Terminal da Égide — Guias oficiais, regras de combate, tabelas de atributos e compêndio de sobrevivência de Midnight City RPG.">
+  <link rel="canonical" href="https://thearchitects-sys.github.io/midnight-city/sistema.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Midnight City">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://thearchitects-sys.github.io/midnight-city/sistema.html">
+  <meta property="og:image" content="https://thearchitects-sys.github.io/midnight-city/assets/neotheon-premium/terminal-egide-fallback.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://thearchitects-sys.github.io/midnight-city/assets/neotheon-premium/terminal-egide-fallback.jpg">
+  <meta property="og:title" content="Sistemas & Guias — Terminal da Égide | Midnight City">
   <meta property="og:description" content="Consulta rápida de guias, tabelas de XP, fórmulas de dano e diretrizes da Ordem.">
-  <meta property="og:image" content="assets/valiria_mission.jpg">
   <meta name="theme-color" content="#050608">
 
   <!-- Google Fonts: Archivo (Títulos & Controles) + Source Sans 3 (Corpo & Tabelas) + Space Mono (Fórmulas) + Cinzel (Brand) -->
@@ -21,37 +30,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Cinzel:wght@700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Three.js 3D WebGL Engine (Procedural Mascot & Floating 3D Viewports) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            'gold-primary': '#d4af37',
-            'gold-light': '#f1d27a',
-            'gold-dim': '#8c6a2b',
-            'dark-bg': '#050608',
-            'dark-surface': '#0a0912',
-            'dark-veil': '#0f0e1a',
-            'crimson-pure': '#c82924',
-          }
-        }
-      }
-    }
-  </script>
 
   <!-- GSAP Animation Library & ScrollTrigger CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="sistema.css">
   <link rel="stylesheet" href="mobile.css">
+  <!-- Tailwind compilado (antes vinha do CDN, injetado no fim do head) -->
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body data-page="sistema" class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased">
 
@@ -61,7 +52,7 @@
     <a href="index.html" class="brand-badge">
       <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
       <div class="brand-text">
-        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-name">Midnight City</span>
         <span class="brand-sub">Égide de Avalon</span>
       </div>
     </a>
@@ -85,7 +76,7 @@
         <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
       </nav>
 
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-xs tracking-widest font-bold">
         DISCORD ↗
       </a>
 
@@ -107,27 +98,46 @@
     <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
     <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
     <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">ABRIR O HUB</a>
       <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
     </div>
   </div>
 
-        <div class="terminal-intro-block">
-          <!-- Selo Hermético Discreto da Égide -->
-          <div class="terminal-crest-icon" aria-hidden="true">
-            <svg viewBox="0 0 100 100" fill="none" class="w-10 h-10 mx-auto mb-2 opacity-80">
-              <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="3 3"/>
-              <circle cx="50" cy="50" r="38" stroke="#f1d27a" stroke-width="0.8"/>
-              <polygon points="50,15 80,72 20,72" stroke="#d4af37" stroke-width="0.8" fill="none"/>
-              <polygon points="50,85 20,28 80,28" stroke="#d4af37" stroke-width="0.8" fill="none"/>
-              <circle cx="50" cy="50" r="6" fill="#c82924"/>
-            </svg>
+  <main id="main-content" class="sistema-main">
+
+    <!-- ── HERO: TERMINAL DA ÉGIDE ── -->
+    <header class="sys-hero" id="sys-hero">
+      <div class="sys-hero-media" aria-hidden="true">
+        <picture>
+          <source srcset="assets/neotheon-premium/terminal-egide-1920.webp" media="(min-width: 1280px)" type="image/webp">
+          <source srcset="assets/neotheon-premium/terminal-egide-1280.webp" media="(min-width: 641px)" type="image/webp">
+          <source srcset="assets/neotheon-premium/terminal-egide-640.webp" type="image/webp">
+          <img src="assets/neotheon-premium/terminal-egide-fallback.jpg" alt="" class="sys-hero-img" fetchpriority="high">
+        </picture>
+        <div class="sys-hero-rays"></div>
+        <div class="sys-hero-crystal"></div>
+        <canvas class="sys-hero-dust" id="sys-hero-dust"></canvas>
+        <div class="sys-hero-vignette"></div>
+        <div class="sys-hero-grain"></div>
+      </div>
+
+      <div class="sys-hero-inner">
+        <div class="sys-hero-copy">
+          <div class="sys-hero-kicker" data-hero-in>
+            <span>Terminal da Égide</span>
+            <span class="sys-hero-sep" aria-hidden="true">/</span>
+            <span>Edição 2026</span>
           </div>
+          <h1 class="sys-hero-title">
+            <span class="sys-line"><span data-hero-line>Regras &amp; Sistemas</span></span>
+            <span class="sys-line"><span data-hero-line class="sys-gold">de Midnight City</span></span>
+          </h1>
+          <p class="sys-hero-lead" data-hero-in>
+            A bíblia do RPG, na íntegra: evolução, combate, bonificações, eventos, criação, missões fixas, fichas e mestiços. Busque uma regra pelo nome ou siga o guia de quem está chegando agora.
+          </p>
 
-          <!-- H1 Único e Descrição Oficial (Seção 5.1 e 14) -->
-          <h1 class="terminal-main-h1">Terminal da Égide</h1>
-          <p class="terminal-lead-desc">Aprenda a jogar ou consulte as regras do MIDNIGHT CITY.</p>
-
+          <div class="sys-hero-controls" data-hero-in>
           <!-- Barra de Busca Rápida Imediata (1ª Tela) -->
           <div class="terminal-search-wrapper" role="search">
             <label for="terminal-search-input" class="sr-only">Buscar nos guias e regras</label>
@@ -159,9 +169,20 @@
               <span>Consultar regras</span>
             </button>
           </div>
-        </div>
+          </div>
 
+          <ul class="sys-hero-stats" data-hero-in aria-label="Resumo do acervo">
+            <li><strong>10</strong><span>seções</span></li>
+            <li><strong>29</strong><span>regras completas</span></li>
+            <li><strong>39</strong><span>páginas do PDF, na íntegra</span></li>
+          </ul>
+        </div>
       </div>
+
+      <a href="#egide-terminal" class="sys-hero-scroll" aria-label="Ir para o conteúdo">
+        <span>Entrar no terminal</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
     </header>
 
     <!-- ==========================================================================
@@ -176,7 +197,7 @@
           <span class="presence-bubble-tag">ORIENTAÇÃO DA ÉGIDE</span>
           <button id="presence-close-bubble-btn" class="presence-bubble-close" aria-label="Fechar comentário">✕</button>
         </div>
-        <h4 id="janitor-bubble-title" class="presence-bubble-title">A Presença Aprisionada</h4>
+        <p id="janitor-bubble-title" class="presence-bubble-title">A Presença Aprisionada</p>
         <div id="janitor-bubble-quote" class="presence-bubble-quote">
           "Conte os sucessos primeiro."
         </div>
@@ -205,11 +226,11 @@
             <div class="presence-layered">
               <picture>
                 <source srcset="assets/neotheon-premium/presenca-orbe-256.webp" type="image/webp">
-                <img src="assets/neotheon-premium/presenca-orbe.png" class="presence-orb" alt="" width="80" height="80" loading="lazy">
+                <img src="assets/neotheon-premium/presenca-orbe.webp" class="presence-orb" alt="" width="80" height="80" loading="lazy">
               </picture>
               <picture>
                 <source srcset="assets/neotheon-premium/presenca-vassoura-256.webp" type="image/webp">
-                <img src="assets/neotheon-premium/presenca-vassoura.png" class="presence-broom" alt="" width="36" height="105" loading="lazy">
+                <img src="assets/neotheon-premium/presenca-vassoura.webp" class="presence-broom" alt="" width="36" height="105" loading="lazy">
               </picture>
             </div>
           </div>
@@ -281,7 +302,7 @@
             <div class="intro-banner-visual" aria-hidden="true">
               <div class="microfilm-frame">
                 <div class="microfilm-overlay"></div>
-                <img src="assets/cidadela_avalon_mj.png" alt="A Cidadela Oculta de Avalon sob o Véu" class="microfilm-img" loading="eager">
+                <img src="assets/cidadela_avalon_mj.webp" alt="A Cidadela Oculta de Avalon sob o Véu" class="microfilm-img" loading="eager">
                 <div class="microfilm-caption">
                   <span class="microfilm-label">MICROFILME REF. 84-A</span>
                   <span class="microfilm-sub">A CIDADELA OCULTA DE AVALON</span>
@@ -399,7 +420,14 @@
 
               <!-- Visão do Diretório (Lista de Documentos) -->
               <section id="terminal-category-view" class="terminal-category-view">
-                <header class="category-hero-header">
+                <header class="category-hero-header archive-masthead">
+                  <div class="archive-masthead-media" aria-hidden="true">
+                    <picture>
+                      <source srcset="assets/neotheon-premium/terminal-egide-1280.webp" media="(min-width: 641px)" type="image/webp">
+                      <source srcset="assets/neotheon-premium/terminal-egide-640.webp" type="image/webp">
+                      <img src="assets/neotheon-premium/terminal-egide-fallback.jpg" alt="" loading="lazy" decoding="async">
+                    </picture>
+                  </div>
                   <span id="cat-code-tag" class="category-code-tag">SEÇÃO 01</span>
                   <h2 id="cat-name-title" class="category-name-title">Começar e criar ficha</h2>
                   <p id="cat-desc-text" class="category-description">Papéis táticos de equipe, primeiras cenas, criação e pedido de ficha de novato.</p>
@@ -412,17 +440,26 @@
 
               <!-- Leitor de Documento Completo -->
               <article id="terminal-doc-reader" class="terminal-document-reader" style="display: none;" tabindex="-1">
-                <nav class="reader-breadcrumb" aria-label="Breadcrumb">
-                  <a id="reader-breadcrumb-link" href="#">← Voltar ao Diretório</a>
-                  <span id="reader-breadcrumb-current" class="reader-breadcrumb-sep">/ Documento</span>
-                </nav>
+                <header class="reader-masthead archive-masthead">
+                  <div class="archive-masthead-media" aria-hidden="true">
+                    <picture>
+                      <source srcset="assets/neotheon-premium/terminal-egide-1280.webp" media="(min-width: 641px)" type="image/webp">
+                      <source srcset="assets/neotheon-premium/terminal-egide-640.webp" type="image/webp">
+                      <img src="assets/neotheon-premium/terminal-egide-fallback.jpg" alt="" loading="lazy" decoding="async">
+                    </picture>
+                  </div>
+                  <nav class="reader-breadcrumb" aria-label="Breadcrumb">
+                    <a id="reader-breadcrumb-link" href="#">← Voltar ao Diretório</a>
+                    <span id="reader-breadcrumb-current" class="reader-breadcrumb-sep">/ Documento</span>
+                  </nav>
 
-                <h2 id="reader-doc-title" class="reader-title">Título do Documento</h2>
-                <div id="reader-doc-subtitle" class="reader-subtitle">Subtítulo explicativo</div>
+                  <h2 id="reader-doc-title" class="reader-title">Título do Documento</h2>
+                  <div id="reader-doc-subtitle" class="reader-subtitle">Subtítulo explicativo</div>
+                </header>
 
                 <div class="reader-meta-bar">
                   <span id="reader-doc-source">Fonte: Manual do Novato</span>
-                  <button id="reader-copy-link-btn" class="talamasca-btn-consult text-[11px] py-1 px-3" title="Copiar link direto para este documento">
+                  <button id="reader-copy-link-btn" class="talamasca-btn-consult text-xs py-1 px-3" title="Copiar link direto para este documento">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                     <span>Copiar Link</span>
                   </button>
@@ -470,11 +507,11 @@
           <div class="presence-svg-frame" aria-hidden="true">
             <picture>
               <source srcset="assets/neotheon-premium/presenca-completa-256.webp" type="image/webp">
-              <img src="assets/neotheon-premium/presenca-completa.png" alt="" width="60" height="60" class="w-14 h-14 object-contain mx-auto" loading="lazy">
+              <img src="assets/neotheon-premium/presenca-completa.webp" alt="" width="60" height="60" class="w-14 h-14 object-contain mx-auto" loading="lazy">
             </picture>
           </div>
           <div class="presence-intro-text">
-            <p><strong>Orientação de Consulta às Regras do MIDNIGHT CITY.</strong></p>
+            <p><strong>Orientação de Consulta às Regras do Midnight City.</strong></p>
             <p>Posso indicar onde encontrar as regras. Selecione um assunto pré-cadastrado abaixo ou pesquise no arquivo.</p>
           </div>
         </div>
@@ -505,17 +542,14 @@
   <!-- ── 6. GLOBAL FOOTER ── -->
   <footer class="neotheon-global-footer">
     <div class="footer-container">
-      
       <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
       <div class="footer-grid">
-        
-        <!-- Column 1: Brand, Crest & Lore -->
         <div class="footer-brand-col">
           <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
             <div class="footer-brand-info">
-              <span class="footer-brand-title">MIDNIGHT CITY</span>
-              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+              <span class="footer-brand-title">Midnight City</span>
+              <span class="footer-brand-sub">Égide de Avalon · Temporada 2</span>
             </div>
           </div>
           <p class="footer-lore-quote">
@@ -527,9 +561,8 @@
           </div>
         </div>
 
-        <!-- Column 2: O Universo & Crônicas -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <h4 class="footer-nav-heading">✦ O Universo</h4>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
@@ -539,68 +572,60 @@
           </ul>
         </div>
 
-        <!-- Column 3: Diretrizes & Sistema -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <h4 class="footer-nav-heading">✦ Sistema & Jogo</h4>
           <ul class="footer-links-list">
-            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia do Novato</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
             <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
-            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="banners.html" class="footer-nav-link">Banners & Orações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente</a></li>
             <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
           </ul>
         </div>
 
-        <!-- Column 4: QG & Comunidade -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <h4 class="footer-nav-heading">✦ Comunidade</h4>
           <ul class="footer-links-list">
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
-                <span>Servidor Discord Oficial</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Comunidade Yoble (309183)</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Mesas de Sexta no Roll20</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Inscrições de Missões</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
+            <li><a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white"><span>Hub Midnight City (fichas, loja, orações)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Discord oficial (inscrições)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Comunidade Yoble</span><span class="text-xs">↗</span></a></li>
+            <li><a href="aviso-legal.html" class="footer-nav-link">Aviso legal & remoção de conteúdo</a></li>
           </ul>
         </div>
-
       </div>
 
-      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <!-- Aviso legal (alta visibilidade) -->
+      <div class="footer-legal-callout" role="note" aria-label="Aviso legal">
+        <div class="footer-legal-badge-row">
+          <span class="footer-legal-pill">⚖ Aviso legal</span>
+          <span class="footer-legal-pill">Obra de fã · sem fins lucrativos</span>
+          <span class="footer-legal-pill">Conteúdo +18</span>
+        </div>
+        <div class="footer-legal-title">Midnight City é uma fanfic coletiva, gratuita e sem fins lucrativos</div>
+        <p class="footer-legal-text">
+          <strong>Midnight City</strong> é um RPG de texto amador feito por fãs para entretenimento e escrita criativa. <strong>Não vendemos nada</strong>: não há cobrança, assinatura, doação obrigatória nem venda de moedas ou itens por dinheiro real. Gold, Conta Celestial e Orações são moedas fictícias, sem valor fora do jogo, e não podem ser compradas, vendidas ou trocadas por dinheiro. Personagens, nomes e mitologias citados, além das imagens de referência (<em>photoplayers / faceclaims</em>), pertencem aos seus respectivos autores e detentores, que <strong>não têm vínculo com o projeto nem o endossam</strong>. Se você é titular de algum conteúdo exibido aqui e quer que ele seja removido, <a href="aviso-legal.html#remocao" class="text-[#f1d27a] underline hover:text-white">veja como pedir a remoção</a>: atendemos sem burocracia.
+        </p>
+      </div>
+
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
-          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+          © 2026 Comunidade Midnight City. Os textos originais pertencem aos seus autores; as obras e marcas de terceiros pertencem aos seus titulares.
         </div>
         <div class="footer-disclaimer">
-          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+          <a href="aviso-legal.html" class="underline hover:text-white">Aviso legal, termos de uso e privacidade</a>
         </div>
       </div>
-
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="content/sistema/sistema_data.js"></script>
   <script src="sistema.js"></script>
+  <script src="sys-hero.js" defer></script>
   <script src="app.js"></script>
   <script src="mobile.js" defer></script>
+  <script src="legal.js" defer></script>
+  <script src="analytics.js" defer></script>
 </body>
 </html>

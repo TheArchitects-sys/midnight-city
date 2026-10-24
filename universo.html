@@ -3,16 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>UNIVERSO & SEASON 1 — MIDNIGHT CITY | Égide de Avalon</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.goatcounter.com; worker-src 'self' blob:; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>UNIVERSO & SEASON 1 — Midnight City | Égide de Avalon</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
   <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
   
   <!-- Meta & OpenGraph -->
   <meta name="description" content="Explore a experiência cinematográfica de Midnight City: Londres Sob o Véu, a descida monumental para a Égide, o Conselho de Mármore, o Astrolábio Cósmico e as crônicas da Season 1.">
-  <meta property="og:title" content="UNIVERSO & SEASON 1 — MIDNIGHT CITY">
+  <link rel="canonical" href="https://thearchitects-sys.github.io/midnight-city/universo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Midnight City">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://thearchitects-sys.github.io/midnight-city/universo.html">
+  <meta property="og:image" content="https://thearchitects-sys.github.io/midnight-city/assets/banner_londres_night.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://thearchitects-sys.github.io/midnight-city/assets/banner_londres_night.png">
+  <meta property="og:title" content="UNIVERSO & SEASON 1 — Midnight City">
   <meta property="og:description" content="Um mundo maior do que uma campanha. Da Londres oculta ao colapso do Submundo.">
-  <meta property="og:image" content="assets/banner_londres_night.png">
   <meta name="theme-color" content="#020203">
 
   <!-- Google Fonts: Cinzel & Cormorant Garamond -->
@@ -20,12 +29,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- GSAP & ScrollTrigger CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
 
   <!-- Estilos Globais do Projeto -->
   <link rel="stylesheet" href="styles.css">
@@ -33,6 +40,8 @@
   <!-- Módulo Isolado de Estilos de Luxo Universo -->
   <link rel="stylesheet" href="universo.css">
   <link rel="stylesheet" href="mobile.css">
+  <!-- Tailwind compilado (antes vinha do CDN, injetado no fim do head) -->
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="universo-page">
 
@@ -44,7 +53,7 @@
     <a href="index.html" class="brand-badge">
       <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
       <div class="brand-text">
-        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-name">Midnight City</span>
         <span class="brand-sub">Égide de Avalon</span>
       </div>
     </a>
@@ -68,7 +77,7 @@
         <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
       </nav>
 
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-xs tracking-widest font-bold">
         DISCORD ↗
       </a>
 
@@ -90,7 +99,8 @@
     <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
     <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
     <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">ABRIR O HUB</a>
       <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
     </div>
   </div>
@@ -101,6 +111,7 @@
          ATO I — ABERTURA: LONDRES SOB A TEMPESTADE ARCANA (HERO PROCEDURAL COM CHUVA)
          ========================================================================== -->
     <section id="hero" class="uni-hero-viewport" aria-label="Abertura do Universo: Tempestade Arcana sobre Londres">
+      <div class="uni-hero-painting" aria-hidden="true"></div>
       <canvas id="uni-hero-canvas" class="uni-hero-canvas"></canvas>
       <div class="uni-hero-overlay"></div>
       <div class="uni-hero-content">
@@ -116,11 +127,11 @@
           O mundo mortal caminha cego pelas ruas de Londres. Mas sob a névoa fria e a chuva inclemente, deuses respiram, pactos são cobrados e a Égide vigia o que não pode ser revelado.
         </p>
         <div class="flex flex-wrap items-center gap-3 text-xs font-cinzel uppercase tracking-wider">
-          <a href="#proposta" class="btn-gold px-6 py-3 rounded text-[11px] font-bold tracking-widest inline-flex items-center gap-2">
+          <a href="#proposta" class="btn-gold px-6 py-3 rounded text-xs font-bold tracking-widest inline-flex items-center gap-2">
             <span>EXPLORAR O CENÁRIO</span>
             <span>↓</span>
           </a>
-          <a href="#londres" class="px-5 py-3 rounded border border-white/20 bg-white/5 hover:border-[#d4af37] hover:text-[#f1d27a] transition-all text-[11px] tracking-widest text-[#cfc7b4] inline-flex items-center gap-2">
+          <a href="#londres" class="px-5 py-3 rounded border border-white/20 bg-white/5 hover:border-[#d4af37] hover:text-[#f1d27a] transition text-xs tracking-widest text-[#cfc7b4] inline-flex items-center gap-2">
             <span>LONDRES SOB O VÉU</span>
             <span>➔</span>
           </a>
@@ -134,7 +145,7 @@
     <section id="proposta" class="uni-section-proposta" aria-label="Filosofia de jogo">
       <div class="uni-proposta-card">
         <div class="text-center mb-6">
-          <span class="text-[11px] font-mono-tech uppercase tracking-[0.35em] text-[#d4af37]">
+          <span class="text-xs font-mono-tech uppercase tracking-[0.35em] text-[#d4af37]">
             ✦ FILOSOFIA & EXPERIÊNCIA DE JOGO ✦
           </span>
           <h2 class="font-cinzel-title text-2xl sm:text-3xl md:text-4xl font-black text-white mt-2 uppercase">
@@ -165,7 +176,7 @@
     <section id="londres" class="uni-section-urban" aria-label="Londres Sob o Véu">
       
       <div class="max-w-4xl mx-auto text-center mb-12">
-        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+        <span class="text-xs font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
           ✦ EXPLORAÇÃO URBANA INTERATIVA ✦
         </span>
         <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-6 uppercase">
@@ -189,7 +200,7 @@
 
       <!-- Interface da Cidade com Pinos Interativos -->
       <div class="uni-urban-wrapper" aria-label="Mapa visual de Londres sob o Véu">
-        <img src="assets/londres_panorama_mj.png" alt="Panorama urbano de Londres sob o Véu com a névoa e torres de Canary Wharf" class="uni-urban-img" loading="lazy">
+        <img src="assets/londres_panorama_mj.webp" alt="Panorama urbano de Londres sob o Véu com a névoa e torres de Canary Wharf" class="uni-urban-img" loading="lazy">
         <div class="uni-urban-vignette"></div>
 
         <!-- Hotspot 1: The Crossroads (Soho) -->
@@ -243,7 +254,7 @@
         <div id="descent-darkness" class="uni-descent-darkness"></div>
 
         <!-- Camada do Grande Hall de Avalon (Surge Monumental com Iluminação Dourada) -->
-        <img id="descent-hall" src="assets/cidadela_avalon_mj.png" alt="O Grande Hall de Avalon e a arquitetura monumental subterrânea" class="uni-descent-layer-hall" loading="lazy">
+        <img id="descent-hall" src="assets/cidadela_avalon_mj.webp" alt="O Grande Hall de Avalon e a arquitetura monumental subterrânea" class="uni-descent-layer-hall" loading="lazy">
 
         <!-- Indicador de Profundidade Lateral Chanfrado -->
         <div class="uni-depth-meter" aria-hidden="true">
@@ -264,11 +275,11 @@
          ATO IV — A ÉGIDE DE AVALON & OS 9 OFÍCIOS (DIAGRAMAÇÃO EDITORIAL)
          ========================================================================== -->
     <section id="egide" class="uni-section-egide" aria-label="A Égide de Avalon">
-      <div class="uni-egide-backdrop" style="background-image: url('assets/cidadela_avalon_mj.png');"></div>
+      <div class="uni-egide-backdrop" style="background-image: url('assets/cidadela_avalon_mj.webp');"></div>
 
       <div class="uni-egide-content">
         <div class="max-w-4xl mx-auto text-center mb-10">
-          <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+          <span class="text-xs font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
             ✦ A ORDEM NAS PROFUNDEZAS ✦
           </span>
           <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4 uppercase">
@@ -450,7 +461,7 @@
          ========================================================================== -->
     <section id="conselho" class="uni-section-council" aria-label="Os Tronos do Conselho de Mármore">
       <div class="max-w-4xl mx-auto text-center mb-10">
-        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+        <span class="text-xs font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
           ✦ AS SETE CADEIRAS SOBERANAS ✦
         </span>
         <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4 uppercase">
@@ -463,7 +474,7 @@
 
       <!-- Interface dos Tronos com Foco e Iluminação -->
       <div class="uni-council-interface" aria-label="Mesa do Conselho de Mármore">
-        <img src="assets/tronos_conselho_mj.png" alt="A Sala Monumental do Conselho de Mármore com os sete tronos de julgamento" class="uni-council-bg" loading="lazy">
+        <img src="assets/tronos_conselho_mj.webp" alt="A Sala Monumental do Conselho de Mármore com os sete tronos de julgamento" class="uni-council-bg" loading="lazy">
 
         <!-- Cadeira 1: A Lança - Sr. Eric Bauman -->
         <button class="uni-seat-spot" style="top: 45%; left: 16%;" data-seat-id="bauman" aria-label="Cadeira da Lança: Sr. Eric Bauman">
@@ -556,7 +567,7 @@
       </div>
 
       <div class="uni-cosmic-header">
-        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
+        <span class="text-xs font-mono-tech uppercase tracking-[0.4em] text-[#d4af37]">
           ✦ HIERARQUIA PRIMORDIAL DO COSMO ✦
         </span>
         <h2 class="font-cinzel-title text-3xl sm:text-4xl md:text-5xl font-black text-white mt-2 mb-4 uppercase">
@@ -794,9 +805,9 @@
           
           <!-- Stack de Imagens Dinâmicas em Cross-Fade -->
           <div class="uni-cinema-bg-stack">
-            <img src="assets/crossroads_soho_mj.png" alt="O Rito do Vinho no clube de Dionísio" class="uni-cinema-bg-img is-active" loading="lazy">
-            <img src="assets/jonathan provocando.png" alt="Jonathan provocando Selene e Rowan" class="uni-cinema-bg-img" loading="lazy">
-            <img src="assets/eric e a condenacao.png" alt="Bauman empunhando a Lança das Almas" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/crossroads_soho_mj.webp" alt="O Rito do Vinho no clube de Dionísio" class="uni-cinema-bg-img is-active" loading="lazy">
+            <img src="assets/jonathan provocando.webp" alt="Jonathan provocando Selene e Rowan" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/eric e a condenacao.webp" alt="Bauman empunhando a Lança das Almas" class="uni-cinema-bg-img" loading="lazy">
           </div>
 
           <div id="scrolly-overlay-cap1" class="uni-cinema-overlay-tint"></div>
@@ -898,11 +909,11 @@
           
           <!-- Stack de Imagens Dinâmicas do Capítulo 2 -->
           <div class="uni-cinema-bg-stack">
-            <img src="assets/despertar de nyx.png" alt="O Despertar da Deusa Primordial Nyx" class="uni-cinema-bg-img is-active" loading="lazy">
-            <img src="assets/o assassino no parque.png" alt="David Sanitas e o massacre de civis no parque" class="uni-cinema-bg-img" loading="lazy">
-            <img src="assets/as rosas em chamas.png" alt="Lukas Ekantor e o incêndio da estufa no pub" class="uni-cinema-bg-img" loading="lazy">
-            <img src="assets/noite caida.png" alt="Nyx revelada na dimensão de bolso" class="uni-cinema-bg-img" loading="lazy">
-            <img src="assets/legio fulminata.png" alt="A Legio Fulminata e o colapso do Submundo" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/despertar de nyx.webp" alt="O Despertar da Deusa Primordial Nyx" class="uni-cinema-bg-img is-active" loading="lazy">
+            <img src="assets/o assassino no parque.webp" alt="David Sanitas e o massacre de civis no parque" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/as rosas em chamas.webp" alt="Lukas Ekantor e o incêndio da estufa no pub" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/noite caida.webp" alt="Nyx revelada na dimensão de bolso" class="uni-cinema-bg-img" loading="lazy">
+            <img src="assets/legio fulminata.webp" alt="A Legio Fulminata e o colapso do Submundo" class="uni-cinema-bg-img" loading="lazy">
           </div>
 
           <div id="scrolly-overlay-cap2" class="uni-cinema-overlay-tint"></div>
@@ -988,7 +999,7 @@
          ========================================================================== -->
     <section class="uni-section-outro" aria-label="Encerramento e Convocação">
       <div class="max-w-4xl mx-auto">
-        <span class="text-[11px] font-mono-tech uppercase tracking-[0.4em] text-[#d4af37] block mb-5">
+        <span class="text-xs font-mono-tech uppercase tracking-[0.4em] text-[#d4af37] block mb-5">
           ✦ O EQUILÍBRIO AGUARDA SUA ESCOLHA ✦
         </span>
         <h2 class="uni-outro-call font-cinzel-title">
@@ -998,7 +1009,7 @@
           <a href="index.html" class="btn-gold px-9 py-4 rounded-full text-xs font-cinzel tracking-[0.25em] font-bold shadow-2xl">
             VER A TEMPORADA 2 ↗
           </a>
-          <a href="operacoes.html" class="px-9 py-4 rounded-full text-xs font-cinzel tracking-[0.25em] font-bold border border-white/20 hover:border-[#d4af37] text-white hover:text-[#f8e48b] transition-all shadow-xl">
+          <a href="operacoes.html" class="px-9 py-4 rounded-full text-xs font-cinzel tracking-[0.25em] font-bold border border-white/20 hover:border-[#d4af37] text-white hover:text-[#f8e48b] transition shadow-xl">
             EXPLORAR OPERAÇÕES
           </a>
         </div>
@@ -1012,7 +1023,7 @@
   <aside id="uni-drawer" class="uni-drawer" aria-labelledby="uni-drawer-title" role="dialog" aria-modal="true">
     <div class="uni-drawer-header">
       <div>
-        <span id="uni-drawer-category" class="text-[10px] font-mono-tech uppercase tracking-widest text-[#d4af37] block">DETALHES</span>
+        <span id="uni-drawer-category" class="text-xs font-mono-tech uppercase tracking-widest text-[#d4af37] block">DETALHES</span>
         <h3 id="uni-drawer-title" class="font-cinzel-title text-lg font-bold text-white">Título</h3>
       </div>
       <button id="uni-drawer-close" class="uni-drawer-close" aria-label="Fechar painel lateral">✕</button>
@@ -1032,21 +1043,18 @@
   </div>
 
   <!-- ==========================================================================
-       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL MIDNIGHT CITY
+       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL Midnight City
        ========================================================================== -->
   <footer class="neotheon-global-footer">
     <div class="footer-container">
-      
       <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
       <div class="footer-grid">
-        
-        <!-- Column 1: Brand, Crest & Lore -->
         <div class="footer-brand-col">
           <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
             <div class="footer-brand-info">
-              <span class="footer-brand-title">MIDNIGHT CITY</span>
-              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+              <span class="footer-brand-title">Midnight City</span>
+              <span class="footer-brand-sub">Égide de Avalon · Temporada 2</span>
             </div>
           </div>
           <p class="footer-lore-quote">
@@ -1058,9 +1066,8 @@
           </div>
         </div>
 
-        <!-- Column 2: O Universo & Crônicas -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <h4 class="footer-nav-heading">✦ O Universo</h4>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
@@ -1070,66 +1077,57 @@
           </ul>
         </div>
 
-        <!-- Column 3: Diretrizes & Sistema -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <h4 class="footer-nav-heading">✦ Sistema & Jogo</h4>
           <ul class="footer-links-list">
-            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia do Novato</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
             <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
-            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="banners.html" class="footer-nav-link">Banners & Orações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente</a></li>
             <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
           </ul>
         </div>
 
-        <!-- Column 4: QG & Comunidade -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <h4 class="footer-nav-heading">✦ Comunidade</h4>
           <ul class="footer-links-list">
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
-                <span>Servidor Discord Oficial</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Comunidade Yoble (309183)</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Mesas de Sexta no Roll20</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Inscrições de Missões</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
+            <li><a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white"><span>Hub Midnight City (fichas, loja, orações)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Discord oficial (inscrições)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Comunidade Yoble</span><span class="text-xs">↗</span></a></li>
+            <li><a href="aviso-legal.html" class="footer-nav-link">Aviso legal & remoção de conteúdo</a></li>
           </ul>
         </div>
-
       </div>
 
-      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <!-- Aviso legal (alta visibilidade) -->
+      <div class="footer-legal-callout" role="note" aria-label="Aviso legal">
+        <div class="footer-legal-badge-row">
+          <span class="footer-legal-pill">⚖ Aviso legal</span>
+          <span class="footer-legal-pill">Obra de fã · sem fins lucrativos</span>
+          <span class="footer-legal-pill">Conteúdo +18</span>
+        </div>
+        <div class="footer-legal-title">Midnight City é uma fanfic coletiva, gratuita e sem fins lucrativos</div>
+        <p class="footer-legal-text">
+          <strong>Midnight City</strong> é um RPG de texto amador feito por fãs para entretenimento e escrita criativa. <strong>Não vendemos nada</strong>: não há cobrança, assinatura, doação obrigatória nem venda de moedas ou itens por dinheiro real. Gold, Conta Celestial e Orações são moedas fictícias, sem valor fora do jogo, e não podem ser compradas, vendidas ou trocadas por dinheiro. Personagens, nomes e mitologias citados, além das imagens de referência (<em>photoplayers / faceclaims</em>), pertencem aos seus respectivos autores e detentores, que <strong>não têm vínculo com o projeto nem o endossam</strong>. Se você é titular de algum conteúdo exibido aqui e quer que ele seja removido, <a href="aviso-legal.html#remocao" class="text-[#f1d27a] underline hover:text-white">veja como pedir a remoção</a>: atendemos sem burocracia.
+        </p>
+      </div>
+
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
-          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+          © 2026 Comunidade Midnight City. Os textos originais pertencem aos seus autores; as obras e marcas de terceiros pertencem aos seus titulares.
         </div>
         <div class="footer-disclaimer">
-          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+          <a href="aviso-legal.html" class="underline hover:text-white">Aviso legal, termos de uso e privacidade</a>
         </div>
       </div>
-
     </div>
   </footer>
 
   <!-- Script Isolado do Universo -->
   <script src="universo.js" defer></script>
   <script src="mobile.js" defer></script>
+  <script src="legal.js" defer></script>
+  <script src="analytics.js" defer></script>
 </body>
 </html>

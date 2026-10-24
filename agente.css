@@ -44,46 +44,30 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
+  /* Vinheta de papel envelhecido no lugar da grade genérica */
+  background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
   pointer-events: none;
-  opacity: 0.7;
 }
 
-.ag-hero-hud-card {
-  background: rgba(10, 11, 16, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+/* Atalhos do hero: as ações reais da página, acima da dobra */
+.ag-hero-shortcuts {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem;
 }
-
-.ag-hero-hud-card:hover {
-  border-color: rgba(212, 175, 55, 0.35);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.6);
+@media (min-width: 1024px) { .ag-hero-shortcuts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ag-shortcut {
+  display: flex; flex-direction: column; gap: .3rem;
+  padding: 1rem 1.15rem; min-height: 44px; border-radius: 6px; text-decoration: none;
+  background: rgba(10, 11, 16, 0.78); border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color .2s ease, border-color .2s ease, transform .16s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
-.ag-hero-hud-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.ag-hero-hud-card:hover::after {
-  opacity: 1;
+.ag-shortcut--primary { background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.4); }
+.ag-shortcut-label { font-family: 'Cinzel', Georgia, serif; font-weight: 700; font-size: 1.1rem; color: #f4efe4; }
+.ag-shortcut--primary .ag-shortcut-label { color: #f1d27a; }
+.ag-shortcut-sub { font-size: .85rem; color: #b9b2a2; }
+.ag-shortcut:active { transform: scale(0.97); }
+.ag-shortcut:focus-visible { outline: 2px solid #f1d27a; outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .ag-shortcut:hover { border-color: rgba(212, 175, 55, 0.55); background: rgba(212, 175, 55, 0.14); }
 }
 
 /* ==========================================================================
@@ -101,7 +85,7 @@
   justify-content: space-between;
   padding: 1.5rem;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
 }
 
@@ -198,7 +182,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .theme-gold .ag-terminal-btn {
@@ -248,7 +232,7 @@
   background-color: #06070a;
   background-image: 
     linear-gradient(180deg, rgba(6, 8, 12, 0.72) 0%, rgba(6, 8, 12, 0.88) 100%),
-    url('assets/londres_panorama_mj.png');
+    url('assets/londres_panorama_mj.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -305,7 +289,7 @@
 /* Marcadores no Mapa */
 .district-pin {
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .district-pin:hover, .district-pin.active {
@@ -314,7 +298,7 @@
 
 /* Badge de Risco */
 .ag-badge-risk {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 4px;
@@ -357,13 +341,13 @@
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: all 0.4s ease;
+  transition: 0.4s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .ag-chart-area {
   fill: url(#chart-gradient);
   opacity: 0.35;
-  transition: all 0.4s ease;
+  transition: 0.4s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .ag-chart-dot {
@@ -470,7 +454,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 0.85rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   position: relative;
   overflow: hidden;
 }
@@ -507,3 +491,64 @@
   box-shadow: 0 12px 25px -5px rgba(168, 85, 247, 0.2);
 }
 
+
+/* ==========================================================================
+   RÁDIO VÉU — FOFOCA DA SEMANA (out/2026)
+   Voz de tabloide, manchete grande, ticker correndo e CTA para o Discord.
+   ========================================================================== */
+.gossip-section { position: relative; }
+.gossip-ticker { overflow: hidden; border-block: 1px solid rgba(241, 210, 122, .22); background: linear-gradient(90deg, rgba(200, 41, 36, .14), rgba(212, 175, 55, .08), rgba(200, 41, 36, .14)); margin-bottom: 2rem; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.gossip-ticker-track { display: flex; gap: 3rem; width: max-content; padding: .7rem 0; animation: gossipTicker 48s linear infinite; font: 700 .86rem/1 'Plus Jakarta Sans', system-ui, sans-serif; color: #f3ead6; white-space: nowrap; }
+.gossip-ticker:hover .gossip-ticker-track { animation-play-state: paused; }
+@keyframes gossipTicker { to { transform: translateX(-50%); } }
+
+.gossip-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+.gossip-kicker { display: inline-flex; align-items: center; gap: .5rem; font: 800 .74rem/1 'JetBrains Mono', monospace; letter-spacing: .16em; text-transform: uppercase; color: #ff6b6b; }
+.gossip-live { width: 8px; height: 8px; border-radius: 50%; background: #ff3b3b; box-shadow: 0 0 0 0 rgba(255, 59, 59, .7); animation: gossipLive 1.6s infinite; }
+@keyframes gossipLive { 70% { box-shadow: 0 0 0 10px rgba(255, 59, 59, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0); } }
+.gossip-title { font-family: 'Cinzel', serif; font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.15; color: #fff; margin-top: .55rem; }
+.gossip-sub { font: 400 1rem/1.6 'Plus Jakarta Sans', sans-serif; color: #bdb5a6; max-width: 60ch; margin-top: .5rem; }
+.gossip-more { font: 700 .85rem/1 'Plus Jakarta Sans', sans-serif; color: #f1d27a; text-decoration: none; padding: .7rem 1rem; border: 1px solid rgba(212, 175, 55, .4); border-radius: 10px; transition: background .2s; }
+.gossip-more:hover { background: rgba(212, 175, 55, .12); }
+
+.gossip-grid { display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: auto auto; gap: 1rem; }
+.gossip-card { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: .8rem; padding: 1.5rem; border-radius: 18px; background: #0d0f15; border: 1px solid rgba(255, 255, 255, .08); transition: transform .3s cubic-bezier(.2,.9,.25,1), border-color .3s; }
+.gossip-card:hover { transform: translateY(-4px); border-color: rgba(241, 210, 122, .35); }
+.gossip-card--lead { grid-row: span 2; padding: clamp(1.5rem, 3vw, 2.4rem); background: radial-gradient(120% 90% at 0% 0%, rgba(200, 41, 36, .28), transparent 55%), linear-gradient(180deg, #14090c, #0c0d13); border-color: rgba(200, 41, 36, .4); }
+.gossip-card--lead::after { content: 'EXCLUSIVO'; position: absolute; right: -2.6rem; top: 1.4rem; rotate: 35deg; padding: .3rem 3rem; background: #c82924; color: #fff; font: 900 .6875rem/1 'JetBrains Mono', monospace; letter-spacing: .2em; }
+.gossip-card.cairo { background: radial-gradient(120% 90% at 100% 0%, rgba(212, 175, 55, .18), transparent 55%), #0d0f15; }
+.gossip-card.merlinianos { background: radial-gradient(120% 90% at 100% 0%, rgba(147, 112, 219, .2), transparent 55%), #0d0f15; }
+.gossip-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; font: 600 .72rem/1 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: #8e8778; }
+.gossip-tag { padding: .35rem .55rem; border-radius: 6px; font-weight: 800; letter-spacing: .08em; }
+.tag-hot { background: rgba(200, 41, 36, .2); color: #ff8a80; border: 1px solid rgba(255, 107, 107, .35); }
+.tag-gold { background: rgba(212, 175, 55, .14); color: #f1d27a; border: 1px solid rgba(212, 175, 55, .35); }
+.tag-violet { background: rgba(147, 112, 219, .16); color: #c9b6ff; border: 1px solid rgba(147, 112, 219, .35); }
+.gossip-card h3 { font-family: 'Cinzel', serif; font-weight: 800; font-size: 1.25rem; line-height: 1.2; color: #fff; text-wrap: balance; }
+.gossip-card--lead h3 { font-size: clamp(1.6rem, 2.8vw, 2.3rem); }
+.gossip-card h3 em { color: #ff8a80; font-style: italic; }
+.gossip-card p { font: 400 .98rem/1.7 'Plus Jakarta Sans', sans-serif; color: #d9d2c4; }
+.gossip-card--lead p { font-size: 1.05rem; max-width: 60ch; }
+.gossip-card p strong { color: #fff; }
+.gossip-versus { display: flex; align-items: center; justify-content: center; gap: .8rem; padding: .8rem; border-radius: 12px; background: rgba(255, 255, 255, .04); font: 800 1rem/1 'Cinzel', serif; color: #fff; }
+.gossip-versus b { font: 900 .75rem/1 'JetBrains Mono', monospace; color: #c9b6ff; padding: .35rem .5rem; border-radius: 6px; background: rgba(147, 112, 219, .2); }
+.gossip-foot { margin-top: auto; padding-top: .9rem; border-top: 1px solid rgba(255, 255, 255, .07); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; }
+.gossip-foot a { font: 700 .82rem/1 'Plus Jakarta Sans', sans-serif; color: #f1d27a; text-decoration: none; }
+.gossip-foot a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.gossip-status { display: inline-flex; align-items: center; gap: .45rem; font: 800 .72rem/1 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.gossip-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.gossip-status.red { color: #ff6b6b; } .gossip-status.amber { color: #f5b942; } .gossip-status.violet { color: #c9b6ff; }
+@media (max-width: 900px) { .gossip-grid { grid-template-columns: 1fr; } .gossip-card--lead { grid-row: auto; } }
+@media (prefers-reduced-motion: reduce) { .gossip-ticker-track, .gossip-live, .gossip-status::before { animation: none; } }
+.gossip-quote { margin-top: .4rem; padding: 1rem 1.2rem; border-left: 3px solid #c82924; background: rgba(0,0,0,.25); border-radius: 0 12px 12px 0; font: italic 600 1.15rem/1.45 'Cormorant Garamond', Georgia, serif; color: #f3ead6; }
+.gossip-quote cite { display: block; margin-top: .4rem; font: 500 .78rem/1.3 'Plus Jakarta Sans', sans-serif; font-style: normal; color: #a59e92; }
+
+/* Rótulos do mapa de Londres: nunca menores que 11px na tela (o SVG encolhe no celular) */
+.ag-london-map text[font-size="8"], .ag-london-map text[font-size="9"], .ag-london-map text[font-size="10"] { font-size: 11px; }
+@media (max-width: 640px) {
+  .ag-london-map text[font-size="8"], .ag-london-map text[font-size="10"], .ag-london-map text[font-size="11"] { font-size: 21px; }
+  /* "Índice: N" é o índice de corrupção que o painel do distrito já mostra com barra */
+  .ag-london-map text[font-size="9"] { display: none; }
+}
+
+/* CTA do rodapé de cada boletim: alvo de toque de 44px */
+.gossip-foot a { display: inline-flex; align-items: center; min-height: 44px; }

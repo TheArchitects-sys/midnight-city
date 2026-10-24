@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /midnight-city/.claude/
+
+Sitemap: https://thearchitects-sys.github.io/midnight-city/sitemap.xml

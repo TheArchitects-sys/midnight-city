@@ -1,5 +1,5 @@
 // =============================================================================
-// MIDNIGHT CITY RPG: PODERES & INDIVIDUALIDADES (CONTROLADOR GAMER AAA)
+// Midnight City RPG: PODERES & INDIVIDUALIDADES (CONTROLADOR GAMER AAA)
 // Hero Panorâmica com Spotlight Chiaroscuro + Deck Tático de Habilidades Integral
 // 12 Divindades Canônicas • Zero Emojis • Phosphor Icons • 60 FPS
 // =============================================================================
@@ -254,11 +254,11 @@
         currentX, currentY, spotRadius
       );
 
-      gradient.addColorStop(0.0, 'rgba(255, 230, 160, 0.16)');
-      gradient.addColorStop(0.2, 'rgba(0, 0, 0, 0.0)');
-      gradient.addColorStop(0.55, 'rgba(5, 6, 9, 0.45)');
-      gradient.addColorStop(0.85, 'rgba(4, 5, 8, 0.78)');
-      gradient.addColorStop(1.0, 'rgba(2, 3, 5, 0.92)');
+      gradient.addColorStop(0.0, 'rgba(255, 230, 160, 0.10)');
+      gradient.addColorStop(0.25, 'rgba(0, 0, 0, 0.0)');
+      gradient.addColorStop(0.6, 'rgba(5, 6, 9, 0.28)');
+      gradient.addColorStop(0.9, 'rgba(4, 5, 8, 0.55)');
+      gradient.addColorStop(1.0, 'rgba(2, 3, 5, 0.7)');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
@@ -1385,7 +1385,7 @@
     ctx.fillStyle = goldColor;
     ctx.font = 'bold 16px "Segoe UI", Roboto, sans-serif';
     ctx.letterSpacing = '6px';
-    ctx.fillText('MIDNIGHT CITY // DECRETO DE SANGUE', 512, 160);
+    ctx.fillText('Midnight City // DECRETO DE SANGUE', 512, 160);
 
     ctx.fillStyle = '#94a3b8';
     ctx.font = '14px "Segoe UI", Roboto, sans-serif';
@@ -1495,7 +1495,7 @@
     ctx.fillStyle = '#64748b';
     ctx.font = '12px "Segoe UI", Roboto, sans-serif';
     ctx.letterSpacing = '2px';
-    ctx.fillText('AUTORIDADE IMUTÁVEL • MIDNIGHT CITY RPG', 512, footerY + 80);
+    ctx.fillText('AUTORIDADE IMUTÁVEL • Midnight City RPG', 512, footerY + 80);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.wrapS = THREE.ClampToEdgeWrapping;
@@ -1584,7 +1584,7 @@
       }
 
       // Iluminação de Estúdio AAA
-            // IluminaÃ§Ã£o de EstÃºdio Limpa & Equilibrada (Sem lavagem de cor nem clareamento excessivo)
+            // Iluminação de Estúdio Limpa & Equilibrada (Sem lavagem de cor nem clareamento excessivo)
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
       img2threejsScene.add(ambientLight);
 
@@ -1602,7 +1602,7 @@
       rimLight.position.set(-2.5, 2.0, -2.5);
       img2threejsScene.add(rimLight);
 
-      // Luz Local Neutra para Realce Especular da RelÃ­quia Flutuante Ã  Direita (sem incidir colorido sobre a arte)
+      // Luz Local Neutra para Realce Especular da Relíquia Flutuante à Direita (sem incidir colorido sobre a arte)
       img2threejsPointLight = new THREE.PointLight(0xfff8ee, 0.75, 4, 1.8);
       img2threejsPointLight.position.set(0.85, 0.20, 0.70);
       img2threejsScene.add(img2threejsPointLight);
@@ -1638,7 +1638,7 @@
     const classMeta = CLASS_COLORS[god.primaryClass] || { color: '#d4af37' };
     const classColor = new THREE.Color(classMeta.color);
 
-// Cor original preservada 100% pura sem pelÃ­cula colorida
+// Cor original preservada 100% pura sem película colorida
 
     const w = 2.10;
     const h = 2.88;
@@ -1779,7 +1779,7 @@
       boltMesh.castShadow = true;
       relicGroup.add(boltMesh);
 
-      // AnÃ©is Celestiais Orbitando o Raio
+      // Anéis Celestiais Orbitando o Raio
       const ring1Geom = new THREE.TorusGeometry(0.14, 0.008, 16, 32);
       const ringMat = new THREE.MeshStandardMaterial({
         color: 0x00f5d4,
@@ -1800,7 +1800,7 @@
       relicGroup.add(ring2);
 
     } else if (godId === 'poseidon') {
-      // 2. POSEIDON: TRIDENTE DE ATLÃ‚NTIDA (Esbelto, sem colisÃ£o)
+      // 2. POSEIDON: TRIDENTE DE ATLÂNTIDA (Esbelto, sem colisão)
       const brassMat = new THREE.MeshStandardMaterial({
         color: 0xd4af37,
         metalness: 0.92,
@@ -1857,7 +1857,7 @@
       gem.position.y = 0.26;
       relicGroup.add(gem);
 
-      // Anel de VÃ³rtice AquÃ¡tico
+      // Anel de Vórtice Aquático
       const waterRingGeom = new THREE.TorusGeometry(0.14, 0.008, 12, 32);
       const waterRingMat = new THREE.MeshStandardMaterial({
         color: 0x00e5ff,
@@ -1874,7 +1874,7 @@
       relicGroup.add(waterRing);
 
     } else if (godId === 'hades') {
-      // 3. HADES: BIDENTE DE Ã‰REBO (Compacto, esbelto)
+      // 3. HADES: BIDENTE DE ÉREBO (Compacto, esbelto)
       const obsidianMat = new THREE.MeshStandardMaterial({
         color: 0x181422,
         metalness: 0.88,
@@ -1889,7 +1889,7 @@
       shaft.position.y = -0.05;
       relicGroup.add(shaft);
 
-      // Pontas GÃªmeas Estreitas
+      // Pontas Gêmeas Estreitas
       [-1, 1].forEach(side => {
         const tineGeom = new THREE.ConeGeometry(0.022, 0.26, 12);
         const tine = new THREE.Mesh(tineGeom, obsidianMat);
@@ -1898,7 +1898,7 @@
         relicGroup.add(tine);
       });
 
-      // NÃºcleo Espectral de Alma
+      // Núcleo Espectral de Alma
       const soulGeom = new THREE.OctahedronGeometry(0.05, 0);
       const soulMat = new THREE.MeshStandardMaterial({
         color: 0xa855f7,
@@ -1912,7 +1912,7 @@
       soul.position.y = 0.28;
       relicGroup.add(soul);
 
-      // AnÃ©is de Corrente Espectral
+      // Anéis de Corrente Espectral
       const chainGeom = new THREE.TorusGeometry(0.12, 0.007, 12, 28);
       const chain = new THREE.Mesh(chainGeom, obsidianMat);
       chain.name = 'relicRing2';
@@ -1921,8 +1921,8 @@
       relicGroup.add(chain);
 
     } else if (godId === 'demeter') {
-      // 4. DEMÃ‰TER: A ESPADA SAGRADA DA COLHEITA & DESTRUIÃ‡ÃƒO (Inspirada em media_1790219718843.jpg)
-      // LÃ¢mina curva nobre de sabre/cimitarra Ã©lfica com gume afiado pronunciado, canaleta de seiva magenta, guarda em vinhas verdes e punho em marfim
+      // 4. DEMÉTER: A ESPADA SAGRADA DA COLHEITA & DESTRUIÇÃO (Inspirada em media_1790219718843.jpg)
+      // Lâmina curva nobre de sabre/cimitarra élfica com gume afiado pronunciado, canaleta de seiva magenta, guarda em vinhas verdes e punho em marfim
       const pearlBladeMat = new THREE.MeshStandardMaterial({
         color: 0xf8fafc,
         metalness: 0.96,
@@ -1952,12 +1952,12 @@
 
       const swordGroup = new THREE.Group();
 
-      // 1. LÃ¢mina Curva Ã‰lfica (Formato inconfundÃ­vel de sabre/espada com ricasso, gume amplo e ponta)
+      // 1. Lâmina Curva Élfica (Formato inconfundível de sabre/espada com ricasso, gume amplo e ponta)
       const swordShape = new THREE.Shape();
-      swordShape.moveTo(-0.032, 0);                        // InÃ­cio do ricasso
+      swordShape.moveTo(-0.032, 0);                        // Início do ricasso
       swordShape.lineTo(-0.032, 0.05);                      // Fim do ricasso
-      swordShape.quadraticCurveTo(-0.052, 0.26, -0.012, 0.54); // Gume cortante amplo (barriga da lÃ¢mina) atÃ© a ponta afiada
-      swordShape.quadraticCurveTo(0.026, 0.38, 0.022, 0.16);   // Costas / espinha da lÃ¢mina
+      swordShape.quadraticCurveTo(-0.052, 0.26, -0.012, 0.54); // Gume cortante amplo (barriga da lâmina) até a ponta afiada
+      swordShape.quadraticCurveTo(0.026, 0.38, 0.022, 0.16);   // Costas / espinha da lâmina
       swordShape.lineTo(0.022, 0);                          // Base da espinha
       swordShape.closePath();
 
@@ -1982,18 +1982,18 @@
       const sapMesh = new THREE.Mesh(sapGeo, sapMagentaMat);
       swordGroup.add(sapMesh);
 
-      // Veio espelhado no lado de trÃ¡s
+      // Veio espelhado no lado de trás
       const sapMeshBack = new THREE.Mesh(sapGeo, sapMagentaMat);
       sapMeshBack.position.z = -0.018;
       swordGroup.add(sapMeshBack);
 
-      // 3. Guarda de Vinhas Verdes (Crossguard esculpida abraÃ§ando a base da lÃ¢mina)
+      // 3. Guarda de Vinhas Verdes (Crossguard esculpida abraçando a base da lâmina)
       const crossbar = new THREE.Mesh(new THREE.CylinderGeometry(0.011, 0.011, 0.16, 12), emeraldVineMat);
       crossbar.rotation.z = Math.PI * 0.5;
       crossbar.position.set(-0.005, 0, 0.008);
       swordGroup.add(crossbar);
 
-      // GavÃµes / LaÃ§os de vinha recurvados para cima
+      // Gavões / Laços de vinha recurvados para cima
       [-1, 1].forEach(side => {
         const loop = new THREE.Mesh(new THREE.TorusGeometry(0.028, 0.007, 10, 20, Math.PI * 1.1), emeraldVineMat);
         loop.position.set(side * 0.075 - 0.005, 0.022, 0.008);
@@ -2001,12 +2001,12 @@
         swordGroup.add(loop);
       });
 
-      // 4. Empunhadura Elegante em Marfim / MadrepÃ©rola
+      // 4. Empunhadura Elegante em Marfim / Madrepérola
       const grip = new THREE.Mesh(new THREE.CylinderGeometry(0.011, 0.014, 0.16, 16), pearlHandleMat);
       grip.position.set(-0.005, -0.08, 0.008);
       swordGroup.add(grip);
 
-      // AnÃ©is de fio verde na empunhadura
+      // Anéis de fio verde na empunhadura
       [-0.04, -0.08, -0.12].forEach(yPos => {
         const wire = new THREE.Mesh(new THREE.TorusGeometry(0.013, 0.003, 8, 16), emeraldVineMat);
         wire.position.set(-0.005, yPos, 0.008);
@@ -2014,7 +2014,7 @@
         swordGroup.add(wire);
       });
 
-      // 5. Pomo Foliar em BotÃ£o de Flor com Gema de Rubi/Magenta
+      // 5. Pomo Foliar em Botão de Flor com Gema de Rubi/Magenta
       const pommel = new THREE.Mesh(new THREE.SphereGeometry(0.022, 14, 14), emeraldVineMat);
       pommel.position.set(-0.005, -0.18, 0.008);
       swordGroup.add(pommel);
@@ -2023,7 +2023,7 @@
       pommelGem.position.set(-0.005, -0.18, 0.008);
       swordGroup.add(pommelGem);
 
-      // 6. PÃ©talas Flutuantes de Flor / Seiva em Ã“rbita
+      // 6. Pétalas Flutuantes de Flor / Seiva em Órbita
       const petalRing = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.006, 12, 28), sapMagentaMat);
       petalRing.name = 'relicRing1';
       petalRing.position.set(-0.005, 0.12, 0.008);
@@ -2033,7 +2033,7 @@
       relicGroup.add(swordGroup);
 
     } else if (godId === 'tanatos') {
-      // 5. TÃ‚NATOS: O PINGENTE DA MORTE (ANKH DE PRATA ESTELAR)
+      // 5. TÂNATOS: O PINGENTE DA MORTE (ANKH DE PRATA ESTELAR)
       const sterlingSilverMat = new THREE.MeshStandardMaterial({
         color: 0xe2e8f0,
         metalness: 0.98,
@@ -2049,7 +2049,7 @@
         emissiveIntensity: 0.65
       });
 
-      // AlÃ§a Oval Superior do Ankh
+      // Alça Oval Superior do Ankh
       const loopGeo = new THREE.TorusGeometry(0.08, 0.015, 16, 32);
       const loopMesh = new THREE.Mesh(loopGeo, sterlingSilverMat);
       loopMesh.position.y = 0.15;
@@ -2073,13 +2073,13 @@
       coreGem.position.y = 0.06;
       relicGroup.add(coreGem);
 
-      // Argola de SuspensÃ£o Superior
+      // Argola de Suspensão Superior
       const bailGeo = new THREE.TorusGeometry(0.025, 0.005, 12, 16);
       const bailMesh = new THREE.Mesh(bailGeo, sterlingSilverMat);
       bailMesh.position.y = 0.24;
       relicGroup.add(bailMesh);
 
-      // Halo de SilÃªncio Espectral
+      // Halo de Silêncio Espectral
       const haloGeo = new THREE.TorusGeometry(0.14, 0.006, 12, 32);
       const haloMesh = new THREE.Mesh(haloGeo, obsidianFacetMat);
       haloMesh.name = 'relicRing1';
@@ -2088,7 +2088,7 @@
       relicGroup.add(haloMesh);
 
     } else if (godId === 'apolo') {
-      // 6. APOLO: O SOL DOURADO RADIANTE DE HÃ‰LIOS (EMBLEMA SOLAR CELESTIAL)
+      // 6. APOLO: O SOL DOURADO RADIANTE DE HÉLIOS (EMBLEMA SOLAR CELESTIAL)
       const sunGoldMat = new THREE.MeshStandardMaterial({
         color: 0xffd700,
         metalness: 0.95,
@@ -2113,7 +2113,7 @@
 
       const sunGroup = new THREE.Group();
 
-      // 1. NÃºcleo Solar Radiante Central
+      // 1. Núcleo Solar Radiante Central
       const coreSphere = new THREE.Mesh(new THREE.SphereGeometry(0.085, 24, 24), sunCoreMat);
       sunGroup.add(coreSphere);
 
@@ -2130,7 +2130,7 @@
       centerGemBack.position.z = -0.06;
       sunGroup.add(centerGemBack);
 
-      // 2. Raios Solares CÃ´nicos Radiantes (16 Raios: 8 Maiores e 8 Menores Alternados)
+      // 2. Raios Solares Cônicos Radiantes (16 Raios: 8 Maiores e 8 Menores Alternados)
       const rayCount = 16;
       for (let i = 0; i < rayCount; i++) {
         const angle = i * (Math.PI * 2 / rayCount);
@@ -2147,21 +2147,21 @@
         sunGroup.add(rayMesh);
       }
 
-      // 3. Disco Solar IntermediÃ¡rio Chanfrado
+      // 3. Disco Solar Intermediário Chanfrado
       const solarDisc = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.018, 24), sunGoldMat);
       solarDisc.rotation.x = Math.PI * 0.5;
       sunGroup.add(solarDisc);
 
       relicGroup.add(sunGroup);
 
-      // 4. Corona Solar Oracular em Ã“rbita DinÃ¢mica
+      // 4. Corona Solar Oracular em Órbita Dinâmica
       const corona = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.007, 12, 32), sunGoldMat);
       corona.name = 'relicRing1';
       corona.rotation.y = Math.PI * 0.35;
       relicGroup.add(corona);
 
     } else if (godId === 'paraphronia') {
-      // 7. PARAPHRONIA: A BORBOLETA CÃ“SMICA DE DELÃRIO (SANDMAN)
+      // 7. PARAPHRONIA: A BORBOLETA CÓSMICA DE DELÍRIO (SANDMAN)
       const butterflyGroup = new THREE.Group();
 
       const bodyMat = new THREE.MeshStandardMaterial({
@@ -2199,7 +2199,7 @@
         emissiveIntensity: 0.8
       });
 
-      // 1. AbdÃ´men e TÃ³rax Esguio
+      // 1. Abdômen e Tórax Esguio
       const thorax = new THREE.Mesh(new THREE.SphereGeometry(0.022, 12, 12), bodyMat);
       thorax.scale.set(0.8, 1.2, 0.8);
       thorax.position.set(0, 0.02, 0);
@@ -2210,7 +2210,7 @@
       abdomen.rotation.x = Math.PI;
       butterflyGroup.add(abdomen);
 
-      // 2. CabeÃ§a e Olhos HeterocromÃ¡ticos (DelÃ­rio)
+      // 2. Cabeça e Olhos Heterocromáticos (Delírio)
       const head = new THREE.Mesh(new THREE.SphereGeometry(0.018, 12, 12), bodyMat);
       head.position.set(0, 0.065, 0);
       butterflyGroup.add(head);
@@ -2260,7 +2260,7 @@
       [-1, 1].forEach(side => {
         const wingSubGroup = new THREE.Group();
         wingSubGroup.position.set(0, 0.03, side * 0.008);
-        wingSubGroup.rotation.y = side * 0.28; // Ã‚ngulo diedro em V suave
+        wingSubGroup.rotation.y = side * 0.28; // Ângulo diedro em V suave
         if (side < 0) {
           wingSubGroup.scale.z = -1;
         }
@@ -2279,7 +2279,7 @@
         butterflyGroup.add(wingSubGroup);
       });
 
-      // 5. Halo de Poeira OnÃ­rica em Ã“rbita
+      // 5. Halo de Poeira Onírica em Órbita
       const dreamDustRing = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.006, 12, 32), wingCyanMat);
       dreamDustRing.name = 'relicRing1';
       dreamDustRing.rotation.x = Math.PI * 0.42;
@@ -2288,7 +2288,7 @@
       relicGroup.add(butterflyGroup);
 
     } else if (godId === 'morfeu') {
-      // 8. MORFEU: A AMPULHETA ONÃRICA TEXTURIZADA DE AREIA DOURADA
+      // 8. MORFEU: A AMPULHETA ONÍRICA TEXTURIZADA DE AREIA DOURADA
       const antiqueBrassMat = new THREE.MeshStandardMaterial({
         color: 0xd4af37,
         metalness: 0.94,
@@ -2324,14 +2324,14 @@
         relicGroup.add(finial);
       });
 
-      // 4 Colunas ClÃ¡ssicas Torneadas Finas
+      // 4 Colunas Clássicas Torneadas Finas
       [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5].forEach(ang => {
         const col = new THREE.Mesh(new THREE.CylinderGeometry(0.007, 0.007, 0.44, 12), antiqueBrassMat);
         col.position.set(Math.cos(ang) * 0.09, 0, Math.sin(ang) * 0.09);
         relicGroup.add(col);
       });
 
-      // Dois Bulbos de Cristal CÃ´nicos Invertidos
+      // Dois Bulbos de Cristal Cônicos Invertidos
       const topBulb = new THREE.Mesh(new THREE.ConeGeometry(0.075, 0.19, 20), crystalGlassMat);
       topBulb.position.y = 0.10;
       topBulb.rotation.x = Math.PI;
@@ -2349,14 +2349,14 @@
       sandBed.position.y = -0.16;
       relicGroup.add(sandBed);
 
-      // Anel de NÃ©voa do Sonhar
+      // Anel de Névoa do Sonhar
       const dreamRing = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.006, 12, 28), crystalGlassMat);
       dreamRing.name = 'relicRing1';
       dreamRing.rotation.x = Math.PI * 0.42;
       relicGroup.add(dreamRing);
 
     } else if (godId === 'eros') {
-      // 9. EROS: O CORAÃ‡ÃƒO DE CRISTAL VERMELHO COM AURA DOURADA (SÃMBOLO DE DESEJO DE SANDMAN)
+      // 9. EROS: O CORAÇÃO DE CRISTAL VERMELHO COM AURA DOURADA (SÍMBOLO DE DESEJO DE SANDMAN)
       const rubyGlassMat = new THREE.MeshStandardMaterial({
         color: 0xd90429,
         metalness: 0.25,
@@ -2374,7 +2374,7 @@
         emissiveIntensity: 0.5
       });
 
-      // CoraÃ§Ã£o Facetado de Cristal Rubi Esculpido (Escala mais compacta)
+      // Coração Facetado de Cristal Rubi Esculpido (Escala mais compacta)
       const heartShape = new THREE.Shape();
       heartShape.moveTo(0, 0.04);
       heartShape.bezierCurveTo(0, 0.12, 0.11, 0.14, 0.11, 0.06);
@@ -2395,14 +2395,14 @@
       heartMesh.castShadow = true;
       relicGroup.add(heartMesh);
 
-      // Anel Orbital de FascinaÃ§Ã£o DOURADO (Conforme solicitaÃ§Ã£o do usuÃ¡rio)
+      // Anel Orbital de Fascinação DOURADO (Conforme solicitação do usuário)
       const passionRing = new THREE.Mesh(new THREE.TorusGeometry(0.13, 0.007, 12, 32), goldAuraMat);
       passionRing.name = 'relicRing1';
       passionRing.rotation.x = Math.PI * 0.4;
       relicGroup.add(passionRing);
 
     } else if (godId === 'melinoe') {
-      // 10. MELÃNOE: O ANEL DE GANCHO DE PRATA (SÃMBOLO DE DESESPERO DE SANDMAN)
+      // 10. MELÍNOE: O ANEL DE GANCHO DE PRATA (SÍMBOLO DE DESESPERO DE SANDMAN)
       const antiqueSilverMat = new THREE.MeshStandardMaterial({
         color: 0xc0c7d0,
         metalness: 0.96,
@@ -2425,7 +2425,7 @@
         emissiveIntensity: 0.95
       });
 
-      // O Aro MaciÃ§o do Anel em Prata
+      // O Aro Maciço do Anel em Prata
       const ringGeo = new THREE.TorusGeometry(0.10, 0.022, 20, 40);
       const ringMesh = new THREE.Mesh(ringGeo, antiqueSilverMat);
       ringMesh.position.y = -0.06;
@@ -2438,7 +2438,7 @@
       hookCurve.rotation.z = Math.PI * 0.28;
       relicGroup.add(hookCurve);
 
-      // Ponta AguÃ§ada do Gancho
+      // Ponta Aguçada do Gancho
       const hookTipGeo = new THREE.ConeGeometry(0.014, 0.07, 12);
       const hookTip = new THREE.Mesh(hookTipGeo, razorSteelMat);
       hookTip.position.set(0.13, 0.08, 0);
@@ -2458,7 +2458,7 @@
       relicGroup.add(orbitRing);
 
     } else if (godId === 'persefone') {
-      // 11. PERSÃ‰FONE: A ROMÃƒ SAGRADA DO SUBMUNDO (SÃMBOLO REAL DO PACTO CTÃ”NICO)
+      // 11. PERSÉFONE: A ROMÃ SAGRADA DO SUBMUNDO (SÍMBOLO REAL DO PACTO CTÔNICO)
       const pomeMat = new THREE.MeshStandardMaterial({
         color: 0x9d0208,
         roughness: 0.22,
@@ -2492,13 +2492,13 @@
 
       const pomeGroup = new THREE.Group();
 
-      // 1. Corpo Globular da RomÃ£ (Ligeiramente achatado nos polos)
+      // 1. Corpo Globular da Romã (Ligeiramente achatado nos polos)
       const pomeBody = new THREE.Mesh(new THREE.SphereGeometry(0.105, 24, 20), pomeMat);
       pomeBody.scale.set(1.04, 0.94, 1.04);
       pomeBody.castShadow = true;
       pomeGroup.add(pomeBody);
 
-      // 2. Coroa de CÃ¡lices Estrelados no Topo da RomÃ£ (6 SÃ©palas CaracterÃ­sticas)
+      // 2. Coroa de Cálices Estrelados no Topo da Romã (6 Sépalas Características)
       const crownRim = new THREE.Mesh(new THREE.TorusGeometry(0.032, 0.007, 10, 24), crownMat);
       crownRim.position.y = 0.098;
       crownRim.rotation.x = Math.PI * 0.5;
@@ -2515,7 +2515,7 @@
         pomeGroup.add(sepal);
       }
 
-      // 3. Sementes Sagradas de Rubi (Arilos Cristalinos Brilhando no CÃ¡lice e Ombros)
+      // 3. Sementes Sagradas de Rubi (Arilos Cristalinos Brilhando no Cálice e Ombros)
       for (let i = 0; i < 6; i++) {
         const sAng = i * (Math.PI * 2 / 6) + 0.5;
         const seed = new THREE.Mesh(new THREE.OctahedronGeometry(0.015, 0), seedGemMat);
@@ -2524,12 +2524,12 @@
         pomeGroup.add(seed);
       }
 
-      // 4. Caule / Ramo de Ã‰bano e Ouro na Base
+      // 4. Caule / Ramo de Ébano e Ouro na Base
       const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.007, 0.009, 0.06, 8), goldStemMat);
       stem.position.y = -0.11;
       pomeGroup.add(stem);
 
-      // Pequena folha de ouro ctÃ´nico no caule
+      // Pequena folha de ouro ctônico no caule
       const leaf = new THREE.Mesh(new THREE.ConeGeometry(0.012, 0.04, 6), goldStemMat);
       leaf.position.set(0.02, -0.10, 0);
       leaf.rotation.z = -1.2;
@@ -2537,7 +2537,7 @@
 
       relicGroup.add(pomeGroup);
 
-      // 5. Halo Orbital de Sementes e Ã‰ter CtÃ´nico
+      // 5. Halo Orbital de Sementes e Éter Ctônico
       const pomeHalo = new THREE.Mesh(new THREE.TorusGeometry(0.14, 0.006, 12, 32), seedGemMat);
       pomeHalo.name = 'relicRing1';
       pomeHalo.position.y = 0.02;
@@ -2545,7 +2545,7 @@
       relicGroup.add(pomeHalo);
 
     } else if (godId === 'oberon') {
-      // 12. OBERON: A LANTERNA ESPECTRAL DA MARÃ‰ BRANCA (ESTILO THRESH / GENSHIN)
+      // 12. OBERON: A LANTERNA ESPECTRAL DA MARÉ BRANCA (ESTILO THRESH / GENSHIN)
       const wroughtIronMat = new THREE.MeshStandardMaterial({
         color: 0x1e293b,
         metalness: 0.94,
@@ -2568,17 +2568,17 @@
         metalness: 0.2
       });
 
-      // CÃºpula Piramidal Superior da Lanterna
+      // Cúpula Piramidal Superior da Lanterna
       const roof = new THREE.Mesh(new THREE.ConeGeometry(0.09, 0.09, 6), wroughtIronMat);
       roof.position.y = 0.16;
       relicGroup.add(roof);
 
-      // Argola de SuspensÃ£o com Elo de Corrente
+      // Argola de Suspensão com Elo de Corrente
       const loop = new THREE.Mesh(new THREE.TorusGeometry(0.028, 0.006, 12, 16), wroughtIronMat);
       loop.position.y = 0.22;
       relicGroup.add(loop);
 
-      // Vidro TranslÃºcido Central
+      // Vidro Translúcido Central
       const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.18, 16), glassCylinderMat);
       glass.position.y = 0.04;
       relicGroup.add(glass);
@@ -2590,13 +2590,13 @@
         relicGroup.add(bar);
       });
 
-      // Fogo FÃ¡tuo / Alma Luminescente Central da MarÃ© Branca
+      // Fogo Fátuo / Alma Luminescente Central da Maré Branca
       const soulFlame = new THREE.Mesh(new THREE.SphereGeometry(0.038, 16, 16), soulFlameMat);
       soulFlame.name = 'relicRing1';
       soulFlame.position.y = 0.04;
       relicGroup.add(soulFlame);
 
-      // Base com 4 Garras Inferiores (Garras do TÃ¡rtaro no estilo Thresh)
+      // Base com 4 Garras Inferiores (Garras do Tártaro no estilo Thresh)
       const basePlate = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.085, 0.024, 6), wroughtIronMat);
       basePlate.position.y = -0.06;
       relicGroup.add(basePlate);
@@ -2653,7 +2653,7 @@
         relicGroup.add(wing);
       });
 
-      // Serpentes GÃªmeas EntrelaÃ§adas
+      // Serpentes Gêmeas Entrelaçadas
       const snakeRing1 = new THREE.Mesh(new THREE.TorusGeometry(0.05, 0.009, 12, 24), goldMat);
       snakeRing1.position.y = 0.16;
       snakeRing1.rotation.x = Math.PI * 0.4;
@@ -3965,7 +3965,7 @@
       rebirthRing.rotation.x = Math.PI * 0.44;
       relicGroup.add(rebirthRing);
     } else {
-      // Fallback Decorativo: AstrolÃ¡bio Celestial
+      // Fallback Decorativo: Astrolábio Celestial
       const sigilGeom = new THREE.TorusGeometry(0.14, 0.008, 16, 32);
       const sigilMat = new THREE.MeshStandardMaterial({
         color: classColor,
@@ -3979,7 +3979,7 @@
       relicGroup.add(sigil);
     }
 
-    // POSIÃ‡ÃƒO SEGURA: Fica Ã  direita da estela 3D (w/2 + bevel = 1.26), com raio <= 0.16 e folga limpa
+    // POSIÇÃO SEGURA: Fica à direita da estela 3D (w/2 + bevel = 1.26), com raio <= 0.16 e folga limpa
     relicGroup.position.set(0.80, 0.38, 0.30);
 
     return relicGroup;
@@ -5217,7 +5217,7 @@
             height="64"
             loading="lazy"
             decoding="async"
-            onerror="this.src='assets/custodio.png';"
+            onerror="this.src='assets/custodio.webp';"
           >
         </div>
         <span class="agent-ring-label">${god.name.split('/')[0].trim()}</span>
@@ -5593,7 +5593,7 @@
           type: 'god',
           godId: god.id,
           godName: godShortName,
-          thumb: god.thumbnail || god.image || 'assets/custodio.png',
+          thumb: god.thumbnail || god.image || 'assets/custodio.webp',
           level: 1,
           choiceIndex: 0,
           levelLabel: 'Visão Geral',
@@ -5612,7 +5612,7 @@
             type: 'passive',
             godId: god.id,
             godName: godShortName,
-            thumb: god.thumbnail || god.image || 'assets/custodio.png',
+            thumb: god.thumbnail || god.image || 'assets/custodio.webp',
             level: 1,
             choiceIndex: 0,
             levelLabel: 'Passiva Única',
@@ -5665,7 +5665,7 @@
                   godId: god.id,
                   godName: godShortName,
                   faculty: choice.faculty,
-                  thumb: god.thumbnail || god.image || 'assets/custodio.png',
+                  thumb: god.thumbnail || god.image || 'assets/custodio.webp',
                   level: lvlNum,
                   choiceIndex: choiceIdx,
                   variantIndex: vIdx,
@@ -5704,7 +5704,7 @@
               type: 'ability',
               godId: god.id,
               godName: godShortName,
-              thumb: god.thumbnail || god.image || 'assets/custodio.png',
+              thumb: god.thumbnail || god.image || 'assets/custodio.webp',
               level: lvlNum,
               choiceIndex: choiceIdx,
               faculty: choice.faculty || (god.id === 'torre-relogio' ? 'Todas' : null),
@@ -5740,7 +5740,7 @@
       const facultyPart = res.faculty ? `<span class="res-sep">•</span><span style="color: var(--nt-gold); font-size: 0.7rem;">[${res.faculty}]</span>` : '';
       return `
         <div class="search-deep-result-item ${isSel ? 'is-selected' : ''}" data-idx="${idx}" role="option" aria-selected="${isSel}">
-          <img class="res-thumb" src="${res.thumb}" alt="${res.godName}" onerror="this.src='assets/custodio.png';" />
+          <img class="res-thumb" src="${res.thumb}" alt="${res.godName}" onerror="this.src='assets/custodio.webp';" />
           <div class="res-info">
             <div class="res-breadcrumb">
               <span class="res-god">${res.godName}</span>
@@ -6213,7 +6213,7 @@
                   </div>
                   <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                     ${associated.length > 0 ? associated.map(god => `
-                      <button type="button" class="class-god-chip" data-god-id="${god.id}" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.75rem; color: #e2e8f0; cursor: pointer; transition: all 0.2s ease;">
+                      <button type="button" class="class-god-chip" data-god-id="${god.id}" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.75rem; color: #e2e8f0; cursor: pointer; transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;">
                         ${god.name.split('/')[0].trim()}
                       </button>
                     `).join('') : '<span style="font-size: 0.75rem; color: #64748b; font-style: italic;">Nenhuma divindade vinculada</span>'}
@@ -6310,6 +6310,8 @@
     return `<div class="complement-formatted-body"><p class="complement-p">${safe}</p></div>`;
   }
 
+  let powerDocsPending = null;
+
   function renderComplementDocument(god, comp) {
     const titleEl = document.getElementById('complement-modal-title');
     const subtitleEl = document.getElementById('complement-modal-subtitle');
@@ -6323,6 +6325,23 @@
     }
 
     const docId = comp.documentId;
+    // Os textos integrais (2 MB) só descem quando alguém abre o primeiro documento
+    if (docId && !window.VALIDATION_DOCUMENTS) {
+      contentEl.innerHTML = '<p class="complement-p">Abrindo o documento…</p>';
+      if (!powerDocsPending) {
+        powerDocsPending = new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'content/poderes/powers_docs.js';
+          s.onload = resolve;
+          s.onerror = () => { powerDocsPending = null; s.remove(); reject(); };
+          document.head.appendChild(s);
+        });
+      }
+      powerDocsPending.then(() => renderComplementDocument(god, comp), () => {
+        contentEl.innerHTML = '<p class="complement-p">Não foi possível carregar o documento. Verifique a conexão e tente de novo.</p>';
+      });
+      return;
+    }
     const docObj = (window.VALIDATION_DOCUMENTS && docId) ? window.VALIDATION_DOCUMENTS[docId] : null;
     const rawText = docObj ? (docObj.text || docObj) : (comp.note || 'Documento em processo de catalogação canônica.');
 
@@ -6562,7 +6581,7 @@
                   <th style="padding: 1rem; background: rgba(0,0,0,0.3); border-bottom: 1px solid rgba(255,255,255,0.1); border-left: 1px solid rgba(255,255,255,0.06); text-align: center;">
                     <div style="font-family: var(--nt-font-cinzel); font-size: 1.1rem; color: #fff; font-weight: 700;">${g.name.split('/')[0].trim()}</div>
                     <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">${g.title || g.pantheon}</div>
-                    <button type="button" class="btn-select-compared-god" data-god-id="${g.id}" style="margin-top: 0.6rem; padding: 0.3rem 0.8rem; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); border-radius: 4px; color: var(--nt-gold-bright); font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease;">
+                    <button type="button" class="btn-select-compared-god" data-god-id="${g.id}" style="margin-top: 0.6rem; padding: 0.3rem 0.8rem; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); border-radius: 4px; color: var(--nt-gold-bright); font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;">
                       Visualizar no Palco
                     </button>
                   </th>
@@ -6758,7 +6777,7 @@
 
       const characterData = [
         '==================================================',
-        'MIDNIGHT CITY RPG — CONSULTA CANÔNICA DE HABILIDADE',
+        'Midnight City RPG — CONSULTA CANÔNICA DE HABILIDADE',
         '==================================================',
         `Linhagem / Patrono : ${god.name} (${god.heroTitle || ''})`,
         `Panteão & Reino    : ${god.reinoName || 'Cânone Midnight City'}`,

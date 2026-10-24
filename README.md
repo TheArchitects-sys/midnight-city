@@ -4,7 +4,7 @@
 
 Site oficial do **Midnight City (MC)**, RPG narrativo de deuses, mitologias e horror sobrenatural em Londres, sob o Véu e a vigilância da Égide de Avalon.
 
-- Discord: https://discord.gg/5xJp9PEZwC
+- Discord: https://discord.gg/RjVKryxCu
 - Comunidade no Yoble: https://yoble.us/Community/309183
 
 ## Páginas
@@ -41,7 +41,21 @@ O projeto também já inclui `netlify.toml` e `vercel.json`, caso prefira Netlif
 
 ## Dependências externas (via CDN)
 
-Tailwind CSS (Play CDN), GSAP + ScrollTrigger, three.js, lottie-web, Phosphor Icons e Google Fonts. O site precisa de internet para ficar com o visual completo.
+GSAP + ScrollTrigger, three.js, lottie-web, Phosphor Icons e Google Fonts. O site precisa de internet para ficar com o visual completo.
+
+## Tailwind (compilado)
+
+O Tailwind não vem mais do CDN: ele é compilado em `tailwind.css`, o que deixa as páginas mais leves e sem saltos de layout. Sempre que usar uma classe do Tailwind que ainda não existe no site, recompile:
+
+```bash
+npx tailwindcss@3.4.17 -c tailwind.config.cjs -i tailwind.input.css -o tailwind.css --minify
+```
+
+`tailwind-safelist.txt` guarda as classes que só aparecem via JavaScript, para que não sumam na compilação.
+
+## Imagens
+
+As imagens grandes têm versão `.webp` ao lado do original, e é ela que as páginas usam. Ao adicionar uma imagem nova acima de ~400 KB, gere a versão WebP antes de referenciá-la.
 
 ---
 

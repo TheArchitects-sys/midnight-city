@@ -1,6 +1,7 @@
 scratch/
 .backup_before_decode/
 .impeccable/
+.claude/
 *.metadata.json
 *.bak*
 *.exe

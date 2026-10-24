@@ -115,7 +115,7 @@ section,
 }
 .banner-eyebrow::before {
   content: '❖';
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   color: var(--color-gold-light);
 }
 
@@ -243,7 +243,7 @@ section,
 }
 .collection-tab-btn .tab-status {
   font-family: monospace;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-gold-primary);
@@ -379,8 +379,8 @@ section,
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 .banner-overlay-name {
-  font-family: 'Poppins', sans-serif !important;
-  font-weight: 800 !important;
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-weight: 700 !important;
   font-size: clamp(1.5rem, 3.8vw, 3rem) !important;
   line-height: 1.15 !important;
   color: #ffffff !important;
@@ -542,7 +542,7 @@ section,
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
   font-family: monospace;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   z-index: 2;
@@ -673,7 +673,7 @@ section,
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: 0.16s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 .refine-pill-btn:hover {
   border-color: var(--color-gold-border);
@@ -784,3 +784,174 @@ section,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   VITRINE MÍTICA EM MODAL (out/2026)
+   O prêmio abre por cima da página no clique; nada de rolar até o fim.
+   Interpretativo e efeito ficam juntos, na mesma ordem dos documentos.
+   ========================================================================== */
+html.vitrine-lock, html.vitrine-lock body { overflow: hidden; }
+
+.vitrine-modal {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(0px, 3vw, 32px);
+  visibility: hidden; pointer-events: none;
+}
+.vitrine-modal.open { visibility: visible; pointer-events: auto; }
+.vitrine-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(3, 4, 7, 0.78);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  opacity: 0; transition: opacity .28s ease;
+}
+.vitrine-modal.open .vitrine-backdrop { opacity: 1; }
+.vitrine-panel {
+  position: relative; width: min(1120px, 100%); max-height: min(880px, 100%);
+  display: flex; flex-direction: column;
+  background: #0b0d13; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 18px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  overflow: hidden;
+  opacity: 0; transform: translateY(18px) scale(.985);
+  transition: opacity .32s cubic-bezier(.2,.9,.25,1), transform .42s cubic-bezier(.2,.9,.25,1);
+}
+.vitrine-modal.open .vitrine-panel { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .vitrine-panel, .vitrine-backdrop { transition: none; }
+}
+
+.vitrine-topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .7rem .9rem .7rem 1.4rem; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
+}
+.vitrine-kicker { font: 700 .72rem/1 'JetBrains Mono', monospace; letter-spacing: .18em; text-transform: uppercase; color: #d4af37; }
+.vitrine-topbar-actions { display: flex; align-items: center; gap: .4rem; }
+.vitrine-counter { font: 600 .78rem/1 'JetBrains Mono', monospace; color: #a59e92; min-width: 3.4rem; text-align: center; }
+.vitrine-nav-btn, .vitrine-close {
+  width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); color: #e8e2d5;
+  font-size: 1rem; cursor: pointer; transition: background .2s, border-color .2s, transform .15s;
+}
+.vitrine-nav-btn:hover, .vitrine-close:hover { background: rgba(212, 175, 55, 0.14); border-color: rgba(212, 175, 55, 0.5); }
+.vitrine-nav-btn:active, .vitrine-close:active { transform: scale(.95); }
+.vitrine-close { margin-left: .35rem; }
+.vitrine-nav-btn:focus-visible, .vitrine-close:focus-visible { outline: 2px solid #f1d27a; outline-offset: 2px; }
+
+.vitrine-body { overflow-y: auto; overscroll-behavior: contain; }
+.vitrine-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); }
+.vitrine-art { position: relative; margin: 0; background: #06070a; min-height: 100%; }
+.vitrine-art img { width: 100%; height: 100%; max-height: 780px; object-fit: cover; display: block; }
+.vitrine-art figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+  padding: 2.5rem 1rem 1rem; background: linear-gradient(0deg, rgba(5, 6, 9, .92), transparent);
+}
+.vitrine-code { font: 700 .72rem/1 'JetBrains Mono', monospace; padding: .35rem .55rem; border-radius: 6px; }
+.vitrine-from { font: 600 .74rem/1.3 'Plus Jakarta Sans', sans-serif; color: #cfc7b4; text-align: right; }
+
+.vitrine-content { padding: clamp(1.25rem, 2.6vw, 2.25rem); display: flex; flex-direction: column; gap: 1.35rem; }
+.vitrine-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .6rem; }
+.vitrine-nature { font: 700 .72rem/1 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; }
+.vitrine-class { font: 600 .72rem/1 'JetBrains Mono', monospace; color: #f1d27a; background: rgba(212, 175, 55, .1); border: 1px solid rgba(212, 175, 55, .25); padding: .25rem .5rem; border-radius: 6px; }
+.vitrine-title { font-family: 'Cinzel', serif; font-weight: 800; font-size: clamp(1.5rem, 2.6vw, 2.15rem); line-height: 1.12; color: #fff; }
+.vitrine-alias { margin-top: .35rem; font: 500 .82rem/1.4 'Plus Jakarta Sans', sans-serif; color: #a59e92; }
+
+.vitrine-refine { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; padding: .85rem 1rem; border-radius: 12px; background: rgba(255, 255, 255, .03); border: 1px solid rgba(255, 255, 255, .07); }
+.vitrine-refine-label { font: 700 .72rem/1 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: #a59e92; }
+.vitrine-refine .inspector-refine-pills { margin: 0; }
+
+.vitrine-doc {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  font-size: 1rem; line-height: 1.75; color: #e6e0d4; max-width: 70ch;
+}
+.vitrine-doc p { margin: 0 0 1rem; white-space: pre-line; }
+.vitrine-lore { color: #ddd6c9; }
+.vitrine-effect { color: #fff; }
+.vitrine-effect strong { color: #f1d27a; font-weight: 800; }
+.vitrine-effect--delta {
+  padding: .8rem 1rem; border-left: 3px solid #d4af37; background: rgba(212, 175, 55, .08); border-radius: 0 10px 10px 0;
+}
+.vitrine-actions { display: flex; flex-wrap: wrap; gap: .75rem; padding-top: .25rem; }
+.vitrine-hint { font: 500 .76rem/1.4 'Plus Jakarta Sans', sans-serif; color: #7e786b; }
+
+@media (max-width: 860px) {
+  .vitrine-modal { padding: 0; align-items: stretch; }
+  .vitrine-panel { max-height: 100%; height: 100%; border-radius: 0; border: 0; }
+  .vitrine-layout { grid-template-columns: 1fr; }
+  .vitrine-art img { max-height: 46vh; }
+  .vitrine-hint { display: none; }
+}
+
+/* Cartões de prêmio: deixa claro que abrem algo */
+.prize-card { cursor: pointer; }
+.prize-card:focus-visible { outline: 2px solid #f1d27a; outline-offset: 3px; }
+@media (min-width: 861px) {
+  .vitrine-art { position: sticky; top: 0; align-self: start; height: calc(min(880px, 100vh - 64px) - 60px); min-height: 0; }
+  .vitrine-art img { height: 100%; max-height: none; }
+}
+
+/* ==========================================================================
+   ORAÇÕES CELESTIAIS (Hub) — seção de conversão
+   ========================================================================== */
+.prayer-section { padding-top: 3rem; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 3.5rem; }
+.prayer-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.prayer-title { font-family: 'Cinzel', serif; font-weight: 800; font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 1.1; color: #fff; margin: .4rem 0 1rem; text-wrap: balance; }
+.prayer-title span { color: #f1d27a; }
+.prayer-lead { font: 400 1.06rem/1.7 'Plus Jakarta Sans', system-ui, sans-serif; color: #d6d0c3; max-width: 58ch; }
+.prayer-lead strong { color: #f1d27a; }
+.prayer-cta-row { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+.prayer-cta { box-shadow: 0 10px 40px rgba(212,175,55,.28); }
+.prayer-cta:hover { box-shadow: 0 14px 50px rgba(212,175,55,.45); }
+
+.prayer-pity-card { display: flex; flex-direction: column; gap: 1.1rem; padding: 1.4rem; border-radius: 18px; background: linear-gradient(160deg, #11131c, #0a0b10); border: 1px solid rgba(212,175,55,.3); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.pity-row p { font: 400 .9rem/1.55 'Plus Jakarta Sans', sans-serif; color: #c9c2b4; margin-top: .5rem; }
+.pity-row p strong { color: #fff; }
+.pity-head { display: flex; justify-content: space-between; align-items: baseline; }
+.pity-head span { font: 700 .74rem/1 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #a59e92; }
+.pity-head strong { font: 800 1.6rem/1 'Cinzel', serif; color: #f1d27a; }
+.pity-track { height: 8px; border-radius: 99px; background: rgba(255,255,255,.07); overflow: hidden; margin-top: .55rem; }
+.pity-track i { display: block; height: 100%; width: calc(var(--p) * 100%); border-radius: inherit; background: linear-gradient(90deg, #8c6a2b, #f1d27a); box-shadow: 0 0 14px rgba(241,210,122,.6); transform-origin: left; animation: pityFill 2.4s cubic-bezier(.2,.9,.25,1) both; }
+.pity-track--perm i { background: linear-gradient(90deg, #3b4a8c, #9db4ff); box-shadow: 0 0 14px rgba(157,180,255,.5); }
+@keyframes pityFill { from { transform: scaleX(0); } }
+.pity-pips { display: flex; gap: .4rem; margin-top: .55rem; }
+.pity-pips b { width: 30px; height: 30px; border-radius: 8px; border: 1px dashed rgba(255,255,255,.18); display: grid; place-items: center; font-size: .9rem; color: #14110a; }
+.pity-pips b.on { background: linear-gradient(135deg, #f1d27a, #d4af37); border: 0; box-shadow: 0 0 18px rgba(241,210,122,.55); }
+.pity-row + .pity-row { padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,.06); }
+
+.prayer-subhead h3, .prayer-duo h3, .prayer-faq h3 { font-family: 'Cinzel', serif; font-weight: 800; font-size: clamp(1.35rem, 2.2vw, 1.75rem); color: #fff; margin-top: .3rem; }
+.prayer-steps { list-style: none; padding: 0; margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; counter-reset: s; }
+.prayer-steps li { position: relative; padding: 1.4rem; border-radius: 14px; background: #0c0e14; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: .55rem; transition: border-color .25s, transform .25s; }
+.prayer-steps li:hover { border-color: rgba(212,175,55,.45); transform: translateY(-3px); }
+.step-n { font: 800 .8rem/1 'JetBrains Mono', monospace; color: #d4af37; letter-spacing: .1em; }
+.prayer-steps h4 { font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem; color: #fff; }
+.prayer-steps p, .prayer-duo p { font: 400 .95rem/1.65 'Plus Jakarta Sans', sans-serif; color: #cfc8ba; }
+.prayer-steps p strong, .prayer-duo p strong { color: #f1d27a; }
+.step-link { margin-top: auto; font: 700 .8rem/1 'Plus Jakarta Sans', sans-serif; color: #f1d27a; text-decoration: none; }
+.step-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.prayer-duo { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.prayer-duo > article { padding: 1.6rem; border-radius: 16px; background: #0c0e14; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: .7rem; }
+.prayer-inferno { background: radial-gradient(120% 120% at 100% 0%, rgba(200,41,36,.22), transparent 55%), #0e0b10 !important; border-color: rgba(200,41,36,.35) !important; }
+.prayer-table { width: 100%; border-collapse: collapse; font: 500 .92rem/1.4 'Plus Jakarta Sans', sans-serif; }
+.prayer-table th { text-align: left; font: 700 .72rem/1 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: #8e8778; padding: .6rem .4rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+.prayer-table td { padding: .7rem .4rem; border-bottom: 1px solid rgba(255,255,255,.05); color: #fff; }
+.prayer-table td + td { color: #f1d27a; }
+
+.prayer-faq { display: flex; flex-direction: column; gap: .6rem; }
+.prayer-faq details { border: 1px solid rgba(255,255,255,.08); border-radius: 12px; background: #0c0e14; padding: 0 1.1rem; }
+.prayer-faq summary { cursor: pointer; list-style: none; padding: 1rem 0; font: 700 1rem/1.4 'Plus Jakarta Sans', sans-serif; color: #fff; display: flex; justify-content: space-between; gap: 1rem; }
+.prayer-faq summary::after { content: '+'; color: #d4af37; font-size: 1.2rem; transition: transform .2s; }
+.prayer-faq details[open] summary::after { transform: rotate(45deg); }
+.prayer-faq summary::-webkit-details-marker { display: none; }
+.prayer-faq details p { padding: 0 0 1rem; font: 400 .95rem/1.65 'Plus Jakarta Sans', sans-serif; color: #cfc8ba; }
+.prayer-faq details a { color: #f1d27a; text-decoration: underline; }
+
+.prayer-final-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.6rem 1.8rem; border-radius: 18px; background: linear-gradient(110deg, rgba(212,175,55,.18), rgba(212,175,55,.04) 60%), #0c0d12; border: 1px solid rgba(212,175,55,.4); }
+.prayer-final-cta p { font: 600 clamp(1.05rem, 1.8vw, 1.35rem)/1.4 'Plus Jakarta Sans', sans-serif; color: #fff; }
+.prayer-final-cta strong { color: #f1d27a; }
+
+@media (max-width: 900px) {
+  .prayer-hero, .prayer-duo { grid-template-columns: 1fr; }
+  .prayer-steps { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .pity-track i { animation: none; } }

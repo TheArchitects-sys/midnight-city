@@ -3,46 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>CENTRAL DE VIGILÂNCIA DA ÉGIDE — MIDNIGHT CITY | Recursos & Inteligência Operacional</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.goatcounter.com; worker-src 'self' blob:; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>CENTRAL DE VIGILÂNCIA DA ÉGIDE — Midnight City | Recursos & Inteligência Operacional</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
   <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
   
   <!-- Meta & OpenGraph -->
-  <meta name="description" content="Central de Vigilância e Inteligência da Égide de Avalon: Acesso oficial a Requisições, Dossiê de Entidades, Guia de Materiais e Fichário de Operadores de Londres 2045.">
-  <meta property="og:title" content="CENTRAL DE VIGILÂNCIA DA ÉGIDE — MIDNIGHT CITY">
+  <meta name="description" content="Central de Vigilância e Inteligência da Égide de Avalon: Loja e fichas no Hub, bestiário, guia de materiais e a fofoca da semana de Londres 2045.">
+  <link rel="canonical" href="https://thearchitects-sys.github.io/midnight-city/agente.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Midnight City">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://thearchitects-sys.github.io/midnight-city/agente.html">
+  <meta property="og:image" content="https://thearchitects-sys.github.io/midnight-city/assets/valiria_mission.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://thearchitects-sys.github.io/midnight-city/assets/valiria_mission.jpg">
+  <meta property="og:title" content="CENTRAL DE VIGILÂNCIA DA ÉGIDE — Midnight City">
   <meta property="og:description" content="Inteligência de cenário, telemetria mística de Londres e acesso aos registros canônicos de combate.">
-  <meta property="og:image" content="assets/valiria_mission.jpg">
   <meta name="theme-color" content="#050608">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            'gold-primary': '#d4af37',
-            'gold-light': '#f1d27a',
-            'gold-dim': '#8c6a2b',
-            'dark-bg': '#050608',
-            'dark-surface': '#0a0912',
-            'dark-veil': '#0f0e1a',
-            'crimson-pure': '#c82924',
-          }
-        }
-      }
-    }
-  </script>
 
   <!-- GSAP Animation Library CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 
   <!-- Custom Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="agente.css">
   <link rel="stylesheet" href="mobile.css">
+  <!-- Tailwind compilado (antes vinha do CDN, injetado no fim do head) -->
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased selection:bg-[#d4af37]/30 selection:text-[#f1d27a]">
 
@@ -54,7 +45,7 @@
     <a href="index.html" class="brand-badge">
       <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
       <div class="brand-text">
-        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-name">Midnight City</span>
         <span class="brand-sub">Égide de Avalon</span>
       </div>
     </a>
@@ -78,7 +69,7 @@
         <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
       </nav>
 
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-xs tracking-widest font-bold">
         DISCORD ↗
       </a>
 
@@ -109,7 +100,8 @@
     <a href="agente.html" class="block py-2 text-[#f1d27a] font-bold">Central de Vigilância (Agente)</a>
     <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
     <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">ABRIR O HUB</a>
       <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
     </div>
   </div>
@@ -124,75 +116,116 @@
         
         <!-- Badges e Indicadores Superiores de Telemetria -->
         <div class="flex flex-wrap items-center gap-2.5 mb-5">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/35 text-[#f1d27a] text-[11px] font-mono uppercase tracking-widest font-bold">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/35 text-[#f1d27a] text-xs font-mono uppercase tracking-widest font-bold">
             <svg class="w-3.5 h-3.5 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             LONDRES · 2045
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-400 text-[11px] font-mono uppercase tracking-widest font-bold">
-            <svg class="w-3.5 h-3.5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            PAINEL DE AMBIENTAÇÃO (REPRESENTAÇÃO FICTÍCIA)
-          </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-400 text-[11px] font-mono uppercase tracking-widest font-bold">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            VÉU OPERACIONAL ATIVO
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/15 border border-red-500/35 text-red-400 text-[11px] font-mono uppercase tracking-widest font-bold">
-            <svg class="w-3.5 h-3.5 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            DEFCON: 2 // PRONTIDÃO
           </span>
         </div>
 
         <!-- Título e Subtítulo Autoritativos -->
         <div class="max-w-4xl mb-8">
           <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-[1.1]">
-            CENTRAL DO AGENTE // <span class="gold-gradient">ÉGIDE</span>
+            CENTRAL DO <span class="text-[#f1d27a]">AGENTE</span>
           </h1>
           <p class="text-sm sm:text-base text-[#cfc7b4] mt-3 font-sans font-light leading-relaxed max-w-3xl">
-            Painel de inteligência operacional e consulta direta aos catálogos de recursos, bestiário, materiais arcanos e registros de operadores sob a custódia da Égide de Avalon em Londres.
+            Loja e fichas no Hub, o bestiário de Londres e o guia de materiais arcanos, num só lugar.
           </p>
         </div>
 
-        <!-- Telemetria Tática Rápida (4 HUD Cards) -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          
-          <div class="ag-hero-hud-card">
-            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest flex items-center justify-between">
-              <span>STATUS DO VÉU</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            </div>
-            <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-400 mt-1">88.4% ESTÁVEL</div>
-            <div class="text-[11px] text-gray-400 font-sans mt-0.5">Ocultação contra Não-Iniciados</div>
-          </div>
+        <!-- Atalhos diretos para os recursos do agente -->
+        <nav class="ag-hero-shortcuts" aria-label="Atalhos do agente">
+          <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="ag-shortcut ag-shortcut--primary">
+            <span class="ag-shortcut-label">Loja do Hub</span>
+            <span class="ag-shortcut-sub">Bênçãos, itens e Forja ↗</span>
+          </a>
+          <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="ag-shortcut ag-shortcut--primary">
+            <span class="ag-shortcut-label">Suas fichas</span>
+            <span class="ag-shortcut-sub">Personagens, Baú e atributos ↗</span>
+          </a>
+          <a href="#bestiario" class="ag-shortcut">
+            <span class="ag-shortcut-label">Bestiário</span>
+            <span class="ag-shortcut-sub">Criaturas de Londres ↓</span>
+          </a>
+          <a href="#materiais" class="ag-shortcut">
+            <span class="ag-shortcut-label">Materiais</span>
+            <span class="ag-shortcut-sub">Guia de forja e alquimia ↓</span>
+          </a>
+        </nav>
 
-          <div class="ag-hero-hud-card">
-            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest flex items-center justify-between">
-              <span>SETORES EM ALERTA</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-            </div>
-            <div class="text-xl sm:text-2xl font-bold font-mono text-sky-400 mt-1">4 PERÍMETROS</div>
-            <div class="text-[11px] text-gray-400 font-sans mt-0.5">Grade geo-espacial de Londres</div>
-          </div>
+      </div>
+    </section>
 
-          <div class="ag-hero-hud-card">
-            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest flex items-center justify-between">
-              <span>OCORRÊNCIAS EM OBSERVAÇÃO</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-            </div>
-            <div class="text-xl sm:text-2xl font-bold font-mono text-[#f1d27a] mt-1">10 EVENTOS</div>
-            <div class="text-[11px] text-gray-400 font-sans mt-0.5">Monitoramento ativo no Tâmisa</div>
-          </div>
+    <!-- ==========================================================================
+         4. RÁDIO VÉU — A FOFOCA DA SEMANA (BOLETINS DE CAMPANHA)
+         ========================================================================== -->
+    <section class="gossip-section max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16" id="radio-veu" aria-labelledby="gossip-title">
 
-          <div class="ag-hero-hud-card">
-            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest flex items-center justify-between">
-              <span>PROTOCOLO DA ÉGIDE</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
-            </div>
-            <div class="text-xl sm:text-2xl font-bold font-mono text-purple-300 mt-1">DIRETRIZES ATIVAS</div>
-            <div class="text-[11px] text-gray-400 font-sans mt-0.5">Canais oficiais de despacho</div>
-          </div>
-
+      <div class="gossip-ticker" aria-hidden="true">
+        <div class="gossip-ticker-track">
+          <span>🔥 Tristan Burley sumiu do Baile e deixou até as roupas para trás</span>
+          <span>👑 A rainha do Cairo desapareceu, e o Vale dos Reis está a um passo da guerra</span>
+          <span>🗳️ Balthazar ou Alastor? Londres escolhe quem senta na cadeira de Ichabod Gryffindor</span>
+          <span>⛓️ Os agentes raptados em Valíria continuam sem contato</span>
+          <span>🔥 Tristan Burley sumiu do Baile e deixou até as roupas para trás</span>
+          <span>👑 A rainha do Cairo desapareceu, e o Vale dos Reis está a um passo da guerra</span>
+          <span>🗳️ Balthazar ou Alastor? Londres escolhe quem senta na cadeira de Ichabod Gryffindor</span>
+          <span>⛓️ Os agentes raptados em Valíria continuam sem contato</span>
         </div>
+      </div>
 
+      <div class="gossip-head">
+        <div>
+          <span class="gossip-kicker"><span class="gossip-live"></span> Rádio Véu · fofoca da semana</span>
+          <h2 id="gossip-title" class="gossip-title">O que Londres está cochichando</h2>
+          <p class="gossip-sub">Os bastidores das campanhas, contados do jeito que circulam nos corredores da Égide. Ninguém confirma. Ninguém desmente.</p>
+        </div>
+        <a href="operacoes.html" class="gossip-more">Entrar na história <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="gossip-grid">
+        <!-- Manchete -->
+        <article class="gossip-card gossip-card--lead valiria">
+          <div class="gossip-meta">
+            <span class="gossip-tag tag-hot">🔥 Bomba</span>
+            <span>Valíria · Ato II</span>
+          </div>
+          <h3>Tristan Burley saiu do Baile sem nada. <em>Literalmente nada.</em></h3>
+          <p>Ele foi o último a ser visto no Baile, e foi visto <strong>pelado</strong>. De todos os agentes raptados, foi o único que deixou os pertences para trás, roupas incluídas. A coalizão jura que está investigando "por motivos táticos". Os corredores acham que tem outra história aí.</p>
+          <p>Enquanto isso, os outros agentes capturados seguem presos e sem contato, em território hostil.</p>
+          <blockquote class="gossip-quote">"Ninguém sai de um baile sem as roupas por acaso."<cite>— comentário ouvido no refeitório da Égide</cite></blockquote>
+          <div class="gossip-foot">
+            <span class="gossip-status red">Cativos sem contato</span>
+            <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer">Tem um palpite? Conta no Discord ↗</a>
+          </div>
+        </article>
+
+        <article class="gossip-card cairo">
+          <div class="gossip-meta">
+            <span class="gossip-tag tag-gold">👑 Coroa vazia</span>
+            <span>Cairo · Ato I</span>
+          </div>
+          <h3>A rainha sumiu. E agora todo mundo quer o trono.</h3>
+          <p>O desaparecimento da rainha abalou as forças internas do Cairo. As facções já se olham de lado e, no Vale dos Reis, o clima é de conflito político a qualquer instante.</p>
+          <div class="gossip-foot">
+            <span class="gossip-status amber">Guerra política iminente</span>
+          </div>
+        </article>
+
+        <article class="gossip-card merlinianos">
+          <div class="gossip-meta">
+            <span class="gossip-tag tag-violet">🗳️ Eleição</span>
+            <span>Londres · Ordem Merliniana</span>
+          </div>
+          <h3>Balthazar x Alastor: a cadeira de Ichabod Gryffindor está em jogo.</h3>
+          <p>Com a morte do líder dos merlinianos, vários bruxos lançaram campanha. Dois saíram na frente, e a disputa já não é nada educada.</p>
+          <div class="gossip-versus" aria-label="Principais candidatos">
+            <span>Balthazar</span><b>vs</b><span>Alastor</span>
+          </div>
+          <div class="gossip-foot">
+            <span class="gossip-status violet">Campanha eleitoral</span>
+            <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer">Escolha seu lado ↗</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -202,41 +235,41 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <span class="text-[10px] font-mono text-[#f1d27a] uppercase tracking-widest block">CATÁLOGOS E REGISTROS OFICIAIS DE AVALON</span>
+          <span class="text-xs font-mono text-[#f1d27a] uppercase tracking-widest block">CATÁLOGOS E REGISTROS OFICIAIS DE AVALON</span>
           <h2 class="font-cinzel text-xl sm:text-2xl font-bold text-white">RECURSOS OPERACIONAIS PRIORITÁRIOS</h2>
         </div>
-        <div class="text-[11px] font-mono text-gray-400 hidden sm:block">Acesso direto aos compêndios e registros oficiais da ordem</div>
+        <div class="text-xs font-mono text-gray-400 hidden sm:block">Acesso direto aos compêndios e registros oficiais da ordem</div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="ag-resources-grid">
         
         <!-- Recurso A: Requisições — Loja -->
-        <a href="https://docs.google.com/document/d/e/2PACX-1vTwVW9hn28fi4aVOOjtTPGOYzPNuR0IPQV0GNcxowZOIdLNF2kMAdvta23JUs_ZQSkvxdizhx5CV_n-/pub" target="_blank" rel="noopener noreferrer" class="ag-resource-card theme-gold group ag-resource-item" data-resource-id="loja" title="Abre registro oficial em nova aba">
-          <img src="assets/artifices.png" alt="Requisições — Loja" class="ag-card-bg-img" loading="lazy">
+        <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="ag-resource-card theme-gold group ag-resource-item" data-resource-id="loja" title="Abre a loja no Hub em nova aba">
+          <img src="assets/artifices.webp" alt="Loja do Hub" class="ag-card-bg-img" loading="lazy">
           <div class="ag-card-overlay"></div>
           
           <div class="ag-card-content">
             <div>
               <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-1 rounded bg-black/60 border border-amber-500/40 text-amber-300 font-mono text-[10px] tracking-wider font-bold">
-                  DOC-EXT // REQ-01 ↗
+                <span class="px-2.5 py-1 rounded bg-black/60 border border-amber-500/40 text-amber-300 font-mono text-xs tracking-wider font-bold">
+                  HUB // LOJA ↗
                 </span>
                 <span class="w-7 h-7 rounded-full bg-black/50 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xs">
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 </span>
               </div>
               <h3 class="font-cinzel text-lg font-bold text-white group-hover:text-[#f1d27a] transition-colors leading-tight">
-                Requisições — Loja
+                Loja do Hub
               </h3>
-              <span class="text-[11px] font-mono text-amber-300/90 block mt-1 mb-2">Arsenal & Equipamentos ↗</span>
+              <span class="text-xs font-mono text-amber-300/90 block mt-1 mb-2">Itens, artefatos & materiais ↗</span>
               <p class="text-xs text-gray-300 font-sans leading-relaxed line-clamp-3">
-                Arsenal rúnico, relíquias e equipamentos de campanha autorizados pelo Conselho de Mármore para agentes em missão.
+                Compre itens, artefatos e materiais com o seu Gold e gere peças reais na Forja de artefatos. Tudo cai direto no seu Baú.
               </p>
             </div>
 
             <div class="pt-4">
               <div class="ag-terminal-btn">
-                <span>ACESSAR LOJA</span>
+                <span>ABRIR A LOJA</span>
                 <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </div>
@@ -245,13 +278,13 @@
 
         <!-- Recurso B: Arquivo de Entidades — Bestiário -->
         <a href="https://docs.google.com/document/d/1qcm_0sXNu9IK01qRUQXINCBLPbB_H6rYoIo-LAzVpSA/preview" target="_blank" rel="noopener noreferrer" class="ag-resource-card theme-cyan group ag-resource-item" data-resource-id="bestiario" title="Abre registro oficial em nova aba">
-          <img src="assets/scylla_mj.png" alt="Arquivo de Entidades — Bestiário" class="ag-card-bg-img" loading="lazy">
+          <img src="assets/scylla_mj.webp" alt="Arquivo de Entidades — Bestiário" class="ag-card-bg-img" loading="lazy">
           <div class="ag-card-overlay"></div>
           
           <div class="ag-card-content">
             <div>
               <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-1 rounded bg-black/60 border border-sky-500/40 text-sky-300 font-mono text-[10px] tracking-wider font-bold">
+                <span class="px-2.5 py-1 rounded bg-black/60 border border-sky-500/40 text-sky-300 font-mono text-xs tracking-wider font-bold">
                   DOC-EXT // ENT-02 ↗
                 </span>
                 <span class="w-7 h-7 rounded-full bg-black/50 border border-sky-500/30 flex items-center justify-center text-sky-400 text-xs">
@@ -261,7 +294,7 @@
               <h3 class="font-cinzel text-lg font-bold text-white group-hover:text-sky-300 transition-colors leading-tight">
                 Arquivo de Entidades — Bestiário
               </h3>
-              <span class="text-[11px] font-mono text-sky-300/90 block mt-1 mb-2">Controle de Seres Fantásticos ↗</span>
+              <span class="text-xs font-mono text-sky-300/90 block mt-1 mb-2">Controle de Seres Fantásticos ↗</span>
               <p class="text-xs text-gray-300 font-sans leading-relaxed line-clamp-3">
                 Registro oficial de ameaças, fraquezas e classificação tática de bestas, monstros e seres fantásticos de Londres.
               </p>
@@ -278,13 +311,13 @@
 
         <!-- Recurso C: Almoxarifado — Materiais -->
         <a href="https://docs.google.com/document/d/e/2PACX-1vTCCuHj-YECwWmKFk-mq4eK_yWd2ar2X3A1hJmQjeiCKJrPGwbaKoTSnhc0a8JGAUNf8-yWbX7xO94r/pub" target="_blank" rel="noopener noreferrer" class="ag-resource-card theme-purple group ag-resource-item" data-resource-id="materiais" title="Abre registro oficial em nova aba">
-          <img src="assets/arcanista.png" alt="Almoxarifado — Materiais" class="ag-card-bg-img" loading="lazy">
+          <img src="assets/arcanista.webp" alt="Almoxarifado — Materiais" class="ag-card-bg-img" loading="lazy">
           <div class="ag-card-overlay"></div>
           
           <div class="ag-card-content">
             <div>
               <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-1 rounded bg-black/60 border border-purple-500/40 text-purple-300 font-mono text-[10px] tracking-wider font-bold">
+                <span class="px-2.5 py-1 rounded bg-black/60 border border-purple-500/40 text-purple-300 font-mono text-xs tracking-wider font-bold">
                   DOC-EXT // MAT-03 ↗
                 </span>
                 <span class="w-7 h-7 rounded-full bg-black/50 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xs">
@@ -294,7 +327,7 @@
               <h3 class="font-cinzel text-lg font-bold text-white group-hover:text-purple-300 transition-colors leading-tight">
                 Almoxarifado — Materiais
               </h3>
-              <span class="text-[11px] font-mono text-purple-300/90 block mt-1 mb-2">Guia de Materiais & Forjas ↗</span>
+              <span class="text-xs font-mono text-purple-300/90 block mt-1 mb-2">Guia de Materiais & Forjas ↗</span>
               <p class="text-xs text-gray-300 font-sans leading-relaxed line-clamp-3">
                 Compêndio de metais raros, gemas primordiais e reagentes alquímicos para forja, encantamento e rituais da ordem.
               </p>
@@ -310,26 +343,26 @@
         </a>
 
         <!-- Recurso D: Registro de Agentes — Fichas -->
-        <a href="https://docs.google.com/document/d/1nAKfM2Tu1UkCRlSoMmNHVN4_-QBfG_hdK0uaCxqPYJw/preview?tab=t.0" target="_blank" rel="noopener noreferrer" class="ag-resource-card theme-emerald group ag-resource-item" data-resource-id="fichario" title="Abre registro oficial em nova aba">
-          <img src="assets/arquivistas.png" alt="Registro de Agentes — Fichas" class="ag-card-bg-img" loading="lazy">
+        <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="ag-resource-card theme-emerald group ag-resource-item" data-resource-id="fichario" title="Abre suas fichas no Hub em nova aba">
+          <img src="assets/arquivistas.webp" alt="Suas fichas no Hub" class="ag-card-bg-img" loading="lazy">
           <div class="ag-card-overlay"></div>
           
           <div class="ag-card-content">
             <div>
               <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-1 rounded bg-black/60 border border-emerald-500/40 text-emerald-300 font-mono text-[10px] tracking-wider font-bold">
-                  DOC-EXT // OPR-04 ↗
+                <span class="px-2.5 py-1 rounded bg-black/60 border border-emerald-500/40 text-emerald-300 font-mono text-xs tracking-wider font-bold">
+                  HUB // FICHAS ↗
                 </span>
                 <span class="w-7 h-7 rounded-full bg-black/50 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs">
                   <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </span>
               </div>
               <h3 class="font-cinzel text-lg font-bold text-white group-hover:text-emerald-300 transition-colors leading-tight">
-                Registro de Agentes — Fichas
+                Suas fichas no Hub
               </h3>
-              <span class="text-[11px] font-mono text-emerald-300/90 block mt-1 mb-2">Fichário & Photoplayers ↗</span>
+              <span class="text-xs font-mono text-emerald-300/90 block mt-1 mb-2">Criar, atualizar & photoplayers ↗</span>
               <p class="text-xs text-gray-300 font-sans leading-relaxed line-clamp-3">
-                Matriz de operadores ativos, linhagens divinas, vagas de deuses tutelares e controle oficial de photoplayers.
+                Crie e atualize seus personagens, distribua atributos, equipe os seis artefatos e registre o seu photoplayer.
               </p>
             </div>
 
@@ -353,7 +386,7 @@
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
           <div class="flex items-center gap-2 mb-1.5">
-            <span class="px-2.5 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#f1d27a] text-[10px] font-mono uppercase tracking-widest font-bold">
+            <span class="px-2.5 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#f1d27a] text-xs font-mono uppercase tracking-widest font-bold">
               VIGILÂNCIA GEO-ESPACIAL // DIVISÃO DE INTELIGÊNCIA
             </span>
           </div>
@@ -362,16 +395,16 @@
 
         <!-- Seletor de Distritos via Botões HTML -->
         <div class="flex flex-wrap gap-2 text-xs font-mono">
-          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition-all" data-district="highgate">
+          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition" data-district="highgate">
             Highgate
           </button>
-          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition-all" data-district="soho">
+          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition" data-district="soho">
             Soho
           </button>
-          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition-all" data-district="westminster">
+          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition" data-district="westminster">
             Westminster
           </button>
-          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition-all" data-district="whitechapel">
+          <button type="button" class="district-tab-btn px-3 py-1.5 rounded-lg border transition" data-district="whitechapel">
             Whitechapel
           </button>
         </div>
@@ -385,15 +418,15 @@
           
           <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-4 z-10">
             <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
               GRADE GEO-ESPACIAL // LONDRES 2045
             </span>
-            <span class="text-[11px] text-[#f1d27a]">INTERATIVO: SELECIONE UM PERÍMETRO</span>
+            <span class="text-xs text-[#f1d27a]">INTERATIVO: SELECIONE UM PERÍMETRO</span>
           </div>
 
           <!-- SVG do Mapa de Londres -->
           <div class="w-full h-full flex items-center justify-center my-auto z-10">
-            <svg viewBox="0 0 600 380" class="w-full h-auto max-h-[360px] select-none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 600 380" class="ag-london-map w-full h-auto max-h-[360px] select-none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <!-- Filtros de Glow -->
                 <filter id="glow-thames" x="-20%" y="-20%" width="140%" height="140%">
@@ -438,7 +471,7 @@
                 <text x="260" y="90" fill="#94a3b8" font-size="9" font-family="monospace">Índice: 73</text>
                 <!-- Pino -->
                 <circle cx="310" cy="70" r="6" fill="#ef4444" class="district-pin" data-district="highgate" filter="url(#glow-pin)" />
-                <circle cx="310" cy="70" r="12" fill="none" stroke="#ef4444" stroke-width="1" class="animate-ping" opacity="0.5" />
+                <circle cx="310" cy="70" r="12" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5" />
               </g>
 
               <!-- 2. SOHO (Centro-Oeste / Risco Moderado) -->
@@ -484,7 +517,7 @@
           </div>
 
           <!-- Rodapé do Mapa -->
-          <div class="flex flex-wrap items-center justify-between text-[11px] font-mono text-gray-400 pt-3 border-t border-white/5 z-10">
+          <div class="flex flex-wrap items-center justify-between text-xs font-mono text-gray-400 pt-3 border-t border-white/5 z-10">
             <span>COORDENADAS: 51.5074° N, 0.1278° W</span>
             <span class="text-gray-400">PAINEL DE AMBIENTAÇÃO · ATUALIZAÇÃO PERIÓDICA</span>
           </div>
@@ -497,7 +530,7 @@
             <!-- Cabeçalho do Distrito -->
             <div class="flex items-start justify-between gap-2 border-b border-white/10 pb-4 mb-4">
               <div>
-                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest block mb-0.5">PERÍMETRO SELECIONADO</span>
+                <span class="text-xs font-mono text-gray-400 uppercase tracking-widest block mb-0.5">PERÍMETRO SELECIONADO</span>
                 <h3 class="font-cinzel text-2xl font-bold text-white" id="ag-dist-name">Highgate</h3>
                 <p class="text-xs text-gray-300 font-sans mt-0.5" id="ag-dist-class">
                   Colina Norte · Necrópole Ancestral & Fronteira Férica
@@ -513,35 +546,35 @@
               
               <!-- Corrupção Mística -->
               <div class="p-3.5 rounded-xl bg-black/40 border border-white/10">
-                <div class="flex items-center justify-between text-[11px] font-mono text-gray-400 mb-1">
+                <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-1">
                   <span>CORRUPÇÃO MÍSTICA</span>
                   <span class="text-[#f1d27a] font-bold" id="ag-dist-corr">73</span>
                 </div>
                 <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
-                  <div id="ag-dist-corr-bar" class="h-full bg-gradient-to-r from-amber-500 to-red-500 rounded-full transition-all duration-500" style="width: 73%"></div>
+                  <div id="ag-dist-corr-bar" class="h-full bg-gradient-to-r from-amber-500 to-red-500 rounded-full transition-[width] duration-500" style="width: 73%"></div>
                 </div>
-                <span class="text-[9px] text-gray-400 font-mono mt-1 block">Instabilidade & Concentração de Éter (0-100)</span>
+                <span class="text-xs text-gray-400 font-mono mt-1 block">Instabilidade & Concentração de Éter (0-100)</span>
               </div>
 
               <!-- Integridade do Véu -->
               <div class="p-3.5 rounded-xl bg-black/40 border border-white/10">
-                <div class="flex items-center justify-between text-[11px] font-mono text-gray-400 mb-1">
+                <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-1">
                   <span>INTEGRIDADE DO VÉU</span>
                   <span class="text-sky-400 font-bold" id="ag-dist-veil">64%</span>
                 </div>
                 <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
-                  <div id="ag-dist-veil-bar" class="h-full bg-gradient-to-r from-sky-500 to-emerald-400 rounded-full transition-all duration-500" style="width: 64%"></div>
+                  <div id="ag-dist-veil-bar" class="h-full bg-gradient-to-r from-sky-500 to-emerald-400 rounded-full transition-[width] duration-500" style="width: 64%"></div>
                 </div>
-                <span class="text-[9px] text-gray-400 font-mono mt-1 block">Barreira de Ocultação contra Não-Iniciados</span>
+                <span class="text-xs text-gray-400 font-mono mt-1 block">Barreira de Ocultação contra Não-Iniciados</span>
               </div>
 
             </div>
 
             <!-- Gráfico Temporal de Telemetria (SVG) -->
             <div class="p-4 rounded-xl bg-black/40 border border-white/10 mb-6">
-              <div class="flex items-center justify-between text-[11px] font-mono text-gray-400 mb-2">
+              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-2">
                 <span>HISTÓRICO DE CORRUPÇÃO (JANELA DE 7 DIAS)</span>
-                <span class="text-[10px] text-gray-400">D-6 ➔ D-0</span>
+                <span class="text-xs text-gray-400">D-6 ➔ D-0</span>
               </div>
 
               <div class="w-full h-28 relative">
@@ -567,7 +600,7 @@
                 </svg>
               </div>
 
-              <div class="flex justify-between text-[9px] font-mono text-gray-400 pt-1 border-t border-white/5">
+              <div class="flex justify-between text-xs font-mono text-gray-400 pt-1 border-t border-white/5">
                 <span>D-6</span>
                 <span>D-5</span>
                 <span>D-4</span>
@@ -591,117 +624,11 @@
 
           </div>
 
-          <div class="text-[10px] font-mono text-gray-400 pt-3 border-t border-white/10 flex items-center justify-between">
+          <div class="text-xs font-mono text-gray-400 pt-3 border-t border-white/10 flex items-center justify-between">
             <span>* Relatório de inteligência sob sigilo Nível Alfa. Égide de Avalon.</span>
             <span class="text-[#f1d27a]">CANAL CRIPTOGRAFADO</span>
           </div>
 
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ==========================================================================
-         4. BOLETINS DE CAMPANHA (RELATÓRIOS OFICIAIS DO CONSELHO)
-         ========================================================================== -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-      
-      <div class="flex items-center justify-between mb-5">
-        <div>
-          <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block">RELATÓRIOS DO CONSELHO DE MÁRMORE</span>
-          <h2 class="font-cinzel text-xl sm:text-2xl font-bold text-white">BOLETINS DE CAMPANHA</h2>
-        </div>
-        <a href="operacoes.html" class="text-xs font-mono text-[#f1d27a] hover:underline flex items-center gap-1">
-          <span>Ver Painel de Operações</span>
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        <!-- Boletim 1: Valíria -->
-        <div class="ag-bulletin-card valiria">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2 py-0.5 rounded bg-red-500/10 border border-red-500/30 text-red-400 text-[10px] font-mono uppercase tracking-widest font-bold">
-                VALÍRIA // ATO II
-              </span>
-              <span class="text-[10px] font-mono text-gray-400">OUTUBRO 2026</span>
-            </div>
-
-            <h3 class="font-cinzel text-base font-bold text-white mb-2 leading-snug">
-              Operação Valíria: Agentes Cativos & Enigma no Baile
-            </h3>
-            
-            <p class="text-xs text-gray-300 font-sans leading-relaxed">
-              Os agentes que foram raptados ainda estão presos e inacessíveis sob domínio hostil. Tristan Burley foi visto por último pelado no Baile, e foi o único que deixou para trás seus pertences, entre eles, suas roupas... o que gerou muito debate e intensas investigações nos bastidores da coalizão.
-            </p>
-          </div>
-
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-gray-400">STATUS:</span>
-            <span class="text-red-400 font-bold flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>
-              CATIVOS INACESSÍVEIS
-            </span>
-          </div>
-        </div>
-
-        <!-- Boletim 2: Cairo -->
-        <div class="ag-bulletin-card cairo">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-mono uppercase tracking-widest font-bold">
-                CAIRO // ATO I
-              </span>
-              <span class="text-[10px] font-mono text-gray-400">OUTUBRO 2026</span>
-            </div>
-
-            <h3 class="font-cinzel text-base font-bold text-white mb-2 leading-snug">
-              Frente do Cairo: Desaparecimento da Rainha & Conflito Iminente
-            </h3>
-            
-            <p class="text-xs text-gray-300 font-sans leading-relaxed">
-              O recente sumiço da rainha estremeceu profundamente as forças internas da região. Tensões extremas se acumulam entre as facções, e um violento conflito político interno parece estar prestes a estourar a qualquer instante no Vale dos Reis.
-            </p>
-          </div>
-
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-gray-400">STATUS:</span>
-            <span class="text-amber-400 font-bold flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-              GUERRA POLÍTICA IMINENTE
-            </span>
-          </div>
-        </div>
-
-        <!-- Boletim 3: Londres (Merlinianos) -->
-        <div class="ag-bulletin-card merlinianos">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[10px] font-mono uppercase tracking-widest font-bold">
-                LONDRES // ORDEM MERLINIANA
-              </span>
-              <span class="text-[10px] font-mono text-gray-400">OUTUBRO 2026</span>
-            </div>
-
-            <h3 class="font-cinzel text-base font-bold text-white mb-2 leading-snug">
-              Cúpula de Londres: Disputa pela Liderança Merliniana
-            </h3>
-            
-            <p class="text-xs text-gray-300 font-sans leading-relaxed">
-              Com a morte do líder dos merlinianos, alguns bruxos iniciaram uma campanha cada um para se eleger. Balthazar e Alastor despontam como os principais candidatos em acirrada disputa para se eleger ao cargo que Ichabod Gryffindor ocupava.
-            </p>
-          </div>
-
-          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-            <span class="text-gray-400">STATUS:</span>
-            <span class="text-purple-300 font-bold flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
-              CAMPANHA ELEITORAL
-            </span>
-          </div>
         </div>
 
       </div>
@@ -714,12 +641,12 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-10">
-        <span class="text-[10px] font-mono text-[#f1d27a] uppercase tracking-widest px-3 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 font-bold">
+        <span class="text-xs font-mono text-[#f1d27a] uppercase tracking-widest px-3 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 font-bold">
           DOCUMENTAÇÃO CANÔNICA DE AVALON
         </span>
         <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white mt-3 mb-2">DIRETRIZES DE REGISTRO & VAGAS</h2>
         <p class="text-xs sm:text-sm text-[#cfc7b4] leading-relaxed">
-          Normas oficiais sobre criação de fichas, baú coletivo, photoplayers registrados e regras canônicas para deuses tutelares e seus hospedeiros mortais.
+          Como fichas, Baú e photoplayers funcionam agora que tudo fica no Hub, e as regras para deuses e seus hospedeiros.
         </p>
       </div>
 
@@ -730,37 +657,35 @@
           <button type="button" class="ag-accordion-header">
             <span class="font-cinzel text-base font-bold text-[#f1d27a] flex items-center gap-2.5">
               <svg class="w-4 h-4 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-              <span>FICHAS DE JOGADORES, BAÚ & PHOTOPLAYERS</span>
+              <span>FICHAS, BAÚ & PHOTOPLAYERS (NO HUB)</span>
             </span>
             <span class="ag-acc-icon text-gray-400 text-sm">▼</span>
           </button>
           <div class="ag-accordion-body text-xs text-gray-300 space-y-4 leading-relaxed font-sans">
             <div>
-              <h4 class="font-bold text-white mb-1 font-cinzel">Limites de Personagens & Baú Coletivo</h4>
+              <h3 class="font-bold text-white mb-1 font-cinzel">Limites de personagens & Baú</h3>
               <p>
                 No jogo, todo jogador terá o direito de possuir no máximo <strong>4 personagens por ficha</strong>, adquirindo o direito de criar mais personagens à medida que cada temporada (season) chegue ao fim ou como premiação especial em eventos.
               </p>
               <p class="mt-2">
-                Em cada ficha de jogador constam os links de seus personagens, deuses, conselheiros, NPCs e o seu <strong>Baú Coletivo</strong>, onde ficam armazenados seus artefatos sobressalentes, bênçãos compradas na loja e armas.
+                Na sua conta do <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="text-[#f1d27a] underline">Hub</a> ficam as fichas dos seus personagens, deuses, conselheiros e NPCs, e o seu <strong>Baú</strong>, onde ficam artefatos, bênçãos compradas na loja e armas.
               </p>
               <p class="mt-2">
-                Na ficha de cada personagem ficam alocadas apenas as bênçãos conquistadas com o tempo (ou compradas na loja, com 1 bênção ativa e as demais para efeito interpretativo), sua arma e seus 4 artefatos equipados.
+                Na ficha de cada personagem ficam alocadas apenas as bênçãos conquistadas com o tempo (ou compradas na loja, com 1 bênção ativa e as demais para efeito interpretativo), sua arma e seus <strong>6 artefatos</strong> equipados: Cabeça, Corpo, Mãos, Pés, Esfera e Corda.
               </p>
             </div>
 
             <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-              <h4 class="font-bold text-white mb-2 font-cinzel">Regulamento Oficial de Photoplayer</h4>
+              <h4 class="font-bold text-white mb-2 font-cinzel">Photoplayers</h4>
               <p class="mb-3">
-                É estritamente proibido utilizar o photoplayer registrado de outro jogador. Observe o sinal indicador no registro oficial:
+                É estritamente proibido usar o photoplayer de outro jogador. O registro agora é feito <strong>automaticamente no Hub</strong>: se o rosto já estiver ocupado, o Hub avisa na hora e sugere <strong>pedir para dividir</strong> ou <strong>escolher outro</strong>.
               </p>
               <div class="flex flex-wrap gap-4 text-xs font-mono">
                 <span class="ag-photoplayer-pill livre">
-                  <span class="ag-dot bg-emerald-400"></span> SINAL VERDE: Aberto e disponível para qualquer jogador
+                  <span class="ag-dot bg-emerald-400"></span> Livre: o Hub registra para você
                 </span>
                 <span class="ag-photoplayer-pill restrito">
-                  <span class="ag-dot bg-red-400"></span> SINAL VERMELHO: Restrito exclusivamente ao solicitante
-                </span>
-              </div>
+                  <span class="ag-dot bg-red-400"></span> Ocupado: divida ou escolha outro</div>
             </div>
           </div>
         </div>
@@ -804,14 +729,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
               <div class="p-3.5 rounded-lg bg-black/40 border border-white/10">
                 <h5 class="font-bold text-amber-300 font-cinzel mb-1">Manifestação Divina</h5>
-                <p class="text-[11px] leading-relaxed text-gray-300">
+                <p class="text-xs leading-relaxed text-gray-300">
                   Encarnação da energia divina através de objetos, seres inanimados ou energia pura em templos e pontos sagrados. São perigosas e representam em <strong>80% dos casos</strong> um alto risco à vida e aos segredos da ordem, requerendo contenção encomendada pela Égide.
                 </p>
               </div>
 
               <div class="p-3.5 rounded-lg bg-black/40 border border-purple-500/30">
                 <h5 class="font-bold text-purple-300 font-cinzel mb-1">Emanador (O Risco Máximo)</h5>
-                <p class="text-[11px] leading-relaxed text-gray-300">
+                <p class="text-xs leading-relaxed text-gray-300">
                   Cruzamento das linhas do destino de um celestial com um mortal. O emanador não é controlado pelo deus; ele usa a fonte divina como um parasita e é a presença mais poderosa das três modalidades, capaz de <strong>matar outro celestial</strong> se aprender a dominar seu poder (como nos mitos de Hélio e Selene).
                 </p>
               </div>
@@ -836,19 +761,19 @@
           </div>
           <div>
             <div class="text-white font-bold">DÚVIDAS OU REGISTROS OPERACIONAIS?</div>
-            <div class="text-gray-400 text-[11px]">Consulte o Sistema de Criação ou contate a moderação no Discord.</div>
+            <div class="text-gray-400 text-xs">Fichas e registros ficam no Hub. Regras completas na página Sistema; dúvidas no Discord.</div>
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-3">
-          <a href="https://sites.google.com/view/neotheon/fichas" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-[#d4af37]/10 border border-[#d4af37]/40 text-[#f1d27a] hover:bg-[#d4af37]/20 transition-all font-bold flex items-center gap-1.5">
-            <span>Diretrizes de Registro</span>
+          <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-[#d4af37]/10 border border-[#d4af37]/40 text-[#f1d27a] hover:bg-[#d4af37]/20 transition font-bold flex items-center gap-1.5">
+            <span>Abrir o Hub</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
-          <a href="sistema.html" class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white hover:text-[#f1d27a] hover:border-[#d4af37]/40 transition-all flex items-center gap-1.5">
+          <a href="sistema.html" class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white hover:text-[#f1d27a] hover:border-[#d4af37]/40 transition flex items-center gap-1.5">
             <span>Página Sistemas</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
           </a>
-          <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold px-4 py-2 rounded-lg font-bold flex items-center gap-1.5">
+          <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold px-4 py-2 rounded-lg font-bold flex items-center gap-1.5">
             <span>Discord Oficial</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
@@ -860,20 +785,18 @@
   </main>
 
   <!-- ==========================================================================
-       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL MIDNIGHT CITY
+       RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL Midnight City
        ========================================================================== -->
   <footer class="neotheon-global-footer">
     <div class="footer-container">
-      
+      <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
       <div class="footer-grid">
-        
-        <!-- Coluna 1: Marca & Lore -->
         <div class="footer-brand-col">
           <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
             <div class="footer-brand-info">
-              <span class="footer-brand-title">MIDNIGHT CITY</span>
-              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+              <span class="footer-brand-title">Midnight City</span>
+              <span class="footer-brand-sub">Égide de Avalon · Temporada 2</span>
             </div>
           </div>
           <p class="footer-lore-quote">
@@ -885,9 +808,8 @@
           </div>
         </div>
 
-        <!-- Coluna 2: Universo -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <h4 class="footer-nav-heading">✦ O Universo</h4>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
@@ -897,60 +819,50 @@
           </ul>
         </div>
 
-        <!-- Coluna 3: Sistema & Jogo -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <h4 class="footer-nav-heading">✦ Sistema & Jogo</h4>
           <ul class="footer-links-list">
-            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia do Novato</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
             <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
-            <li><a href="agente.html" class="footer-nav-link text-[#f1d27a]">Central de Vigilância (Agente)</a></li>
+            <li><a href="banners.html" class="footer-nav-link">Banners & Orações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente</a></li>
             <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
           </ul>
         </div>
 
-        <!-- Coluna 4: Comunidade -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <h4 class="footer-nav-heading">✦ Comunidade</h4>
           <ul class="footer-links-list">
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
-                <span>Servidor Discord Oficial</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Comunidade Yoble (309183)</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Mesas de Sexta no Roll20</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Inscrições de Missões</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
+            <li><a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white"><span>Hub Midnight City (fichas, loja, orações)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Discord oficial (inscrições)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Comunidade Yoble</span><span class="text-xs">↗</span></a></li>
+            <li><a href="aviso-legal.html" class="footer-nav-link">Aviso legal & remoção de conteúdo</a></li>
           </ul>
         </div>
+      </div>
 
+      <!-- Aviso legal (alta visibilidade) -->
+      <div class="footer-legal-callout" role="note" aria-label="Aviso legal">
+        <div class="footer-legal-badge-row">
+          <span class="footer-legal-pill">⚖ Aviso legal</span>
+          <span class="footer-legal-pill">Obra de fã · sem fins lucrativos</span>
+          <span class="footer-legal-pill">Conteúdo +18</span>
+        </div>
+        <div class="footer-legal-title">Midnight City é uma fanfic coletiva, gratuita e sem fins lucrativos</div>
+        <p class="footer-legal-text">
+          <strong>Midnight City</strong> é um RPG de texto amador feito por fãs para entretenimento e escrita criativa. <strong>Não vendemos nada</strong>: não há cobrança, assinatura, doação obrigatória nem venda de moedas ou itens por dinheiro real. Gold, Conta Celestial e Orações são moedas fictícias, sem valor fora do jogo, e não podem ser compradas, vendidas ou trocadas por dinheiro. Personagens, nomes e mitologias citados, além das imagens de referência (<em>photoplayers / faceclaims</em>), pertencem aos seus respectivos autores e detentores, que <strong>não têm vínculo com o projeto nem o endossam</strong>. Se você é titular de algum conteúdo exibido aqui e quer que ele seja removido, <a href="aviso-legal.html#remocao" class="text-[#f1d27a] underline hover:text-white">veja como pedir a remoção</a>: atendemos sem burocracia.
+        </p>
       </div>
 
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
-          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+          © 2026 Comunidade Midnight City. Os textos originais pertencem aos seus autores; as obras e marcas de terceiros pertencem aos seus titulares.
         </div>
         <div class="footer-disclaimer">
-          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+          <a href="aviso-legal.html" class="underline hover:text-white">Aviso legal, termos de uso e privacidade</a>
         </div>
       </div>
-
     </div>
   </footer>
 
@@ -958,5 +870,7 @@
   <script src="app.js"></script>
   <script src="agente.js"></script>
   <script src="mobile.js" defer></script>
+  <script src="legal.js" defer></script>
+  <script src="analytics.js" defer></script>
 </body>
 </html>

@@ -67,7 +67,7 @@ body {
   background: rgba(5, 6, 8, 0.92);
   border-bottom: 1px solid var(--op-border-subtle);
   padding: 0.75rem 1rem;
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .hub-nav-track {
@@ -102,7 +102,7 @@ body {
   background: transparent;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.22s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   white-space: nowrap;
   min-height: 42px;
 }
@@ -122,7 +122,7 @@ body {
 
 .hub-tab-badge {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   padding: 0.15rem 0.45rem;
@@ -205,7 +205,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .campaign-card:hover {
@@ -244,7 +244,7 @@ body {
   top: 1rem;
   left: 1rem;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -357,7 +357,7 @@ body {
   font-size: 0.88rem;
   color: #ffffff;
   outline: none;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .filter-search-input:focus {
@@ -392,7 +392,7 @@ body {
   border: 1px solid var(--op-border-subtle);
   color: var(--op-text-muted);
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: 0.18s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   min-height: 36px;
   display: inline-flex;
   align-items: center;
@@ -455,7 +455,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   position: relative;
 }
 
@@ -484,7 +484,7 @@ body {
 
 .mission-card-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   padding: 0.2rem 0.55rem;
@@ -530,12 +530,6 @@ body {
   background: rgba(234, 179, 8, 0.1);
   border-color: rgba(234, 179, 8, 0.3);
   color: #fde047;
-}
-
-.reward-pill.reputacao {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
-  color: #93c5fd;
 }
 
 .reward-pill.contas {
@@ -635,7 +629,7 @@ body {
   padding: 0.85rem 1rem;
   text-align: left;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .banner-tab-item:hover {
@@ -659,7 +653,7 @@ body {
 
 .banner-tab-sub {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   color: var(--op-text-whisper);
 }
 
@@ -694,7 +688,7 @@ body {
   border-radius: 8px;
   padding: 1.15rem;
   cursor: pointer;
-  transition: all 0.22s ease;
+  transition: 0.22s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -723,7 +717,7 @@ body {
 .prize-nature-tag {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--op-gold-light);
@@ -762,7 +756,7 @@ body {
   border: 1px solid var(--op-border-subtle);
   color: var(--op-text-muted);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   min-height: 40px;
 }
 
@@ -844,7 +838,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .novato-act-card.active {
@@ -863,7 +857,7 @@ body {
   border-radius: 8px;
   padding: 1.15rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .path-choice-card:hover {
@@ -943,7 +937,7 @@ body {
   padding: 0.25rem 0.5rem;
   line-height: 1;
   border-radius: 4px;
-  transition: all 0.15s ease;
+  transition: 0.15s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .op-modal-close:hover {
@@ -986,7 +980,7 @@ body {
   border-radius: 6px;
   border: 1px solid #f1d27a;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   min-height: 40px;
 }
 
@@ -1011,7 +1005,7 @@ body {
   border-radius: 6px;
   border: 1px solid rgba(212, 175, 55, 0.35);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   min-height: 40px;
 }
 
@@ -1088,7 +1082,7 @@ body {
   border-radius: 8px;
   padding: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1115,9 +1109,76 @@ body {
 .lore-break-box {
   background: linear-gradient(135deg, rgba(30, 24, 14, 0.7) 0%, rgba(18, 15, 9, 0.9) 100%);
   border: 1px solid rgba(212, 175, 55, 0.35);
-  border-left: 4px solid var(--op-gold);
   border-radius: 8px;
   padding: 1.25rem;
   margin: 1rem 0;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
+
+/* ==========================================================================
+   NOVATO PREMIUM — LEGIBILIDADE (out/2026)
+   Fundos neutros e sólidos atrás do texto (o dourado translúcido sobre o
+   mármore animado baixava o contraste), texto corrido em sans de leitura
+   com no mínimo 15px, e etiquetas mono nunca abaixo de 12.5px.
+   ========================================================================== */
+#view-novato {
+  --nov-read: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --nov-card: #0d0f16;
+  --nov-card-hi: #12141c;
+  --nov-text: #e6e0d4;
+  --nov-muted: #b7b0a2;
+}
+/* Cartões: fundo sólido neutro, destaque só na borda */
+#view-novato [class*="bg-[#100e08]"],
+#view-novato [class*="bg-[#15120b]"],
+#view-novato [class*="bg-[#d4af37]/10"],
+#view-novato [class*="from-[#d4af37]/15"],
+#view-novato .novato-act-card,
+#view-novato .path-choice-card,
+#view-novato .estudo-choice-card,
+#view-novato .treino-choice-card,
+#view-novato .conclusao-choice-card,
+#view-novato .op-accordion {
+  background: var(--nov-card) !important;
+  background-image: none !important;
+}
+#view-novato .novato-act-card.active,
+#view-novato .path-choice-card.selected,
+#view-novato .estudo-choice-card.selected,
+#view-novato .treino-choice-card.selected,
+#view-novato .conclusao-choice-card.selected {
+  background: var(--nov-card-hi) !important;
+  box-shadow: inset 3px 0 0 #d4af37, 0 0 0 1px rgba(212, 175, 55, 0.55);
+}
+#view-novato .novato-act-card.coming-soon { opacity: 0.85; }
+#view-novato .novato-act-card.coming-soon * { color: var(--nov-muted) !important; }
+
+/* Texto corrido */
+#view-novato p,
+#view-novato li,
+#view-novato .font-serif,
+#view-novato .op-accordion-content,
+#view-novato .op-accordion-content *,
+#view-novato .line-clamp-2,
+#view-novato [class*="leading-relaxed"] {
+  font-family: var(--nov-read) !important;
+  font-style: normal;
+  letter-spacing: 0;
+}
+#view-novato p,
+#view-novato li,
+#view-novato .font-serif,
+#view-novato .op-accordion-content,
+#view-novato [class*="leading-relaxed"] {
+  font-size: 0.95rem !important;
+  line-height: 1.72 !important;
+  color: var(--nov-text);
+}
+#view-novato .line-clamp-2 { font-size: 0.9rem !important; line-height: 1.55 !important; color: var(--nov-muted) !important; }
+#view-novato .text-\[\#8e8778\] { color: var(--nov-muted) !important; }
+
+/* Etiquetas, valores e notas em mono: um degrau maior */
+#view-novato .font-mono.text-xs,
+#view-novato .text-xs,
+#view-novato .text-\[10px\] { font-size: 0.8rem !important; line-height: 1.5; }
+#view-novato .op-eyebrow { font-size: 0.74rem; }

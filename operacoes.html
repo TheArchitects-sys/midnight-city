@@ -3,41 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>OPERAÇÕES, BANNERS & NOVATO PREMIUM — MIDNIGHT CITY | Égide de Avalon</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.goatcounter.com; worker-src 'self' blob:; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>OPERAÇÕES, BANNERS & NOVATO PREMIUM — Midnight City | Égide de Avalon</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
   <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
   
   <!-- Meta & OpenGraph -->
   <meta name="description" content="Central de Operações da Égide de Avalon: Campanhas de Valíria e Cairo, catálogo de 21 missões fixas e temporárias, Banners Míticos com refinamentos R1 a R5 e jornada Novato Premium.">
-  <meta property="og:title" content="OPERAÇÕES, BANNERS & NOVATO PREMIUM — MIDNIGHT CITY">
+  <link rel="canonical" href="https://thearchitects-sys.github.io/midnight-city/operacoes.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Midnight City">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://thearchitects-sys.github.io/midnight-city/operacoes.html">
+  <meta property="og:image" content="https://thearchitects-sys.github.io/midnight-city/assets/valiria_mission.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://thearchitects-sys.github.io/midnight-city/assets/valiria_mission.jpg">
+  <meta property="og:title" content="OPERAÇÕES, BANNERS & NOVATO PREMIUM — Midnight City">
   <meta property="og:description" content="Campanhas da Temporada 2, Catálogo de Missões em Londres, Banners Míticos e Jornada Novato Premium.">
-  <meta property="og:image" content="assets/valiria_mission.jpg">
   <meta name="theme-color" content="#050608">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            'gold-primary': '#d4af37',
-            'gold-light': '#f1d27a',
-            'gold-dim': '#8c6a2b',
-            'dark-bg': '#050608',
-            'dark-surface': '#100e08',
-            'dark-veil': '#15120b',
-            'crimson-pure': '#c82924',
-          }
-        }
-      }
-    }
-  </script>
 
-  <!-- GSAP Animation Library CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <!-- Preload Essential Assets -->
   <link rel="preload" as="image" href="assets/valiria_mission.jpg">
@@ -52,6 +39,8 @@
   <script src="assets/atmosphere.js" defer></script>
   <script src="operacoes.js" defer></script>
   <link rel="stylesheet" href="mobile.css">
+  <!-- Tailwind compilado (antes vinha do CDN, injetado no fim do head) -->
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="bg-[#050608] text-[#e2ded6] min-h-screen relative antialiased selection:bg-[#d4af37]/30 selection:text-white">
 
@@ -63,7 +52,7 @@
     <a href="index.html" class="brand-badge">
       <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
       <div class="brand-text">
-        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-name">Midnight City</span>
         <span class="brand-sub">Égide de Avalon</span>
       </div>
     </a>
@@ -87,7 +76,7 @@
         <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
       </nav>
 
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-xs tracking-widest font-bold">
         DISCORD ↗
       </a>
 
@@ -118,7 +107,8 @@
     <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
     <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
     <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">ABRIR O HUB</a>
       <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
     </div>
   </div>
@@ -126,7 +116,7 @@
   <!-- ── HERO SECTION: MATRIX RÚNICA DOURADA & ATMOSFERA DOURADA ── -->
   <section id="operacoes-hero" class="relative w-full min-h-[440px] sm:min-h-[500px] bg-[#06070a]/60 border-b border-[#d4af37]/25 flex items-center justify-center overflow-hidden pt-24 pb-14">
     <!-- Matrix Golden Runic Rain Canvas (Letras subindo e descendo na cor dourada) -->
-    <canvas id="matrix-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <canvas id="matrix-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-70 [mask-image:radial-gradient(ellipse_46%_62%_at_50%_52%,transparent_35%,#000_100%)] [-webkit-mask-image:radial-gradient(ellipse_46%_62%_at_50%_52%,transparent_35%,#000_100%)]"></canvas>
     
     <!-- Ambient Radial Golden Vignette Overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#06070a]/80 via-transparent to-[#06070a]/90 pointer-events-none z-[1]"></div>
@@ -134,26 +124,23 @@
 
     <!-- Hero Content Frame -->
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/35 text-[11px] font-mono tracking-widest text-[#f1d27a] uppercase shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/35 text-xs font-mono tracking-widest text-[#f1d27a] uppercase shadow-[0_0_15px_rgba(212,175,55,0.2)]">
         <span class="text-[#f1d27a] animate-pulse">❖</span>
         <span>CENTRAL DE OPERAÇÕES • ÉGIDE DE AVALON</span>
         <span class="text-[#f1d27a] animate-pulse">❖</span>
       </div>
 
-      <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-[#f1d27a] to-[#d4af37] tracking-wider uppercase drop-shadow-[0_4px_30px_rgba(212,175,55,0.45)]">
+      <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black text-[#f1d27a] tracking-wider uppercase drop-shadow-[0_4px_30px_rgba(212,175,55,0.45)]">
         Operações
       </h1>
 
       <p class="font-serif text-base sm:text-xl lg:text-2xl text-[#cfc7b4] max-w-2xl mx-auto leading-relaxed tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-        Escolha uma atividade e consulte requisitos, procedimento, frequência e recompensas.
+        Campanhas da temporada e 21 missões em Londres, com requisitos, procedimento e recompensas antes de você jogar.
       </p>
 
-      <div class="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-[#8c7126]">
-        <span class="px-2.5 py-1 rounded bg-black/60 border border-white/5">⟨ PROTOCOLO ATIVO ⟩</span>
-        <span class="text-white/20">•</span>
-        <span class="px-2.5 py-1 rounded bg-black/60 border border-white/5 text-[#cfc7b4]">21 MISSÕES IDENTIFICADAS</span>
-        <span class="text-white/20">•</span>
-        <span class="px-2.5 py-1 rounded bg-black/60 border border-white/5 text-[#f1d27a]">ATO I DISPONÍVEL</span>
+      <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
+        <button class="btn-gold-primary" data-scroll-anchor="campaigns-section">Ver campanhas ↓</button>
+        <button class="btn-gold-secondary" data-scroll-anchor="missions-section">Explorar missões ↓</button>
       </div>
     </div>
   </section>
@@ -181,27 +168,6 @@
          ==================================================================== -->
     <div id="view-operacoes" class="hub-view active" role="tabpanel" aria-labelledby="tab-operacoes">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-
-        <!-- ── O1. Abertura ── -->
-        <section class="py-8 border-b border-white/10">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div class="max-w-3xl">
-              <span class="op-eyebrow">ÉGIDE DE AVALON • OPERAÇÕES</span>
-              <h2 class="op-title">Escolha sua próxima missão</h2>
-              <p class="op-desc">
-                Consulte as campanhas da temporada, encontre atividades em Londres e confira os procedimentos e recompensas antes de jogar.
-              </p>
-            </div>
-            <div class="flex flex-wrap items-center gap-3">
-              <button class="btn-gold-primary" data-scroll-anchor="campaigns-section">
-                Ver campanhas ↓
-              </button>
-              <button class="btn-gold-secondary" data-scroll-anchor="missions-section">
-                Explorar missões ↓
-              </button>
-            </div>
-          </div>
-        </section>
 
         <!-- ── O2. Campanhas da Temporada ── -->
         <section id="campaigns-section" class="space-y-6">
@@ -370,7 +336,7 @@
         <section class="py-8 border-b border-white/10">
           <div class="max-w-3xl space-y-3">
             <span class="op-eyebrow">ÉGIDE DE AVALON • INTEGRAÇÃO</span>
-            <h1 class="op-title">Novato Premium — Do Zero ao Herói</h1>
+            <h2 class="op-title">Novato Premium — Do Zero ao Herói</h2>
             <p class="op-desc">
               Conheça a Égide por dentro. Uma jornada opcional em três atos, com desenvolvimento gradual, missões de ambientação e recompensas próprias para seu personagem.
             </p>
@@ -438,7 +404,7 @@
               <div>
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-xs font-mono text-[#f1d27a] font-bold">ATO I</span>
-                  <span class="text-[11px] font-mono bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded">Disponível</span>
+                  <span class="text-xs font-mono bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded">Disponível</span>
                 </div>
                 <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ato I, o Chamado do Herói</h3>
                 <p class="text-xs text-[#cfc7b4] leading-relaxed mb-4">
@@ -456,7 +422,7 @@
               <div>
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-xs font-mono text-[#8e8778] font-bold">ATO II</span>
-                  <span class="text-[11px] font-mono bg-white/5 text-[#8e8778] border border-white/10 px-2 py-0.5 rounded">Em breve</span>
+                  <span class="text-xs font-mono bg-white/5 text-[#8e8778] border border-white/10 px-2 py-0.5 rounded">Em breve</span>
                 </div>
                 <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ato II, Descobrindo o novo mundo</h3>
                 <p class="text-xs text-[#cfc7b4] leading-relaxed mb-4">
@@ -474,7 +440,7 @@
               <div>
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-xs font-mono text-[#8e8778] font-bold">ATO III</span>
-                  <span class="text-[11px] font-mono bg-white/5 text-[#8e8778] border border-white/10 px-2 py-0.5 rounded">Em breve</span>
+                  <span class="text-xs font-mono bg-white/5 text-[#8e8778] border border-white/10 px-2 py-0.5 rounded">Em breve</span>
                 </div>
                 <h3 class="font-cinzel text-lg font-bold text-white mb-2">Ato III, início da aventura</h3>
                 <p class="text-xs text-[#cfc7b4] leading-relaxed mb-4">
@@ -593,7 +559,7 @@
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ter realizado "O Chamado do Herói" e a "Entrevista Final".</li>
             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[#f1d27a] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ter sido aprovado na "Prova Escrita".</li>
           </ul>
-          <div class="text-[11px] text-[#8e8778] italic pt-2 border-t border-white/5">
+          <div class="text-xs text-[#8e8778] italic pt-2 border-t border-white/5">
             Nota: Esta lista é uma referência oficial. A conclusão e a passagem de ato dependem exclusivamente da validação da moderação no Discord.
           </div>
         </section>
@@ -827,7 +793,7 @@
 
           <div class="p-6 bg-[#15120b] border border-white/10 rounded-xl text-center space-y-3 mt-6">
             <p class="text-xs text-[#cfc7b4]">Precisa esclarecer uma regra específica ou validar um relatório?</p>
-            <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold-primary">
+            <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold-primary">
               Acessar o Discord da Égide ↗
             </a>
           </div>
@@ -857,17 +823,14 @@
   <!-- ── GLOBAL FOOTER ── -->
   <footer class="neotheon-global-footer">
     <div class="footer-container">
-      
       <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
       <div class="footer-grid">
-        
-        <!-- Column 1: Brand, Crest & Lore -->
         <div class="footer-brand-col">
           <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
             <div class="footer-brand-info">
-              <span class="footer-brand-title">MIDNIGHT CITY</span>
-              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+              <span class="footer-brand-title">Midnight City</span>
+              <span class="footer-brand-sub">Égide de Avalon · Temporada 2</span>
             </div>
           </div>
           <p class="footer-lore-quote">
@@ -879,9 +842,8 @@
           </div>
         </div>
 
-        <!-- Column 2: O Universo & Crônicas -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <h4 class="footer-nav-heading">✦ O Universo</h4>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
@@ -891,63 +853,54 @@
           </ul>
         </div>
 
-        <!-- Column 3: Diretrizes & Sistema -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <h4 class="footer-nav-heading">✦ Sistema & Jogo</h4>
           <ul class="footer-links-list">
-            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia do Novato</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
             <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
-            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="banners.html" class="footer-nav-link">Banners & Orações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente</a></li>
             <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
           </ul>
         </div>
 
-        <!-- Column 4: QG & Comunidade -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <h4 class="footer-nav-heading">✦ Comunidade</h4>
           <ul class="footer-links-list">
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
-                <span>Servidor Discord Oficial</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Comunidade Yoble (309183)</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Mesas de Sexta no Roll20</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Inscrições de Missões</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
+            <li><a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white"><span>Hub Midnight City (fichas, loja, orações)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Discord oficial (inscrições)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Comunidade Yoble</span><span class="text-xs">↗</span></a></li>
+            <li><a href="aviso-legal.html" class="footer-nav-link">Aviso legal & remoção de conteúdo</a></li>
           </ul>
         </div>
-
       </div>
 
-      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <!-- Aviso legal (alta visibilidade) -->
+      <div class="footer-legal-callout" role="note" aria-label="Aviso legal">
+        <div class="footer-legal-badge-row">
+          <span class="footer-legal-pill">⚖ Aviso legal</span>
+          <span class="footer-legal-pill">Obra de fã · sem fins lucrativos</span>
+          <span class="footer-legal-pill">Conteúdo +18</span>
+        </div>
+        <div class="footer-legal-title">Midnight City é uma fanfic coletiva, gratuita e sem fins lucrativos</div>
+        <p class="footer-legal-text">
+          <strong>Midnight City</strong> é um RPG de texto amador feito por fãs para entretenimento e escrita criativa. <strong>Não vendemos nada</strong>: não há cobrança, assinatura, doação obrigatória nem venda de moedas ou itens por dinheiro real. Gold, Conta Celestial e Orações são moedas fictícias, sem valor fora do jogo, e não podem ser compradas, vendidas ou trocadas por dinheiro. Personagens, nomes e mitologias citados, além das imagens de referência (<em>photoplayers / faceclaims</em>), pertencem aos seus respectivos autores e detentores, que <strong>não têm vínculo com o projeto nem o endossam</strong>. Se você é titular de algum conteúdo exibido aqui e quer que ele seja removido, <a href="aviso-legal.html#remocao" class="text-[#f1d27a] underline hover:text-white">veja como pedir a remoção</a>: atendemos sem burocracia.
+        </p>
+      </div>
+
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
-          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+          © 2026 Comunidade Midnight City. Os textos originais pertencem aos seus autores; as obras e marcas de terceiros pertencem aos seus titulares.
         </div>
         <div class="footer-disclaimer">
-          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+          <a href="aviso-legal.html" class="underline hover:text-white">Aviso legal, termos de uso e privacidade</a>
         </div>
       </div>
-
     </div>
   </footer>
   <script src="mobile.js" defer></script>
+  <script src="legal.js" defer></script>
+  <script src="analytics.js" defer></script>
 </body>
 </html>

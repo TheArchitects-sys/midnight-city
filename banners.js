@@ -8,6 +8,7 @@
   'use strict';
 
   const DB = window.OPERATIONS_DATABASE;
+  const HUB_URL = (DB && DB.hubUrl) || 'https://midnight-city.cloud/dashboard';
   if (!DB) {
     console.error('MIDNIGHT CITY: OPERATIONS_DATABASE not loaded.');
     return;
@@ -59,6 +60,9 @@
     dom.modalRefineTitle = document.getElementById('modal-refine-title');
     dom.modalRefineBody = document.getElementById('modal-refine-body');
   }
+
+  // Link direto com ?premio= abre a vitrine já no carregamento
+  const OPEN_VITRINE_ON_LOAD = new URLSearchParams(window.location.search).has('premio');
 
   // ── ROUTING & URL SYNC ──
   function initRouting() {
@@ -226,10 +230,10 @@
               <span>Ver Prêmios (${(banner.prizes || []).length})</span>
               <span>↓</span>
             </a>
-            <button type="button" class="btn-gold-secondary text-xs" onclick="window.openDiscordPrepareModal()">
-              <span>Preparar Oração no Discord</span>
-              <span>➔</span>
-            </button>
+            <a href="${HUB_URL}" target="_blank" rel="noopener noreferrer" class="btn-gold-secondary text-xs">
+              <span>Fazer orações no Hub</span>
+              <span>↗</span>
+            </a>
           </div>
         </div>
       </div>
@@ -347,21 +351,85 @@
     dom.prizesGridContainer.querySelectorAll('.prize-card').forEach(card => {
       card.addEventListener('click', () => {
         const pId = card.getAttribute('data-prize-id');
-        if (pId === state.activePrizeId) return;
-
-        state.activePrizeId = pId;
-        state.activeRefineLevel = 'R1';
-        updateUrl(true);
-        renderPrizesGrid();
-        renderPrizeInspector();
-
-        // Smooth scroll to inspector (com compensação de cabeçalho)
-        const inspector = document.getElementById('prize-inspector-section');
-        if (inspector) {
-          inspector.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (pId !== state.activePrizeId) {
+          state.activePrizeId = pId;
+          state.activeRefineLevel = 'R1';
+          updateUrl(true);
+          renderPrizesGrid();
         }
+        renderPrizeInspector();
+        openVitrine(card);
       });
     });
+  }
+
+  // ── VITRINE (modal) ──
+  let vitrineReturnFocus = null;
+  function visiblePrizeIds() {
+    return Array.from(dom.prizesGridContainer.querySelectorAll('.prize-card')).map(c => c.getAttribute('data-prize-id'));
+  }
+  function openVitrine(origin) {
+    const m = document.getElementById('vitrine-modal');
+    if (!m) return;
+    vitrineReturnFocus = origin || document.activeElement;
+    m.classList.add('open');
+    m.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('vitrine-lock');
+    const body = m.querySelector('.vitrine-body');
+    if (body) body.scrollTop = 0;
+    setTimeout(() => { const c = m.querySelector('.vitrine-close'); if (c) c.focus({ preventScroll: true }); }, 30);
+  }
+  function closeVitrine() {
+    const m = document.getElementById('vitrine-modal');
+    if (!m || !m.classList.contains('open')) return;
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('vitrine-lock');
+    if (vitrineReturnFocus && vitrineReturnFocus.isConnected) vitrineReturnFocus.focus({ preventScroll: true });
+    else {
+      const card = dom.prizesGridContainer.querySelector(`[data-prize-id="${state.activePrizeId}"]`);
+      if (card) card.focus({ preventScroll: true });
+    }
+  }
+  function stepVitrine(dir) {
+    const ids = visiblePrizeIds();
+    if (!ids.length) return;
+    const i = Math.max(0, ids.indexOf(state.activePrizeId));
+    state.activePrizeId = ids[(i + dir + ids.length) % ids.length];
+    state.activeRefineLevel = 'R1';
+    updateUrl(false);
+    renderPrizesGrid();
+    renderPrizeInspector();
+    const body = document.querySelector('#vitrine-modal .vitrine-body');
+    if (body) body.scrollTop = 0;
+    vitrineReturnFocus = null;
+  }
+  function initVitrine() {
+    const m = document.getElementById('vitrine-modal');
+    if (!m) return;
+    m.querySelectorAll('[data-vitrine-close]').forEach(b => b.addEventListener('click', closeVitrine));
+    m.querySelectorAll('[data-vitrine-step]').forEach(b => b.addEventListener('click', () => stepVitrine(Number(b.getAttribute('data-vitrine-step')))));
+    document.addEventListener('keydown', (e) => {
+      if (!m.classList.contains('open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeVitrine(); }
+      else if (e.key === 'ArrowRight') stepVitrine(1);
+      else if (e.key === 'ArrowLeft') stepVitrine(-1);
+      else if (e.key === 'Tab') {
+        const f = Array.from(m.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')).filter(el => el.offsetParent !== null);
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    // Swipe lateral no celular
+    let x0 = null;
+    m.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    m.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 70) stepVitrine(dx < 0 ? 1 : -1);
+    }, { passive: true });
   }
 
   // 4. Vitrine Mítica & Inspector
@@ -409,91 +477,59 @@
     // Full interpretive lore narrative
     const fullLore = p.interpretive || p.description || p.summary || 'Descrição canônica em catalogação.';
 
+    const ids = visiblePrizeIds();
+    const counter = document.getElementById('vitrine-counter');
+    if (counter) counter.textContent = ids.length ? `${Math.max(0, ids.indexOf(p.id)) + 1} / ${ids.length}` : '';
+
+    const banner = getCurrentBanners().find(b => b.id === state.activeBannerId);
+    const deltaHtml = activeLevel !== 'R1'
+      ? `<p class="vitrine-effect vitrine-effect--delta"><strong>Com ${activeLevel}:</strong> ${refineDeltaText}</p>`
+      : '';
+
     dom.prizeInspectorMount.innerHTML = `
-      <div class="prize-inspector-stage">
-        <!-- Left: Sticky Sidebar containing Art & Action Buttons (never overlapped on scroll) -->
-        <div class="inspector-sidebar-sticky">
-          <div class="inspector-art-box">
-            <img src="${imgSrc}" alt="${p.name}" onerror="this.onerror=null;this.src='assets/valiria_mission.jpg';">
-            <div class="absolute top-3 left-3 px-2.5 py-1 rounded text-xs font-mono ${badgeClass}">
-              ${p.code || 'EXCLUSIVO'}
+      <div class="vitrine-layout">
+        <figure class="vitrine-art">
+          <img src="${imgSrc}" alt="${p.name}" onerror="this.onerror=null;this.src='assets/valiria_mission.jpg';">
+          <figcaption>
+            <span class="vitrine-code ${badgeClass}">${p.code || 'EXCLUSIVO'}</span>
+            ${banner ? `<span class="vitrine-from">${banner.title}</span>` : ''}
+          </figcaption>
+        </figure>
+
+        <div class="vitrine-content">
+          <header class="vitrine-head">
+            <div class="vitrine-tags">
+              <span class="vitrine-nature ${natureTextClass}">${natureLabel.replace(/[\[\]]/g, '')}</span>
+              ${(p.class || p.classe) ? `<span class="vitrine-class">${p.class || p.classe}</span>` : ''}
             </div>
-          </div>
+            <h2 class="vitrine-title" id="vitrine-title">${p.name}</h2>
+            ${p.alias ? `<div class="vitrine-alias">Também conhecido como: ${p.alias}</div>` : ''}
+          </header>
 
-          <div class="grid grid-cols-2 gap-3">
-            <button type="button" class="btn-gold-primary w-full text-xs" onclick="window.openDiscordPrepareModal()">
-              <span>Preparar Oração</span>
-              <span>↗</span>
-            </button>
-            <button type="button" class="btn-gold-secondary w-full text-xs" onclick="window.openRefineComparisonModal()">
-              <span>Comparar R1–R5</span>
-              <span>☷</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Right: Canonical Mechanics, Refinements & Complete Lore Narrative -->
-        <div class="space-y-5">
-          <!-- Title & Badges -->
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="banner-eyebrow mb-0 font-mono ${natureTextClass}">${natureLabel}</span>
-              ${(p.class || p.classe) ? `<span class="text-xs font-mono text-[#f1d27a] bg-[#d4af37]/10 px-2 py-0.5 rounded border border-[#d4af37]/20">${p.class || p.classe}</span>` : ''}
-            </div>
-            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-white leading-tight">${p.name}</h3>
-            ${p.alias ? `<div class="text-xs font-mono text-[#7e786b] mt-0.5">Identificado também como: ${p.alias}</div>` : ''}
-            <p class="text-sm text-[#b8b2a5] mt-2 leading-relaxed font-serif">${p.summary || ''}</p>
-          </div>
-
-          <!-- Refinements Selector Bar -->
-          <div class="p-4 bg-black/60 border border-white/10 rounded-xl space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="font-cinzel text-xs font-bold text-white uppercase tracking-wider">Nível de Refinamento:</span>
-              <span class="text-xs font-mono text-[#f1d27a]">Custo fixo: 50 Golds + Cópia Idêntica</span>
-            </div>
-
+          <div class="vitrine-refine" role="group" aria-label="Nível de refinamento">
+            <span class="vitrine-refine-label">Refinamento</span>
             <div class="inspector-refine-pills">
               ${['R1', 'R2', 'R3', 'R4', 'R5'].map(lvl => `
-                <button type="button" class="refine-pill-btn ${lvl === activeLevel ? 'active' : ''}" data-refine-level="${lvl}">
-                  ${lvl === 'R1' ? 'R1 (Base)' : lvl}
-                </button>
+                <button type="button" class="refine-pill-btn ${lvl === activeLevel ? 'active' : ''}" data-refine-level="${lvl}" aria-pressed="${lvl === activeLevel}">${lvl}</button>
               `).join('')}
             </div>
-
-            <!-- Canonical Base Effect (R1) -->
-            <div class="p-3.5 bg-[#050608] border border-white/5 rounded text-xs sm:text-sm text-[#f0ece1] leading-relaxed font-mono">
-              <div class="text-[11px] font-bold text-[#f1d27a] uppercase mb-1 font-sans">Efeito Base Canônico (R1):</div>
-              <div class="whitespace-pre-line text-[#cfc7b4]">${p.r1Effect || 'Efeito base conforme catálogo.'}</div>
-            </div>
-
-            <!-- Specific Refinement Delta -->
-            ${activeLevel !== 'R1' ? `
-              <div id="inspector-refine-delta" class="p-3 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded text-xs font-mono text-[#f1d27a]">
-                <div class="font-bold uppercase text-[11px] mb-1">Alterações Específicas Deste Nível (${activeLevel}):</div>
-                <div>${refineDeltaText}</div>
-              </div>
-            ` : ''}
-
-            <div class="text-[11px] text-[#7e786b] font-serif italic">
-              * Nota: Leia o efeito base em conjunto com as alterações do refinamento selecionado.
-            </div>
           </div>
 
-          <!-- Expandable Complete Lore Narrative (Vitrine Mítica) -->
-          <div class="banner-accordion">
-            <details open>
-              <summary>
-                <span class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#d4af37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                  <span>História & Descrição Interpretativa Canônica</span>
-                </span>
-                <span class="text-xs font-mono text-[#7e786b]">Recolher ▾</span>
-              </summary>
-              <div class="accordion-body font-serif text-sm text-[#cfc7b4] leading-relaxed pt-3 whitespace-pre-line">
-                ${fullLore}
-              </div>
-            </details>
+          <article class="vitrine-doc">
+            <p class="vitrine-lore">${fullLore}</p>
+            <p class="vitrine-effect"><strong>Efeito${activeLevel === 'R1' ? '' : ' base (R1)'}:</strong> ${p.r1Effect || 'Efeito base conforme catálogo.'}</p>
+            ${deltaHtml}
+          </article>
+
+          <div class="vitrine-actions">
+            <a href="${HUB_URL}" target="_blank" rel="noopener noreferrer" class="btn-gold-primary text-xs">
+              <span>Orar por este prêmio no Hub</span><span>↗</span>
+            </a>
+            <button type="button" class="btn-gold-secondary text-xs" onclick="window.openRefineComparisonModal()">
+              <span>Comparar R1 a R5</span><span>☷</span>
+            </button>
           </div>
+          <p class="vitrine-hint">Use ← → para ver os outros prêmios do banner. Esc fecha.</p>
         </div>
       </div>
     `;
@@ -517,11 +553,11 @@
     const history = getHistoricalBanners();
 
     dom.historicalArchiveGrid.innerHTML = history.map(arch => `
-      <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-5 flex flex-col justify-between hover:border-white/20 transition-all">
+      <div class="bg-[#0c0e14] border border-white/10 rounded-xl p-5 flex flex-col justify-between hover:border-white/20 transition">
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[10px] font-mono text-[#7e786b] uppercase">${arch.number || 'BANNER ARQUIVADO'}</span>
-            <span class="text-[10px] font-mono text-amber-500/80 bg-amber-500/10 px-2 py-0.5 rounded">Arquivado</span>
+            <span class="text-xs font-mono text-[#7e786b] uppercase">${arch.number || 'BANNER ARQUIVADO'}</span>
+            <span class="text-xs font-mono text-amber-500/80 bg-amber-500/10 px-2 py-0.5 rounded">Arquivado</span>
           </div>
           <h4 class="font-cinzel text-base font-bold text-white">${arch.title}</h4>
           <p class="text-xs text-[#b8b2a5] leading-relaxed line-clamp-3">${arch.summary}</p>
@@ -540,6 +576,9 @@
   // ── MODALS IMPLEMENTATION ──
 
   window.openDiscordPrepareModal = function () {
+    // As orações agora são feitas no Hub.
+    window.open(HUB_URL, '_blank', 'noopener,noreferrer');
+    return;
     if (!dom.modalDiscord) return;
     const banner = getCurrentBanners().find(b => b.id === state.activeBannerId);
     const prize = getPrize(state.activePrizeId);
@@ -607,7 +646,7 @@
       dom.modalRefineBody.innerHTML = `
         <div class="space-y-4">
           <div class="text-xs text-[#b8b2a5] leading-relaxed">
-            Consulte a progressão de cada nível de refinamento (R1 a R5). O procedimento é realizado com um <strong>Forjador</strong> (armas/itens) ou <strong>Manipulador Genético</strong> (pets) ao custo fixo de <strong>50 Golds + prêmio idêntico</strong>.
+            Veja o que muda em cada nível, do R1 ao R5. No <strong>Hub</strong>, cada nível de refino consome <strong>uma cópia R1 livre</strong> do mesmo prêmio, e a ficha é atualizada na hora.
           </div>
 
           <div class="p-3 bg-black/60 border border-white/10 rounded font-mono text-xs">
@@ -665,6 +704,7 @@
   // Escape key closes modals
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && state.activeModal) {
+      e.stopImmediatePropagation();
       window.closeBannersModal();
     }
   });
@@ -678,7 +718,7 @@
       if (isActive) {
         btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#d4af37] text-black shadow-md border border-[#f1d27a]';
       } else {
-        btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-[#b8b2a5] border border-white/10 hover:bg-white/10 hover:text-white transition-all';
+        btn.className = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-white/5 text-[#b8b2a5] border border-white/10 hover:bg-white/10 hover:text-white transition';
       }
     });
   }
@@ -784,13 +824,13 @@
       if (elIntendedStatus) {
         if (isPerm) {
           elIntendedStatus.textContent = 'Não aplicável ao permanente';
-          elIntendedStatus.className = 'text-[10px] font-mono-code text-gray-500 block mt-2';
+          elIntendedStatus.className = 'text-xs font-mono-code text-gray-500 block mt-2';
         } else if (simState.offBannerCount >= 3) {
           elIntendedStatus.textContent = 'PRÓXIMO EXCLUSIVO GARANTIDO!';
-          elIntendedStatus.className = 'text-[10px] font-mono-code text-amber-300 font-bold animate-pulse block mt-2';
+          elIntendedStatus.className = 'text-xs font-mono-code text-amber-300 font-bold animate-pulse block mt-2';
         } else {
           elIntendedStatus.textContent = `${3 - simState.offBannerCount} falhas restantes para a garantia`;
-          elIntendedStatus.className = 'text-[10px] font-mono-code text-gray-400 block mt-2';
+          elIntendedStatus.className = 'text-xs font-mono-code text-gray-400 block mt-2';
         }
       }
 
@@ -1014,8 +1054,8 @@
 
         item.innerHTML = `
           <div class="flex items-center gap-2">
-            <span class="text-[10px] font-mono text-gray-500">#${String(out.pullNum).padStart(3, '0')}</span>
-            <span class="text-[11px] font-mono font-semibold text-gray-400">${out.diceDetails}</span>
+            <span class="text-xs font-mono text-gray-500">#${String(out.pullNum).padStart(3, '0')}</span>
+            <span class="text-xs font-mono font-semibold text-gray-400">${out.diceDetails}</span>
           </div>
           <div class="text-xs font-mono ${out.typeClass} flex items-center gap-1.5">
             ${out.isExclusive ? '<span>★</span>' : ''}
@@ -1087,11 +1127,8 @@
     renderAll();
     initPrayerSimulator();
 
-    // Quick compare button
-    const btnQuickComp = document.getElementById('btn-quick-compare-all');
-    if (btnQuickComp) {
-      btnQuickComp.addEventListener('click', window.openRefineComparisonModal);
-    }
+    initVitrine();
+    if (OPEN_VITRINE_ON_LOAD) { renderPrizeInspector(); openVitrine(); }
   }
 
   if (document.readyState === 'loading') {

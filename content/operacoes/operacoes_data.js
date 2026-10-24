@@ -1,5 +1,5 @@
 /**
- * MIDNIGHT CITY — BASE DE DADOS OFICIAL DE OPERAÇÕES, BANNERS E NOVATO PREMIUM
+ * Midnight City — BASE DE DADOS OFICIAL DE OPERAÇÕES, BANNERS E NOVATO PREMIUM
  * Autoridade Editorial: Especificação Completa de Operações (02/10/2026)
  * Contém o acervo integral canônico de Campanhas, Missões Fixas, Missões Temporárias (Samhain),
  * Banners Míticos (4 ativos + 29 prêmios com refinos R1-R5 + 6 coleções históricas) e Novato Premium (Ato I).
@@ -8,7 +8,8 @@
 const OPERATIONS_DATABASE = {
   version: "2.5.0-OPERATIONS-CANONICAL",
   lastRevision: "02/10/2026",
-  discordInvite: "https://discord.gg/5xJp9PEZwC",
+  discordInvite: "https://discord.gg/RjVKryxCu",
+  hubUrl: "https://midnight-city.cloud/dashboard",
   discordMissionChannelNote: "Acesse o canal de missões no servidor do Discord para confirmar sua participação ou realizar rolagens acompanhadas.",
 
   // ── 1. CAMPANHAS PRINCIPAIS DA TEMPORADA ──
@@ -107,10 +108,9 @@ O objetivo é impedir que o Cairo seja preparado para repetir um destino terrív
       summary: "Conduza rituais e contenha espíritos inquietos para preservar a separação entre vivos e mortos.",
       recommendation: "Sanctificadores (cura espiritual), Arcanistas (rituais de contenção), Tecelões do Véu (encobrimento sobrenatural).",
       delivery: "A cada 3 turnos (mínimo de 8 linhas cada) ou 1 turno equivalente de 24 linhas.",
-      rewards: "200 XP + 60 Reputação",
+      rewards: "200 XP",
       rewardsList: [
-        { label: "200 XP", type: "xp" },
-        { label: "60 Reputação", type: "rep" }
+        { label: "200 XP", type: "xp" }
       ],
       description: `Entre esculturas góticas e mausoléus cobertos de hera, o silêncio é interrompido por murmúrios que não pertencem a este tempo. O cemitério de Highgate é um lugar onde o Véu enfraquece com facilidade, e espíritos inquietos exigem intervenção. Tecelões do Véu, Arcanistas e Sanctificadores são os principais convocados, conduzindo rituais ou impondo barreiras sutis para que os mortos não transbordem sobre os vivos. A missão não é de combate, mas de contenção - e exige sensibilidade para não despertar aquilo que prefere dormir.`
     },
@@ -141,10 +141,9 @@ O objetivo é impedir que o Cairo seja preparado para repetir um destino terrív
       summary: "Infiltre-se nos espaços do Soho para identificar cultos, recolher provas e reportar suas atividades.",
       recommendation: "Vigilantes (espionagem), Inquisidores (investigação), Mediadores (manipular líderes locais).",
       delivery: "A cada 3 turnos (mínimo de 8 linhas cada) ou 1 turno equivalente de 24 linhas.",
-      rewards: "200 XP + 60 Reputação",
+      rewards: "200 XP",
       rewardsList: [
-        { label: "200 XP", type: "xp" },
-        { label: "60 Reputação", type: "rep" }
+        { label: "200 XP", type: "xp" }
       ],
       description: `O bairro do Soho pulsa com casas noturnas, bares e teatros, mas por trás do brilho artificial existem portas que não aparecem em mapas. Cultos menores costumam se infiltrar nesses espaços, aproveitando a música e o fluxo de pessoas para mascarar seus rituais. O trabalho consiste em infiltrar-se, observar sem ser visto, seguir os passos errados até o porão certo - e só então agir. Nem sempre é necessário combater, muitas vezes apenas recolher provas, identificar líderes e reportar aos Inquisidores. Mas há noites em que uma invocação se perde, e a fumaça no teto não é mais humana.`
     },
@@ -158,11 +157,10 @@ O objetivo é impedir que o Cairo seja preparado para repetir um destino terrív
       summary: "Explore túneis lacrados, instale selos e enfrente criaturas que habitam as linhas abandonadas.",
       recommendation: "Custódios (combate direto), Artífices de Ébano (manutenção dos selos), Inquisidores (recolher provas).",
       delivery: "A cada 3 turnos (mínimo de 8 linhas cada) ou 1 turno equivalente de 24 linhas.",
-      rewards: "350 XP + 100 Golds + 50 Reputação",
+      rewards: "350 XP + 100 Golds",
       rewardsList: [
         { label: "350 XP", type: "xp" },
-        { label: "100 Golds", type: "gold" },
-        { label: "50 Reputação", type: "rep" }
+        { label: "100 Golds", type: "gold" }
       ],
       description: `Alguns trechos do metrô londrino foram lacrados após acidentes inexplicáveis, mas o Conselho sabe bem a verdade: criaturas atraídas pelos labirintos de ferro vagam por ali. O trabalho é de risco elevado, destinado a Custódios e Artífices, que devem explorar túneis apagados, instalar selos de contenção e eliminar o que restar. Monstros menores costumam habitar esses corredores, mas em raros casos relatos de criaturas maiores (como minotauros deslocados de seus próprios labirintos) tornam a tarefa quase suicida.`
     },
@@ -176,10 +174,9 @@ O objetivo é impedir que o Cairo seja preparado para repetir um destino terrív
       summary: "Proteja encontros discretos entre facções, vigiando acessos e contendo interferências.",
       recommendation: "Mediadores (diplomacia), Custódios (segurança), Inquisidores (controle disciplinar).",
       delivery: "A cada 3 turnos (mínimo de 8 linhas cada) ou 1 turno equivalente de 24 linhas.",
-      rewards: "200 XP + 60 Reputação",
+      rewards: "200 XP",
       rewardsList: [
-        { label: "200 XP", type: "xp" },
-        { label: "60 Reputação", type: "rep" }
+        { label: "200 XP", type: "xp" }
       ],
       description: `Nem toda batalha é travada com espadas. Reuniões secretas entre facções divinas e representantes da Égide ocorrem em lugares discretos: porões de igrejas, salões privados de hotéis ou templos escondidos. O trabalho dos agentes é assegurar que a diplomacia siga seu curso sem interrupções externas. A tensão está em vigiar portas, identificar intrusos e, em casos extremos, conter emissários rivais que preferem a força ao diálogo. Combate não é esperado, mas sempre possível.`
     },
@@ -193,10 +190,9 @@ O objetivo é impedir que o Cairo seja preparado para repetir um destino terrív
       summary: "Analise peças e inscrições do museu, identifique riscos e impeça a retirada de manuscritos.",
       recommendation: "Arquivistas de Avalon (interpretação), Arcanistas (rituais e leitura de energia), Vigilantes (observar suspeitos).",
       delivery: "A cada 3 turnos (mínimo de 8 linhas cada) ou 1 turno equivalente de 24 linhas.",
-      rewards: "200 XP + 60 Reputação",
+      rewards: "200 XP",
       rewardsList: [
-        { label: "200 XP", type: "xp" },
-        { label: "60 Reputação", type: "rep" }
+        { label: "200 XP", type: "xp" }
       ],
       description: `Algumas peças em exposição carregam mais do que história. Inscrições roubadas da Biblioteca de Alexandria costumam reaparecer no Museu, disfarçadas de artefatos acadêmicos. Os Arquivistas são enviados para decifrar sinais, enquanto Vigilantes observam visitantes suspeitos. A tarefa é analisar, identificar possíveis riscos e impedir que manuscritos sejam levados. Muitas vezes não há combate, mas disputas intelectuais e perseguições discretas até becos vizinhos.`
     },
@@ -210,11 +206,10 @@ O objetivo é impedir que o Cairo seja preparado para repetir um destino terrív
       summary: "Enfrente bandos de Keres sobre o Tâmisa com um esquadrão preparado e coordenado.",
       recommendation: "Custódios (combate direto), Sanctificadores (suporte de cura), Arautos de campo (nível mais alto para coordenar esquadrão).",
       delivery: "A cada 3 turnos (mínimo de 8 linhas cada) ou 1 turno equivalente de 24 linhas.",
-      rewards: "400 XP + 200 Golds + 60 Reputação",
+      rewards: "400 XP + 200 Golds",
       rewardsList: [
         { label: "400 XP", type: "xp" },
-        { label: "200 Golds", type: "gold" },
-        { label: "60 Reputação", type: "rep" }
+        { label: "200 Golds", type: "gold" }
       ],
       description: `Em raras ocasiões, a concentração de mortes violentas em Londres atrai mais do que ecos. Bandos de Keres surgem sobre a água como pássaros negros de carne rasgada, atacando tudo que se move. É uma missão de alto risco, para esquadrões preparados e coordenados. A caçada ocorre sempre sob a névoa espessa, onde os gritos são abafados pelo rio. Enfrentar essas criaturas significa entrar em combate direto com a morte em sua forma mais voraz.`
     },
@@ -368,12 +363,11 @@ Se o turno tiver mais linhas do que a atividade pede, ele poderá ser considerad
         location: "Wandsworth Common, bosques afastados",
         summary: "Derrote o espírito de colheita que transformou abóboras em guardiões monstruosos.",
         delivery: "Derrote 1x Karpoi (com o dobro de atributos convencionais).",
-        rewards: "130 XP + 20 Golds + 20 Contas Celestiais + 15 Reputação",
+        rewards: "130 XP + 20 Golds + 20 Contas Celestiais",
         rewardsList: [
           { label: "130 XP", type: "xp" },
           { label: "20 Golds", type: "gold" },
-          { label: "20 Contas", type: "contas" },
-          { label: "15 Reputação", type: "rep" }
+          { label: "20 Contas", type: "contas" }
         ],
         description: `Nos bosques mais isolados de Wandsworth Common, uma energia antiga despertou. Um Karpoi, um espírito de colheita corrompido pela energia do Samhain, animou as abóboras de uma plantação esquecida, transformando-as em guardiões monstruosos. A criatura não é maligna, apenas territorial. Você precisa derrotar o Karpoi para que as abóboras voltem ao normal e os mortais possam celebrar seu festival em paz.`
       },
@@ -488,7 +482,7 @@ Habilidades Especiais:
     {
       id: "novo-mundo-bruxo",
       title: "O Novo Mundo Bruxo",
-      heroImage: "assets/banners/banner_o_novo_mundo_bruxo.png",
+      heroImage: "assets/banners/banner_o_novo_mundo_bruxo.webp",
       type: "temporario",
       badge: "TEMPORÁRIO • ATÉ 31/10/2026",
       deadline: "Disponível de 10/10 a 31/10/2026 • Horário de Brasília",
@@ -534,7 +528,7 @@ Habilidades Especiais:
     {
       id: "grito-da-guerra",
       title: "O Grito da Guerra",
-      heroImage: "assets/banners/banner_grito_da_guerra.png",
+      heroImage: "assets/banners/banner_grito_da_guerra.webp",
       type: "temporario",
       badge: "TEMPORÁRIO • ATÉ 15/10/2026",
       deadline: "Disponível até 15/10/2026 • Horário de Brasília",
@@ -582,7 +576,7 @@ Habilidades Especiais:
     {
       id: "amor-esta-no-ar",
       title: "O Amor Está no Ar",
-      heroImage: "assets/banners/banner_o_amor_esta_no_ar.png",
+      heroImage: "assets/banners/banner_o_amor_esta_no_ar.webp",
       type: "temporario",
       badge: "TEMPORÁRIO • ATÉ 15/10/2026",
       deadline: "Disponível até 15/10/2026 • Horário de Brasília",
@@ -634,7 +628,7 @@ Habilidades Especiais:
     {
       id: "sombra-do-abandonado",
       title: "A Sombra do Abandonado",
-      heroImage: "assets/banners/banner_a_sombra_do_abandonado.png",
+      heroImage: "assets/banners/banner_a_sombra_do_abandonado.webp",
       type: "temporario",
       badge: "TEMPORÁRIO • ATÉ 15/10/2026",
       deadline: "Disponível até 15/10/2026 • Horário de Brasília",
@@ -679,7 +673,7 @@ Habilidades Especiais:
     {
       id: "vestigios-da-divergencia",
       title: "Vestígios da Divergência",
-      heroImage: "assets/banners/banner_vestigios_da_divergencia.png",
+      heroImage: "assets/banners/banner_vestigios_da_divergencia.webp",
       type: "permanente",
       badge: "PERMANENTE • CICLO CONTÍNUO",
       deadline: "Permanece disponível de forma contínua após o término dos temporários.",
@@ -778,7 +772,7 @@ Habilidades Especiais:
   prizes: {
     "marca-de-merlin": {
       id: "marca-de-merlin",
-      image: "assets/prizes/a marca de merlin.png",
+      image: "assets/prizes/a marca de merlin.webp",
       code: "P-30",
       name: "A Marca de Merlin, Aspecto do Espírito",
       bannerId: "novo-mundo-bruxo",
@@ -797,7 +791,7 @@ Habilidades Especiais:
     },
     "fenix": {
       id: "fenix",
-      image: "assets/prizes/fenix.png",
+      image: "assets/prizes/fenix.webp",
       code: "P-31",
       name: "Fênix",
       bannerId: "novo-mundo-bruxo",
@@ -829,7 +823,7 @@ Habilidades Especiais:
     },
     "basilisco": {
       id: "basilisco",
-      image: "assets/prizes/basilisco.png",
+      image: "assets/prizes/basilisco.webp",
       code: "P-32",
       name: "Basilisco",
       bannerId: "novo-mundo-bruxo",
@@ -857,7 +851,7 @@ Habilidades Especiais:
     },
     "mala-de-quadribol": {
       id: "mala-de-quadribol",
-      image: "assets/prizes/A Mala de quadrbol.png",
+      image: "assets/prizes/A Mala de quadrbol.webp",
       code: "P-33",
       name: "A Mala de Quadribol",
       bannerId: "novo-mundo-bruxo",
@@ -883,7 +877,7 @@ Habilidades Especiais:
     },
     "varinha": {
       id: "varinha",
-      image: "assets/prizes/varinha.png",
+      image: "assets/prizes/varinha.webp",
       code: "P-34",
       name: "VARINHA (Madeira), (Núcleo Mágico), (Tamanho), (Flexibilidade)",
       bannerId: "novo-mundo-bruxo",
@@ -908,7 +902,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "firebolt-s30": {
       id: "firebolt-s30",
-      image: "assets/prizes/Firebolt s30.png",
+      image: "assets/prizes/Firebolt s30.webp",
       code: "P-35",
       name: "Firebolt S30",
       bannerId: "novo-mundo-bruxo",
@@ -928,7 +922,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
 
     "compasso-sangue-ferro": {
       id: "compasso-sangue-ferro",
-      image: "assets/prizes/p01_compasso_sangue_ferro.png",
+      image: "assets/prizes/p01_compasso_sangue_ferro.webp",
       imageWidth: 760,
       imageHeight: 816,
       code: "P-01",
@@ -949,7 +943,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "treze-meses-no-bronze": {
       id: "treze-meses-no-bronze",
-      image: "assets/prizes/p02_treze_meses_bronze.png",
+      image: "assets/prizes/p02_treze_meses_bronze.webp",
       code: "P-02",
       name: "Treze Meses no Bronze, O Grito da Guerra",
       bannerId: "grito-da-guerra",
@@ -968,7 +962,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "vanguarda-de-pallas": {
       id: "vanguarda-de-pallas",
-      image: "assets/prizes/p03_vanguarda_pallas.png",
+      image: "assets/prizes/p03_vanguarda_pallas.webp",
       code: "P-03",
       name: "Vanguarda de Pallas",
       bannerId: "grito-da-guerra",
@@ -987,7 +981,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "fear-sword": {
       id: "fear-sword",
-      image: "assets/prizes/p04_fears_sword.png",
+      image: "assets/prizes/p04_fears_sword.webp",
       code: "P-04",
       name: "Fear’s Sword",
       bannerId: "grito-da-guerra",
@@ -1005,7 +999,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "panic-guns": {
       id: "panic-guns",
-      image: "assets/prizes/p05_panics_guns.png",
+      image: "assets/prizes/p05_panics_guns.webp",
       code: "P-05",
       name: "Panic’s Guns",
       bannerId: "grito-da-guerra",
@@ -1023,7 +1017,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "baluarte-pallas": {
       id: "baluarte-pallas",
-      image: "assets/prizes/p06_baluarte_pallas_promachos.png",
+      image: "assets/prizes/p06_baluarte_pallas_promachos.webp",
       code: "P-06",
       name: "Baluarte de Pallas & Lança Promachos",
       bannerId: "grito-da-guerra",
@@ -1041,7 +1035,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "presas-noturnas": {
       id: "presas-noturnas",
-      image: "assets/prizes/p07_presas_noturnas.png",
+      image: "assets/prizes/p07_presas_noturnas.webp",
       imageWidth: 1024,
       imageHeight: 1024,
       code: "P-07",
@@ -1063,7 +1057,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     // BANNERS: O AMOR ESTÁ NO AR (P-08 a P-16)
     "idolo-perpetuo": {
       id: "idolo-perpetuo",
-      image: "assets/prizes/p08_idolo_perpetuo.png",
+      image: "assets/prizes/p08_idolo_perpetuo.webp",
       imageWidth: 799,
       imageHeight: 816,
       code: "P-08",
@@ -1084,7 +1078,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "sombra-divina": {
       id: "sombra-divina",
-      image: "assets/prizes/p09_sombra_divina_nao_nomeada.png",
+      image: "assets/prizes/p09_sombra_divina_nao_nomeada.webp",
       code: "P-09",
       name: "Sombra Divina Não Nomeada",
       bannerId: "amor-esta-no-ar",
@@ -1103,7 +1097,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "despertar-nova-era": {
       id: "despertar-nova-era",
-      image: "assets/prizes/p10_o_despertar_de_uma_nova_era.png",
+      image: "assets/prizes/p10_o_despertar_de_uma_nova_era.webp",
       code: "P-10",
       name: "O Despertar de uma Nova Era",
       bannerId: "amor-esta-no-ar",
@@ -1122,7 +1116,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "sono-estigio": {
       id: "sono-estigio",
-      image: "assets/prizes/p11_por_favor_me_liberte_do_sono_estigio.png",
+      image: "assets/prizes/p11_por_favor_me_liberte_do_sono_estigio.webp",
       code: "P-11",
       name: "Por Favor, Me Liberte do Sono Estígio…",
       bannerId: "amor-esta-no-ar",
@@ -1141,7 +1135,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "corrente-extase": {
       id: "corrente-extase",
-      image: "assets/prizes/p12_corrente_do_extase_carmesim.png",
+      image: "assets/prizes/p12_corrente_do_extase_carmesim.webp",
       code: "P-12",
       name: "Corrente do Êxtase Carmesim",
       bannerId: "amor-esta-no-ar",
@@ -1159,7 +1153,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "requiem-putto": {
       id: "requiem-putto",
-      image: "assets/prizes/p13_requiem_de_putto.png",
+      image: "assets/prizes/p13_requiem_de_putto.webp",
       code: "P-13",
       name: "Réquiem de Putto",
       bannerId: "amor-esta-no-ar",
@@ -1177,7 +1171,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "joia-da-alma": {
       id: "joia-da-alma",
-      image: "assets/prizes/p14_joia_da_alma.png",
+      image: "assets/prizes/p14_joia_da_alma.webp",
       imageWidth: 727,
       imageHeight: 752,
       code: "P-14",
@@ -1197,7 +1191,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "desejo-da-alma": {
       id: "desejo-da-alma",
-      image: "assets/prizes/p15_desejo_da_alma.png",
+      image: "assets/prizes/p15_desejo_da_alma.webp",
       imageWidth: 768,
       imageHeight: 816,
       code: "P-15",
@@ -1217,7 +1211,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "death-scythe": {
       id: "death-scythe",
-      image: "assets/prizes/p16_amor_infernal_death_scythe.png",
+      image: "assets/prizes/p16_amor_infernal_death_scythe.webp",
       code: "P-16",
       name: "Amor Infernal — Death Scythe",
       bannerId: "amor-esta-no-ar",
@@ -1238,7 +1232,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     // BANNERS: A SOMBRA DO ABANDONADO (P-17 a P-20)
     "son-of-forsaken": {
       id: "son-of-forsaken",
-      image: "assets/prizes/p17_son_of_forsaken.png",
+      image: "assets/prizes/p17_son_of_forsaken.webp",
       imageWidth: 816,
       imageHeight: 816,
       code: "P-17",
@@ -1259,7 +1253,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "coroa-noite-absoluta": {
       id: "coroa-noite-absoluta",
-      image: "assets/prizes/p18_a_coroa_da_noite_absoluta.png",
+      image: "assets/prizes/p18_a_coroa_da_noite_absoluta.webp",
       code: "P-18",
       name: "A Coroa da Noite Absoluta",
       bannerId: "sombra-do-abandonado",
@@ -1278,7 +1272,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "diario-abandonado": {
       id: "diario-abandonado",
-      image: "assets/prizes/p19_diario_abandonado.png",
+      image: "assets/prizes/p19_diario_abandonado.webp",
       imageWidth: 1024,
       imageHeight: 1024,
       code: "P-19",
@@ -1298,7 +1292,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "lanterna-mashadar": {
       id: "lanterna-mashadar",
-      image: "assets/prizes/p20_lanterna_mashadar_lamina_shadar_logoth.png",
+      image: "assets/prizes/p20_lanterna_mashadar_lamina_shadar_logoth.webp",
       code: "P-20",
       name: "Lanterna de Mashadar e a Lâmina de Shadar Logoth",
       bannerId: "sombra-do-abandonado",
@@ -1318,7 +1312,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     // VESTÍGIOS DA DIVERGÊNCIA (P-21 a P-29)
     "deathwalkers-ward": {
       id: "deathwalkers-ward",
-      image: "assets/prizes/p21_deathwalkers_ward.png",
+      image: "assets/prizes/p21_deathwalkers_ward.webp",
       imageWidth: 987,
       imageHeight: 1103,
       code: "P-21",
@@ -1338,7 +1332,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "mythcarver": {
       id: "mythcarver",
-      image: "assets/prizes/p22_mythcarver.png",
+      image: "assets/prizes/p22_mythcarver.webp",
       imageWidth: 880,
       imageHeight: 1024,
       code: "P-22",
@@ -1358,7 +1352,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "titanstone-knuckles": {
       id: "titanstone-knuckles",
-      image: "assets/prizes/p23_titanstone_knuckles.png",
+      image: "assets/prizes/p23_titanstone_knuckles.webp",
       imageWidth: 892,
       imageHeight: 1024,
       code: "P-23",
@@ -1398,7 +1392,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "cabals-ruin": {
       id: "cabals-ruin",
-      image: "assets/prizes/p25_cabals_ruin.png",
+      image: "assets/prizes/p25_cabals_ruin.webp",
       imageWidth: 872,
       imageHeight: 1024,
       code: "P-25",
@@ -1418,7 +1412,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "plate-dawnmartyr": {
       id: "plate-dawnmartyr",
-      image: "assets/prizes/p26_the_plate_of_the_dawnmartyr.png",
+      image: "assets/prizes/p26_the_plate_of_the_dawnmartyr.webp",
       code: "P-26",
       name: "The Plate of the Dawnmartyr",
       bannerId: "vestigios-da-divergencia",
@@ -1436,7 +1430,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "the-list": {
       id: "the-list",
-      image: "assets/prizes/p27_the_list.png",
+      image: "assets/prizes/p27_the_list.webp",
       imageWidth: 768,
       imageHeight: 1431,
       code: "P-27",
@@ -1456,7 +1450,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "fenthras": {
       id: "fenthras",
-      image: "assets/prizes/p28_fenthras_o_arco_da_traicao_selvagem.png",
+      image: "assets/prizes/p28_fenthras_o_arco_da_traicao_selvagem.webp",
       code: "P-28",
       name: "Fenthras, o Arco da Traição Selvagem",
       bannerId: "vestigios-da-divergencia",
@@ -1474,7 +1468,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     "spire-of-conflux": {
       id: "spire-of-conflux",
-      image: "assets/prizes/p29_spire_of_conflux.png",
+      image: "assets/prizes/p29_spire_of_conflux.webp",
       imageWidth: 768,
       imageHeight: 1536,
       code: "P-29",
@@ -1554,7 +1548,7 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
 
   // ── 7. REGRAS DE ROLAGEM, GARANTIAS & REFINAMENTO ──
   bannerRules: {
-    discordRollNotice: "As rolagens oficiais de orações acontecem exclusivamente no Discord, no canal identificado pelo código da sua ficha (ex: #001), com acompanhamento obrigatório de um ADM ou moderador.",
+    discordRollNotice: "As orações são feitas no Hub Midnight City (midnight-city.cloud/dashboard), com pity salvo por jogador e por grupo de banner.",
     guarantees: {
       temporarios: `Os banners temporários compartilham seus contadores. Se você realizar 40 orações sem obter um prêmio exclusivo, a 41ª concede um dos exclusivos disponíveis no banner escolhido. Antes da rolagem, indique o exclusivo que deseja. Se receber três exclusivos que não correspondam ao pretendido, o quarto exclusivo é garantido como o escolhido.`,
       permanente: `Vestígios da Divergência possui contador separado. Se você realizar 90 orações sem obter um exclusivo, a 91ª concede um dos exclusivos disponíveis. O permanente não possui a garantia de receber o prêmio pretendido após três exclusivos diferentes; sua tabela inclui um resultado (30) que permite escolher o prêmio.`,
@@ -1562,13 +1556,13 @@ Personalize sua varinha escolhendo um elemento de cada lista (efeito puramente i
     },
     refinamento: {
       title: "Do R1 ao R5 — Regras de Forja e Refinamento",
-      cost: "50 Golds por nível de refinamento",
-      practitioners: "Forjador (para armas e itens) ou Manipulador Genético (para pets e familiares)",
-      text: `Prêmios exclusivos podem ser refinados até R5. Cada refinamento exige abrir mão de um prêmio exclusivo idêntico ao que será refinado e solicitar a atualização da ficha. O nível é identificado junto ao nome: R2, R3, R4 e R5.
-O procedimento acontece dentro do jogo com um Forjador, para itens, ou um Manipulador Genético, para pets. O custo fixo é de 50 Golds por refinamento. Prêmios que já sofreram alteração não podem ser refinados; os refinados recebem a sinalização de seis estrelas e não podem ser alterados por outras vias.`
+      cost: "1 cópia R1 livre do mesmo prêmio por nível",
+      practitioners: "Feito direto no Hub",
+      text: `Prêmios exclusivos podem ser refinados até R5 (R6 em casos especiais). Cada nível de refino consome uma cópia R1 livre do mesmo prêmio. O nível é identificado junto ao nome: R2, R3, R4 e R5.
+O refino é feito direto no Hub, que atualiza a ficha automaticamente. Prêmios que já sofreram alteração não podem ser refinados; os refinados recebem a sinalização de seis estrelas e não podem ser alterados por outras vias.`
     },
     eventStore: [
-      { receive: "1 Oração Divina", cost: "100 Contas Celestiais", note: "Solicite a conversão à moderação no canal de sua ficha." },
+      { receive: "1 Oração Divina", cost: "100 Contas Celestiais", note: "Conversão feita direto no Hub." },
       { receive: "100 Contas Celestiais", cost: "100 kg de metal mágico adquirido em banner", note: "Metais mágicos obtidos em rolagens podem ser fundidos e convertidos." },
       { receive: "100 Golds", cost: "100 Contas Celestiais", note: "Troca direta de câmbio para recursos comerciais da Égide." }
     ],
@@ -1587,11 +1581,11 @@ O procedimento acontece dentro do jogo com um Forjador, para itens, ou um Manipu
       },
       {
         q: "Posso realizar orações por ficha geral?",
-        a: "Sim, por ficha geral, no canal exclusivo da ficha no Discord."
+        a: "As orações são feitas no Hub, pela sua conta de jogador."
       },
       {
         q: "Posso rolar pelo site?",
-        a: "Nesta versão, as rolagens oficiais acontecem no Discord, com ADM ou moderador acompanhando para garantir a segurança da economia."
+        a: "As orações são feitas no Hub. As rolagens de combate e de testes continuam no Discord."
       },
       {
         q: "O que acontece com os contadores quando os temporários mudam?",

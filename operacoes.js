@@ -358,7 +358,7 @@
                 Inscrever-se no Discord ↗
               </a>
             </div>
-            <div class="text-[11px] text-[#8e8778] text-center mt-2.5">
+            <div class="text-xs text-[#8e8778] text-center mt-2.5">
               A inscrição é feita no canal de missões do Discord. Entre no servidor e consulte a convocação.
             </div>
           </div>
@@ -494,7 +494,6 @@
         rewardsHtml = m.rewardsList.map(r => {
           let extraClass = '';
           if (r.type === 'gold') extraClass = 'gold';
-          else if (r.type === 'rep') extraClass = 'reputacao';
           else if (r.type === 'contas') extraClass = 'contas';
           else if (r.type === 'oracoes') extraClass = 'oracoes';
           return `<span class="reward-pill ${extraClass}">${r.label}</span>`;
@@ -521,7 +520,7 @@
           </div>
 
           <div>
-            <div class="text-[11px] font-mono text-[#8e8778] uppercase tracking-wider mb-1.5 font-bold">Recompensas:</div>
+            <div class="text-xs font-mono text-[#8e8778] uppercase tracking-wider mb-1.5 font-bold">Recompensas:</div>
             <div class="mission-reward-row">
               ${rewardsHtml}
             </div>
@@ -571,14 +570,15 @@
           <div class="font-bold font-mono uppercase tracking-wider mb-1">Recompensas da Conclusão:</div>
           <div class="text-sm font-bold">${m.rewards}</div>
         </div>
+        ${isFixed ? `<p class="text-xs text-[#cfc7b4] leading-relaxed">Ao concluir, registre a atividade no <strong class="text-[#f1d27a]">Hub</strong> com o link dos seus turnos para receber a recompensa na ficha.</p>` : ''}
       </div>
     `;
 
     const footerHtml = `
       <button class="btn-gold-secondary" onclick="window.closeOpModal()">Fechar</button>
-      <a href="${DB.discordInvite}" target="_blank" rel="noopener noreferrer" class="btn-gold-primary">
-        Postar Turno no Discord ↗
-      </a>
+      ${isFixed
+        ? `<a href="${DB.hubUrl}" target="_blank" rel="noopener noreferrer" class="btn-gold-primary">Registrar atividade no Hub ↗</a>`
+        : `<a href="${DB.discordInvite}" target="_blank" rel="noopener noreferrer" class="btn-gold-primary">Inscrever-se no Discord ↗</a>`}
     `;
 
     openModal(m.title, bodyHtml, footerHtml);
@@ -675,7 +675,7 @@
         <div class="p-3 bg-black/40 border border-white/10 rounded-lg text-xs font-mono text-[#cfc7b4] space-y-1">
           <div><span class="text-[#f1d27a]">Contador:</span> ${banner.type === 'temporario' ? 'Compartilhado entre banners temporários' : 'Separado (Permanente)'}</div>
           <div><span class="text-[#f1d27a]">Regra de Transição:</span> Preservado entre ciclos após encerramento</div>
-          <div><span class="text-[#f1d27a]">Rolagens Oficiais:</span> Discord (#canal da ficha) com moderação acompanhando</div>
+          <div><span class="text-[#f1d27a]">Orações:</span> feitas no Hub, com pity salvo na sua conta</div>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 pt-2">
@@ -686,8 +686,8 @@
             Como realizar orações
           </a>
         </div>
-        <div class="text-[11px] text-[#8e8778]">
-          Escolha o banner e indique o prêmio exclusivo desejado antes da rolagem no Discord.
+        <div class="text-xs text-[#8e8778]">
+          Escolha o banner e marque o prêmio exclusivo desejado no Hub antes de orar.
         </div>
       </div>
     `;
@@ -711,10 +711,10 @@
           <div>
             <span class="prize-nature-tag">${p.nature} ${p.classe ? `• ${p.classe}` : ''}</span>
             <h4 class="prize-card-title">${p.name}</h4>
-            <div class="text-[11px] text-[#8e8778] mb-1 font-mono">${p.code}</div>
+            <div class="text-xs text-[#8e8778] mb-1 font-mono">${p.code}</div>
             <p class="text-xs text-[#cfc7b4] leading-relaxed mb-3">${p.summary}</p>
           </div>
-          <button class="btn-gold-secondary w-full py-1.5 text-[11px] font-bold btn-inspect-prize" data-prize="${p.id}">
+          <button class="btn-gold-secondary w-full py-1.5 text-xs font-bold btn-inspect-prize" data-prize="${p.id}">
             Ver efeitos e refinamentos
           </button>
         </div>
@@ -805,7 +805,7 @@
               </div>
             ` : ''}
 
-            <div class="text-[11px] text-[#8e8778] italic pt-1 border-t border-white/5 flex items-center gap-1.5">
+            <div class="text-xs text-[#8e8778] italic pt-1 border-t border-white/5 flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               <span><strong>Aviso Canônico:</strong> Leia o efeito base em conjunto com as alterações deste refinamento.</span>
             </div>
@@ -845,7 +845,7 @@
     const bodyHtml = `
       <div class="space-y-4">
         <div class="text-xs text-[#8e8778]">
-          Tabela comparativa dos cinco níveis de refinamento de <strong>${prize.name}</strong>. O refinamento oficial é realizado in-game com um Forjador ou Manipulador Genético pelo custo de 50 Golds por nível.
+          Tabela comparativa dos cinco níveis de refinamento de <strong>${prize.name}</strong>. O refino é feito no Hub: cada nível consome uma cópia R1 livre do mesmo prêmio.
         </div>
         <table class="roll-table">
           <thead>
@@ -895,7 +895,7 @@
 
           <div>
             <h4 class="font-cinzel text-xs font-bold text-white uppercase tracking-wider mb-2">Segunda Rolagem (1d30) — Prêmios Exclusivos</h4>
-            <div class="p-2.5 bg-yellow-950/20 border border-yellow-500/30 rounded text-[11px] text-yellow-200 mb-2 flex items-start gap-2">
+            <div class="p-2.5 bg-yellow-950/20 border border-yellow-500/30 rounded text-xs text-yellow-200 mb-2 flex items-start gap-2">
               <svg class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               <span><strong>Pendência Canônica do Resultado 26:</strong> O resultado 26 aparece tanto para <em>The List</em> quanto para <em>Fenthras</em> na documentação original. O resultado 26 deve ser confirmado pela moderação no Discord antes da definição do prêmio.</span>
             </div>
@@ -913,7 +913,7 @@
 
       tablesHtml = `
         <div class="space-y-4">
-          <div class="p-2.5 bg-yellow-950/20 border border-yellow-500/30 rounded text-[11px] text-yellow-200 flex items-start gap-2">
+          <div class="p-2.5 bg-yellow-950/20 border border-yellow-500/30 rounded text-xs text-yellow-200 flex items-start gap-2">
             <svg class="w-4 h-4 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             <span><strong>Instrução da Moderação:</strong> A sequência de rolagens de bênçãos (19–20 na segunda rolagem e desdobramento da terceira) deve ser confirmada com a moderação antes de usar suas orações.</span>
           </div>
@@ -926,7 +926,7 @@
                 ${banner.firstRollTable.ranges.map(f => `<tr><td class="font-mono text-[#f1d27a]">1d20</td><td class="font-mono">${f.range}</td><td>${f.result}</td></tr>`).join('')}
               </tbody>
             </table>
-            <div class="text-[11px] text-[#8e8778] italic mt-1">${banner.firstRollTable.note || ''}</div>
+            <div class="text-xs text-[#8e8778] italic mt-1">${banner.firstRollTable.note || ''}</div>
           </div>
 
           <div>
@@ -948,7 +948,7 @@
                   ${banner.thirdRollTable.ranges.map(f => `<tr><td class="font-mono text-[#f1d27a] font-bold">${f.range}</td><td>${f.result}</td></tr>`).join('')}
                 </tbody>
               </table>
-              <div class="text-[11px] text-[#8e8778] italic mt-1">${banner.thirdRollTable.note || ''}</div>
+              <div class="text-xs text-[#8e8778] italic mt-1">${banner.thirdRollTable.note || ''}</div>
             </div>
           ` : ''}
         </div>
@@ -964,10 +964,10 @@
 
     dom.archiveGrid.innerHTML = collections.map(col => {
       return `
-        <div class="bg-[#0f0e1a] border border-white/10 rounded-lg p-5 flex flex-col justify-between hover:border-[#d4af37]/40 transition-all">
+        <div class="bg-[#0f0e1a] border border-white/10 rounded-lg p-5 flex flex-col justify-between hover:border-[#d4af37]/40 transition">
           <div>
             <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] font-mono uppercase bg-white/5 border border-white/10 text-[#8e8778] px-2 py-0.5 rounded">${col.badge}</span>
+              <span class="text-xs font-mono uppercase bg-white/5 border border-white/10 text-[#8e8778] px-2 py-0.5 rounded">${col.badge}</span>
               <span class="text-xs text-[#d4af37]">✦ ${col.code}</span>
             </div>
             <h4 class="font-cinzel text-base font-bold text-white mb-2">${col.title}</h4>
@@ -1147,13 +1147,13 @@
         <div class="estudo-choice-card ${isSelected ? 'selected' : ''}" data-estudo-idx="${idx}">
           <div>
             <div class="flex items-center justify-between mb-2">
-              <span class="text-[11px] font-mono text-[#f1d27a] font-bold uppercase">${est.studyNumber || ('Estudo ' + (idx + 1))}</span>
-              <span class="text-[10px] font-mono bg-green-500/15 text-green-300 border border-green-500/30 px-2 py-0.5 rounded">+1 na Prova</span>
+              <span class="text-xs font-mono text-[#f1d27a] font-bold uppercase">${est.studyNumber || ('Estudo ' + (idx + 1))}</span>
+              <span class="text-xs font-mono bg-green-500/15 text-green-300 border border-green-500/30 px-2 py-0.5 rounded">+1 na Prova</span>
             </div>
             <h4 class="font-cinzel text-sm font-bold text-white mb-1.5 leading-snug">${est.title}</h4>
-            <div class="text-[11px] font-mono text-[#8e8778] mb-2">${est.notebookNotice || 'Notebook Hephaestus Tech'}</div>
+            <div class="text-xs font-mono text-[#8e8778] mb-2">${est.notebookNotice || 'Notebook Hephaestus Tech'}</div>
           </div>
-          <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+          <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-mono">
             <span class="text-[#cfc7b4]">50 Aura • 200 Gold</span>
             <span class="text-[#f1d27a] font-bold">${isSelected ? 'Selecionado' : 'Ler estudo →'}</span>
           </div>
@@ -1222,7 +1222,7 @@
               <span>Premiação:</span>
             </div>
             <div class="text-white">${activeEstudo.rewards}</div>
-            <div class="text-green-300 text-[11px] font-bold">${activeEstudo.examBonus}</div>
+            <div class="text-green-300 text-xs font-bold">${activeEstudo.examBonus}</div>
           </div>
         </div>
       </div>

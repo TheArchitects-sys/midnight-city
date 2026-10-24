@@ -117,7 +117,7 @@ html {
   color: var(--uni-gold-pure);
   font-weight: 600;
   text-shadow: 0 1px 4px rgba(212, 175, 55, 0.25);
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .uni-keyword-glow:hover {
@@ -179,7 +179,7 @@ html {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .uni-tracker-label {
@@ -192,7 +192,7 @@ html {
   white-space: nowrap;
   opacity: 0;
   transform: translateX(10px);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   pointer-events: none;
 }
 
@@ -207,7 +207,7 @@ html {
   white-space: nowrap;
   opacity: 0;
   transform: translateX(10px);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   pointer-events: none;
 }
 
@@ -228,7 +228,7 @@ html {
   white-space: nowrap;
   opacity: 0;
   transform: translateX(10px);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   pointer-events: none;
 }
 
@@ -246,6 +246,26 @@ html {
   justify-content: flex-start;
   padding: 5rem 6vw 3.5rem 6vw;
   background: #020204;
+}
+
+/* Pintura de Londres sob a tempestade; o canvas desenha chuva e névoa por cima */
+.uni-hero-painting {
+  position: absolute;
+  inset: -3%;
+  z-index: 0;
+  background: url('assets/londres_panorama_mj.webp') center 38% / cover no-repeat;
+  filter: brightness(0.62) saturate(0.85);
+  transform-origin: 55% 45%;
+  animation: uni-hero-drift 38s ease-in-out infinite alternate;
+}
+
+@keyframes uni-hero-drift {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.07) translate3d(-1.2%, -0.8%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uni-hero-painting { animation: none; }
 }
 
 .uni-hero-canvas {
@@ -413,7 +433,7 @@ html {
   border-radius: 50%;
   background: var(--uni-gold-pure);
   box-shadow: 0 0 14px var(--uni-gold-primary);
-  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .uni-hotspot-ripple {
@@ -454,7 +474,7 @@ html {
   border-radius: 0.5rem;
   pointer-events: none;
   opacity: 0.92;
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
 }
 
@@ -578,7 +598,7 @@ html {
 }
 
 .uni-depth-label {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--uni-gold-primary);
@@ -739,7 +759,7 @@ html {
   padding: 1.1rem 0.5rem;
   width: 100%;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   outline: none;
 }
 
@@ -761,7 +781,7 @@ html {
   background: rgba(0, 0, 0, 0.75);
   border: 1px solid rgba(212, 175, 55, 0.4);
   color: var(--uni-gold-pure);
-  transition: all 0.35s ease;
+  transition: 0.35s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 @media (max-width: 640px) {
@@ -798,7 +818,7 @@ html {
 
 @media (max-width: 640px) {
   .uni-oficio-name {
-    font-size: 0.65rem;
+    font-size: 0.6875rem;
     letter-spacing: 0.08em;
   }
 }
@@ -873,7 +893,7 @@ html {
   justify-content: center;
   color: var(--uni-gold-pure);
   box-shadow: 0 0 22px rgba(0, 0, 0, 0.9);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .uni-seat-marker svg {
@@ -904,14 +924,14 @@ html {
   border: 1px solid var(--uni-gold-primary);
   border-radius: 0.45rem;
   color: #ffffff;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-family: var(--uni-font-title);
   white-space: nowrap;
   opacity: 0;
   transform: translateY(6px);
-  transition: all 0.3s ease;
+  transition: 0.3s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   pointer-events: none;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
 }
@@ -1139,7 +1159,7 @@ html {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.95);
-  transition: all 0.4s ease;
+  transition: 0.4s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   z-index: 5;
 }
 
@@ -1238,7 +1258,7 @@ html {
 
 .uni-callout-sub {
   font-family: var(--uni-font-mono);
-  font-size: 0.62rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.22em;
   color: var(--uni-gold-primary);
   text-transform: uppercase;
@@ -1505,7 +1525,7 @@ html {
 }
 
 .uni-beat-tagline {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.4em;
   color: var(--uni-gold-pure);
   font-family: var(--uni-font-mono);
@@ -1720,7 +1740,7 @@ html {
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  transition: all 0.25s ease;
+  transition: 0.25s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .uni-drawer-close:hover,

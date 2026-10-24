@@ -6,6 +6,10 @@
  * and Playable System Preview Resolution Simulator.
  */
 
+// Movimento reduzido: as transições do GSAP terminam na hora (o estado final continua igual)
+const REDUCED_MOTION = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (REDUCED_MOTION && typeof gsap !== 'undefined') gsap.globalTimeline.timeScale(40);
+
 // 1. DATA: Dossiês da Temporada 2 (Com as artes autênticas)
 const DOSSIERS = {
   valiria: {
@@ -25,7 +29,7 @@ const DOSSIERS = {
 Esta convocação não se limita aos agentes mais experientes: todos os personagens poderão se inscrever a partir do Nível 1, abrangendo desde novatos até os veteranos nos Níveis 9 e 10. A Égide não procura apenas poder bruto, mas agentes capazes de sobreviver, investigar, obedecer ordens, improvisar e carregar uma missão que pode mudar o equilíbrio entre reinos, deuses e mortais.
 
 Depois de resgatar os agentes raptados, tudo levará às Ilhas de Sempre Inverno, onde um Fragmento do Caos está escondido — alvo declarado da Rainha Dragão. Inscrições abertas no canal de missões do Discord!`,
-    linkDiscord: "https://discord.gg/5xJp9PEZwC"
+    linkDiscord: "https://discord.gg/RjVKryxCu"
   },
   cairo: {
     titulo: "OPERAÇÃO CAIRO: O FILHO PROIBIDO NAS AREIAS DO OÁSIS FALSO",
@@ -44,7 +48,7 @@ Depois de resgatar os agentes raptados, tudo levará às Ilhas de Sempre Inverno
 Esta convocação é aberta para agentes a partir do Nível 1 (acolhendo tanto novatos em início de carreira quanto combatentes de elite nos Níveis 9 e 10): fé, percepção, sensibilidade, coragem e capacidade de fazer escolhas difíceis serão tão vitais quanto armas afiadas. No Cairo, nem toda ameaça surgirá como inimiga declarada: algumas virão como promessa, herança, amor, fé ou chamado divino.
 
 O objetivo é impedir que o Cairo seja preparado para repetir um destino terrível que outra linha temporal não conseguiu conter. Inscreva-se diretamente pelo Discord!`,
-    linkDiscord: "https://discord.gg/5xJp9PEZwC"
+    linkDiscord: "https://discord.gg/RjVKryxCu"
   }
 };
 
@@ -57,7 +61,7 @@ const OFICIOS_DATA = [
     categoria: "Linha de Frente & Combate",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
     subtitulo: "Semideuses fortes · Caçadores experientes",
-    imagem: "assets/custodio.png",
+    imagem: "assets/custodio.webp",
     descricao: "A linha de frente da Égide. Soldados e guerreiros que executam ordens diretas do Conselho, encarregados de combate corpo a corpo, neutralização de ameaças dracônicas e guarda armada dos locais sagrados.",
     afinidades: ["Força", "Disciplina", "Proteção", "Arsenal Pesado"],
     papelSugerido: "TANKER / DPS FÍSICO",
@@ -70,7 +74,7 @@ const OFICIOS_DATA = [
     categoria: "Infiltração & Reconhecimento",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>',
     subtitulo: "Filhos de Hermes · Mortais astutos",
-    imagem: "assets/vigilante.png",
+    imagem: "assets/vigilante.webp",
     descricao: "Espiões, informantes e agentes infiltrados nas entranhas da metrópole. Especialistas em observar sem serem vistos, manipular redes de dados e desarticular facções rivais antes que um ataque ocorra.",
     afinidades: ["Sombra", "Segredo", "Engano", "Velocidade"],
     papelSugerido: "DPS ÁGIL / EMBOSCADA",
@@ -83,7 +87,7 @@ const OFICIOS_DATA = [
     categoria: "Artes Místicas & Oráculos",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>',
     subtitulo: "Filhos de Hécate · Descendentes de Apolo",
-    imagem: "assets/arcanista.png",
+    imagem: "assets/arcanista.webp",
     descricao: "Mestres das energias transcendentais, oráculos e manipulação sobrenatural. Estudam artefatos antigos, profecias estelares e rituais rúnicos de proteção, ataque massivo ou controle elemental.",
     afinidades: ["Conhecimento", "Ritual", "Poder Oculto", "Controle"],
     papelSugerido: "DPS MÁGICO / CONTROLE",
@@ -96,7 +100,7 @@ const OFICIOS_DATA = [
     categoria: "Disciplina Interna & Julgamento",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>',
     subtitulo: "Filhos de Nêmesis · Juramentados",
-    imagem: "assets/inquisidores.png",
+    imagem: "assets/inquisidores.webp",
     descricao: "Agentes de disciplina interna encarregados de investigar traições, julgar suspeitos de corrupção e fazer cumprir as leis invioláveis da Ordem. Onde há suspeita, o Inquisidor é a resposta absoluta.",
     afinidades: ["Ordem", "Julgamento", "Temor", "Verdade"],
     papelSugerido: "DPS / CAÇADOR DE TRAIDORES",
@@ -109,7 +113,7 @@ const OFICIOS_DATA = [
     categoria: "Diplomacia & Pactos",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
     subtitulo: "Filhos de Apolo, Afrodite ou Hermes",
-    imagem: "assets/mediadores.png",
+    imagem: "assets/mediadores.webp",
     descricao: "Diplomatas e negociadores que representam o Conselho em encontros com divindades, espíritos e reis mortais. Usam carisma, retórica e lógica mística para evitar guerras e firmar alianças táticas.",
     afinidades: ["Política", "Influência", "Palavra", "Carisma"],
     papelSugerido: "SUPORTE SOCIAL & BUFF",
@@ -122,7 +126,7 @@ const OFICIOS_DATA = [
     categoria: "Ocultação & Ilusionismo",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/></svg>',
     subtitulo: "Descendentes do destino ou da ilusão",
-    imagem: "assets/tecelao.png",
+    imagem: "assets/tecelao.webp",
     descricao: "Especialistas na manipulação da percepção coletiva: alteração de memórias mortais, criação de barreiras invisíveis e ilusões de grande escala. Mantêm a humanidade alheia à guerra dos deuses.",
     afinidades: ["Silêncio", "Mentira", "Encobrimento", "Ilusão"],
     papelSugerido: "SUPORTE & ILUSÃO",
@@ -135,7 +139,7 @@ const OFICIOS_DATA = [
     categoria: "Biblioteca Secreta & Tomos",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>',
     subtitulo: "Estudiosos · Oráculos · Visionários",
-    imagem: "assets/arquivistas.png",
+    imagem: "assets/arquivistas.webp",
     descricao: "Guardiões dos segredos na Biblioteca de Alexandria, sob as águas do Tâmisa. Possuem acesso exclusivo a tomos proibidos, línguas mortas e nomes verdadeiros de divindades esquecidas.",
     afinidades: ["Saber", "Segredo", "Memória", "Profecia"],
     papelSugerido: "SUPORTE DE CONHECIMENTO",
@@ -148,7 +152,7 @@ const OFICIOS_DATA = [
     categoria: "Forja Divina & Alquimia",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
     subtitulo: "Descendentes de Hefesto ou Atena",
-    imagem: "assets/artifices.png",
+    imagem: "assets/artifices.webp",
     descricao: "Mestres da forja de metais divinos, alquimia bélica e criação de talismãs protetores. Desenvolvem as armas rúnicas, armaduras encantadas e mecanismos de defesa dos postos da Égide.",
     afinidades: ["Criação", "Engenho", "Arsenal", "Metalurgia"],
     papelSugerido: "SUPORTE BÉLICO & BUFFS",
@@ -161,7 +165,7 @@ const OFICIOS_DATA = [
     categoria: "Restauração & Cura",
     iconSvg: '<svg class="w-3.5 h-3.5 text-[#f1d27a] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>',
     subtitulo: "Filhos de Apolo, Asclépio ou Hígia",
-    imagem: "assets/sanctificadores.png",
+    imagem: "assets/sanctificadores.webp",
     descricao: "Médicos de campo e restauradores espirituais da Ordem. Tratam ferimentos em batalha, purificam maldições profundas e estabilizam corpos corrompidos pelos Fragmentos do Caos.",
     afinidades: ["Cura", "Purificação", "Vida", "Proteção"],
     papelSugerido: "HEALER / SUPORTE PURO",
@@ -512,8 +516,10 @@ function initInitiationGate() {
   const gate = document.getElementById('initiation-gate');
   if (!gate) return;
 
-  // WCAG 2.2 / Returning Visitor Bypass: Skip gate if already crossed in session
-  if (sessionStorage.getItem('neotheon_veil_crossed') === 'true') {
+  // O portal aparece só na primeira visita: quem já atravessou o Véu entra direto
+  let crossed = false;
+  try { crossed = localStorage.getItem('neotheon_veil_crossed') === 'true'; } catch (e) {}
+  if (crossed) {
     gate.classList.add('gate-closed');
     gate.style.display = 'none';
     document.documentElement.style.overflow = '';
@@ -607,7 +613,7 @@ function initInitiationGate() {
               y: -40,
               filter: "blur(5px)",
               duration: 1.8,
-              ease: "power1.in",
+              ease: "sine.inOut",
               onComplete: () => {
                 if (whisper.parentNode) whisper.parentNode.removeChild(whisper);
               }
@@ -629,7 +635,7 @@ function initInitiationGate() {
     if (gate.classList.contains('gate-closed')) return;
 
     // CRITICAL FIX: If touching a button, link or interactive control, do NOT preventDefault or intercept
-    if (e.target && e.target.closest('button, a, .portal-actions, .portal-btn-skip, #portal-revealed-actions')) {
+    if (e.target && e.target.closest('button, a, .portal-actions, #portal-revealed-actions')) {
       return;
     }
 
@@ -661,8 +667,8 @@ function initInitiationGate() {
 
     // Animate glove closing into clenched fist / grasp
     if (openGlove && closedGlove && typeof gsap !== 'undefined') {
-      gsap.to(openGlove, { opacity: 0, scale: 0.85, duration: 0.16, ease: "power2.in" });
-      gsap.to(closedGlove, { opacity: 1, scale: 1.0, duration: 0.22, ease: "back.out(1.5)" });
+      gsap.to(openGlove, { opacity: 0, scale: 0.85, duration: 0.16, ease: "power2.out" });
+      gsap.to(closedGlove, { opacity: 1, scale: 1.0, duration: 0.22, ease: "expo.out" });
       if (handCursor) {
         gsap.to(handCursor, { scale: 0.9, rotateZ: -5, duration: 0.2, ease: "power2.out" });
       }
@@ -688,7 +694,7 @@ function initInitiationGate() {
 
     // Animate glove opening back up
     if (openGlove && closedGlove && typeof gsap !== 'undefined') {
-      gsap.to(closedGlove, { opacity: 0, scale: 0.88, duration: 0.18, ease: "power2.in" });
+      gsap.to(closedGlove, { opacity: 0, scale: 0.88, duration: 0.18, ease: "power2.out" });
       gsap.to(openGlove, { opacity: 1, scale: 1.0, duration: 0.24, ease: "power2.out" });
       if (handCursor) {
         gsap.to(handCursor, { scale: 1.0, rotateZ: 0, duration: 0.25, ease: "power2.out" });
@@ -707,7 +713,7 @@ function initInitiationGate() {
 
   function handlePointerMove(e) {
     if (gate.classList.contains('gate-closed')) return;
-    if (e.target && e.target.closest('button, a, .portal-actions, .portal-btn-skip, #portal-revealed-actions')) {
+    if (e.target && e.target.closest('button, a, .portal-actions, #portal-revealed-actions')) {
       return;
     }
     if (e.cancelable && (e.touches || isMouseDown)) e.preventDefault();
@@ -804,7 +810,7 @@ function initInitiationGate() {
         opacity: 0,
         y: -15,
         duration: 0.5,
-        ease: "power2.in",
+        ease: "power2.out",
         onComplete: () => {
           promptWrap.classList.add('hidden');
         }
@@ -816,7 +822,7 @@ function initInitiationGate() {
       actionsWrap.classList.remove('hidden');
       gsap.fromTo(actionsWrap, 
         { opacity: 0, y: 30, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.9, delay: 0.25, ease: "back.out(1.4)" }
+        { opacity: 1, y: 0, scale: 1, duration: 0.9, delay: 0.25, ease: "expo.out" }
       );
     }
   }
@@ -830,9 +836,27 @@ function initInitiationGate() {
   window.addEventListener('touchend', handlePressUp, { passive: true });
   gate.addEventListener('touchmove', handlePointerMove, { passive: false });
 
+  // Teclado: segurar Espaço ou Enter enche o mesmo medidor do arrasto (sem atalho para pular)
+  let keyHold = null;
+  gate.setAttribute('tabindex', '0');
+  gate.setAttribute('aria-label', 'Portal do Véu: clique e arraste, ou segure Espaço, para revelar os acessos');
+  gate.addEventListener('keydown', (e) => {
+    if (isVeilUnlocked || keyHold || (e.key !== ' ' && e.key !== 'Enter') || e.target.closest('button, a')) return;
+    e.preventDefault();
+    keyHold = setInterval(() => {
+      totalDragDistance += dragTargetDistance / 60; // ~2 s segurando
+      const progress = Math.min(1.0, totalDragDistance / dragTargetDistance);
+      portalDragProgress = progress;
+      if (dragFill) dragFill.style.width = `${progress * 100}%`;
+      if (progress >= 1.0) { clearInterval(keyHold); keyHold = null; unlockVeil(); }
+    }, 33);
+  });
+  gate.addEventListener('keyup', () => { clearInterval(keyHold); keyHold = null; });
+  setTimeout(() => { try { gate.focus({ preventScroll: true }); } catch (e) {} }, 50);
+
   // Handle Entrance from Buttons
   function handleEnter(withAudio = true) {
-    sessionStorage.setItem('neotheon_veil_crossed', 'true');
+    try { localStorage.setItem('neotheon_veil_crossed', 'true'); } catch (e) {}
 
     if (withAudio) {
       playAudioWithFade(0.35, 2.5);
@@ -870,14 +894,19 @@ function initInitiationGate() {
 
 
 
-  const skipBtn = document.getElementById('gate-skip-btn');
+  // Espectador não entra: volta para a comunidade no Yoble (e verá o portal de novo na próxima visita)
+  const YOBLE_URL = 'https://yoble.us/Community/309183';
 
-  function bindGateBtn(btn, withAudio) {
+  function bindGateBtn(btn, withAudio, spectator) {
     if (!btn) return;
+    let done = false;
     const execute = (e) => {
       if (e) {
         e.stopPropagation();
       }
+      if (done) return; // click, touchend e pointerup disparam juntos
+      done = true;
+      if (spectator) { window.location.href = YOBLE_URL; return; }
       handleEnter(withAudio);
     };
     btn.addEventListener('click', execute);
@@ -890,8 +919,7 @@ function initInitiationGate() {
   }
 
   bindGateBtn(enterBtn, true);
-  bindGateBtn(denyBtn, false);
-  bindGateBtn(skipBtn, true);
+  bindGateBtn(denyBtn, false, true);
 }
 
 // ── 3. VOLUMETRIC WEBGL FOG SHADER (EXACT AUTHENTIC SHADER FROM NEOTHEON-V2) ──
@@ -1109,7 +1137,7 @@ function initGsapHeroParticlesAndMotion() {
 
   // Scroll Indicator Continuous GSAP Animation
   const scrollIndicator = document.getElementById('hero-scroll-indicator');
-  if (scrollIndicator && typeof gsap !== 'undefined') {
+  if (scrollIndicator && typeof gsap !== 'undefined' && !REDUCED_MOTION) {
     gsap.to(scrollIndicator.querySelector('.scroll-cue-arrow'), {
       y: 6,
       repeat: -1,
@@ -1218,7 +1246,7 @@ function initOficiosStage() {
         <div class="md:col-span-5 relative h-72 md:h-full min-h-[320px] rounded-xl overflow-hidden border border-[#d4af37]/40 shadow-2xl">
           <img src="${data.imagem}" alt="${data.nome}" class="w-full h-full object-cover object-top filter brightness-95">
           <div class="absolute inset-0 bg-gradient-to-t from-[#0a0912] via-transparent to-transparent"></div>
-          <span class="absolute top-3 left-3 text-[10px] font-mono-code px-2.5 py-1 rounded bg-black/80 border border-[#d4af37]/40 text-[#f1d27a] font-bold">
+          <span class="absolute top-3 left-3 text-xs font-mono-code px-2.5 py-1 rounded bg-black/80 border border-[#d4af37]/40 text-[#f1d27a] font-bold">
             OFÍCIO ${data.numero}
           </span>
         </div>
@@ -1248,7 +1276,7 @@ function initOficiosStage() {
             </p>
 
             <div class="mb-6">
-              <span class="text-[10px] font-mono-code uppercase text-gray-400 block mb-2 font-bold">✦ AFINIDADES TÁTICAS</span>
+              <span class="text-xs font-mono-code uppercase text-gray-400 block mb-2 font-bold">✦ AFINIDADES TÁTICAS</span>
               <div class="flex flex-wrap gap-2 text-xs font-mono-code">
                 ${data.afinidades.map(af => `
                   <span class="px-2.5 py-1 bg-black/60 border border-[#d4af37]/20 rounded text-[#f1d27a]">${af}</span>
@@ -1259,7 +1287,7 @@ function initOficiosStage() {
 
           <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
             <button onclick="selectOficioForBuilder('${data.formValue}')" class="btn-gold px-6 py-3 rounded text-xs flex items-center gap-2">
-              <span>ESCOLHER ESTE OFÍCIO NO RASCUNHO DE FICHA</span>
+              <span>USAR ESTE OFÍCIO NO PLANEJADOR</span>
               <span>↓</span>
             </button>
           </div>
@@ -1270,7 +1298,7 @@ function initOficiosStage() {
     if (typeof gsap !== 'undefined') {
       gsap.fromTo(showcase, 
         { opacity: 0.7, scale: 0.98 },
-        { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }
+        { opacity: 1, scale: 1, duration: 0.22, ease: "power2.out" }
       );
     }
   }
@@ -1310,7 +1338,7 @@ window.selectOficioForBuilder = function(oficioValue) {
   const builder = document.getElementById('fichario');
   if (builder) {
     builder.scrollIntoView({ behavior: 'smooth' });
-    showToast(`Ofício "${oficioValue}" selecionado no Rascunho de Ficha.`);
+    showToast(`Ofício "${oficioValue}" selecionado no planejador de ficha.`);
   }
 };
 
@@ -1653,7 +1681,7 @@ window.simulateSpellCast = function() {
     `;
 
     if (typeof gsap !== 'undefined') {
-      gsap.fromTo(output, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+      gsap.fromTo(output, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" });
     }
   }
 
@@ -1789,7 +1817,7 @@ function renderSimLimitModal(stageIdx) {
 
   const stage = SIM_LIMIT_STAGES[Math.min(stageIdx, SIM_LIMIT_STAGES.length - 1)];
 
-  card.className = `glass-panel w-full max-w-lg rounded-2xl border p-6 sm:p-8 relative text-center transition-all duration-300 ${stage.cardBorder}`;
+  card.className = `glass-panel w-full max-w-lg rounded-2xl border p-6 sm:p-8 relative text-center transition duration-300 ${stage.cardBorder}`;
 
   // Sem botão de fechar (✕) - fechamento estrito apenas pelos botões
   card.innerHTML = `
@@ -1799,7 +1827,7 @@ function renderSimLimitModal(stageIdx) {
     </div>
 
     <!-- Status Badge -->
-    <span class="text-[10px] font-mono-code px-3 py-1 rounded border ${stage.badgeClass} uppercase font-bold tracking-widest inline-block mb-3">
+    <span class="text-xs font-mono-code px-3 py-1 rounded border ${stage.badgeClass} uppercase font-bold tracking-widest inline-block mb-3">
       ${stage.badgeText}
     </span>
 
@@ -1815,7 +1843,7 @@ function renderSimLimitModal(stageIdx) {
 
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-3 items-stretch justify-center pt-2">
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold py-3.5 px-6 rounded text-xs font-bold tracking-wider flex items-center justify-center gap-2 shadow-lg">
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold py-3.5 px-6 rounded text-xs font-bold tracking-wider flex items-center justify-center gap-2 shadow-lg">
         <span>${stage.primaryBtnText}</span>
         <span>→</span>
       </a>
@@ -1828,7 +1856,7 @@ function renderSimLimitModal(stageIdx) {
   if (typeof gsap !== 'undefined') {
     gsap.fromTo(card, 
       { scale: 0.92, opacity: 0, y: 15 }, 
-      { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }
+      { scale: 1, opacity: 1, y: 0, duration: 0.22, ease: "expo.out" }
     );
   }
 }
@@ -1915,11 +1943,11 @@ function destroySimulatorButton() {
       <div class="text-gray-400 mb-2">› 2. Status do Dispositivo: <strong>CIRCUITO FUNDIDO (0% EFICÁCIA)</strong></div>
       <div class="text-[#ded8cb] font-bold p-3 bg-red-950/40 border border-red-500/40 rounded mt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
         <span>O botão não suportou a teimosia e explodiu. A aventura real acontece na mesa oficial do Discord!</span>
-        <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold py-2 px-4 rounded text-xs whitespace-nowrap shadow-lg">ENTRAR AGORA →</a>
+        <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold py-2 px-4 rounded text-xs whitespace-nowrap shadow-lg">ENTRAR AGORA →</a>
       </div>
     `;
     if (typeof gsap !== 'undefined') {
-      gsap.fromTo(output, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+      gsap.fromTo(output, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" });
     }
   }
 
@@ -2060,7 +2088,7 @@ window.openDossierModal = function(key) {
   modalBody.innerHTML = `
     <div class="p-6 md:p-8 relative">
       <!-- Botão de Sair no Topo Direito Sobre a Imagem -->
-      <button onclick="closeDossierModal()" aria-label="Fechar Dossiê" class="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/85 hover:bg-[#c82924] border border-[#d4af37]/40 hover:border-white text-white flex items-center justify-center font-mono-code text-xl transition-all shadow-2xl cursor-pointer" title="Fechar Dossiê">
+      <button onclick="closeDossierModal()" aria-label="Fechar Dossiê" class="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/85 hover:bg-[#c82924] border border-[#d4af37]/40 hover:border-white text-white flex items-center justify-center font-mono-code text-xl transition shadow-2xl cursor-pointer" title="Fechar Dossiê">
         ✕
       </button>
 
@@ -2068,7 +2096,7 @@ window.openDossierModal = function(key) {
         <img src="${dossier.imagem}" alt="${dossier.titulo}" class="w-full h-full object-cover object-center filter brightness-95">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
         <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-          <span class="text-[10px] font-mono-code px-3 py-1 rounded bg-black/80 border border-[#d4af37]/40 text-[#f1d27a] uppercase font-bold">
+          <span class="text-xs font-mono-code px-3 py-1 rounded bg-black/80 border border-[#d4af37]/40 text-[#f1d27a] uppercase font-bold">
             ${dossier.subtitulo}
           </span>
         </div>
@@ -2356,10 +2384,8 @@ function updateSheetPreview() {
   const macroText = MACRO_CLASS_NAMES[currentMacroFilter] || 'Todas';
 
   const formattedText = `══════════════════════════════════════════════════
-🏛️ PEDIDO OFICIAL DE FICHA · ÉGIDE DE AVALON
+🏛️ PLANO DE AGENTE · ÉGIDE DE AVALON
 ══════════════════════════════════════════════════
-Nº DA FICHA GERAL: ${numFicha}
-E-MAIL (GOOGLE DRIVE): ${email}
 NOME EM OFF: ${nomeOff}
 NOME DO PERSONAGEM: ${nome}
 IDADE & SHAPE: ${idade} anos | ${shape}
@@ -2373,7 +2399,7 @@ HISTÓRICO & MOTIVAÇÃO EM LONDRES:
 "${resumo}"
 
 ══════════════════════════════════════════════════
-✦ Submeta este pedido no tópico oficial da Central no Discord.
+✦ Crie a ficha oficial no Hub: midnight-city.cloud/dashboard
 ✦ Protocolo Égide de Avalon • Temporada 2 • Londres 2047
 ══════════════════════════════════════════════════`;
 
@@ -2388,7 +2414,7 @@ function copySheetToClipboard() {
   if (!previewBox) return;
 
   navigator.clipboard.writeText(previewBox.textContent).then(() => {
-    showToast('Ficha formatada copiada com sucesso! Cole no canal de fichas do Discord.');
+    showToast('Resumo copiado! Use-o para criar a ficha no Hub.');
   }).catch(() => {
     showToast('Erro ao copiar ficha. Selecione o texto manualmente.');
   });
@@ -3730,13 +3756,13 @@ function initPowersPage() {
     }
 
     grid.innerHTML = filtered.map(god => `
-      <div tabindex="0" role="button" aria-label="Abrir árvore de poderes de ${god.name}" onkeydown="if(event.key==='Enter'||event.key===' '){openPowerModal('${god.id}'); event.preventDefault();}" class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#d4af37]/60 transition-all cursor-pointer flex flex-col justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f1d27a]" onclick="openPowerModal('${god.id}')">
+      <div tabindex="0" role="button" aria-label="Abrir árvore de poderes de ${god.name}" onkeydown="if(event.key==='Enter'||event.key===' '){openPowerModal('${god.id}'); event.preventDefault();}" class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-[#d4af37]/60 transition cursor-pointer flex flex-col justify-between group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f1d27a]" onclick="openPowerModal('${god.id}')">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span class="w-9 h-9 rounded-lg bg-black/60 border border-[#d4af37]/30 flex items-center justify-center p-1">${getDivinityIconSvg(god.id)}</span>
             <div class="flex items-center gap-1.5">
-              ${god.role ? `<span class="text-[9px] font-mono-code px-2 py-0.5 rounded bg-[#f1d27a]/15 text-[#f1d27a] uppercase border border-[#f1d27a]/30 font-bold">${god.role.toUpperCase()}</span>` : ''}
-              <span class="text-[10px] font-mono-code px-2.5 py-1 rounded bg-black/60 border border-[#d4af37]/30 text-[#f1d27a] uppercase">${god.panteaoLabel}</span>
+              ${god.role ? `<span class="text-xs font-mono-code px-2 py-0.5 rounded bg-[#f1d27a]/15 text-[#f1d27a] uppercase border border-[#f1d27a]/30 font-bold">${god.role.toUpperCase()}</span>` : ''}
+              <span class="text-xs font-mono-code px-2.5 py-1 rounded bg-black/60 border border-[#d4af37]/30 text-[#f1d27a] uppercase">${god.panteaoLabel}</span>
             </div>
           </div>
           <h3 class="font-cinzel text-xl font-bold text-white group-hover:text-[#f1d27a] transition-colors mb-1">${god.name}</h3>
@@ -3745,10 +3771,10 @@ function initPowersPage() {
         </div>
         <div class="pt-4 border-t border-white/10 flex items-center justify-between">
           <div class="flex flex-wrap gap-1.5">
-            ${god.classes.map(c => `<span class="text-[9px] font-mono-code px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-300 uppercase">${c}</span>`).join('')}
+            ${god.classes.map(c => `<span class="text-xs font-mono-code px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-300 uppercase">${c}</span>`).join('')}
           </div>
           <div class="flex items-center gap-2">
-            ${god.docUrl ? `<span class="text-[10px] font-mono-code text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded">Docs ↗</span>` : ''}
+            ${god.docUrl ? `<span class="text-xs font-mono-code text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded">Docs ↗</span>` : ''}
             <span class="text-xs text-[#f1d27a] font-mono-code group-hover:translate-x-1 transition-transform">Ver Árvore →</span>
           </div>
         </div>
@@ -3829,7 +3855,7 @@ window.openPowerModal = function(godId) {
       <div class="p-5 rounded-xl bg-[#050608]/80 border border-white/10 space-y-3">
         <div class="flex items-center justify-between pb-2 border-b border-white/10">
           <span class="font-cinzel text-sm font-bold text-[#f1d27a] uppercase">${lvl.titulo}</span>
-          <span class="text-[10px] font-mono-code text-gray-400">3 Escolhas Disponíveis</span>
+          <span class="text-xs font-mono-code text-gray-400">3 Escolhas Disponíveis</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
           ${lvl.poderes.map(p => `
@@ -3837,11 +3863,11 @@ window.openPowerModal = function(godId) {
               <div>
                 <div class="flex items-center justify-between mb-1">
                   <span class="font-cinzel text-xs font-bold text-white">${p.nome}</span>
-                  <span class="text-[9px] font-mono-code px-1.5 py-0.5 rounded bg-white/10 text-gray-300">${p.tipo}</span>
+                  <span class="text-xs font-mono-code px-1.5 py-0.5 rounded bg-white/10 text-gray-300">${p.tipo}</span>
                 </div>
                 <p class="font-garamond italic text-xs text-[#cfc7b4] leading-relaxed mb-2">${p.descricao}</p>
               </div>
-              ${p.continuidade ? `<div class="text-[9px] font-mono-code text-cyan-400">› Requer Cadeia ${p.continuidade}</div>` : ''}
+              ${p.continuidade ? `<div class="text-xs font-mono-code text-cyan-400">› Requer Cadeia ${p.continuidade}</div>` : ''}
             </div>
           `).join('')}
         </div>
@@ -3893,7 +3919,7 @@ function initSistemaPage() {
           if (content.id === targetId) {
             content.classList.remove('hidden');
             if (typeof gsap !== 'undefined') {
-              gsap.fromTo(content, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.35 });
+              gsap.fromTo(content, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.22 });
             }
           } else {
             content.classList.add('hidden');
@@ -4020,7 +4046,7 @@ function initAgentePage() {
     copyBtn.addEventListener('click', () => {
       exportTextarea.select();
       navigator.clipboard.writeText(exportTextarea.value).then(() => {
-        showToast('ðŸ“‹ Ficha copiada com sucesso para o Discord!');
+        showToast('📋 Resumo copiado. Crie a ficha oficial no Hub.');
       }).catch(() => {
         showToast('Texto selecionado! Pressione Ctrl+C para copiar.');
       });
@@ -4037,8 +4063,8 @@ function initAgentePage() {
     const age = document.getElementById('builder-age')?.value || '18';
     const god = document.getElementById('builder-god')?.value || document.getElementById('sheet-god')?.value || 'Herdeiro do Olimpo';
     const panteao = document.getElementById('builder-pantheon')?.value || document.getElementById('sheet-panteao')?.value || 'Greco-Romano';
-    const oficio = document.getElementById('builder-job')?.value || document.getElementById('sheet-oficio')?.value || 'CustÃ³dio de Sangue';
-    const charClass = document.getElementById('builder-class')?.value || document.getElementById('sheet-class')?.value || 'DestruiÃ§Ã£o';
+    const oficio = document.getElementById('builder-job')?.value || document.getElementById('sheet-oficio')?.value || 'Custódio de Sangue';
+    const charClass = document.getElementById('builder-class')?.value || document.getElementById('sheet-class')?.value || 'Destruição';
     const weapon = document.getElementById('builder-weapon')?.value || document.getElementById('sheet-weapon')?.value || 'Glaive de Prata Estelar (+10 ATK)';
     const photoplayer = document.getElementById('builder-faceclaim')?.value || document.getElementById('sheet-photoplayer')?.value || 'Dark Fantasy';
     const level = Math.max(1, Math.min(10, parseInt(document.getElementById('sheet-level')?.value || '1', 10)));
@@ -4054,14 +4080,14 @@ function initAgentePage() {
     let dice = base.dice;
 
     // Big Three Bonus (Zeus, Poseidon, Hades)
-    const isBigThree = /zeus|poseidon|hades|jÃºpiter|netuno|plutÃ£o/i.test(god);
+    const isBigThree = /zeus|poseidon|hades|júpiter|netuno|plutão/i.test(god);
     if (isBigThree) {
       hp += 30;
       crit += 10;
     }
 
-    // Perpetuals Bonus (DestruiÃ§Ã£o, Destino, Morte, Sonho, Desespero, Desejo, DelÃ­rio)
-    const isPerpetual = /destrui|destino|morte|sonho|desespero|desejo|delÃ­rio/i.test(charClass);
+    // Perpetuals Bonus (Destruição, Destino, Morte, Sonho, Desespero, Desejo, Delírio)
+    const isPerpetual = /destrui|destino|morte|sonho|desespero|desejo|delírio/i.test(charClass);
     if (isPerpetual) {
       hp += 30;
       crit += 10;
@@ -4073,38 +4099,38 @@ function initAgentePage() {
 
     const template = `\`\`\`yaml
 ==========================================================================
-PEDIDO DE FICHA OFICIAL â€” Ã‰GIDE DE AVALON
+PEDIDO DE FICHA OFICIAL — ÉGIDE DE AVALON
 ==========================================================================
-STATUS: RASCUNHO OFICIAL (Aguardando submissÃ£o no Discord da Ã‰gide)
+STATUS: RASCUNHO (crie a ficha oficial no Hub: midnight-city.cloud/dashboard)
 NOME DO AGENTE: ${name}
-IDADE CANÃ”NICA: ${age} anos
+IDADE CANÔNICA: ${age} anos
 PHOTOPLAYER: ${photoplayer} (Status: Aprovado Dark Fantasy)
-PATRONO / LINHAGEM: ${god} (PanteÃ£o: ${panteao})
-OFÃCIO NA ORDEM: ${oficio}
-CLASSE DOS PERPÃ‰TUOS: ${charClass}
-POSTO HIERÃRQUICO: NÃ­vel ${level} (${rankTitle})
+PATRONO / LINHAGEM: ${god} (Panteão: ${panteao})
+OFÍCIO NA ORDEM: ${oficio}
+CLASSE DOS PERPÉTUOS: ${charClass}
+POSTO HIERÁRQUICO: Nível ${level} (${rankTitle})
 
-ATRIBUTOS DE COMBATE CANÃ”NICOS (TABELA 3 OFICIAL):
-â€¢ Pontos de Vida (HP): ${hp} / ${hp} ${isBigThree || isPerpetual ? '(BÃ´nus Aplicado)' : ''}
-â€¢ Pontos de Mana: ${mana} / ${mana} ${isPerpetual ? '(+200 BÃ´nus PerpÃ©tuo)' : ''}
-â€¢ Ataque FÃ­sico/MÃ¡gico (ATK): ${atk}
-â€¢ Defesa & Blindagem (DEF): ${def}
-â€¢ Velocidade de ReaÃ§Ã£o (SPD): ${spd} ${isPerpetual ? '(+10 BÃ´nus PerpÃ©tuo)' : ''}
-â€¢ Chance de Acerto CrÃ­tico: ${crit}%
-â€¢ Dano CrÃ­tico: ${critDmg}%
-â€¢ Rolagem PadrÃ£o de Testes: ${dice}
+ATRIBUTOS DE COMBATE CANÔNICOS (TABELA 3 OFICIAL):
+• Pontos de Vida (HP): ${hp} / ${hp} ${isBigThree || isPerpetual ? '(Bônus Aplicado)' : ''}
+• Pontos de Mana: ${mana} / ${mana} ${isPerpetual ? '(+200 Bônus Perpétuo)' : ''}
+• Ataque Físico/Mágico (ATK): ${atk}
+• Defesa & Blindagem (DEF): ${def}
+• Velocidade de Reação (SPD): ${spd} ${isPerpetual ? '(+10 Bônus Perpétuo)' : ''}
+• Chance de Acerto Crítico: ${crit}%
+• Dano Crítico: ${critDmg}%
+• Rolagem Padrão de Testes: ${dice}
 
 EQUIPAMENTOS DE COMBATE (SLOTS ATIVOS):
-â€¢ Arma Principal Equipada: ${weapon}
-â€¢ BÃªnÃ§Ã£o PrimÃ¡ria de Combate: BÃªnÃ§Ã£o da Classe ${charClass}
-â€¢ Slots de Artefatos: 4 Slots DisponÃ­veis (BaÃº Coletivo de Avalon)
+• Arma Principal Equipada: ${weapon}
+• Bênção Primária de Combate: Bênção da Classe ${charClass}
+• Slots de Artefatos: 4 Slots Disponíveis (Baú Coletivo de Avalon)
 
-HISTÃ“RICO & DIRETRIZ EM LONDRES:
-"Agente registrado sob os auspÃ­cios do Conselho de MÃ¡rmore para atuaÃ§Ã£o nas operaÃ§Ãµes de contenÃ§Ã£o do VÃ©u."
+HISTÓRICO & DIRETRIZ EM LONDRES:
+"Agente registrado sob os auspícios do Conselho de Mármore para atuação nas operações de contenção do Véu."
 
 PROTOCOLO DA ORDEM:
-â€¢ Status: Agente em FormaÃ§Ã£o â€¢ Registrado na Fortaleza de Avalon
-â€¢ Limite Operacional: 1 BÃªnÃ§Ã£o Ativa â€¢ 1 Arma Principal â€¢ 4 Artefatos
+• Status: Agente em Formação • Registrado na Fortaleza de Avalon
+• Limite Operacional: 1 Bênção Ativa • 1 Arma Principal • 4 Artefatos
 ==========================================================================
 \`\`\``;
 
@@ -4232,7 +4258,7 @@ window.toggle = toggleAccordion;
 
 
 // ==========================================================================
-// 16. PÃGINA UNIVERSO: ABAS DE LORE & LEITOR DE CRÃ”NICAS (universo.html)
+// 16. PÁGINA UNIVERSO: ABAS DE LORE & LEITOR DE CRÔNICAS (universo.html)
 // ==========================================================================
 function initUniversoPage() {
   const tabBtns = document.querySelectorAll('#lore-tabs button[data-tab]');
@@ -4258,7 +4284,7 @@ function initUniversoPage() {
             if (key === targetTab) {
               container.classList.remove('hidden');
               if (typeof gsap !== 'undefined') {
-                gsap.fromTo(container, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35 });
+                gsap.fromTo(container, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.22 });
               }
             } else {
               container.classList.add('hidden');
@@ -4284,14 +4310,14 @@ function initUniversoPage() {
       if (chap === currentChapter) {
         slide.classList.remove('hidden');
         if (typeof gsap !== 'undefined') {
-          gsap.fromTo(slide, { opacity: 0, x: 15 }, { opacity: 1, x: 0, duration: 0.35 });
+          gsap.fromTo(slide, { opacity: 0, x: 15 }, { opacity: 1, x: 0, duration: 0.22 });
         }
       } else {
         slide.classList.add('hidden');
       }
     });
     if (indicator) {
-      indicator.textContent = `CapÃ­tulo ${currentChapter} de ${maxChapters}`;
+      indicator.textContent = `Capítulo ${currentChapter} de ${maxChapters}`;
     }
     if (prevBtn) prevBtn.disabled = currentChapter === 1;
     if (nextBtn) nextBtn.disabled = currentChapter === maxChapters;

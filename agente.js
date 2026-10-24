@@ -136,12 +136,12 @@ const DISTRICTS_DATA = {
 const RESOURCES_DATA = [
   {
     id: 'loja',
-    title: 'Central de Requisições',
-    subtitle: 'Loja de equipamentos e recursos',
-    desc: 'Consulte o catálogo de recursos antes de preparar sua solicitação de suprimentos, armas e relíquias.',
-    keywords: ['loja', 'requisicoes', 'equipamentos', 'armas', 'recursos', 'golds', 'compras', 'catalogo'],
-    url: 'https://docs.google.com/document/d/e/2PACX-1vTwVW9hn28fi4aVOOjtTPGOYzPNuR0IPQV0GNcxowZOIdLNF2kMAdvta23JUs_ZQSkvxdizhx5CV_n-/pub',
-    code: 'DOC-EXT // REQ-01'
+    title: 'Loja do Hub',
+    subtitle: 'Itens, artefatos e materiais',
+    desc: 'Compre itens, artefatos e materiais com Gold e use a Forja de artefatos, direto no Hub.',
+    keywords: ['loja', 'requisicoes', 'equipamentos', 'armas', 'recursos', 'golds', 'compras', 'catalogo', 'hub', 'forja'],
+    url: 'https://midnight-city.cloud/dashboard',
+    code: 'HUB // LOJA'
   },
   {
     id: 'bestiario',
@@ -163,12 +163,12 @@ const RESOURCES_DATA = [
   },
   {
     id: 'fichario',
-    title: 'Registro de Operadores',
-    subtitle: 'Fichário de jogadores e photoplayers',
-    desc: 'Consulte os registros existentes, vagas de deuses e photoplayers antes de organizar seu personagem.',
-    keywords: ['fichas', 'fichario', 'photoplayer', 'jogadores', 'operadores', 'registro', 'vagas', 'personagens'],
-    url: 'https://docs.google.com/document/d/1nAKfM2Tu1UkCRlSoMmNHVN4_-QBfG_hdK0uaCxqPYJw/preview?tab=t.0',
-    code: 'DOC-EXT // OPR-04'
+    title: 'Suas fichas no Hub',
+    subtitle: 'Criar, atualizar e photoplayers',
+    desc: 'Crie e atualize personagens, distribua atributos, equipe artefatos e registre o seu photoplayer no Hub.',
+    keywords: ['fichas', 'fichario', 'photoplayer', 'jogadores', 'operadores', 'registro', 'vagas', 'personagens', 'hub'],
+    url: 'https://midnight-city.cloud/dashboard',
+    code: 'HUB // FICHAS'
   }
 ];
 
@@ -270,15 +270,15 @@ function renderIncidents(incidents) {
   if (!container) return;
 
   container.innerHTML = incidents.map(item => `
-    <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition-all space-y-1.5">
-      <div class="flex items-center justify-between text-[11px] font-mono">
+    <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/15 transition space-y-1.5">
+      <div class="flex items-center justify-between text-xs font-mono">
         <span class="text-[#f1d27a] font-bold">› ${item.title}</span>
-        <span class="text-gray-400 text-[10px]">${item.timestamp}</span>
+        <span class="text-gray-400 text-xs">${item.timestamp}</span>
       </div>
       <p class="text-xs text-gray-300 leading-relaxed font-sans">
         ${item.description}
       </p>
-      <div class="pt-1 flex items-center justify-between text-[10px] text-gray-400 font-mono">
+      <div class="pt-1 flex items-center justify-between text-xs text-gray-400 font-mono">
         <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-300">
           <svg class="w-3 h-3 text-[#f1d27a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
           ${item.origin === 'campaign' ? 'Boletim do Conselho' : 'Patrulha Operacional'}

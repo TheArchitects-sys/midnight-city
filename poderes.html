@@ -3,45 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Poderes & Individualidades // MIDNIGHT CITY RPG — Égide de Avalon</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.goatcounter.com; worker-src 'self' blob:; frame-src https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Poderes & Individualidades // Midnight City RPG — Égide de Avalon</title>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
   <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
   <meta name="description" content="Catálogo tático e cinematográfico de divindades, entidades cósmicas e individualidades arcanas de Midnight City RPG.">
+  <link rel="canonical" href="https://thearchitects-sys.github.io/midnight-city/poderes.html">
+  <meta property="og:title" content="Poderes & Individualidades // Midnight City RPG — Égide de Avalon">
+  <meta property="og:description" content="Catálogo tático e cinematográfico de divindades, entidades cósmicas e individualidades arcanas de Midnight City RPG.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Midnight City">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://thearchitects-sys.github.io/midnight-city/poderes.html">
+  <meta property="og:image" content="https://thearchitects-sys.github.io/midnight-city/assets/poderes/poderes-og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://thearchitects-sys.github.io/midnight-city/assets/poderes/poderes-og.jpg">
   <meta name="theme-color" content="#050608">
 
-  <!-- Google Fonts: Midnight City Official Typography -->
+  <!-- Google Fonts: Midnight City Official Typography + Plus Jakarta Sans (Proxima Nova / Tahoma Readability Stack) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Rajdhani:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rajdhani:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Phosphor Icons (Zero Emojis - 100% Vector Icons) -->
-  <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" integrity="sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7" crossorigin="anonymous">
 
   <!-- Three.js 3D WebGL Library + OrbitControls (img2threejs Architecture) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" integrity="sha384-wagZhIFgY4hD+7awjQjR4e2E294y6J2HSnd8eTNc15ZubTeQeVRZwhQJ+W6hnBsf" crossorigin="anonymous" defer></script>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            'gold-primary': '#d4af37',
-            'gold-light': '#f1d27a',
-            'gold-dim': '#8c6a2b',
-            'dark-bg': '#050608',
-            'dark-surface': '#0a0912',
-            'dark-veil': '#0f0e1a',
-            'crimson-pure': '#c82924',
-          }
-        }
-      }
-    }
-  </script>
 
   <!-- Global Homepage Stylesheet (Header, Footer, Typography, Palette) -->
   <link rel="stylesheet" href="styles.css">
@@ -49,6 +41,8 @@
   <!-- Specialized Powers & Hero Panoramic Stylesheet -->
   <link rel="stylesheet" href="powers.css">
   <link rel="stylesheet" href="mobile.css">
+  <!-- Tailwind compilado (antes vinha do CDN, injetado no fim do head) -->
+  <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="bg-[#050608] text-[#cfc7b4] selection:bg-[#d4af37] selection:text-black min-h-screen relative antialiased">
 
@@ -61,7 +55,7 @@
     <a href="index.html" class="brand-badge">
       <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
       <div class="brand-text">
-        <span class="brand-name">MIDNIGHT CITY</span>
+        <span class="brand-name">Midnight City</span>
         <span class="brand-sub">Égide de Avalon</span>
       </div>
     </a>
@@ -85,7 +79,7 @@
         <a href="endgame.html" class="text-red-400 hover:text-red-300">ENDGAME</a>
       </nav>
 
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-[10px] tracking-widest font-bold">
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-gold px-4 py-2 rounded text-xs tracking-widest font-bold">
         DISCORD ↗
       </a>
 
@@ -108,7 +102,8 @@
     <a href="agente.html" class="block py-2 text-[#cfc7b4] hover:text-white">Área do Agente & Fichas</a>
     <a href="endgame.html" class="block py-2 text-red-400 hover:text-red-300">Endgame (Zonas de Risco)</a>
     <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
-      <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="btn-gold text-center py-3 rounded">ENTRAR NO DISCORD</a>
+      <a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">ABRIR O HUB</a>
       <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="btn-secondary-gold text-center py-2.5 rounded">COMUNIDADE YOBLE</a>
     </div>
   </div>
@@ -127,54 +122,21 @@
       <img 
         id="hero-panoramic-img" 
         class="hero-panoramic-img" 
-        src="assets/hero_perpetuos.jpg" 
-        alt="Pintura Neoclássica Autêntica dos Perpétuos de Midnight City"
-        loading="eager"
+        src="assets/poderes/poderes-hero-1920.webp"
+        srcset="assets/poderes/poderes-hero-640.webp 640w, assets/poderes/poderes-hero-1280.webp 1280w, assets/poderes/poderes-hero-1920.webp 1920w"
+        sizes="100vw" width="1920" height="1069"
+        alt="Os Perpétuos reunidos diante de arcos rúnicos numa Londres em ruínas"
+        loading="eager" fetchpriority="high"
       >
     </div>
 
     <!-- Camada 2: Canvas de Efeitos Cinematográficos (Spotlight Shader, Brasas & Névoa) -->
     <canvas id="hero-fx-canvas" class="hero-fx-canvas"></canvas>
 
-    <!-- Camada 3: Runas Ancestrais Pulsantes nos Monólitos de Pedra (SVG Overlay) -->
-    <div class="hero-monolith-runes" aria-hidden="true">
-      <svg class="monolith-runes-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <filter id="monolith-rune-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur1"/>
-            <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur2"/>
-            <feMerge>
-              <feMergeNode in="blur2"/>
-              <feMergeNode in="blur1"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-
-        <!-- Sigilos no Monólito Esquerdo (Ctônico / Morte / Fartura) -->
-        <g class="monolith-rune-group rune-left-pillar" filter="url(#monolith-rune-glow)" stroke="#00f5d4" stroke-width="2.5" fill="none">
-          <circle cx="230" cy="270" r="18" />
-          <path d="M230 240 L230 300 M212 260 L248 280 M212 280 L248 260" />
-          <polygon points="230,330 248,365 212,365" />
-          <circle cx="230" cy="390" r="5" fill="#00f5d4" />
-          <line x1="230" y1="410" x2="230" y2="450" stroke-dasharray="4 4" />
-        </g>
-
-        <!-- Sigilos no Monólito Direito (Destino / Solar / Alquímico) -->
-        <g class="monolith-rune-group rune-right-pillar" filter="url(#monolith-rune-glow)" stroke="#f1d27a" stroke-width="2.5" fill="none">
-          <polygon points="1710,210 1735,245 1685,245" />
-          <circle cx="1710" cy="285" r="16" />
-          <path d="M1692 285 L1728 285 M1710 268 L1710 330" />
-          <path d="M1698 350 Q1710 375 1722 350 T1710 405" />
-          <circle cx="1710" cy="425" r="4" fill="#f1d27a" />
-        </g>
-      </svg>
-    </div>
-
     <!-- Entrada Editorial Integrada da Hero (Padrão Impeccable / Identidade Midnight City) -->
     <div class="hero-editorial-overlay" id="hero-editorial-overlay">
       <div class="hero-editorial-content">
-        <span class="hero-editorial-kicker">ARQUIVO ARCANO DE MIDNIGHT CITY</span>
+        <span class="hero-editorial-kicker">ARQUIVO ARCANO DE Midnight City</span>
         <h1 class="hero-editorial-title">PODERES & INDIVIDUALIDADES</h1>
         <p class="hero-editorial-sub">
           Descubra a linhagem mística e a regência do seu personagem. Consulte árvores de habilidades, passivas inatas e a anatomia dos poderes divinos.
@@ -192,318 +154,11 @@
       </div>
     </div>
 
-    <!-- Indicador Elegante de Rolagem para a Arquitetura Arcana -->
-    <a href="#arquitetura-arcana" class="hero-panoramic-scroll" aria-label="Rolar para as Diretrizes e Classes">
-      <i class="ph ph-caret-double-down"></i>
-    </a>
   </section>
 
   <!-- =========================================================================
-       2.5 NOVA SEÇÃO: ARQUITETURA ARCANA & DIRETRIZES DO SISTEMA
-       Conceito Fundamental • As 7 Classes Perpétuas • Mapa dos Papéis Táticos
-       ========================================================================= -->
-  <section id="arquitetura-arcana" class="arcane-architecture-section" aria-label="Arquitetura Arcana e Diretrizes de Poderes">
-    <div class="architecture-container">
-      
-      <!-- Cabeçalho Monumental da Seção -->
-      <div class="architecture-header">
-        <div class="architecture-kicker-badge">
-          <i class="ph ph-compass-tool" aria-hidden="true"></i>
-          <span>DIRETRIZES DA ÉGIDE // SISTEMÁTICA CANÔNICA</span>
-        </div>
-        <h2 class="architecture-title">ARQUITETURA DAS INDIVIDUALIDADES</h2>
-        <p class="architecture-subtitle">
-          Antes de empunhar o milagre, compreenda a sua natureza: como o sangue sagrado transcende o ofício civil mundano, as regras rígidas de afinidade e como os papéis táticos ditam a sobrevivência na mesa.
-        </p>
-      </div>
-
-      <!-- Grid Tripartite de Fundamentos -->
-      <div class="architecture-pillars-grid">
-        
-        <!-- Pilar 1: Sangue Sagrado vs Ofício (Recurso Fundamental) -->
-        <article class="architecture-pillar-card concept-pillar">
-          <div class="pillar-card-glow" aria-hidden="true"></div>
-          <div class="pillar-header">
-            <div class="pillar-icon-box concept-icon">
-              <i class="ph ph-drop-half-bottom" aria-hidden="true"></i>
-            </div>
-            <div>
-              <span class="pillar-kicker">RECURSO FUNDAMENTAL</span>
-              <h3 class="pillar-name">O que são os poderes?</h3>
-            </div>
-          </div>
-          <p class="pillar-body">
-            Mais importante que seu ofício perante a sociedade civil humana de Londres, serão suas <strong>Individualidades</strong>. O ofício (como <em>Vigilante, Inquisidor, Arcanista, Tecelão</em>) é apenas seu disfarce social e papel funcional na Ordem; as individualidades são o <strong>sangue sagrado</strong> que corre nas suas veias, definindo sua linhagem, seus milagres e sua sobrevivência frente às entidades do Além-Véu.
-          </p>
-          <div class="pillar-footer-tip">
-            <i class="ph ph-lightbulb-filament" aria-hidden="true"></i>
-            <span>Ofício = Emprego do mundo místico • Individualidade = Poder derivado de Sangue Divino; Pactos, Patronos ou Raças Místicas</span>
-          </div>
-        </article>
-
-        <!-- Pilar 2: Papéis Táticos / Macro-Classes -->
-        <article class="architecture-pillar-card tactical-pillar">
-          <div class="pillar-card-glow" aria-hidden="true"></div>
-          <div class="pillar-header">
-            <div class="pillar-icon-box tactical-icon">
-              <i class="ph ph-crosshair" aria-hidden="true"></i>
-            </div>
-            <div>
-              <span class="pillar-kicker">CONSTRUÇÃO DE COMBATE</span>
-              <h3 class="pillar-name">Papel Tático (Macro-Classes)</h3>
-            </div>
-          </div>
-          <p class="pillar-body">
-            Cada lista de poderes possui um foco mecânico intencional concebido no ato de sua criação. As macro-classes determinam a função do personagem e seu estilo de combate na mesa:
-          </p>
-          <div class="tactical-roles-chips">
-            <div class="role-chip">
-              <i class="ph ph-lightning"></i>
-              <div>
-                <strong>DPS</strong>
-                <span>Focado em causar dano massivo, utilizando golpes críticos devastadores ou consumo concentrado de dano contínuo (DOT)</span>
-              </div>
-            </div>
-            <div class="role-chip">
-              <i class="ph ph-shield-check"></i>
-              <div>
-                <strong>TANKER</strong>
-                <span>Dedicado a usar suas ações para proteger a si e aos aliados, mitigando danos e resguardando o esquadrão</span>
-              </div>
-            </div>
-            <div class="role-chip">
-              <i class="ph ph-paw-print"></i>
-              <div>
-                <strong>SUMMONER</strong>
-                <span>Focado em transferir atributos para criaturas sob seu controle. A depender da build ou da lista, poderão ser voltados para DPS, TANK ou SUPORTE</span>
-              </div>
-            </div>
-            <div class="role-chip">
-              <i class="ph ph-sparkle"></i>
-              <div>
-                <strong>SUPORTE BUFFER</strong>
-                <span>Focado em conceder buffs poderosos, amplificações de atributos e vantagens táticas para a equipe</span>
-              </div>
-            </div>
-            <div class="role-chip">
-              <i class="ph ph-arrows-down-up"></i>
-              <div>
-                <strong>SUPORTE DEBUFFER</strong>
-                <span>Focado em causar o máximo de aplicações de atributos negativos e redução de defesas dos adversários</span>
-              </div>
-            </div>
-            <div class="role-chip">
-              <i class="ph ph-heart-half"></i>
-              <div>
-                <strong>HEALLER</strong>
-                <span>Focado em conceder curas vitais, restauração e sustentação contínua para o esquadrão</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Pilar 3: Regra Férrea de Build & Afinidade de Equipamento -->
-        <article class="architecture-pillar-card rule-pillar">
-          <div class="pillar-card-glow" aria-hidden="true"></div>
-          <div class="pillar-header">
-            <div class="pillar-icon-box rule-icon">
-              <i class="ph ph-lock-key" aria-hidden="true"></i>
-            </div>
-            <div>
-              <span class="pillar-kicker">REGRA FÉRREA DE BUILD</span>
-              <h3 class="pillar-name">Afinidade Absoluta & Classes</h3>
-            </div>
-          </div>
-          <p class="pillar-body">
-            Cada lista de poderes é regida pelas <strong>7 Classes Perpétuas</strong>. Essa afinidade é uma lei cósmica inviolável: <strong>você só pode equipar Bênçãos, Armas Sagradas e Artefatos da mesma classe da sua Individualidade</strong>.
-          </p>
-          <div class="rule-callout-box">
-            <div class="rule-callout-title">
-              <i class="ph ph-shield-star"></i>
-              <span>DISTRIBUIÇÃO CANÔNICA DE CLASSES</span>
-            </div>
-            <p>
-              Cada lista de poderes — seja de um deus [filiação] ou organização [afiliação] — terá no <strong>mínimo 2 classes</strong>. Já os deuses que forem também <strong>entidades perpétuas encarnadas terão 3 classes</strong>, sendo a classe que ele representar a sua mais forte.
-            </p>
-          </div>
-          <div class="rule-callout-box" style="margin-top: 10px;">
-            <div class="rule-callout-title">
-              <i class="ph ph-warning-circle"></i>
-              <span>RESTRIÇÃO RÍGIDA DE BÊNÇÃOS & ARTEFATOS</span>
-            </div>
-            <p>
-              Se a sua lista estiver restrita por exemplo a <em>Desespero e Morte</em>, você jamais poderá usar bênçãos ou artefatos de <em>Destino</em>, <em>Destruição</em>, etc.
-            </p>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Bloco Especial: As 7 Classes Perpétuas com Cartões Táteis Interativos e Filtro Rápido -->
-      <div class="perpetual-classes-showcase">
-        <div class="classes-showcase-header">
-          <div>
-            <span class="showcase-kicker">AS 7 FORÇAS PRIMORDIAIS</span>
-            <h3 class="showcase-title">AS CLASSES PERPÉTUAS DE MIDNIGHT CITY</h3>
-            <p class="showcase-desc">
-              Cada divindade ou ordem canaliza a essência das forças cósmicas. Clique em qualquer classe para filtrar automaticamente os patronos correspondentes no catálogo tático.
-            </p>
-          </div>
-          <a href="#god-selector" class="btn-jump-to-catalog" id="btn-jump-catalog">
-            <span>VER TODOS OS PATRONOS</span>
-            <i class="ph ph-arrow-down"></i>
-          </a>
-        </div>
-
-        <div class="classes-tactile-grid" id="architecture-classes-grid">
-          <!-- Injetado dinamicamente via powers.js -->
-        </div>
-      </div>
-
-      <!-- =====================================================================
-           CÓDICE DE DIRETRIZES REGULAMENTARES // CODEX PRAECEPTA DA ÉGIDE
-           Diagramação Editorial Nobre • Arquivo Secular de Regras e Precedentes
-           ===================================================================== -->
-      <section class="codex-regulatory-section" id="architecture-faq" aria-labelledby="codex-main-title">
-        
-        <!-- Cabeçalho do Tomo / Códice -->
-        <header class="codex-folio-header">
-          <div class="codex-protocol-meta">
-            <span class="codex-stamp"><i class="ph ph-scroll" aria-hidden="true"></i> PROTOCOLO CANÔNICO // REGISTRO DA ALTA ÉGIDE Nº 1888-IV</span>
-            <span class="codex-seal-tag">VISTO PELA CHANCELARIA • TABULADO</span>
-          </div>
-          <div class="codex-title-wrap">
-            <h3 class="codex-main-title" id="codex-main-title">CÓDICE DE DIRETRIZES & DECRETOS ARCANOS</h3>
-            <p class="codex-lead-quote">
-              <em>“A ambição do agente é infinita, mas a ressonância do sangue divino obedece a leis imutáveis. O éter não tolera improvisos.”</em>
-              <span class="codex-citation">— Estatutos Arcanos da Égide de Avalon, Capítulo IX</span>
-            </p>
-          </div>
-        </header>
-
-        <!-- Grade de Artigos Canônicos Recolhíveis (Estrutura Editorial Compacta) -->
-        <div class="codex-articles-grid" role="region" aria-label="Artigos Regulamentares">
-          
-          <!-- Artigo I -->
-          <details class="codex-article-card" open>
-            <summary class="codex-article-summary">
-              <div class="article-numeral-ribbon">
-                <span class="roman-numeral">§ I</span>
-                <span class="article-category">ORDEM DE AQUISIÇÃO</span>
-              </div>
-              <div class="summary-headline-row">
-                <h4 class="article-query-title">Posso escolher qualquer individualidade em qualquer ordem?</h4>
-                <div class="summary-right-actions">
-                  <div class="article-verdict-pill verdict-negative">
-                    <i class="ph ph-prohibit" aria-hidden="true"></i>
-                    <span>VEREDITO: ESTRITAMENTE SEQUENCIAL</span>
-                  </div>
-                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
-                </div>
-              </div>
-            </summary>
-            <div class="codex-article-dropdown-body">
-              <p class="article-exposition">
-                <strong>Não.</strong> A manifestação de milagres exige alinhamento biológico e etéreo contínuo. O agente deve selecionar unicamente a quantidade estipulada pelo regulamento de sua linhagem e <strong>obedecer rigorosamente à ordem progressiva de nível</strong> — do Nível 1 até a patente máxima consagrada por sua experiência. O salto de escalões é categoricamente vetado.
-              </p>
-            </div>
-          </details>
-
-          <!-- Artigo II -->
-          <details class="codex-article-card">
-            <summary class="codex-article-summary">
-              <div class="article-numeral-ribbon">
-                <span class="roman-numeral">§ II</span>
-                <span class="article-category">INVIOLABILIDADE DE PATAMAR</span>
-              </div>
-              <div class="summary-headline-row">
-                <h4 class="article-query-title">Se os poderes do meu nível não me agradarem, posso escolher opções de níveis anteriores?</h4>
-                <div class="summary-right-actions">
-                  <div class="article-verdict-pill verdict-negative">
-                    <i class="ph ph-prohibit" aria-hidden="true"></i>
-                    <span>VEREDITO: INTERDITO À RETROAÇÃO</span>
-                  </div>
-                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
-                </div>
-              </div>
-            </summary>
-            <div class="codex-article-dropdown-body">
-              <p class="article-exposition">
-                <strong>Não.</strong> A ressonância do éter vincula a escolha unicamente ao nível exato ao qual o agente ascendeu. Não é permitido retroagir ou substituir uma escolha de nível avançado para acumular artes adicionais de patamares inferiores. Cada degrau de poder exige sua respectiva cota de dedicação.
-              </p>
-            </div>
-          </details>
-
-          <!-- Artigo III -->
-          <details class="codex-article-card article-span-full">
-            <summary class="codex-article-summary">
-              <div class="article-numeral-ribbon">
-                <span class="roman-numeral">§ III</span>
-                <span class="article-category">CONTINUIDADE & HIERARQUIA ARCANAS</span>
-              </div>
-              <div class="summary-headline-row">
-                <h4 class="article-query-title">Como operam os poderes e magias de continuidade (I, II, III / Final)?</h4>
-                <div class="summary-right-actions">
-                  <div class="article-verdict-pill verdict-positive">
-                    <i class="ph ph-git-commit" aria-hidden="true"></i>
-                    <span>VEREDITO: MATURAÇÃO ORGÂNICA EM ETAPAS</span>
-                  </div>
-                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
-                </div>
-              </div>
-            </summary>
-            <div class="codex-article-dropdown-body">
-              <p class="article-exposition">
-                Artes de continuidade são manifestações primordiais que desabrocham e se complexificam à medida que o operador amadurece seu domínio sobre o éter. Para assumir o controle refinado de um estágio avançado, <strong>é obrigatório ter manifestado o estágio imediatamente anterior</strong>. Um poder designado como <strong>“II”</strong> jamais poderá ser escolhido sem o <strong>“I”</strong>; o mesmo rigor aplica-se ao patamar <strong>“III”</strong> ou <strong>“Final”</strong>.
-              </p>
-              
-              <!-- Marginalia / Precedente Canônico de Tomo -->
-              <aside class="codex-canonical-precedent" aria-label="Precedente Canônico de Avalon">
-                <div class="precedent-seal">
-                  <i class="ph ph-scales" aria-hidden="true"></i>
-                  <span>PRECEDENTE CANÔNICO DA ÉGIDE</span>
-                </div>
-                <p class="precedent-text">
-                  <em>“Caso um descendente do sangue de Hades decida subjugar as trevas da metrópole e almeje a devastadora <strong>Umbracinese Final</strong>, seu juramento deve contemplar imperativamente a <strong>Umbracinese I</strong> nos primeiros anos e, posteriormente, a <strong>Umbracinese II</strong>. O éter das sombras rejeita a tentativa de canalizar o zênite sem a prévia forja dos alicerces.”</em>
-                </p>
-              </aside>
-            </div>
-          </details>
-
-          <!-- Artigo IV -->
-          <details class="codex-article-card article-span-full">
-            <summary class="codex-article-summary">
-              <div class="article-numeral-ribbon">
-                <span class="roman-numeral">§ IV</span>
-                <span class="article-category">EXCLUSIVIDADE & PUREZA DE LINHAGEM</span>
-              </div>
-              <div class="summary-headline-row">
-                <h4 class="article-query-title">Posso empunhar Bênçãos e Armas Sagradas de uma classe alheia à minha lista?</h4>
-                <div class="summary-right-actions">
-                  <div class="article-verdict-pill verdict-critical">
-                    <i class="ph ph-shield-slash" aria-hidden="true"></i>
-                    <span>VEREDITO: SEGREGAÇÃO HERMÉTICA ABSOLUTA</span>
-                  </div>
-                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
-                </div>
-              </div>
-            </summary>
-            <div class="codex-article-dropdown-body">
-              <p class="article-exposition">
-                <strong>Não.</strong> A comunhão com armas sagradas e bênçãos litúrgicas repousa na afinação do sangue divino com a égide patronal. Se sua lista de patrono ou congregação estiver restrita, por exemplo, às esferas de <em>Desespero e Morte</em>, você estará expressamente proibido de invocar bênçãos ou empunhar relíquias consagradas a <em>Destino, Destruição, Sonho</em> ou qualquer outro domínio incompatível.
-              </p>
-            </div>
-          </details>
-
-        </div>
-      </section>
-
-    </div>
-  </section>
-
-  <!-- =========================================================================
-       3. SELETOR DE DEUSES & DECK TÁTICO (ESTILO VALORANT HUD / 3 COLUNAS)
-       12 Divindades Canônicas • Zero Emojis • Texto Integral dos PDFs sem cortes
+       2. SELETOR DE DEUSES & DECK TÁTICO (ESTILO VALORANT HUD / 3 COLUNAS)
+       Primeira Seção Abaixo da Hero • Texto Integral dos PDFs sem cortes
        ========================================================================= -->
   <main id="god-selector" class="god-selector-screen" aria-label="Seletor de Agentes e Habilidades">
     
@@ -618,7 +273,7 @@
       <div class="stage-empty-overlay" id="stage-empty-overlay" style="display: none;" role="status" aria-live="polite">
         <div class="stage-empty-card">
           <i class="ph ph-magnifying-glass stage-empty-icon"></i>
-          <h3 class="stage-empty-title">NENHUMA DIVINDADE ENCONTRADA</h3>
+          <h2 class="stage-empty-title">NENHUMA DIVINDADE ENCONTRADA</h2>
           <p class="stage-empty-desc" id="stage-empty-desc">
             Nenhum registro corresponde aos critérios de busca ou filtro ativos.
           </p>
@@ -773,8 +428,8 @@
         <div class="agent-artwork-wrapper" id="agent-artwork-wrapper">
           <img 
             id="agent-full-artwork" 
-            class="agent-full-artwork" 
-            src="" 
+            class="agent-full-artwork"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
             alt="Retrato da Divindade"
             loading="eager"
           >
@@ -857,27 +512,19 @@
 
         </div>
 
-        <!-- Botões de Ação Inferiores -->
-        <div class="action-buttons-group">
+        <!-- Botão de Ação Inferior (Documento Oficial no Google Docs) -->
+        <div class="action-buttons-group action-buttons-single">
           <a 
             id="btn-docs-link-tactical" 
             href="#" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="btn-action-primary btn-canonical-doc"
+            class="btn-action-primary btn-canonical-doc w-full"
             title="Abrir documento canônico oficial no Google Docs"
           >
             <i class="ph ph-file-text"></i>
-            <span>DOCUMENTO OFICIAL ↗</span>
+            <span>LER LISTA INTEGRAL NO GOOGLE DOCS ↗</span>
           </a>
-          <button 
-            id="btn-open-modal" 
-            class="btn-action-secondary"
-            title="Visualizar a progressão integral dos níveis 1 ao 7 em modal"
-          >
-            <i class="ph ph-tree-structure"></i>
-            <span>ÁRVORE COMPLETA // DOSSIÊ</span>
-          </button>
         </div>
 
       </div>
@@ -887,27 +534,307 @@
   </main>
 
   <!-- =========================================================================
-       4. MODAIS: DOSSIÊ ARCANO & GUIA DE CLASSES
+       3. ARQUITETURA DAS INDIVIDUALIDADES, AS CLASSES PERPÉTUAS & DÚVIDAS FREQUENTES
+       Posicionados abaixo do Seletor de Deuses conforme hierarquia de UX solicitada
        ========================================================================= -->
-  
-  <!-- Modal 1: Dossiê Arcano Completo (Níveis 1 a 7) -->
-  <div class="modal-backdrop" id="power-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
-    <div class="modal-container">
-      <div class="modal-header">
-        <div class="modal-title-wrap">
-          <i class="ph ph-tree-structure text-[#d4af37] text-xl"></i>
-          <h2 class="modal-title" id="modal-title">Árvore Completa // Níveis 1 a 7</h2>
+  <section id="arquitetura-arcana" class="arcane-architecture-section" aria-label="Arquitetura Arcana, Classes Perpétuas e Dúvidas Frequentes">
+    <div class="architecture-container">
+      
+      <!-- 3.1 Arquitetura das Individualidades -->
+      <div class="architecture-header">
+        <div class="architecture-kicker-badge">
+          <i class="ph ph-compass-tool" aria-hidden="true"></i>
+          <span>DIRETRIZES DA ÉGIDE // SISTEMÁTICA CANÔNICA</span>
         </div>
-        <button class="modal-close-btn" id="modal-close-btn" aria-label="Fechar Modal">
-          <i class="ph ph-x"></i>
-        </button>
+        <h2 class="architecture-title">ARQUITETURA DAS INDIVIDUALIDADES</h2>
+        <p class="architecture-subtitle">
+          Antes de empunhar o milagre, compreenda a sua natureza: como o sangue sagrado transcende o ofício civil mundano, as regras rígidas de afinidade e como os papéis táticos ditam a sobrevivência na mesa.
+        </p>
       </div>
 
-      <div class="modal-content" id="modal-content">
-        <!-- Conteúdo dos níveis 1 a 7 injetado via JS -->
+      <!-- Grid Tripartite de Fundamentos -->
+      <div class="architecture-pillars-grid">
+        
+        <!-- Pilar 1: Sangue Sagrado vs Ofício (Recurso Fundamental) -->
+        <article class="architecture-pillar-card concept-pillar">
+          <div class="pillar-card-glow" aria-hidden="true"></div>
+          <div class="pillar-header">
+            <div class="pillar-icon-box concept-icon">
+              <i class="ph ph-drop-half-bottom" aria-hidden="true"></i>
+            </div>
+            <div>
+              <span class="pillar-kicker">RECURSO FUNDAMENTAL</span>
+              <h3 class="pillar-name">O que são os poderes?</h3>
+            </div>
+          </div>
+          <p class="pillar-body">
+            Mais importante que seu ofício perante a sociedade civil humana de Londres, serão suas <strong>Individualidades</strong>. O ofício (como <em>Vigilante, Inquisidor, Arcanista, Tecelão</em>) é apenas seu disfarce social e papel funcional na Ordem; as individualidades são o <strong>sangue sagrado</strong> que corre nas suas veias, definindo sua linhagem, seus milagres e sua sobrevivência frente às entidades do Além-Véu.
+          </p>
+          <div class="pillar-footer-tip">
+            <i class="ph ph-lightbulb-filament" aria-hidden="true"></i>
+            <span>Ofício = Emprego do mundo místico • Individualidade = Poder derivado de Sangue Divino; Pactos, Patronos ou Raças Místicas</span>
+          </div>
+        </article>
+
+        <!-- Pilar 2: Papéis Táticos / Macro-Classes -->
+        <article class="architecture-pillar-card tactical-pillar">
+          <div class="pillar-card-glow" aria-hidden="true"></div>
+          <div class="pillar-header">
+            <div class="pillar-icon-box tactical-icon">
+              <i class="ph ph-crosshair" aria-hidden="true"></i>
+            </div>
+            <div>
+              <span class="pillar-kicker">CONSTRUÇÃO DE COMBATE</span>
+              <h3 class="pillar-name">Papel Tático (Macro-Classes)</h3>
+            </div>
+          </div>
+          <p class="pillar-body">
+            Cada lista de poderes possui um foco mecânico intencional concebido no ato de sua criação. As macro-classes determinam a função do personagem e seu estilo de combate na mesa:
+          </p>
+          <div class="tactical-roles-chips">
+            <div class="role-chip">
+              <i class="ph ph-lightning"></i>
+              <div>
+                <strong>DPS</strong>
+                <span>Focado em causar dano massivo, utilizando golpes críticos devastadores ou consumo concentrado de dano contínuo (DOT)</span>
+              </div>
+            </div>
+            <div class="role-chip">
+              <i class="ph ph-shield-check"></i>
+              <div>
+                <strong>TANKER</strong>
+                <span>Dedicado a usar suas ações para proteger a si e aos aliados, mitigando danos e resguardando o esquadrão</span>
+              </div>
+            </div>
+            <div class="role-chip">
+              <i class="ph ph-paw-print"></i>
+              <div>
+                <strong>SUMMONER</strong>
+                <span>Focado em transferir atributos para criaturas sob seu controle. A depender da build ou da lista, poderão ser voltados para DPS, TANK ou SUPORTE</span>
+              </div>
+            </div>
+            <div class="role-chip">
+              <i class="ph ph-sparkle"></i>
+              <div>
+                <strong>SUPORTE BUFFER</strong>
+                <span>Focado em conceder buffs poderosos, amplificações de atributos e vantagens táticas para a equipe</span>
+              </div>
+            </div>
+            <div class="role-chip">
+              <i class="ph ph-arrows-down-up"></i>
+              <div>
+                <strong>SUPORTE DEBUFFER</strong>
+                <span>Focado em causar o máximo de aplicações de atributos negativos e redução de defesas dos adversários</span>
+              </div>
+            </div>
+            <div class="role-chip">
+              <i class="ph ph-heart-half"></i>
+              <div>
+                <strong>HEALLER</strong>
+                <span>Focado em conceder curas vitais, restauração e sustentação contínua para o esquadrão</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pilar 3: Regra Férrea de Build & Afinidade de Equipamento -->
+        <article class="architecture-pillar-card rule-pillar">
+          <div class="pillar-card-glow" aria-hidden="true"></div>
+          <div class="pillar-header">
+            <div class="pillar-icon-box rule-icon">
+              <i class="ph ph-lock-key" aria-hidden="true"></i>
+            </div>
+            <div>
+              <span class="pillar-kicker">REGRA FÉRREA DE BUILD</span>
+              <h3 class="pillar-name">Afinidade Absoluta & Classes</h3>
+            </div>
+          </div>
+          <p class="pillar-body">
+            Cada lista de poderes é regida pelas <strong>7 Classes Perpétuas</strong>. Essa afinidade é uma lei cósmica inviolável: <strong>você só pode equipar Bênçãos, Armas Sagradas e Artefatos da mesma classe da sua Individualidade</strong>.
+          </p>
+          <div class="rule-callout-box">
+            <div class="rule-callout-title">
+              <i class="ph ph-shield-star"></i>
+              <span>DISTRIBUIÇÃO CANÔNICA DE CLASSES</span>
+            </div>
+            <p>
+              Cada lista de poderes — seja de um deus [filiação] ou organização [afiliação] — terá no <strong>mínimo 2 classes</strong>. Já os deuses que forem também <strong>entidades perpétuas encarnadas terão 3 classes</strong>, sendo a classe que ele representar a sua mais forte.
+            </p>
+          </div>
+          <div class="rule-callout-box" style="margin-top: 10px;">
+            <div class="rule-callout-title">
+              <i class="ph ph-warning-circle"></i>
+              <span>RESTRIÇÃO RÍGIDA DE BÊNÇÃOS & ARTEFATOS</span>
+            </div>
+            <p>
+              Se a sua lista estiver restrita por exemplo a <em>Desespero e Morte</em>, você jamais poderá usar bênçãos ou artefatos de <em>Destino</em>, <em>Destruição</em>, etc.
+            </p>
+          </div>
+        </article>
+
       </div>
+
+      <!-- 3.2 As Classes Perpétuas com Cartões Táteis Interativos e Filtro Rápido -->
+      <div class="perpetual-classes-showcase">
+        <div class="classes-showcase-header">
+          <div>
+            <span class="showcase-kicker">AS 7 FORÇAS PRIMORDIAIS</span>
+            <h3 class="showcase-title">AS CLASSES PERPÉTUAS DE Midnight City</h3>
+            <p class="showcase-desc">
+              Cada divindade ou ordem canaliza a essência das forças cósmicas. Clique em qualquer classe para filtrar automaticamente os patronos correspondentes no catálogo tático acima.
+            </p>
+          </div>
+          <a href="#god-selector" class="btn-jump-to-catalog" id="btn-jump-catalog">
+            <span>VOLTAR AO CATÁLOGO DE PATRONOS</span>
+            <i class="ph ph-arrow-up"></i>
+          </a>
+        </div>
+
+        <div class="classes-tactile-grid" id="architecture-classes-grid">
+          <!-- Injetado dinamicamente via powers.js -->
+        </div>
+      </div>
+
+      <!-- 3.3 Dúvidas Frequentes -->
+      <section class="codex-regulatory-section" id="architecture-faq" aria-labelledby="codex-main-title">
+        
+        <header class="codex-folio-header">
+          <div class="codex-protocol-meta">
+            <span class="codex-stamp"><i class="ph ph-question" aria-hidden="true"></i> GUIA DE REGRAS // PERGUNTAS & RESPOSTAS DAS INDIVIDUALIDADES</span>
+            <span class="codex-seal-tag">REGRAS OFICIAIS • ÉGIDE DE AVALON</span>
+          </div>
+          <div class="codex-title-wrap">
+            <h3 class="codex-main-title" id="codex-main-title">DÚVIDAS FREQUENTES</h3>
+            <p class="codex-lead-quote">
+              <em>“A ambição do agente é infinita, mas a ressonância do sangue divino obedece a leis imutáveis. Tire suas dúvidas sobre aquisição, progressão e afinidade de poderes.”</em>
+              <span class="codex-citation">— Diretrizes Oficiais de Midnight City</span>
+            </p>
+          </div>
+        </header>
+
+        <!-- Grade de Artigos Canônicos Recolhíveis (Estrutura Editorial Compacta) -->
+        <div class="codex-articles-grid" role="region" aria-label="Dúvidas Frequentes sobre Individualidades">
+          
+          <!-- Artigo I -->
+          <details class="codex-article-card" open>
+            <summary class="codex-article-summary">
+              <div class="article-numeral-ribbon">
+                <span class="roman-numeral">§ I</span>
+                <span class="article-category">ORDEM DE AQUISIÇÃO</span>
+              </div>
+              <div class="summary-headline-row">
+                <h4 class="article-query-title">Posso escolher qualquer individualidade em qualquer ordem?</h4>
+                <div class="summary-right-actions">
+                  <div class="article-verdict-pill verdict-negative">
+                    <i class="ph ph-prohibit" aria-hidden="true"></i>
+                    <span>VEREDITO: ESTRITAMENTE SEQUENCIAL</span>
+                  </div>
+                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
+                </div>
+              </div>
+            </summary>
+            <div class="codex-article-dropdown-body">
+              <p class="article-exposition">
+                <strong>Não.</strong> A manifestação de milagres exige alinhamento biológico e etéreo contínuo. O agente deve selecionar unicamente a quantidade estipulada pelo regulamento de sua linhagem e <strong>obedecer rigorosamente à ordem progressiva de nível</strong> — do Nível 1 até a patente máxima consagrada por sua experiência. O salto de escalões é categoricamente vetado.
+              </p>
+            </div>
+          </details>
+
+          <!-- Artigo II -->
+          <details class="codex-article-card">
+            <summary class="codex-article-summary">
+              <div class="article-numeral-ribbon">
+                <span class="roman-numeral">§ II</span>
+                <span class="article-category">INVIOLABILIDADE DE PATAMAR</span>
+              </div>
+              <div class="summary-headline-row">
+                <h4 class="article-query-title">Se os poderes do meu nível não me agradarem, posso escolher opções de níveis anteriores?</h4>
+                <div class="summary-right-actions">
+                  <div class="article-verdict-pill verdict-negative">
+                    <i class="ph ph-prohibit" aria-hidden="true"></i>
+                    <span>VEREDITO: INTERDITO À RETROAÇÃO</span>
+                  </div>
+                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
+                </div>
+              </div>
+            </summary>
+            <div class="codex-article-dropdown-body">
+              <p class="article-exposition">
+                <strong>Não.</strong> A ressonância do éter vincula a escolha unicamente ao nível exato ao qual o agente ascendeu. Não é permitido retroagir ou substituir uma escolha de nível avançado para acumular artes adicionais de patamares inferiores. Cada degrau de poder exige sua respectiva cota de dedicação.
+              </p>
+            </div>
+          </details>
+
+          <!-- Artigo III -->
+          <details class="codex-article-card article-span-full">
+            <summary class="codex-article-summary">
+              <div class="article-numeral-ribbon">
+                <span class="roman-numeral">§ III</span>
+                <span class="article-category">CONTINUIDADE & HIERARQUIA ARCANAS</span>
+              </div>
+              <div class="summary-headline-row">
+                <h4 class="article-query-title">Como operam os poderes e magias de continuidade (I, II, III / Final)?</h4>
+                <div class="summary-right-actions">
+                  <div class="article-verdict-pill verdict-positive">
+                    <i class="ph ph-git-commit" aria-hidden="true"></i>
+                    <span>VEREDITO: MATURAÇÃO ORGÂNICA EM ETAPAS</span>
+                  </div>
+                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
+                </div>
+              </div>
+            </summary>
+            <div class="codex-article-dropdown-body">
+              <p class="article-exposition">
+                Artes de continuidade são manifestações primordiais que desabrocham e se complexificam à medida que o operador amadurece seu domínio sobre o éter. Para assumir o controle refinado de um estágio avançado, <strong>é obrigatório ter manifestado o estágio imediatamente anterior</strong>. Um poder designado como <strong>“II”</strong> jamais poderá ser escolhido sem o <strong>“I”</strong>; o mesmo rigor aplica-se ao patamar <strong>“III”</strong> ou <strong>“Final”</strong>.
+              </p>
+              
+              <!-- Marginalia / Precedente Canônico de Tomo -->
+              <aside class="codex-canonical-precedent" aria-label="Precedente Canônico de Avalon">
+                <div class="precedent-seal">
+                  <i class="ph ph-scales" aria-hidden="true"></i>
+                  <span>PRECEDENTE CANÔNICO DA ÉGIDE</span>
+                </div>
+                <p class="precedent-text">
+                  <em>“Caso um descendente do sangue de Hades decida subjugar as trevas da metrópole e almeje a devastadora <strong>Umbracinese Final</strong>, seu juramento deve contemplar imperativamente a <strong>Umbracinese I</strong> nos primeiros anos e, posteriormente, a <strong>Umbracinese II</strong>. O éter das sombras rejeita a tentativa de canalizar o zênite sem a prévia forja dos alicerces.”</em>
+                </p>
+              </aside>
+            </div>
+          </details>
+
+          <!-- Artigo IV -->
+          <details class="codex-article-card article-span-full">
+            <summary class="codex-article-summary">
+              <div class="article-numeral-ribbon">
+                <span class="roman-numeral">§ IV</span>
+                <span class="article-category">EXCLUSIVIDADE & PUREZA DE LINHAGEM</span>
+              </div>
+              <div class="summary-headline-row">
+                <h4 class="article-query-title">Posso empunhar Bênçãos e Armas Sagradas de uma classe alheia à minha lista?</h4>
+                <div class="summary-right-actions">
+                  <div class="article-verdict-pill verdict-critical">
+                    <i class="ph ph-shield-slash" aria-hidden="true"></i>
+                    <span>VEREDITO: SEGREGAÇÃO HERMÉTICA ABSOLUTA</span>
+                  </div>
+                  <i class="ph ph-caret-down codex-fold-icon" aria-hidden="true"></i>
+                </div>
+              </div>
+            </summary>
+            <div class="codex-article-dropdown-body">
+              <p class="article-exposition">
+                <strong>Não.</strong> A comunhão com armas sagradas e bênçãos litúrgicas repousa na afinação do sangue divino com a égide patronal. Se sua lista de patrono ou congregação estiver restrita, por exemplo, às esferas de <em>Desespero e Morte</em>, você estará expressamente proibido de invocar bênçãos ou empunhar relíquias consagradas a <em>Destino, Destruição, Sonho</em> ou qualquer outro domínio incompatível.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
     </div>
-  </div>
+  </section>
+
+  <!-- =========================================================================
+       4. MODAIS: GUIA DE CLASSES & COMPLEMENTOS
+       ========================================================================= -->
 
   <!-- Modal 2: Guia das Classes Perpétuas (Ajuda e Documentação Canônica) -->
   <div class="modal-backdrop" id="classes-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="classes-modal-title">
@@ -936,7 +863,7 @@
           <i class="ph ph-scroll text-[#d4af37] text-xl"></i>
           <div>
             <h2 class="modal-title" id="complement-modal-title">DOCUMENTO COMPLEMENTAR</h2>
-            <div class="text-[11px] text-[#f1d27a]/70 font-mono tracking-wider" id="complement-modal-subtitle">ACERVO CANÔNICO DE MIDNIGHT CITY</div>
+            <div class="text-xs text-[#f1d27a]/70 font-mono tracking-wider" id="complement-modal-subtitle">ACERVO CANÔNICO DE Midnight City</div>
           </div>
         </div>
         <button class="modal-close-btn" id="complement-modal-close-btn" aria-label="Fechar Documento Complementar">
@@ -951,22 +878,19 @@
   </div>
 
   <!-- ==========================================================================
-       5. RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL MIDNIGHT CITY
+       5. RODAPÉ EDITORIAL COMPLETO (DARK LUXURY) - PADRÃO OFICIAL Midnight City
        Idêntico à Homepage index.html • 4 Colunas • Status Beacon do Véu
        ========================================================================== -->
   <footer class="neotheon-global-footer">
     <div class="footer-container">
-      
       <!-- Top Grid: Brand & Lore + 3 Navigation Columns -->
       <div class="footer-grid">
-        
-        <!-- Column 1: Brand, Crest & Lore -->
         <div class="footer-brand-col">
           <div class="footer-brand-badge">
             <div class="brand-crest brand-crest--logo"><img src="assets/brand/mc-logo-128.png" alt="" width="44" height="44"></div>
             <div class="footer-brand-info">
-              <span class="footer-brand-title">MIDNIGHT CITY</span>
-              <span class="footer-brand-sub">Égide de Avalon · v2.5</span>
+              <span class="footer-brand-title">Midnight City</span>
+              <span class="footer-brand-sub">Égide de Avalon · Temporada 2</span>
             </div>
           </div>
           <p class="footer-lore-quote">
@@ -978,9 +902,8 @@
           </div>
         </div>
 
-        <!-- Column 2: O Universo & Crônicas -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ O UNIVERSO</h4>
+          <h4 class="footer-nav-heading">✦ O Universo</h4>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-nav-link">Início (Temporada 2)</a></li>
             <li><a href="universo.html" class="footer-nav-link">Universo & Cosmologia</a></li>
@@ -990,61 +913,50 @@
           </ul>
         </div>
 
-        <!-- Column 3: Diretrizes & Sistema -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ SISTEMA & JOGO</h4>
+          <h4 class="footer-nav-heading">✦ Sistema & Jogo</h4>
           <ul class="footer-links-list">
-            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia de Criação</a></li>
+            <li><a href="sistema.html" class="footer-nav-link">Regras & Guia do Novato</a></li>
             <li><a href="poderes.html" class="footer-nav-link">Poderes & Individualidades</a></li>
             <li><a href="operacoes.html" class="footer-nav-link">Painel de Operações</a></li>
-            <li><a href="agente.html" class="footer-nav-link">Área do Agente & Fichas</a></li>
+            <li><a href="banners.html" class="footer-nav-link">Banners & Orações</a></li>
+            <li><a href="agente.html" class="footer-nav-link">Área do Agente</a></li>
             <li><a href="endgame.html" class="footer-nav-link text-red-400 hover:text-red-300">Zonas de Risco (Endgame)</a></li>
           </ul>
         </div>
 
-        <!-- Column 4: QG & Comunidade -->
         <div class="footer-nav-col">
-          <h4 class="footer-nav-heading">✦ COMUNIDADE</h4>
+          <h4 class="footer-nav-heading">✦ Comunidade</h4>
           <ul class="footer-links-list">
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white">
-                <span>Servidor Discord Oficial</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Comunidade Yoble (309183)</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Mesas de Sexta no Roll20</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://discord.gg/5xJp9PEZwC" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white">
-                <span>Inscrições de Missões</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </li>
+            <li><a href="https://midnight-city.cloud/dashboard" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 text-[#f1d27a] hover:text-white"><span>Hub Midnight City (fichas, loja, orações)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://discord.gg/RjVKryxCu" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Discord oficial (inscrições)</span><span class="text-xs">↗</span></a></li>
+            <li><a href="https://yoble.us/Community/309183" target="_blank" rel="noopener noreferrer" class="footer-nav-link flex items-center gap-1.5 hover:text-white"><span>Comunidade Yoble</span><span class="text-xs">↗</span></a></li>
+            <li><a href="aviso-legal.html" class="footer-nav-link">Aviso legal & remoção de conteúdo</a></li>
           </ul>
         </div>
-
       </div>
 
-      <!-- Bottom Bar: Legal, Rights & Disclaimer -->
+      <!-- Aviso legal (alta visibilidade) -->
+      <div class="footer-legal-callout" role="note" aria-label="Aviso legal">
+        <div class="footer-legal-badge-row">
+          <span class="footer-legal-pill">⚖ Aviso legal</span>
+          <span class="footer-legal-pill">Obra de fã · sem fins lucrativos</span>
+          <span class="footer-legal-pill">Conteúdo +18</span>
+        </div>
+        <div class="footer-legal-title">Midnight City é uma fanfic coletiva, gratuita e sem fins lucrativos</div>
+        <p class="footer-legal-text">
+          <strong>Midnight City</strong> é um RPG de texto amador feito por fãs para entretenimento e escrita criativa. <strong>Não vendemos nada</strong>: não há cobrança, assinatura, doação obrigatória nem venda de moedas ou itens por dinheiro real. Gold, Conta Celestial e Orações são moedas fictícias, sem valor fora do jogo, e não podem ser compradas, vendidas ou trocadas por dinheiro. Personagens, nomes e mitologias citados, além das imagens de referência (<em>photoplayers / faceclaims</em>), pertencem aos seus respectivos autores e detentores, que <strong>não têm vínculo com o projeto nem o endossam</strong>. Se você é titular de algum conteúdo exibido aqui e quer que ele seja removido, <a href="aviso-legal.html#remocao" class="text-[#f1d27a] underline hover:text-white">veja como pedir a remoção</a>: atendemos sem burocracia.
+        </p>
+      </div>
+
       <div class="footer-bottom-bar">
         <div class="footer-copyright">
-          © 2026 MIDNIGHT CITY RPG — Todos os direitos reservados sob a Égide de Avalon.
+          © 2026 Comunidade Midnight City. Os textos originais pertencem aos seus autores; as obras e marcas de terceiros pertencem aos seus titulares.
         </div>
         <div class="footer-disclaimer">
-          Midnight City é um projeto de RPG colaborativo sem fins lucrativos, criado exclusivamente para entretenimento e ficção.
+          <a href="aviso-legal.html" class="underline hover:text-white">Aviso legal, termos de uso e privacidade</a>
         </div>
       </div>
-
     </div>
   </footer>
 
@@ -1053,5 +965,7 @@
   <script src="powers.js" defer></script>
   <div id="tactical-toast" class="tactical-toast" role="status" aria-live="polite"></div>
   <script src="mobile.js" defer></script>
+  <script src="legal.js" defer></script>
+  <script src="analytics.js" defer></script>
 </body>
 </html>

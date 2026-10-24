@@ -27,7 +27,7 @@
   background: linear-gradient(145deg, rgba(14, 13, 26, 0.9) 0%, rgba(8, 7, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1.5rem;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -179,10 +179,10 @@
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   color: #94a3b8;
-  font-size: 0.8rem;
-  font-family: var(--eg-font-code);
+  font-size: 0.84rem;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   border-left: 2px solid transparent;
 }
 
@@ -276,7 +276,7 @@
   background: rgba(255, 255, 255, 0.04);
   color: #94a3b8;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.2s ease; transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
 }
 
 .eg-risk-tab-btn:hover {
@@ -339,7 +339,7 @@
   background: linear-gradient(160deg, rgba(16, 14, 28, 0.94) 0%, rgba(7, 6, 12, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); transition-property: color, background-color, border-color, box-shadow, opacity, transform, filter;
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
 }
 
@@ -385,7 +385,6 @@
   border-radius: 12px;
   overflow: hidden;
   background-color: #030305;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
 }
 @media (min-width: 640px) {
@@ -424,21 +423,19 @@
   object-position: center;
 }
 
+/* Atributos como linha de ficha: rótulo sobre valor, separados por fio, sem caixinha por número */
 .eg-stat-badge {
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 0.25rem 0.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.2rem 0.15rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-width: 0;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.03);
 }
 .eg-stat-badge .stat-label {
-  font-size: 0.58rem;
+  font-size: 0.6875rem;
   color: #94a3b8;
   font-family: var(--eg-font-code);
   text-transform: uppercase;
@@ -455,15 +452,30 @@
   white-space: nowrap;
 }
 
+/* Habilidades: entradas de grimório com fio lateral, não caixas */
 .eg-ability-card {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 0.65rem 0.75rem;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  border-left: 2px solid rgba(255, 255, 255, 0.14);
+  padding: 0.15rem 0 0.15rem 0.85rem;
+  transition: border-color 0.2s ease;
 }
 .eg-ability-card:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(0, 0, 0, 0.65);
+  border-left-color: rgba(212, 175, 55, 0.6);
+}
+.eg-ability-card + .eg-ability-card { margin-top: 0.85rem; }
+
+/* Dentro do card do chefe, ficha técnica e avisos perdem a caixa e viram blocos com fio */
+.eg-monster-card .p-3.rounded-lg,
+.eg-monster-card .p-3.rounded,
+.eg-monster-card .p-3\.5.rounded-lg {
+  background: none;
+  border-width: 0 0 0 2px;
+  border-radius: 0;
+  padding: 0.15rem 0 0.15rem 0.85rem;
+}
+
+/* Criaturas menores das ondas: coluna aberta com fio dourado no topo */
+.eg-monster-entry {
+  border-top: 2px solid rgba(212, 175, 55, 0.45);
+  padding-top: 0.9rem;
 }
 
